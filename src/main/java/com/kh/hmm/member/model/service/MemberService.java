@@ -27,4 +27,6 @@ public interface MemberService
 	
 	ArrayList<Integer> leveling(long exp);
 	
+	Integer recompoint(String id);
+	
 }

@@ -318,24 +318,7 @@ public class MemberController {
 		return;
 	}
 
-	/*@RequestMapping(value = "leveling.do", method = RequestMethod.POST)
-	public void leveling(HttpServletResponse response,long exp)	throws Exception 
-	{
-		logger.info("leveling() call...");	
-		PrintWriter out = response.getWriter();
-		
-		if(exp>0) 
-		{
-			ArrayList<Integer> lev=memberService.leveling(exp);
-			
-			out.write("[\""+lev.get(0).intValue()+"\",\""+lev.get(1).intValue()+"\"]");
-			
-		}
-		else out.write("[\""+1+"\",\""+0+"\"]");
-		out.flush();
-		out.close();
-				
-	}*/
+	
 	@ResponseBody
 	@RequestMapping(value = "leveling.do", method = RequestMethod.POST)
 	public HashMap leveling(HttpServletResponse response,long exp)	throws Exception 
@@ -358,5 +341,16 @@ public class MemberController {
 		
 		
 		return map;		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "recompoint.do", method = RequestMethod.POST)
+	public Integer recompoint(HttpServletResponse response,String id)	throws Exception 
+	{
+		logger.info("recompoint() call...");	
+		
+		Integer result=memberService.recompoint(id);
+		
+		return result;		
 	}
 }

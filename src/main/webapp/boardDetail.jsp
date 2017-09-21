@@ -20,9 +20,9 @@
 <script type="text/javascript">
 	$(function(){
 		$.ajax({
-            type : "POST",
+            type : "POST",                        
             url : "leveling.do?exp=${writer.exp}",
-            success : function(data) {
+            success : function(data) {                               
 
             	$('#lev').val(data.level);
             	$('#per').val(data.percent);
@@ -30,41 +30,62 @@
             error:function(request,status,error){
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                }
-    	});
-
-		$('#bBest').click(function(){
-			alert("현재 포인트는 "+ ${member.recompoint}+" 입니다.");
+    	});		
+		
+		$('.post_rate_btns').click(function(){
+			var recom="";
+			var message="";
+			
 			$.ajax({
-	            type : "GET",
-	            url : "recommendation.do?recom=best&bcode=${board.bcode}",
+	            type : "POST",                        
+	            url : "recompoint.do?id=${member.id}",
 	            success : function(data) {
-	            	alert("게시글에 Best 공감하셨습니다.\n현재 남은 포인트는 "+ data+" 입니다.");
+	            	alert("현재 포인트는 "+ data+" 입니다.");
+	            },
+	            error:function(request,status,error){
+	                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	               }
+	    	});
+			
+			if($(this).attr('id')=='bBest')
+			{
+				recom='best';
+				message='Best';				
+			}
+			
+			$.ajax({
+	            type : "GET",                        
+	            url : "recommendation.do?recom="+recom+"&bcode=${board.bcode}",
+	            success : function(data) {
+	            	alert("게시글에 "+message+" 공감하셨습니다.\n현재 남은 포인트는 "+ data.point+" 입니다.");
+	            	$('#bbest').text(data.recom);
+	            	alert(data.point+","+data.recom);
 	            },
 	            error:function(request,status,error){
 	                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	               }
 	    	});
 		});
-
+		
 		$('#bGood').click(function(){
 			window.location.href="recommendation.do?recom=good&bcode=${board.bcode}";
 		});
-
+		
 		$('#bBad').click(function(){
 			window.location.href="recommendation.do?recom=bad&bcode=${board.bcode}";
 		});
-
+		
 		$('#bWorst').click(function(){
 			window.location.href="recommendation.do?recom=worst&bcode=${board.bcode}";
 		});
-
+		
 		$('#bMedal').click(function(){
 			window.location.href="bmedal.do?bcode=${board.bcode}";
 		});
-
+		
 		$('#report').click(function(){
 			$.ajax({
-	            type : "POST",
+	            type : "POST",                        
 	            url : "isbreport.do?bcode=${board.bcode}",
 	            success : function(data) {
 	            	if(data==0)
@@ -76,28 +97,28 @@
 	                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	               }
 	    	});
-
-		});
-
+			
+		});			
+		
 	});
-
+	
 	function crecommendation(ccode,flag)
 	{
 		if(flag=='g')window.location.href="crecommendation.do?bcode=${board.bcode}&recom=good&ccode="+ccode;
 		else window.location.href="crecommendation.do?bcode=${board.bcode}&recom=bad&ccode="+ccode;
-
+			
 	}
-
+	
 	function cmedal(ccode)
 	{
-		window.location.href="cmedal.do?bcode=${board.bcode}&ccode="+ccode;
-
+		window.location.href="cmedal.do?bcode=${board.bcode}&ccode="+ccode;		
+			
 	}
-
+	
 	function creport(ccode)
 	{
-		window.location.href="creport.do?bcode=${board.bcode}&ccode="+ccode;
-
+		window.location.href="creport.do?bcode=${board.bcode}&ccode="+ccode;		
+			
 	}
 </script>
 <title>Hmm 게시판</title>
@@ -144,7 +165,7 @@
 			<hr>
 			<div class="boardDetail-footer">
 				<button type="button" class="post_rate_btns" id="bBest">최고다!</button>
-				&nbsp;&nbsp;${board.point.best} 개&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+				&nbsp;&nbsp;<p id="bbest">${board.point.best}</p> 개&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 
 				<button type="button" class="post_rate_btns" id="bGood">좋아요 :)</button>
 				&nbsp;&nbsp;${board.point.good} 개&nbsp;&nbsp;&nbsp;&nbsp;

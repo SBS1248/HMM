@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -211,14 +212,32 @@ public class BoardController
 
 	@ResponseBody
     @RequestMapping(value = "recommendation.do", method = RequestMethod.GET)
-	public Integer recommendation(String recom,int bcode,HttpSession session) 
+	public HashMap recommendation(String recom,int bcode,HttpSession session) 
 	{
 		logger.info("recommendation("+recom+","+bcode+") call...");
 
-		boardService.recommendation(recom,bcode);
-		int point=memberService.selectMember(((Member)session.getAttribute("member")).getId()).getRecompoint();
+		HashMap map=new HashMap();
 		
-		return point;
+		boardService.recommendation(recom,bcode);
+		map.put("point", memberService.selectMember(((Member)session.getAttribute("member")).getId()).getRecompoint());
+		
+		int rResult=-1;
+		
+		switch(recom) 
+		{
+			case "best":rResult=boardService.selectBoardOne(bcode).getPoint().getBest();
+				break;
+			case "good":rResult=boardService.selectBoardOne(bcode).getPoint().getGood();
+				break;
+			case "bad":rResult=boardService.selectBoardOne(bcode).getPoint().getBad();
+				break;
+			case "worst":rResult=boardService.selectBoardOne(bcode).getPoint().getWorst();
+				break;
+		}
+		
+		map.put("recom",rResult);
+		
+		return map;
 	}
     
     @RequestMapping(value = "crecommendation.do", method = RequestMethod.GET)

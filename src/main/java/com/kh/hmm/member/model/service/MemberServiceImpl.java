@@ -106,4 +106,10 @@ public class MemberServiceImpl implements MemberService {
 	{
 		return mDao.leveling(exp);
 	}
+
+	@Override
+	public Integer recompoint(String id)
+	{
+		return mDao.recompoint(id);
+	}
 }

@@ -83,5 +83,10 @@ public class MemberDao {
 	{		
 		List<Integer> list= sqlSession.selectList("leveling", exp);
 		return (ArrayList<Integer>) list;
+	}
+
+	public Integer recompoint(String id)
+	{
+		return sqlSession.selectOne("recompoint",id);
 	} 
 }

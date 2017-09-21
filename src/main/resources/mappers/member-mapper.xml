@@ -64,4 +64,10 @@
 		FROM LEVELING
 		WHERE EXP&gt;#{exp}
 	</select>
+	
+	<select id="recompoint" resultType="java.lang.Integer" parameterType="string">
+		SELECT RECOMPOINT
+		FROM MEMBER
+		WHERE ID=#{id}
+	</select>
 </mapper>

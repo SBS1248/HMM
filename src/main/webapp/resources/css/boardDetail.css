@@ -45,7 +45,7 @@ body {
 }
 
 #posted_from {
-  font-size: 14px;
+  font-size: 16px;
   color: silver;
 }
 
@@ -75,6 +75,16 @@ body {
 
 #bMedal:hover {
   transform: scale(1.2);
+}
+
+#report{
+  float: right;
+  margin-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: red;
 }
 
 #board_postdate {

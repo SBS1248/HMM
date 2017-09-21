@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
 body {
-	
+
 }
 
 .title {
@@ -81,8 +81,8 @@ body {
 }
 
 .between {
-	width: 200px;
-	height: 200px;
+	width: 198px;
+	height: 198px;
 	border-radius: 100%;
 	line-height: 200px;
 	vertical-align: middle;
@@ -96,11 +96,24 @@ body {
 
 #option-1 {
 	margin-left: 2%;
+  transition: transform 0.5s;
+}
+
+#option-1:hover {
+	transform: scale(1.1);
 }
 
 #option-1 .on {
 	right: 0;
 	float: right;
+}
+
+#option-2 {
+  transition: transform 0.5s;
+}
+
+#option-2:hover {
+	transform: scale(1.1);
 }
 
 #option-2 .on {

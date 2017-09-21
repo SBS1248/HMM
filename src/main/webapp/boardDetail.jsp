@@ -139,18 +139,15 @@
 				<br>
 				<div class="boardDetail_author">
 					작성자 : ${writer.id} &nbsp;&nbsp;&nbsp; 레벨 : <input disabled id="lev" />
-					&nbsp;&nbsp;&nbsp; 경험치 : ${writer.exp}점 &nbsp;&nbsp;&nbsp;&nbsp; 경험치 진행도 :
-					<span><input disabled id="per"/>%</span>
+					&nbsp;&nbsp;&nbsp; 경험치 : ${writer.exp}점 &nbsp;&nbsp;&nbsp;&nbsp; 경험치 진행도 : <input disabled id="per"/>%
 				</div>
 				<br>
 				<div class="boardDetail_date">
 					<button type="button" id="bMedal">메달 주기!</button>
 					<%-- 메달 갯수가 1 이상일때만 노출, 아니면 display : none --%>
-					&nbsp;&nbsp;&nbsp; 메달 갯수 : ${writer.medal} <span
-						id="board_postdate">작성일 : ${board.postdate}</span>
-						report : ${board.point.report }<button id="report">게시글 신고하기</button>
-
-						<br>
+					&nbsp;&nbsp;&nbsp; 게시글 메달 갯수 : ${writer.medal}
+					<span id="board_postdate">작성일 : ${board.postdate}</span>
+						report : ${board.point.report }<button id="report"><span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;게시글 신고하기</button><br>
 				</div>
 				<br>
 					<%-- 파일? --%>
@@ -202,13 +199,14 @@
 									댓글 점수 : ${c.point.cal }
 									</div>
 									<div class="comment_rate">
+										<button onclick="creport(${c.ccode})">신고하기</button>
 									공감 : ${c.point.good }&nbsp;
 									<button type="button" class="comment_rate_btn" id="btn_good"
 										onclick="crecommendation(${c.ccode},'g')">Good!</button>
 									&nbsp; 비공감 : ${c.point.bad }&nbsp;
 									<button type="button" class="comment_rate_btn"  id="btn_bad"
 										onclick="crecommendation(${c.ccode},'b')">Fuck!</button>
-										cal : ${c.point.cal }&nbsp;medal : ${c.point.medal }<button type="button" onclick="cmedal(${c.ccode},'cm')">medal</button><br><button onclick="creport(${c.ccode})">신고하기</button>
+										cal : ${c.point.cal }&nbsp;medal : ${c.point.medal }<button type="button" onclick="cmedal(${c.ccode},'cm')">medal</button><br>
 										</div>
 								</div>
 							</div>

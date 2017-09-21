@@ -1,0 +1,88 @@
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+@charset "UTF-8";
+
+/*
+#E6E2AF
+#A7A37E
+#EFECCA
+#046380
+#002F2F
+*/
+
+.jumbotron {
+  font-family: 'Hanna', serif;
+  text-align: center;
+  height: 250px;
+  max-height: 250px;
+}
+
+.jumbotron-billboard .img {
+    margin-bottom: 0px;
+    opacity: 0.2;
+    color: #fff;
+    background: #000 url("https://www.wired.com/wiredenterprise/wp-content/uploads/2013/11/20131108-PIVOTAL-231edit.jpg") center center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
+    position:absolute;
+    top:0;left:0;
+    z-index:1;
+  }
+
+.jumbotron {
+  position:relative;padding:50px;
+}
+
+.jumbotron .container {
+  z-index:2;
+  position:relative;
+  z-index:2;
+}
+
+.board {
+  border: none;
+  width: auto;
+  margin-left: 250px;
+  margin-right: 250px;
+}
+
+.panel {
+  border: none;
+}
+
+.input-group .form-control{
+  padding: 10px;
+  font-size: 12px;
+}
+
+.input-group {
+  width: 600px;
+}
+
+.sort_options select:hover, .sort_options option:hover {
+  cursor: pointer;
+}
+
+.sort_options .selectpicker{
+  width: 150px;
+}
+
+.table {
+  border: none;
+  font-family: 'Nanum Gothic';
+}
+
+#reply_num{
+  color: green;
+}
+
+.img-circle {
+  display: inline-block;
+  border: 1px silver solid;
+  width: 25px;
+  height: 25px;
+}

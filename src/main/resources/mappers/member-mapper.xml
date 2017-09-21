@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+
+	<select id="login" parameterType="Member" resultType="Member">
+		SELECT *
+		FROM MEMBER WHERE ID = #{id} AND PASSWORD = #{password}
+	</select>
+	
+	<select id="chkDup" parameterType="Member" resultType="Member">
+		SELECT *
+		FROM MEMBER WHERE ID = #{id}
+	</select>
+	
+	<select id="emailChk" parameterType="Member" resultType="Member">
+		SELECT *
+		FROM MEMBER WHERE EMAIL = #{email}
+	</select>
+	
+	<select id="ChkEmailId" parameterType="Member" resultType="Member">
+		SELECT *
+		FROM MEMBER WHERE ID = #{id} AND EMAIL = #{email}
+	</select>
+	
+	<insert id="enroll">
+		insert into member
+		values
+		(MEM_SEQ.NEXTVAL,#{id},#{password},#{email},null,0,1,0,0,0,0,90,#{job},SYSDATE,null)
+	</insert>
+	
+	<insert id="google">
+		insert into member
+		values
+		(MEM_SEQ.NEXTVAL,#{id},#{password},#{email},#{photo},0,1,0,0,0,0,90,#{job},SYSDATE,null)
+	</insert>
+
+	<update id="update">
+		update member set
+		PASSWORD=#{password},
+		EMAIL=#{email},
+		JOB=#{job} WHERE
+		ID=#{id}
+	</update>
+	
+	<update id="updatePhoto">
+	update member set
+		PHOTO=#{photo} where ID=#{id}
+	</update>
+	
+	<select id="selectMember" parameterType="string" resultType="Member">
+		SELECT *
+		FROM MEMBER
+		WHERE ID=#{writerid}
+	</select>
+	
+	<select id="leveling" parameterType="_long" resultType="java.lang.Integer">
+		SELECT MAX(LEV)
+		FROM LEVELING
+		WHERE EXP&lt;#{exp}
+		union all
+		SELECT FLOOR(#{exp}/MIN(EXP)*100)
+		FROM LEVELING
+		WHERE EXP&gt;#{exp}
+	</select>
+</mapper>

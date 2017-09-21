@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="commentsMapper">
+
+ 	<resultMap id="commentsMap" type="Comments">
+ 			<id column="CCODE" property="ccode" />
+	 		<result column="CONTENT" property="content"/>
+	 		<result column="WRITERID" property="writerid"/>
+	 		<result column="POSTDATE" property="postdate"/>
+	 		<result column="LEV" property="lev"/>
+	 		<result column="UPPER" property="upper"/>
+	 		<result column="BCODE" property="bcode"/>
+	 		<association property="point" javaType="CommentsPoint">
+	 			<id column="CCODE" property="ccode" />
+		 		<result column="GOOD" property="good"/>
+		 		<result column="BAD" property="bad"/>
+		 		<result column="CAL" property="cal"/>
+		 		<result column="MEDAL" property="medal"/>
+		 		<result column="REPORT" property="report"/>
+	 		</association>
+ 	</resultMap>
+ 	
+	<select id="selectComments" resultMap="commentsMap" parameterType="_int">		
+		SELECT A.*,B.*
+		FROM COMMENTS A
+		JOIN COMMENTSPOINT B
+		ON A.CCODE=B.CCODE
+		WHERE A.BCODE=#{bcode}
+		START WITH A.UPPER IS NULL
+		CONNECT BY PRIOR A.CCODE=A.UPPER
+	</select>
+	
+	<update id="cgoodrecommendation" parameterType="_int">
+		UPDATE COMMENTSPOINT 
+		SET GOOD=GOOD+1,CAL=CAL+3
+		WHERE CCODE=#{ccode}		
+	</update>
+	
+	<update id="cbadrecommendation" parameterType="_int">
+		UPDATE COMMENTSPOINT 
+		SET	BAD=BAD+1,CAL=CAL-3
+		WHERE CCODE=#{ccode}		
+	</update>
+	
+	<update id="cmedal" parameterType="_int">
+		UPDATE COMMENTSPOINT 
+		SET	MEDAL=MEDAL+1
+		WHERE CCODE=#{ccode}		
+	</update>
+	
+</mapper>

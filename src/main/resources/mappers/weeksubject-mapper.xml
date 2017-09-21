@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="weeksubjectMapper">
+
+ 	<resultMap id="weeksubjecttMap" type="Weeksubject"></resultMap>
+	
+	<select id="selectWeek" resultType="Weeksubject">
+		SELECT *
+		FROM WEEKSUBJECT
+		WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+6
+	</select>		
+		
+	<insert id="proInsert" parameterType="string">
+		INSERT INTO PROLIST VALUES(
+					(
+						SELECT WSCODE
+					 	FROM WEEKSUBJECT 
+					 	WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+6
+					 ),#{id})
+	</insert>
+	
+	<select id="proCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM PROLIST
+		WHERE WSCODE=(
+						SELECT WSCODE
+					 	FROM WEEKSUBJECT 
+					 	WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+6
+					 )
+	</select>
+	
+	<insert id="conInsert" parameterType="string">
+		INSERT INTO CONLIST VALUES(
+					(
+						SELECT WSCODE
+					 	FROM WEEKSUBJECT 
+					 	WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+6
+					 ),#{id})
+	</insert>
+	
+	<select id="conCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM CONLIST
+		WHERE WSCODE=(
+						SELECT WSCODE
+					 	FROM WEEKSUBJECT 
+					 	WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+6
+					 )
+	</select>
+	
+	<select id="pcSearch" resultType="java.lang.Integer" parameterType="string">
+		SELECT ((SELECT COUNT(*) FROM PROLIST WHERE ID=#{id})*2+(SELECT COUNT(*) FROM CONLIST WHERE ID=#{id})*3)
+		FROM DUAL
+	</select>
+	
+</mapper>

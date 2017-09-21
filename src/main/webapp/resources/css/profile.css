@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+body {
+	background-color: silver;
+}
+
+.profile-header-container {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.profile-header-img {
+	padding: 50px;
+}
+
+.profile-header-img>img.img-circle {
+	width: 160px;
+	height: 160px;
+	border: 2px solid Gainsboro;
+}
+
+.rank-label-container {
+	margin-top: -15px;
+	text-align: center;
+	font-size: 20px;
+}
+
+.label.label-default.rank-label {
+	background-color: rgb(81, 210, 183);
+	padding: 10px 15px 10px 15px;
+	border-radius: 20px;
+}

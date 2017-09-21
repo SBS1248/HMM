@@ -126,7 +126,7 @@
 					<%-- 메달 갯수가 1 이상일때만 노출, 아니면 display : none --%>
 					&nbsp;&nbsp;&nbsp; 게시글 메달 갯수 : ${writer.medal}
 					<span id="board_postdate">작성일 : ${board.postdate}</span>
-						report : ${board.point.report }<button id="report">게시글 신고하기</button><br>
+						report : ${board.point.report }<button id="report"><span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;게시글 신고하기</button><br>
 				</div>
 				<br>
 					<%-- 파일? --%>

@@ -84,9 +84,8 @@
     <br>밥벌이 하고 싶으면 파이썬이나 배우자.</button>
   <br>
 
-  <button type="button" id="polls_result_btn">금주 신기술 동향 투표 결과 확인하기</button>
-  <br><br>
-    <a id="polls_result" href ="newtech2.jsp">금주 신기술 동향 투표 결과 확인하기</a>
+  <button type="button" id="polls_result_btn" onclick="location.href='newtech2.jsp'">금주 신기술 동향 투표 결과 확인하기</button>
+
 </div>
 
       <!-- 게시판 영역 -->

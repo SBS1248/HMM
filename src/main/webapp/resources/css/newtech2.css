@@ -1,155 +1,153 @@
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
 body {
-
+	
 }
 
 .title {
-  font-family: 'Hanna', serif;
-  text-align: center;
-  font-size: 90px;
-  display: inline-block;
-  width: 100%;
-  margin: auto;
-  margin-top: 30px;
+	font-family: 'Hanna', serif;
+	text-align: center;
+	font-size: 90px;
+	display: inline-block;
+	width: 100%;
+	margin: auto;
+	margin-top: 30px;
 }
 
 .chart {
-  height: 500px;
-  margin: auto;
-  background-color: pink;
+	height: 500px;
+	margin: auto;
+	background-color: pink;
 }
 
 .option {
-  margin-top: 150px;
-  width: 48%;
-  height: 198px;
-  border-radius: 5px;
-  display: inline-block;
-  position: relative;
-  top: 0;
-  bottom: 0;
-  float: left;
-  background-color: grey;
+	margin-top: 150px;
+	width: 48%;
+	height: 198px;
+	border-radius: 5px;
+	display: inline-block;
+	position: relative;
+	top: 0;
+	bottom: 0;
+	float: left;
+	background-color: grey;
 }
 
 .option .results {
-  width: 100%;
-  height: 198px;
-  border-radius: 5px;
-  display: inline-block;
-  line-height: 100px;
-  background-color: rgba(255, 255, 255, 0.25);
-  position: relative;
-  top: 0;
-  bottom: 0;
+	width: 100%;
+	height: 198px;
+	border-radius: 5px;
+	display: inline-block;
+	line-height: 100px;
+	background-color: rgba(255, 255, 255, 0.25);
+	position: relative;
+	top: 0;
+	bottom: 0;
 }
 
 .option .option-label {
-  font-size: 20px;
-  font-family: 'Hanna', serif;
-  background-color: silver;
-  padding: 10px;
-  width: 70%;
-  margin: 10px, 2.5%;
-  position: absolute;
-  top: 20px;
+	font-size: 20px;
+	font-family: 'Hanna', serif;
+	background-color: silver;
+	padding: 10px;
+	width: 70%;
+	margin: 10px, 2.5%;
+	position: absolute;
+	top: 20px;
 }
 
 .option .on {
-  width: 0;
-  height: 198px;
-  display: block;
-  position: relative;
-  top: 0;
-  border-radius: 5px;
+	width: 0;
+	height: 198px;
+	display: block;
+	position: relative;
+	top: 0;
+	border-radius: 5px;
 }
 
 .option .count {
-  display: inline-block;
-  width: 100%;
-  line-height: 1em;
-  margin: 0 2.5%;
-  font-size: 60px;
-  position: absolute;
-  top: 90px;
-  right: 0;
+	display: inline-block;
+	width: 100%;
+	line-height: 1em;
+	margin: 0 2.5%;
+	font-size: 60px;
+	position: absolute;
+	top: 90px;
+	right: 0;
 }
 
 .head_counts {
-  font-size: 30px;
+	font-size: 30px;
 }
 
 .between {
-  width: 200px;
-  height: 200px;
-  border-radius: 100%;
-  line-height: 200px;
-  vertical-align: middle;
-  text-align: center;
-  position: absolute;
-  margin-left: 43%;
-  margin-top: 150px;
-  font-size: 100px;
-  z-index: 1;
+	width: 200px;
+	height: 200px;
+	border-radius: 100%;
+	line-height: 200px;
+	vertical-align: middle;
+	text-align: center;
+	position: absolute;
+	margin-left: 43%;
+	margin-top: 150px;
+	font-size: 100px;
+	z-index: 1;
 }
 
 #option-1 {
-  margin-left: 2%;
+	margin-left: 2%;
 }
 
 #option-1 .on {
-  right: 0;
-  float: right;
+	right: 0;
+	float: right;
 }
 
 #option-2 .on {
-  left: 0;
-  float: left;
+	left: 0;
+	float: left;
 }
 
 #option-1 .option-label {
-  text-align: right;
+	text-align: right;
 }
 
 #option-2 .option-label {
-  right: 0;
+	right: 0;
 }
 
 #option-1 .count {
-  text-align: right;
+	text-align: right;
 }
 
 #option-2 .count {
-  left: 0;
+	left: 0;
 }
 
-
 /* COLORS */
-
 body, .title, #participants, .between {
-  background-color: #3e3e3e;
-  color: #fff;
+	background-color: #3e3e3e;
+	color: #fff;
 }
 
 .option-label, .option-label .count {
-  color: #fff;
+	color: #fff;
 }
 
 #on1 {
-  background-color: #1abc9c;
+	background-color: #1abc9c;
 }
 
 #on2 {
-  background-color: #eb7966;
+	background-color: #eb7966;
 }
 
 #participants {
-  text-align: center;
-  font-size: 30px;
-  font-family: 'Hanna', serif;
-  display: inline-block;
-  width: 100%;
-  position: relative;
-  bottom: 10px;
+	text-align: center;
+	font-size: 30px;
+	font-family: 'Hanna', serif;
+	display: inline-block;
+	width: 100%;
+	position: relative;
+	bottom: 10px;
 }

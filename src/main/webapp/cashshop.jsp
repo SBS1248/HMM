@@ -221,9 +221,7 @@ $(this).addClass("active");
 										<h2>250따루</h2>
 										<a href="#" class="btn btn-sdefault add-to-cart"
 											data-toggle="modal" data-target="#buyModal"><i
-											class="fa fa-shopping-cart"></i>구매하기</a> <a href="#"
-											class="btn btn-default add-to-cart" data-toggle="modal"
-											data-target="#cashModal"><i class="fa fa-shopping-cart"></i>충전하기</a>
+											class="fa fa-shopping-cart"></i>구매하기</a> 
 									</div>
 								</div>
 							</div>
@@ -244,9 +242,7 @@ $(this).addClass("active");
 										<h2>250따루</h2>
 										<a href="#" class="btn btn-default add-to-cart"
 											data-toggle="modal" data-target="#buyModal"><i
-											class="fa fa-shopping-cart"></i>구매하기</a> <a href="#"
-											class="btn btn-default add-to-cart" data-toggle="modal"
-											data-target="#cashModal"><i class="fa fa-shopping-cart"></i>충전하기</a>
+											class="fa fa-shopping-cart"></i>구매하기</a>
 									</div>
 								</div>
 							</div>
@@ -268,9 +264,7 @@ $(this).addClass("active");
 										<h2>250따루</h2>
 										<a href="#" class="btn btn-default add-to-cart"
 											data-toggle="modal" data-target="#buyModal"><i
-											class="fa fa-shopping-cart"></i>구매하기</a> <a href="#"
-											class="btn btn-default add-to-cart" data-toggle="modal"
-											data-target="#cashModal"><i class="fa fa-shopping-cart"></i>충전하기</a>
+											class="fa fa-shopping-cart"></i>구매하기</a> 
 									</div>
 								</div>
 							</div>
@@ -292,9 +286,7 @@ $(this).addClass("active");
 										<h2>150따루</h2>
 										<a href="#" class="btn btn-default add-to-cart"
 											data-toggle="modal" data-target="#buyModal"><i
-											class="fa fa-shopping-cart"></i>구매하기</a> <a href="#"
-											class="btn btn-default add-to-cart" data-toggle="modal"
-											data-target="#cashModal"><i class="fa fa-shopping-cart"></i>충전하기</a>
+											class="fa fa-shopping-cart"></i>구매하기</a> 
 									</div>
 								</div>
 
@@ -317,9 +309,7 @@ $(this).addClass("active");
 										<h2>150따루</h2>
 										<a href="#" class="btn btn-default add-to-cart"
 											data-toggle="modal" data-target="#buyModal"><i
-											class="fa fa-shopping-cart"></i>구매하기</a> <a href="#"
-											class="btn btn-default add-to-cart" data-toggle="modal"
-											data-target="#cashModal"><i class="fa fa-shopping-cart"></i>충전하기</a>
+											class="fa fa-shopping-cart"></i>구매하기</a> 
 									</div>
 								</div>
 
@@ -342,9 +332,7 @@ $(this).addClass("active");
 										<h2>150따루</h2>
 										<a href="#" class="btn btn-default add-to-cart"
 											data-toggle="modal" data-target="#buyModal"><i
-											class="fa fa-shopping-cart"></i>구매하기</a> <a href="#"
-											class="btn btn-default add-to-cart" data-toggle="modal"
-											data-target="#cashModal"><i class="fa fa-shopping-cart"></i>충전하기</a>
+											class="fa fa-shopping-cart"></i>구매하기</a> 
 									</div>
 								</div>
 							</div>
@@ -367,9 +355,7 @@ $(this).addClass("active");
 										<h2>150따루</h2>
 										<a href="#" class="btn btn-default add-to-cart"
 											data-toggle="modal" data-target="#buyModal"><i
-											class="fa fa-shopping-cart"></i>구매하기</a> <a href="#"
-											class="btn btn-default add-to-cart" data-toggle="modal"
-											data-target="#cashModal"><i class="fa fa-shopping-cart"></i>충전하기</a>
+											class="fa fa-shopping-cart"></i>구매하기</a> 
 									</div>
 								</div>
 							</div>
@@ -392,9 +378,7 @@ $(this).addClass("active");
 										<h2>150따루</h2>
 										<a href="#" class="btn btn-default add-to-cart"
 											data-toggle="modal" data-target="#buyModal"><i
-											class="fa fa-shopping-cart"></i>구매하기</a> <a href="#"
-											class="btn btn-default add-to-cart" data-toggle="modal"
-											data-target="#cashModal"><i class="fa fa-shopping-cart"></i>충전하기</a>
+											class="fa fa-shopping-cart"></i>구매하기</a> 
 									</div>
 								</div>
 							</div>
@@ -417,9 +401,7 @@ $(this).addClass("active");
 										<h2>150따루</h2>
 										<a href="#" class="btn btn-default add-to-cart"
 											data-toggle="modal" data-target="#buyModal"><i
-											class="fa fa-shopping-cart"></i>구매하기</a> <a href="#"
-											class="btn btn-default add-to-cart" data-toggle="modal"
-											data-target="#cashModal"><i class="fa fa-shopping-cart"></i>충전하기</a>
+											class="fa fa-shopping-cart"></i>구매하기</a>
 									</div>
 								</div>
 							</div>
@@ -442,9 +424,7 @@ $(this).addClass("active");
 
 										<a href="#" class="btn btn-default add-to-cart"
 											data-toggle="modal" data-target="#buyModal"><i
-											class="fa fa-shopping-cart"></i>구매하기</a> <a href="#"
-											class="btn btn-default add-to-cart" data-toggle="modal"
-											data-target="#cashModal"><i class="fa fa-shopping-cart"></i>충전하기</a>
+											class="fa fa-shopping-cart"></i>구매하기</a> 
 									</div>
 								</div>
 							</div>
@@ -466,9 +446,7 @@ $(this).addClass("active");
 										<h2>150따루</h2>
 										<a href="#" class="btn btn-default add-to-cart"
 											data-toggle="modal" data-target="#buyModal"><i
-											class="fa fa-shopping-cart"></i>구매하기</a> <a href="#"
-											class="btn btn-default add-to-cart" data-toggle="modal"
-											data-target="#cashModal"><i class="fa fa-shopping-cart"></i>충전하기</a>
+											class="fa fa-shopping-cart"></i>구매하기</a>
 									</div>
 								</div>
 							</div>
@@ -491,9 +469,7 @@ $(this).addClass("active");
 										<h2>150따루</h2>
 										<a href="#" class="btn btn-default add-to-cart"
 											data-toggle="modal" data-target="#buyModal"><i
-											class="fa fa-shopping-cart"></i>구매하기</a> <a href="#"
-											class="btn btn-default add-to-cart" data-toggle="modal"
-											data-target="#cashModal"><i class="fa fa-shopping-cart"></i>충전하기</a>
+											class="fa fa-shopping-cart"></i>구매하기</a> 
 									</div>
 								</div>
 							</div>
@@ -519,9 +495,7 @@ $(this).addClass("active");
 										<p>매달5개</p>
 										<a href="#" class="btn btn-default add-to-cart"
 											data-toggle="modal" data-target="#buyModal"><i
-											class="fa fa-shopping-cart"></i>구매하기</a> <a href="#"
-											class="btn btn-default add-to-cart" data-toggle="modal"
-											data-target="#cashModal"><i class="fa fa-shopping-cart"></i>충전하기</a>
+											class="fa fa-shopping-cart"></i>구매하기</a> 
 									</div>
 								</div>
 							</div>
@@ -545,9 +519,7 @@ $(this).addClass("active");
 										<p>매달 10개</p>
 										<a href="#" class="btn btn-default add-to-cart"
 											data-toggle="modal" data-target="#buyModal"><i
-											class="fa fa-shopping-cart"></i>구매하기</a> <a href="#"
-											class="btn btn-default add-to-cart" data-toggle="modal"
-											data-target="#cashModal"><i class="fa fa-shopping-cart"></i>충전하기</a>
+											class="fa fa-shopping-cart"></i>구매하기</a>
 									</div>
 								</div>
 							</div>
@@ -571,9 +543,7 @@ $(this).addClass("active");
 										<p>매달 15개</p>
 										<a href="#" class="btn btn-default add-to-cart"
 											data-toggle="modal" data-target="#buyModal"><i
-											class="fa fa-shopping-cart"></i>구매하기</a> <a href="#"
-											class="btn btn-default add-to-cart" data-toggle="modal"
-											data-target="#cashModal"><i class="fa fa-shopping-cart"></i>충전하기</a>
+											class="fa fa-shopping-cart"></i>구매하기</a> 
 									</div>
 								</div>
 							</div>
@@ -625,12 +595,7 @@ $(this).addClass("active");
 					<table id="itemtable"
 						style="margin-left: 100px;; width: 900px; height: auto; padding: 0px;">
 						<tr>
-							<td><span style="float: right; margin: 10px;"><button
-										id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button></span><a id="itemdetail"
-								href="#itdetail" data-toggle="modal"> <img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
-							</a><br> <br>사용기한 : ${member.quitedate}</td>
+							<td colspan="2"></td>
 							<td><span style="float: right; margin: 10px;"><button
 										id="imagedel" class="close" type="button"
 										style="color: black;">&times;</button></span><a id="itemdetail"
@@ -775,6 +740,7 @@ $(this).addClass("active");
 <img id="banner" src="https://image.freepik.com/free-vector/bills-and-coins-in-isometric-design_23-2147604444.jpg" border="0" width = "200px" height="130px" >
 <div id="test" style="display: none; width:200px;height: 130px; font-size: 30px; text-align: center;"><br>결제하러 가기~</div>
 </a>
+
 </div>
 <br>
 <br>

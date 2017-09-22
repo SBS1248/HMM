@@ -99,7 +99,7 @@
 
 					<input type="password" name="password"
 						placeholder="비밀번호" value="${member.password}" required
-						id="password"><br> <input type="password"
+						id="password"><br> <input type="password" id="passwordConfirm"
 						name="passwordConfirm" placeholder="비밀번호 확인"
 						value="${member.password}" required id="passwordConfirm"><br>
 					<input type="email" name="email" placeholder="이메일"

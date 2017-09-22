@@ -70,4 +70,16 @@
 		FROM MEMBER
 		WHERE ID=#{id}
 	</select>
+	
+	<select id="havmedal" resultType="java.lang.Integer" parameterType="_int">
+		SELECT HAVMEDAL
+		FROM MEMBER
+		WHERE MEMBERCODE=#{membercode}
+	</select>
+	
+	<update id="givemedal" parameterType="_int">
+		UPDATE MEMBER
+		SET HAVMEDAL=HAVMEDAL-1
+		WHERE MEMBERCODE=#{membercode}
+	</update>
 </mapper>

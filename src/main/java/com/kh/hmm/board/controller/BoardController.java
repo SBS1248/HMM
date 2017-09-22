@@ -1,5 +1,7 @@
 ﻿package com.kh.hmm.board.controller;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -236,40 +238,65 @@ public class BoardController
 			case "worst":rResult=boardService.selectBoardOne(bcode).getPoint().getWorst();
 				break;
 		}
-		
+	
 		map.put("recom",rResult);
+		map.put("cal", boardService.selectBoardOne(bcode).getPoint().getCal());
 		
 		return map;
 	}
     
+	@ResponseBody
     @RequestMapping(value = "crecommendation.do", method = RequestMethod.GET)
-	public String crecommendation(String recom,int ccode,int bcode) 
+	public HashMap crecommendation(String recom,int ccode,HttpSession session) 
 	{
-		logger.info("crecommendation("+recom+","+ccode+","+bcode+") call...");
+		logger.info("crecommendation("+recom+","+ccode+") call...");
 
 		boardService.crecommendation(recom,ccode);
 		
-		return "forward:boardOne.do?bcode="+bcode;
+		HashMap map=new HashMap();
+		
+		map.put("point", memberService.selectMember(((Member)session.getAttribute("member")).getId()).getRecompoint());
+		
+		int rResult=-1;
+		
+		switch(recom) 
+		{
+			case "good":rResult=commentsService.selectCommentsOne(ccode).getPoint().getGood();
+				break;
+			case "bad":rResult=commentsService.selectCommentsOne(ccode).getPoint().getBad();
+				break;
+		}
+	
+		map.put("recom",rResult);
+		map.put("cal", commentsService.selectCommentsOne(ccode).getPoint().getCal());
+		
+		return map;
 	}
     
+    @ResponseBody
     @RequestMapping(value = "bmedal.do", method = RequestMethod.GET)
-	public String bmedal(int bcode) 
+	public Integer bmedal(int bcode,int membercode) 
 	{
 		logger.info("bmedal("+bcode+") call...");
 
 		boardService.bmedal(bcode);
 		
-		return "forward:boardOne.do?bcode="+bcode;
+		memberService.givemedal(membercode);
+		
+		return boardService.selectBoardOne(bcode).getPoint().getMedal();
 	}
     
+    @ResponseBody
     @RequestMapping(value = "cmedal.do", method = RequestMethod.GET)
-	public String cmedal(int ccode,int bcode) 
+	public Integer cmedal(int ccode,int membercode) 
 	{
-		logger.info("cmedal("+bcode+","+ccode+") call...");
+		logger.info("cmedal("+ccode+") call...");
 
-		boardService.cmedal(ccode);
+		boardService.cmedal(ccode);		
 		
-		return "forward:boardOne.do?bcode="+bcode;
+		memberService.givemedal(membercode);
+		
+		return commentsService.selectCommentsOne(ccode).getPoint().getMedal();
 	}
     
     @ResponseBody
@@ -282,15 +309,33 @@ public class BoardController
 		return boardService.isbreport(bcode,reporter);
 	}    
     
+    @ResponseBody
     @RequestMapping(value = "breport.do", method = RequestMethod.GET)
-	public String breport(int bcode,HttpSession session) 
+	public void breport(int bcode,HttpSession session) 
 	{
 		logger.info("breport("+bcode+") call...");
 		String reporter=((Member)session.getAttribute("member")).getId();
 		
 		boardService.breport(bcode,reporter);
-		
-		return "forward:boardOne.do?bcode="+bcode;
 	}
     
+    @ResponseBody
+    @RequestMapping(value = "iscreport.do", method = RequestMethod.POST)
+	public Integer iscreport(int ccode,HttpSession session,HttpServletResponse response) 
+	{
+		logger.info("iscreport("+ccode+") call...");
+		String reporter=((Member)session.getAttribute("member")).getId();
+			
+		return commentsService.iscreport(ccode,reporter);
+	}    
+    
+    @ResponseBody
+    @RequestMapping(value = "creport.do", method = RequestMethod.GET)
+	public void creport(int ccode,HttpSession session) 
+	{
+		logger.info("creport("+ccode+") call...");
+		String reporter=((Member)session.getAttribute("member")).getId();
+		
+		commentsService.creport(ccode,reporter);
+	}
 }

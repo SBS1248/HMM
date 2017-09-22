@@ -353,4 +353,17 @@ public class MemberController {
 		
 		return result;		
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "havmedal.do", method = RequestMethod.POST)
+	public Integer havmedal(HttpServletResponse response,int membercode)	throws Exception 
+	{
+		logger.info("havmedal() call...");	
+		
+		Integer result=memberService.havmedal(membercode);
+		
+		return result;		
+	}
+	
+	
 }

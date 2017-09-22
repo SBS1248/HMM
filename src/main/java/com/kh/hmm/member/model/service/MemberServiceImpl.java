@@ -112,4 +112,16 @@ public class MemberServiceImpl implements MemberService {
 	{
 		return mDao.recompoint(id);
 	}
+
+	@Override
+	public Integer havmedal(int membercode)
+	{
+		return mDao.havmedal(membercode);
+	}
+
+	@Override
+	public void givemedal(int membercode)
+	{
+		mDao.givemedal(membercode);
+	}
 }

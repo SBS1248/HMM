@@ -1,6 +1,7 @@
 package com.kh.hmm.board.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -40,8 +41,31 @@ public class CommentsDao
 		return sqlSession.delete("updateComments",c);
 	}
 	
-	public int chechComments(CommentsPoint point) 
+	public int checkComments(CommentsPoint point) 
 	{
 		return sqlSession.update("checkComments",point);
+	}
+
+	public Comments selectCommentsOne(int ccode)
+	{
+		return sqlSession.selectOne("selectCommentsOne",ccode);
+	}
+
+	public Integer iscReport(int ccode, String reporter)
+	{
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("ccode", ccode);
+		map.put("reporter", reporter);
+		
+		return sqlSession.selectOne("iscreport",map);
+	}
+	
+	public void creport(int ccode, String reporter)
+	{
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("ccode", ccode);
+		map.put("reporter", reporter);
+		
+		sqlSession.insert("creport",map);
 	}
 }

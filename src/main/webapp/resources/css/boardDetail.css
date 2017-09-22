@@ -108,6 +108,11 @@ body {
   width: 100%;
   height: auto;
 }
+
+.post_rate_btns_area{
+  display: inline-block; 
+}
+
 .post_rate_btns{
   padding: 10px;
   border: none;
@@ -119,19 +124,19 @@ body {
   transform: scale(1.2);
 }
 
-#bBest{
+#best_btn{
   background-color: gold;
 }
 
-#bGood{
+#good_btn{
   background-color: green;
 }
 
-#bBad{
+#bad_btn{
   background-color: grey;
 }
 
-#bWorst{
+#worst_btn{
   background-color: red;
 }
 

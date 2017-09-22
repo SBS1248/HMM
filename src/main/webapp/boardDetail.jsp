@@ -128,6 +128,8 @@
 	    		            	alert("게시글에 메달을 달아주었습니다.");
 
 	    		            	$('#bmedal').text(data);
+												$('#pmdiv').css("display","block");
+
 	    		            },
 	    		            error:function(request,status,error){
 	    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -325,7 +327,7 @@
 					</c:if>
 
 					<c:if test="${board.point.medal eq 0}">
-						<span class="current_medal_number" style="display: none;">
+						<span class="current_medal_number" id="pmdiv" style="display: none;">
 							게시글 메달 갯수 :<span id="bmedal"> ${board.point.medal}</span>
 						</span>
 					</c:if>

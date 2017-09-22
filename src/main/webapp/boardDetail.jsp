@@ -137,7 +137,18 @@
 	            url : "isbreport.do?bcode=${board.bcode}",
 	            success : function(data) {
 	            	if(data==0)
-	            		window.location.href="breport.do?bcode=${board.bcode}";
+	            	{
+	            		$.ajax({
+	    		            type : "GET",                        
+	    		            url : "breport.do?bcode=${board.bcode}",
+	    		            success : function(data) {
+	    		            	alert("게시글을 신고하셨습니다.");         	
+	    		            },
+	    		            error:function(request,status,error){
+	    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    		               }
+	    		    	});
+	            	}
 	            	else
 	            		alert("이미 신고하셨습니다.");
 	            },
@@ -195,7 +206,7 @@
 					<%-- 메달 갯수가 1 이상일때만 노출, 아니면 display : none --%>
 					&nbsp;&nbsp;&nbsp; 게시글 메달 갯수 :<p id="bmedal"> ${board.point.medal}</p>
 					<span id="board_postdate">작성일 : ${board.postdate}</span>
-						report : ${board.point.report }<button id="report"><span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;게시글 신고하기</button><br>
+					<button id="report"><span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;게시글 신고하기</button><br>
 				</div>
 				<br>
 					<%-- 파일? --%>

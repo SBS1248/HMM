@@ -35,13 +35,13 @@
     	});
 
 		$('.post_rate_btns').click(function(){
-			
+
 			if(${member.membercode}==${writer.membercode})
 			{
 				alert("본인의 글은 공감할 수 없습니다.");
 				return;
 			}
-			
+
 			var recom="";
 			var message="";
 			var point;
@@ -92,8 +92,8 @@
 	    		            url : "recommendation.do?recom="+recom+"&bcode=${board.bcode}",
 	    		            success : function(data) {
 	    		            	alert("게시글에 "+message+" 공감하셨습니다.\n현재 남은 포인트는 "+ data.point+" 입니다.");
-  	
-	    		            	pan.text(data.recom);	
+
+	    		            	pan.text(data.recom);
 	    		            	$('#bcal').text(data.cal);
 
 	    		            },
@@ -112,7 +112,7 @@
 
 		$('#bMedal').click(function(){
 			$.ajax({
-	            type : "POST",                        
+	            type : "POST",
 	            url : "havmedal.do?membercode=${member.membercode}",
 	            success : function(data) {
 	            	alert("현재 보유 메달은 "+ data+"개 입니다.");
@@ -123,12 +123,12 @@
 	            	else
 	            	{
 	            		$.ajax({
-	    		            type : "GET",                        
+	    		            type : "GET",
 	    		            url : "bmedal.do?bcode=${board.bcode}&membercode=${member.membercode}",
 	    		            success : function(data) {
 	    		            	alert("게시글에 메달을 달아주었습니다.");
-	    		            	
-	    		            	$('#bmedal').text(data);		            	
+
+	    		            	$('#bmedal').text(data);
 	    		            },
 	    		            error:function(request,status,error){
 	    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -150,10 +150,10 @@
 	            	if(data==0)
 	            	{
 	            		$.ajax({
-	    		            type : "GET",                        
+	    		            type : "GET",
 	    		            url : "breport.do?bcode=${board.bcode}",
 	    		            success : function(data) {
-	    		            	alert("게시글을 신고하셨습니다.");         	
+	    		            	alert("게시글을 신고하셨습니다.");
 	    		            },
 	    		            error:function(request,status,error){
 	    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -177,22 +177,22 @@
 		var recom;
 		var pan;
 		var message;
-		
+
 		if(flag=='g')
 		{
 			recom="good";
 			pan=$('#g'+ccode);
 			message="Good";
-		}	
+		}
 		else
 		{
 			recom="bad";
 			pan=$('#b'+ccode);
 			message="Bad";
 		}
-		
+
 		$.ajax({
-            type : "POST",                        
+            type : "POST",
             url : "recompoint.do?id=${member.id}",
             success : function(data) {
             	alert("현재 포인트는 "+ data+" 입니다.");
@@ -203,12 +203,12 @@
             	else
             	{
             		$.ajax({
-    		            type : "GET",                        
+    		            type : "GET",
     		            url : "crecommendation.do?recom="+recom+"&ccode="+ccode,
     		            success : function(data) {
     		            	alert("댓글에 "+message+" 공감하셨습니다.\n현재 남은 포인트는 "+ data.point+" 입니다.");
-    		            	
-    		            	pan.text(data.recom);	
+
+    		            	pan.text(data.recom);
     		            	$('#c'+ccode).text(data.cal);
     		            },
     		            error:function(request,status,error){
@@ -227,7 +227,7 @@
 	function cmedal(ccode)
 	{
 		$.ajax({
-            type : "POST",                        
+            type : "POST",
             url : "havmedal.do?membercode=${member.membercode}",
             success : function(data) {
             	alert("현재 보유 메달은 "+ data+"개 입니다.");
@@ -238,12 +238,12 @@
             	else
             	{
             		$.ajax({
-    		            type : "GET",                        
+    		            type : "GET",
     		            url : "cmedal.do?ccode="+ccode+"&membercode=${member.membercode}",
     		            success : function(data) {
     		            	alert("댓글에 메달을 달아주었습니다.");
-    		            	
-    		            	$('#m'+ccode).text(data);	
+
+    		            	$('#m'+ccode).text(data);
     		            	$('#mdiv'+ccode).css("display","block");
     		            },
     		            error:function(request,status,error){
@@ -263,16 +263,16 @@
 	{
 
 		$.ajax({
-            type : "POST",                        
+            type : "POST",
             url : "iscreport.do?ccode="+ccode,
             success : function(data) {
             	if(data==0)
             	{
             		$.ajax({
-    		            type : "GET",                        
+    		            type : "GET",
     		            url : "creport.do?ccode="+ccode,
     		            success : function(data) {
-    		            	alert("댓글을 신고하셨습니다.");         	
+    		            	alert("댓글을 신고하셨습니다.");
     		            },
     		            error:function(request,status,error){
     		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -286,8 +286,8 @@
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                }
     	});
-			
-			
+
+
 
 	}
 </script>
@@ -317,7 +317,21 @@
 					<button type="button" id="bMedal">메달 주기!</button>
 					<%-- 메달 갯수가 1 이상일때만 노출, 아니면 display : none --%>
 
-					&nbsp;&nbsp;&nbsp; 게시글 메달 갯수 :<p id="bmedal"> ${board.point.medal}</p>
+					&nbsp;&nbsp;&nbsp;
+
+					<c:if test="${board.point.medal ne 0}">
+						<span class="current_medal_number">
+							게시글 메달 갯수 :<span id="bmedal"> ${board.point.medal}</span>
+						</span>
+					</c:if>
+
+					<c:if test="${board.point.medal eq 0}">
+						<span class="current_medal_number" style="display: none;">
+							게시글 메달 갯수 :<span id="bmedal"> ${board.point.medal}</span>
+						</span>
+					</c:if>
+
+
 					<span id="board_postdate">작성일 : ${board.postdate}</span>
 					<button id="report_post"><span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;게시글 신고하기</button><br>
 
@@ -339,22 +353,20 @@
 <hr>
 			<div class="boardDetail-footer">
 				<button type="button" class="post_rate_btns" id="bBest">최고다!</button>
-				&nbsp;&nbsp;<p id="bbest">${board.point.best}</p> 개&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;<span id="bbest">${board.point.best}</span> 개&nbsp;&nbsp;&nbsp;&nbsp;
 
 				<button type="button" class="post_rate_btns" id="bGood">좋아요 :)</button>
-				&nbsp;&nbsp;<p id="bgood">${board.point.good}</p> 개&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;<span id="bgood">${board.point.good}</span> 개&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 				<button type="button" class="post_rate_btns" id="bBad">안 좋아요 :(</button>
-				&nbsp;&nbsp;<p id="bbad">${board.point.bad}</p> 개&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;<span id="bbad">${board.point.bad}</span> 개&nbsp;&nbsp;&nbsp;&nbsp;
 
 
-				<button type="button" class="post_rate_btns" id="bWorst">뭐야 시발!</button>
-				&nbsp;&nbsp;<p id="bworst">${board.point.worst}</p> 개&nbsp;&nbsp;&nbsp;&nbsp; <br> <br>
-				게시글 점수 합계 : <p id="bcal">${board.point.cal}</p><br> <br>
-				<hr>
+				<button type="button" class="post_rate_btns" id="bWorst">최악이다!</button>
+				&nbsp;&nbsp;<span id="bworst">${board.point.worst}</span> 개&nbsp;&nbsp;&nbsp;&nbsp; <br> <br>
+				게시글 점수 합계 : <span id="bcal">${board.point.cal}</span><br>
 			</div>
-				<hr>
 			</div>
 			<%-- 댓글 공간 --%>
 			<div class="comment_section">
@@ -363,29 +375,25 @@
 
 					<c:forEach var="c" items="${comments}">
 
-
 						<div class="comments">
 							<div class="comments-heading">
 								<span id="reply_number">${num }번째 댓글</span>
 
 								<%-- 댓글 메달 파트. 메달이 1개 이상일 때만 갯수 노출 --%>
+								<c:if test="${c.point.medal ne 0}">
+									<span class="current_medal_number">
+										<i id="the_medal" class="fa fa-star-o" aria-hidden="true"></i> x <span id="m${c.ccode}">${c.point.medal } </span>
+									</span>
+								</c:if>
+
+								<c:if test="${c.point.medal eq 0}">
+									<span class="current_medal_number" id="mdiv${c.ccode }" style="display: none;">
+										<i id="the_medal" class="fa fa-star-o" aria-hidden="true"></i> x <span id="m${c.ccode}">${c.point.medal } </span>
+									</span>
+								</c:if>
+
 								<span	id="give_medal" onclick="cmedal(${c.ccode},'cm')">메달 주기</span>
 
-								<c:if test="${c.point.medal ne 0}">
-									<div style="display:block;">
-										<i id="the_medal" class="fa fa-star-o"
-											aria-hidden="true"></i> x <span id="m${c.ccode}">${c.point.medal } </span>
-								
-									</div>
-								</c:if>
-								
-								<c:if test="${c.point.medal eq 0}">
-									<div id="mdiv${c.ccode }" style="display:none;">
-										<i id="the_medal" class="fa fa-star-o"
-											aria-hidden="true"></i> x <span id="m${c.ccode}">${c.point.medal } </span>
-								
-									</div>
-								</c:if>
 								<div class="comment_authordate">
 									<span>작성자 : ${c.writerid }</span> &nbsp;&nbsp;&nbsp;&nbsp; 작성일
 									: ${c.postdate}

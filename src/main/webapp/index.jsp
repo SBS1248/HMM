@@ -12,6 +12,7 @@
 <head>
 
 <title>Hmm | 국내 최고 개발자 커뮤니티</title>
+<link rel="icon" href="resources/img/신보선/신보선.jpg" type="image/gif" sizes="16x16">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="resources/css/index.css" rel="stylesheet" type="text/css">

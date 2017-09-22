@@ -54,8 +54,12 @@ body {
   font-family: 'Pacifico', cursive;
   font-size: 36px;
   border: 3px white solid;
-  margin-right: 80%;
+  text-align: center;
   transition: transform 1s;
+  width: 150px;
+  position: fixed;
+  left: 45%;
+  margin: auto;
 }
 
 #wrapper .navbar .container-fluid .navbar-nav #home_logo:hover {

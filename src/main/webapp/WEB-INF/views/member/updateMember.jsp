@@ -68,12 +68,14 @@
 <body>
 	<%@ include file="/header.jsp"%>
 
-	<div class="board">
-		<!-- Modal content-->
-		<div class="panel panel-default panel-success">
+	<div class="container">
 
-			<div class="panel-heading">프로필 수정</div>
-			<div class="panel-body">
+	<div class="profile_board">
+		<!-- Modal content-->
+		<div class="profile">
+
+			<div class="profile-heading">${member.id}님의 프로필</div>
+			<div class="profile-body">
 				<form id="pictureUpload" name="pictureUpload" action="uploadFile.do"
 					method="POST" enctype="multipart/form-data">
 					<c:choose>
@@ -85,16 +87,17 @@
 							<img id="profileImg" src="${photo}" alt="profileImg" />
 						</c:when>
 					</c:choose>
-					<br> <input type='file' id="imgUpload" name="photo" id="photo" />
-					<br />
-					<button type="button" id="vali_btn" onclick="validationFile()">파일
+					<br> <br><input type='file' id="imgUpload" name="photo" id="photo" />
+					<br>
+
+					<button type="button" id="file_upload_btn" onclick="validationFile()">파일
 						업로드</button>
 				</form>
-				<hr>
-				<label> 비밀번호 및 이메일 재설정 </label>
 				<form id="updateForm" action="update.do" method="POST">
-					<input type="text" name="id" placeholder="아이디" value="${member.id}"
-						readonly><br> <input type="password" name="password"
+					<input id ="input_id" type="text" name="id" value="${member.id}"
+						readonly>
+
+					<input type="password" name="password"
 						placeholder="비밀번호" value="${member.password}" required
 						id="password"><br> <input type="password"
 						name="passwordConfirm" placeholder="비밀번호 확인"
@@ -107,12 +110,12 @@
 						<option value="jobless">무직</option>
 						<option value="etc">기타</option>
 					</select> <br>
-					<button type="button" onclick="validationDate()">수정하기</button>
+					<button id="profile_update_btn" type="button" onclick="validationDate()">수정하기</button>
 
 				</form>
 			</div>
 
-			<div class="panel-footer">
+			<div class="profile-footer">
 				<label>메달 갯수 : ${member.medal}</label> <br> <label>경험치
 					: ${member.exp}</label> <br> <label>남은 캐시 : ${member.chash}</label> <br>
 				<label>남은 따루 : ${member.ddaru}</label> <br> <label>가입일
@@ -123,6 +126,6 @@
 	</div>
 
 
-
+</div>
 </body>
 </html>

@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="resources/img/신보선/신보선.jpg" type="image/gif"
+	sizes="16x16">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -20,9 +22,9 @@
 <script type="text/javascript">
 	$(function(){
 		$.ajax({
-            type : "POST",                        
+            type : "POST",
             url : "leveling.do?exp=${writer.exp}",
-            success : function(data) {                               
+            success : function(data) {
 
             	$('#lev').val(data.level);
             	$('#per').val(data.percent);
@@ -30,8 +32,8 @@
             error:function(request,status,error){
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                }
-    	});		
-		
+    	});
+
 		$('.post_rate_btns').click(function(){
 			
 			var recom="";
@@ -39,7 +41,7 @@
 			var point;
 			var pan;
 			var btnName=$(this).attr('id');
-			
+
 			if(btnName=='bBest')
 			{
 				recom='best';
@@ -64,12 +66,13 @@
 				message='Worst';
 				point=5;
 			}
-			
+
 			pan=$('#b'+recom);
-			
+
 			$.ajax({
-	            type : "POST",                        
+	            type : "POST",
 	            url : "recompoint.do?id=${member.id}",
+
 	            success : function(data) {
 	            	alert("현재 포인트는 "+ data+" 입니다.");
 	            	if(point>data)
@@ -79,13 +82,14 @@
 	            	else
 	            	{
 	            		$.ajax({
-	    		            type : "GET",                        
+	    		            type : "GET",
 	    		            url : "recommendation.do?recom="+recom+"&bcode=${board.bcode}",
 	    		            success : function(data) {
 	    		            	alert("게시글에 "+message+" 공감하셨습니다.\n현재 남은 포인트는 "+ data.point+" 입니다.");
-	    		            	
+  	
 	    		            	pan.text(data.recom);	
 	    		            	$('#bcal').text(data.cal);
+
 	    		            },
 	    		            error:function(request,status,error){
 	    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -96,10 +100,22 @@
 	            error:function(request,status,error){
 	                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	               }
-	    	});					
-			
-		});				
-		
+
+	    	});
+		});
+
+		$('#bGood').click(function(){
+			window.location.href="recommendation.do?recom=good&bcode=${board.bcode}";
+		});
+
+		$('#bBad').click(function(){
+			window.location.href="recommendation.do?recom=bad&bcode=${board.bcode}";
+		});
+
+		$('#bWorst').click(function(){
+			window.location.href="recommendation.do?recom=worst&bcode=${board.bcode}";
+		});
+
 		$('#bMedal').click(function(){
 			$.ajax({
 	            type : "POST",                        
@@ -131,10 +147,10 @@
 	               }
 	    	});
 		});
-		
-		$('#report').click(function(){
+
+		$('#report_post').click(function(){
 			$.ajax({
-	            type : "POST",                        
+	            type : "POST",
 	            url : "isbreport.do?bcode=${board.bcode}",
 	            success : function(data) {
 	            	if(data==0)
@@ -157,11 +173,11 @@
 	                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	               }
 	    	});
-			
-		});			
-		
+
+		});
+
 	});
-	
+
 	function crecommendation(ccode,flag)
 	{
 		var recom;
@@ -211,8 +227,9 @@
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                }
     	});
+
 	}
-	
+
 	function cmedal(ccode)
 	{
 		$.ajax({
@@ -244,11 +261,12 @@
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                }
     	});
-			
+
 	}
-	
+
 	function creport(ccode)
 	{
+
 		$.ajax({
             type : "POST",                        
             url : "iscreport.do?ccode="+ccode,
@@ -275,6 +293,7 @@
     	});
 			
 			
+
 	}
 </script>
 <title>Hmm 게시판</title>
@@ -295,30 +314,34 @@
 				<br>
 				<div class="boardDetail_author">
 					작성자 : ${writer.id} &nbsp;&nbsp;&nbsp; 레벨 : <input disabled id="lev" />
-					&nbsp;&nbsp;&nbsp; 경험치 : ${writer.exp}점 &nbsp;&nbsp;&nbsp;&nbsp; 경험치 진행도 : <input disabled id="per"/>%
+					&nbsp;&nbsp;&nbsp; 경험치 : ${writer.exp}점 &nbsp;&nbsp;&nbsp;&nbsp;
+					경험치 진행도 : <input disabled id="per" />%
 				</div>
 				<br>
 				<div class="boardDetail_date">
 					<button type="button" id="bMedal">메달 주기!</button>
 					<%-- 메달 갯수가 1 이상일때만 노출, 아니면 display : none --%>
+
 					&nbsp;&nbsp;&nbsp; 게시글 메달 갯수 :<p id="bmedal"> ${board.point.medal}</p>
 					<span id="board_postdate">작성일 : ${board.postdate}</span>
-					<button id="report"><span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;게시글 신고하기</button><br>
+					<button id="report_post"><span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;게시글 신고하기</button><br>
+
 				</div>
 				<br>
-					<%-- 파일? --%>
-					<c:if test="${files ne null}">
-						<c:set var="num" value="1" />
-						<c:forEach var="f" items="${files}">
+				<%-- 파일? --%>
+				<c:if test="${files ne null}">
+					<c:set var="num" value="1" />
+					<c:forEach var="f" items="${files}">
 								file${num } : name = ${f.originname }, filelink=${f.filelink }<br>
-							<c:set var="num" value="${num+1 }" />
-						</c:forEach>
-					</c:if>
-
+						<c:set var="num" value="${num+1 }" />
+					</c:forEach>
+				</c:if>
 			</div>
 
 			<div class="boardDetail-contents">${board.content}</div>
-			<hr>
+
+
+<hr>
 			<div class="boardDetail-footer">
 				<button type="button" class="post_rate_btns" id="bBest">최고다!</button>
 				&nbsp;&nbsp;<p id="bbest">${board.point.best}</p> 개&nbsp;&nbsp;&nbsp;&nbsp;
@@ -336,6 +359,8 @@
 				게시글 점수 합계 : <p id="bcal">${board.point.cal}</p><br> <br>
 				<hr>
 			</div>
+				<hr>
+			</div>
 			<%-- 댓글 공간 --%>
 			<div class="comment_section">
 				<c:if test="${comments ne null}">
@@ -343,38 +368,49 @@
 
 					<c:forEach var="c" items="${comments}">
 
-							<div class="comments">
-								<div class="comments-heading">
-									${num }번째 댓글
-									<div class="comment_authordate">
-										작성자 : ${c.writerid } &nbsp;&nbsp;&nbsp;&nbsp;
-										작성일 : ${c.postdate}
-									 </div>
-								</div>
-								
-								<div class="comments-body">
-									${c.content }
-								</div>
-								
-								<div class="comments-footer">
-									<div class="comment_point">
-									댓글 점수 : ${c.point.cal }
-									</div>
-									<div class="comment_rate">
-										<button onclick="creport(${c.ccode})">신고하기</button>
-									공감 : <p id="g${c.ccode}">${c.point.good }</p>&nbsp;
-									<button type="button" class="comment_rate_btn" id="btn_good"
-										onclick="crecommendation(${c.ccode},'g')">Good!</button>
-									&nbsp; 
-										비공감 : <p id="b${c.ccode}">${c.point.bad }</p>&nbsp;
-									<button type="button" class="comment_rate_btn"  id="btn_bad"
-										onclick="crecommendation(${c.ccode},'b')">Fuck!</button>
-										cal : <p id="c${c.ccode}">${c.point.cal }</p>&nbsp;medal : <p id="m${c.ccode}">${c.point.medal }</p><button type="button" onclick="cmedal(${c.ccode},'cm')">medal</button><br>
-										</div>
+
+						<div class="comments">
+							<div class="comments-heading">
+								<span id="reply_number">${num }번째 댓글</span>
+
+								<%-- 댓글 메달 파트. 메달이 1개 이상일 때만 갯수 노출 --%>
+								<span	id="give_medal" onclick="cmedal(${c.ccode},'cm')">메달 주기</span>
+
+								<c:if test="${c.point.medal ne 0}">
+
+									<i id="the_medal" class="fa fa-star-o"
+										aria-hidden="true"></i> x <span id="m${c.ccode}">${c.point.medal } </span>
+								</c:if>
+
+								<div class="comment_authordate">
+									<span>작성자 : ${c.writerid }</span> &nbsp;&nbsp;&nbsp;&nbsp; 작성일
+									: ${c.postdate}
 								</div>
 							</div>
 
-							<c:set var="num" value="${num+1 }" />
+							<div class="comments-body">${c.content }</div>
+							<div class="comments-footer">
+                <div class="comment_point">댓글 점수 : <span id="c${c.ccode}">${c.point.cal }</span></div>
+								<div class="comment_rate">
+									<button id="report_comment" onclick="creport(${c.ccode})">
+										<span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;댓글
+										신고하기
+									</button>
+									공감 : <span id="g${c.ccode}">${c.point.good }</span>&nbsp;
+									<button type="button" class="comment_rate_btn" id="btn_good"
+										onclick="crecommendation(${c.ccode},'g')">
+										<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> YES!
+									</button>
+									&nbsp; 비공감 : <span id="b${c.ccode}">${c.point.bad }</span>&nbsp;
+									<button type="button" class="comment_rate_btn" id="btn_bad"
+										onclick="crecommendation(${c.ccode},'b')">
+										<i class="fa fa-thumbs-o-down" aria-hidden="true"></i> NO!
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<c:set var="num" value="${num+1 }" />
 
 					</c:forEach>
 

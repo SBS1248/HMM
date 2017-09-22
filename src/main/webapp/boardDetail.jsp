@@ -84,7 +84,8 @@
 	    		            success : function(data) {
 	    		            	alert("게시글에 "+message+" 공감하셨습니다.\n현재 남은 포인트는 "+ data.point+" 입니다.");
 	    		            	
-	    		            	pan.text(data.recom);		            	
+	    		            	pan.text(data.recom);	
+	    		            	$('#bcal').text(data.cal);
 	    		            },
 	    		            error:function(request,status,error){
 	    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -163,20 +164,116 @@
 	
 	function crecommendation(ccode,flag)
 	{
-		if(flag=='g')window.location.href="crecommendation.do?bcode=${board.bcode}&recom=good&ccode="+ccode;
-		else window.location.href="crecommendation.do?bcode=${board.bcode}&recom=bad&ccode="+ccode;
-			
+		var recom;
+		var pan;
+		var message;
+		
+		if(flag=='g')
+		{
+			recom="good";
+			pan=$('#g'+ccode);
+			message="Good";
+		}	
+		else
+		{
+			recom="bad";
+			pan=$('#b'+ccode);
+			message="Bad";
+		}
+		
+		$.ajax({
+            type : "POST",                        
+            url : "recompoint.do?id=${member.id}",
+            success : function(data) {
+            	alert("현재 포인트는 "+ data+" 입니다.");
+            	if(data<3)
+            	{
+            		alert("포인트 부족으로 "+message+" 공감할 수 없습니다.");
+            	}
+            	else
+            	{
+            		$.ajax({
+    		            type : "GET",                        
+    		            url : "crecommendation.do?recom="+recom+"&ccode="+ccode,
+    		            success : function(data) {
+    		            	alert("댓글에 "+message+" 공감하셨습니다.\n현재 남은 포인트는 "+ data.point+" 입니다.");
+    		            	
+    		            	pan.text(data.recom);	
+    		            	$('#c'+ccode).text(data.cal);
+    		            },
+    		            error:function(request,status,error){
+    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    		               }
+    		    	});
+            	}
+            },
+            error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+               }
+    	});
 	}
 	
 	function cmedal(ccode)
 	{
-		window.location.href="cmedal.do?bcode=${board.bcode}&ccode="+ccode;		
+		$.ajax({
+            type : "POST",                        
+            url : "havmedal.do?membercode=${member.membercode}",
+            success : function(data) {
+            	alert("현재 보유 메달은 "+ data+"개 입니다.");
+            	if(data<1)
+            	{
+            		alert("메달이 부족합니다. 메달을 구매해주세요.");
+            	}
+            	else
+            	{
+            		$.ajax({
+    		            type : "GET",                        
+    		            url : "cmedal.do?ccode="+ccode+"&membercode=${member.membercode}",
+    		            success : function(data) {
+    		            	alert("댓글에 메달을 달아주었습니다.");
+    		            	
+    		            	$('#m'+ccode).text(data);		            	
+    		            },
+    		            error:function(request,status,error){
+    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    		               }
+    		    	});
+            	}
+            },
+            error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+               }
+    	});
 			
 	}
 	
 	function creport(ccode)
 	{
-		window.location.href="creport.do?bcode=${board.bcode}&ccode="+ccode;		
+		$.ajax({
+            type : "POST",                        
+            url : "iscreport.do?ccode="+ccode,
+            success : function(data) {
+            	if(data==0)
+            	{
+            		$.ajax({
+    		            type : "GET",                        
+    		            url : "creport.do?ccode="+ccode,
+    		            success : function(data) {
+    		            	alert("댓글을 신고하셨습니다.");         	
+    		            },
+    		            error:function(request,status,error){
+    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    		               }
+    		    	});
+            	}
+            	else
+            		alert("이미 신고하셨습니다.");
+            },
+            error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+               }
+    	});
+			
 			
 	}
 </script>
@@ -235,8 +332,8 @@
 
 
 				<button type="button" class="post_rate_btns" id="bWorst">뭐야 시발!</button>
-				&nbsp;&nbsp;<p id="bworst">${board.point.worst}</p> 개&nbsp;&nbsp;&nbsp;&nbsp; <br> <br>게시글
-				점수 합계 : ${board.point.cal}<br> <br>
+				&nbsp;&nbsp;<p id="bworst">${board.point.worst}</p> 개&nbsp;&nbsp;&nbsp;&nbsp; <br> <br>
+				게시글 점수 합계 : <p id="bcal">${board.point.cal}</p><br> <br>
 				<hr>
 			</div>
 			<%-- 댓글 공간 --%>
@@ -247,25 +344,32 @@
 					<c:forEach var="c" items="${comments}">
 
 							<div class="comments">
-								<div class="comments-heading">${num }번째 댓글
+								<div class="comments-heading">
+									${num }번째 댓글
 									<div class="comment_authordate">
-									작성자 : ${c.writerid } &nbsp;&nbsp;&nbsp;&nbsp; 작성일 :
-									${c.postdate}</div>
-									</div>
-								<div class="comments-body">${c.content }</div>
+										작성자 : ${c.writerid } &nbsp;&nbsp;&nbsp;&nbsp;
+										작성일 : ${c.postdate}
+									 </div>
+								</div>
+								
+								<div class="comments-body">
+									${c.content }
+								</div>
+								
 								<div class="comments-footer">
 									<div class="comment_point">
 									댓글 점수 : ${c.point.cal }
 									</div>
 									<div class="comment_rate">
 										<button onclick="creport(${c.ccode})">신고하기</button>
-									공감 : ${c.point.good }&nbsp;
+									공감 : <p id="g${c.ccode}">${c.point.good }</p>&nbsp;
 									<button type="button" class="comment_rate_btn" id="btn_good"
 										onclick="crecommendation(${c.ccode},'g')">Good!</button>
-									&nbsp; 비공감 : ${c.point.bad }&nbsp;
+									&nbsp; 
+										비공감 : <p id="b${c.ccode}">${c.point.bad }</p>&nbsp;
 									<button type="button" class="comment_rate_btn"  id="btn_bad"
 										onclick="crecommendation(${c.ccode},'b')">Fuck!</button>
-										cal : ${c.point.cal }&nbsp;medal : ${c.point.medal }<button type="button" onclick="cmedal(${c.ccode},'cm')">medal</button><br>
+										cal : <p id="c${c.ccode}">${c.point.cal }</p>&nbsp;medal : <p id="m${c.ccode}">${c.point.medal }</p><button type="button" onclick="cmedal(${c.ccode},'cm')">medal</button><br>
 										</div>
 								</div>
 							</div>

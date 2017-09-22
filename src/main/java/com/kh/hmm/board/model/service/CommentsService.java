@@ -9,6 +9,8 @@ public interface CommentsService
 {	
 	ArrayList<Comments> selectCommentsList(int bcode);
 		
+	Comments selectCommentsOne(int ccode);
+	
 	int insertComments(Comments c);
 	
 	int updateComments(Comments c);
@@ -16,4 +18,8 @@ public interface CommentsService
 	int deletComments(Comments c);
 	
 	int checkComments(CommentsPoint point);
+
+	Integer iscreport(int ccode, String reporter);
+	
+	void creport(int ccode, String reporter);
 }

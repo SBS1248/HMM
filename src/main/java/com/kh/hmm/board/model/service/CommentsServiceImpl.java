@@ -45,6 +45,24 @@ public class CommentsServiceImpl implements CommentsService
 	@Override
 	public int checkComments(CommentsPoint point)
 	{
-		return cDao.chechComments(point);
+		return cDao.checkComments(point);
+	}
+
+	@Override
+	public Comments selectCommentsOne(int ccode)
+	{
+		return cDao.selectCommentsOne(ccode);
+	}
+
+	@Override
+	public Integer iscreport(int ccode, String reporter)
+	{
+		return cDao.iscReport(ccode,reporter);
+	}
+
+	@Override
+	public void creport(int ccode, String reporter)
+	{
+		cDao.creport(ccode, reporter);
 	}	
 }

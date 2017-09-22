@@ -32,6 +32,14 @@
 		CONNECT BY PRIOR A.CCODE=A.UPPER
 	</select>
 	
+	<select id="selectCommentsOne" resultMap="commentsMap" parameterType="_int">
+		SELECT A.*,B.*
+		FROM COMMENTS A
+		JOIN COMMENTSPOINT B
+		ON A.CCODE=B.CCODE
+		WHERE A.CCODE=#{ccode} 
+	</select>
+	
 	<update id="cgoodrecommendation" parameterType="_int">
 		UPDATE COMMENTSPOINT 
 		SET GOOD=GOOD+1,CAL=CAL+3
@@ -49,5 +57,17 @@
 		SET	MEDAL=MEDAL+1
 		WHERE CCODE=#{ccode}		
 	</update>
+	
+	<insert id="creport" parameterType="hashmap">
+		INSERT INTO CREPORTLIST
+		VALUES(#{ccode},#{reporter})
+	</insert>
+	
+	<select id="iscreport" parameterType="hashmap" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM CREPORTLIST
+		WHERE CCODE=#{ccode}
+		AND ID=#{reporter}
+	</select>
 	
 </mapper>

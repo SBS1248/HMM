@@ -160,15 +160,25 @@ body {
   color: white;
 }
 
-#the_medal{
-  color: gold;
+#reply_number{
+  float: left;
+  margin-right: 50px;
 }
+
 #give_medal{
   text-decoration: none;
+  margin-right: 5px;
+  background-color: gold;
+  color: black;
+  padding: 6px;
+  border-radius: 5px;
 }
 
 #give_medal:hover{
   cursor: pointer;
+}
+
+#the_medal{
   color: gold;
 }
 

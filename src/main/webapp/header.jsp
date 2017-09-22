@@ -48,9 +48,10 @@
 					</div>
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
+
 					<ul class="nav navbar-nav">
 						<!-- 홈페이지 로고 -->
-						<li><a id="home_logo" href="index.jsp">Hmm</a></li>
+<li><a id="home_logo" href="index.jsp">Hmm</a></li>
 						<!-- 로그인 관련 메뉴 및 모달 -->
 						<c:choose>
 							<c:when test="${null eq member }">

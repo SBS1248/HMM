@@ -95,8 +95,9 @@
 				</form>
 				<label> 비밀번호 및 이메일 재설정 </label>
 				<form id="updateForm" action="update.do" method="POST">
-					<input type="text" name="id" placeholder="아이디" value="${member.id}"
-						readonly><br> <input type="password" name="password"
+					<input type="text" name="id" value="${member.id}"
+						readonly><br>
+					<input type="password" name="password"
 						placeholder="비밀번호" value="${member.password}" required
 						id="password"><br> <input type="password"
 						name="passwordConfirm" placeholder="비밀번호 확인"
@@ -109,7 +110,7 @@
 						<option value="jobless">무직</option>
 						<option value="etc">기타</option>
 					</select> <br>
-					<button type="button" onclick="validationDate()">수정하기</button>
+					<button id="profile_update_btn" type="button" onclick="validationDate()">수정하기</button>
 
 				</form>
 			</div>

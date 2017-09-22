@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>BW Editor¿¡ ¿À½Å°ÍÀ» È¯¿µ ÇÕ´Ï´Ù.</title>
+<meta charset="UTF-8">
+<title>BW Editorì— ì˜¤ì‹ ê²ƒì„ í™˜ì˜ í•©ë‹ˆë‹¤.</title>
  <meta charset="UTF-8">
     <title>bootstrap4</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
@@ -41,7 +41,7 @@ function bw(){
 	  		$('input[name=content]').val(textareaValue);
   			var title = $('input[name=title]').val();
   			if(title == ''){
-  				alert("Á¦¸ñÀÌ ºñ¾îÀÖ½À´Ï´Ù.");
+  				alert("ì œëª©ì´ ë¹„ì–´ìˆìŠµë‹ˆë‹¤.");
   				return;
   			}
   			var ssss  = "<c:out value='${sessionScope.member.id }'/>";
@@ -60,17 +60,17 @@ function bw(){
 	<input type="hidden" name="writerid" value="${member.id }">
 	<input type="text" style="width: 60%" name="title"></input>
 	<br><br>
-	<p>¾ÆÀÌµğ : ${sessionScope.member.id }</p>
+	<p>ì•„ì´ë”” : ${sessionScope.member.id }</p>
 	<div class="categorys">
 	<select id="area" name="distinguish" style="">
-		<option value="4" selected>¾Æ¹«¸»´ëÀÜÄ¡</option>
-			<option value="5">ÇÁ·ÎÁ§Æ®°Ô½ÃÆÇ</option>
-			<option value="1">±â¾÷°Ô½ÃÆÇ</option>
-			<option value="3">½Å±â¼ú°Ô½ÃÆÇ</option>
+		<option value="4" selected>ì•„ë¬´ë§ëŒ€ì”ì¹˜</option>
+			<option value="5">í”„ë¡œì íŠ¸ê²Œì‹œíŒ</option>
+			<option value="1">ê¸°ì—…ê²Œì‹œíŒ</option>
+			<option value="3">ì‹ ê¸°ìˆ ê²Œì‹œíŒ</option>
 			<option value="2">Q&A</option>
 	</select>
 	</div>
-<!-- ¼¶¸Ó³ëÆ® ºÎºĞ -->
+<!-- ì„¬ë¨¸ë…¸íŠ¸ ë¶€ë¶„ -->
 	<div class="sn">
 	<div class="content">
 	<textarea id="summernote" name="summer"></textarea>
@@ -80,9 +80,9 @@ function bw(){
     	  height: 500,                 // set editor height
     	  width: '100%',
     	  focus: true,                  // set focus to editable area after initializing summernote
-    	  placeholder: "ÀÌ¹ÌÁö¸¦ »ğÀÔ ÇÏ½Ã·Á¸é Picture ¹öÆ°À» Å¬¸¯ ÈÄ »çÁøÀ» µå·¡±× ¶Ç´Â Ã£¾Æº¸±â ÇÏ½Ã¿À.",
-    	  minHeight: null,      // ÃÖ¼Ò ³ôÀÌ°ª(nullÀº Á¦ÇÑ ¾øÀ½)
-    	  maxHeight: null,      // ÃÖ´ë ³ôÀÌ°ª(nullÀº Á¦ÇÑ ¾øÀ½)
+    	  placeholder: "ì´ë¯¸ì§€ë¥¼ ì‚½ì… í•˜ì‹œë ¤ë©´ Picture ë²„íŠ¼ì„ í´ë¦­ í›„ ì‚¬ì§„ì„ ë“œë˜ê·¸ ë˜ëŠ” ì°¾ì•„ë³´ê¸° í•˜ì‹œì˜¤.",
+    	  minHeight: null,      // ìµœì†Œ ë†’ì´ê°’(nullì€ ì œí•œ ì—†ìŒ)
+    	  maxHeight: null,      // ìµœëŒ€ ë†’ì´ê°’(nullì€ ì œí•œ ì—†ìŒ)
     	  toolbar: [
     		    // [groupName, [list of button]]
     		    ['style', ['bold', 'italic', 'underline', 'clear']],
@@ -99,9 +99,9 @@ function bw(){
 	</div>
 	</div>
     <div class="buttons">
-    <button type="button" id="wr" onclick="bw()">ÀÛ ¼º</button>
+    <button type="button" id="wr" onclick="bw()">ì‘ ì„±</button>
  	 &nbsp;&nbsp;&nbsp;
-  	<a href="javascript:history.go(-2)"><button type="reset">Ãë ¼Ò</button></a>
+  	<a href="javascript:history.go(-2)"><button type="reset">ì·¨ ì†Œ</button></a>
   	</div><!-- buttons -->
   
 </body>

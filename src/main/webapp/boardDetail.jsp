@@ -33,10 +33,10 @@
     	});		
 		
 		$('.post_rate_btns').click(function(){
+			
 			var recom="";
 			var message="";
 			var point;
-			var flag=true;
 			var pan;
 			var btnName=$(this).attr('id');
 			
@@ -74,7 +74,6 @@
 	            	alert("현재 포인트는 "+ data+" 입니다.");
 	            	if(point>data)
 	            	{
-	            		flag=false;
 	            		alert("포인트 부족으로 "+message+" 공감할 수 없습니다.");
 	            	}
 	            	else
@@ -101,7 +100,35 @@
 		});				
 		
 		$('#bMedal').click(function(){
-			window.location.href="bmedal.do?bcode=${board.bcode}";
+			$.ajax({
+	            type : "POST",                        
+	            url : "havmedal.do?membercode=${member.membercode}",
+	            success : function(data) {
+	            	alert("현재 보유 메달은 "+ data+"개 입니다.");
+	            	if(data<1)
+	            	{
+	            		alert("메달이 부족합니다. 메달을 구매해주세요.");
+	            	}
+	            	else
+	            	{
+	            		$.ajax({
+	    		            type : "GET",                        
+	    		            url : "bmedal.do?bcode=${board.bcode}&membercode=${member.membercode}",
+	    		            success : function(data) {
+	    		            	alert("게시글에 메달을 달아주었습니다.");
+	    		            	
+	    		            	$('#bmedal').text(data);		            	
+	    		            },
+	    		            error:function(request,status,error){
+	    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    		               }
+	    		    	});
+	            	}
+	            },
+	            error:function(request,status,error){
+	                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	               }
+	    	});
 		});
 		
 		$('#report').click(function(){
@@ -166,7 +193,7 @@
 				<div class="boardDetail_date">
 					<button type="button" id="bMedal">메달 주기!</button>
 					<%-- 메달 갯수가 1 이상일때만 노출, 아니면 display : none --%>
-					&nbsp;&nbsp;&nbsp; 게시글 메달 갯수 : ${writer.medal}
+					&nbsp;&nbsp;&nbsp; 게시글 메달 갯수 :<p id="bmedal"> ${board.point.medal}</p>
 					<span id="board_postdate">작성일 : ${board.postdate}</span>
 						report : ${board.point.report }<button id="report"><span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;게시글 신고하기</button><br>
 				</div>

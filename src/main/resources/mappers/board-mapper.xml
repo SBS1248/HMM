@@ -25,13 +25,15 @@
 	 		<result column="BAD" property="bad"/>
 	 		<result column="WORST" property="worst"/>
 	 		<result column="CAL" property="cal"/>
+	 		<result column="MEDAL" property="medal"/>
+	 		<result column="REPORT" property="report"/>
  		</association>
  	</resultMap>
  	
  	<sql id="boardTemplate">
 		SELECT A.BCODE,A.TITLE,A.CONTENT,A.DISTINGUISH,A.WRITERID,A.POSTDATE,<!-- A.ISDELETE, -->A.HASFILE,
 			   B.DISCODE,B.NAME,
-			   C.BCODE,C.VIEWNUM,C.BEST,C.GOOD,C.BAD,C.WORST,C.CAL,
+			   C.BCODE,C.VIEWNUM,C.BEST,C.GOOD,C.BAD,C.WORST,C.CAL,C.MEDAL,C.REPORT,
 			   (SELECT TO_CHAR(COUNT(*)) FROM COMMENTS D WHERE A.BCODE=D.BCODE) ISDELETE 
 		FROM BOARD A
 		JOIN BOARDCODE B 

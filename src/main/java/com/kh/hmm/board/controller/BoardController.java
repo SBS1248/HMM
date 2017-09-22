@@ -252,14 +252,17 @@ public class BoardController
 		return "forward:boardOne.do?bcode="+bcode;
 	}
     
+    @ResponseBody
     @RequestMapping(value = "bmedal.do", method = RequestMethod.GET)
-	public String bmedal(int bcode) 
+	public Integer bmedal(int bcode,int membercode) 
 	{
 		logger.info("bmedal("+bcode+") call...");
 
 		boardService.bmedal(bcode);
 		
-		return "forward:boardOne.do?bcode="+bcode;
+		memberService.givemedal(membercode);
+		
+		return boardService.selectBoardOne(bcode).getPoint().getMedal();
 	}
     
     @RequestMapping(value = "cmedal.do", method = RequestMethod.GET)

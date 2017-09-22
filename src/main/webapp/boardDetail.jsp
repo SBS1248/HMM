@@ -35,35 +35,69 @@
 		$('.post_rate_btns').click(function(){
 			var recom="";
 			var message="";
-
-			$.ajax({
-	            type : "POST",
-	            url : "recompoint.do?id=${member.id}",
-	            success : function(data) {
-	            	alert("현재 포인트는 "+ data+" 입니다.");
-	            },
-	            error:function(request,status,error){
-	                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	               }
-	    	});
-
-			if($(this).attr('id')=='bBest')
+			var point;
+			var flag=true;
+			var pan;
+			var btnName=$(this).attr('id');
+			
+			if(btnName=='bBest')
 			{
 				recom='best';
 				message='Best';
+				point=5;
 			}
-
+			else if(btnName=='bGood')
+			{
+				recom='good';
+				message='Good';
+				point=3;
+			}
+			else if(btnName=='bBad')
+			{
+				recom='bad';
+				message='Bad';
+				point=3;
+			}
+			else
+			{
+				recom='worst';
+				message='Worst';
+				point=5;
+			}
+			
+			pan=$('#b'+recom);
+			
 			$.ajax({
-	            type : "GET",
-	            url : "recommendation.do?recom="+recom+"&bcode=${board.bcode}",
+	            type : "POST",                        
+	            url : "recompoint.do?id=${member.id}",
+
 	            success : function(data) {
-	            	alert("게시글에 "+message+" 공감하셨습니다.\n현재 남은 포인트는 "+ data.point+" 입니다.");
-	            	$('#bbest').text(data.recom);
-	            	alert(data.point+","+data.recom);
+	            	alert("현재 포인트는 "+ data+" 입니다.");
+	            	if(point>data)
+	            	{
+	            		flag=false;
+	            		alert("포인트 부족으로 "+message+" 공감할 수 없습니다.");
+	            	}
+	            	else
+	            	{
+	            		$.ajax({
+	    		            type : "GET",                        
+	    		            url : "recommendation.do?recom="+recom+"&bcode=${board.bcode}",
+	    		            success : function(data) {
+	    		            	alert("게시글에 "+message+" 공감하셨습니다.\n현재 남은 포인트는 "+ data.point+" 입니다.");
+	    		            	
+	    		            	pan.text(data.recom);		            	
+	    		            },
+	    		            error:function(request,status,error){
+	    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    		               }
+	    		    	});
+	            	}
 	            },
 	            error:function(request,status,error){
 	                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	               }
+
 	    	});
 		});
 
@@ -162,6 +196,7 @@
 
 			<div class="boardDetail-contents">${board.content}</div>
 
+
 			<div class="boardDetail-footer"><hr>
 				<div class="post_rate_btns_area">
 				<button type="button" class="post_rate_btns" id="best_btn">최고다!</button>
@@ -179,6 +214,8 @@
 				<button type="button" class="post_rate_btns" id="worst_btn">뭐야 시발!</button>
 				&nbsp;&nbsp;${board.point.worst} 개&nbsp;&nbsp;&nbsp;&nbsp;
 				</div><br> <br>게시글
+
+
 				점수 합계 : ${board.point.cal}<br> <br>
 				<hr>
 			</div>

@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="resources/img/신보선/신보선.jpg" type="image/gif" sizes="16x16">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -66,7 +67,6 @@
 							<th>카테고리</th>
 							<th>작성자</th>
 							<th>추천수</th>
-							<th>답글</th>
 							<th>조회수</th>
 							<th>작성일자</th>
 						</tr>
@@ -80,7 +80,7 @@
 							<tr>
 								<td>${num }</td>
 								<c:set var="num" value="${num+1 }" />
-								<td><a href="boardOne.do?bcode=${l.bcode}">${l.title }</a></td>
+								<td><a href="boardOne.do?bcode=${l.bcode}">${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span></a></td>
 								<td>${l.code.name}</td>
 								<td>
 									<div class="profile">
@@ -90,7 +90,6 @@
 									</div>
 								</td>
 								<td>${l.point.best*(5)+l.point.good*(3)+l.point.bad*(-3)+l.point.worst*(-5) }</td>
-								<td>${l.isdelete}</td>
 								<td>${l.point.viewnum }</td>
 								<td>${l.postdate }</td>
 							</tr>

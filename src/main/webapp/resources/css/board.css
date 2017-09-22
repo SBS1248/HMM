@@ -34,6 +34,10 @@
   border: none;
 }
 
+#reply_num{
+  color: green;
+}
+
 .img-circle {
   display: inline-block;
   border: 1px silver solid;

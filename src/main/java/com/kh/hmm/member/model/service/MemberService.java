@@ -29,6 +29,10 @@ public interface MemberService
 	
 	Integer recompoint(String id);
 	
+	void recomcount5(int membercode);	
+	
+	void recomcount3(int membercode) ;
+	
 	Integer havmedal(int membercode);
 	
 	void givemedal(int membercode);

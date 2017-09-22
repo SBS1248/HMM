@@ -124,4 +124,16 @@ public class MemberServiceImpl implements MemberService {
 	{
 		mDao.givemedal(membercode);
 	}
+
+	@Override
+	public void recomcount5(int membercode)
+	{
+		mDao.recomcount5(membercode);		
+	}
+
+	@Override
+	public void recomcount3(int membercode)
+	{
+		mDao.recomcount3(membercode);
+	}
 }

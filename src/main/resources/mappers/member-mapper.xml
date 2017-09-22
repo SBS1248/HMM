@@ -71,6 +71,18 @@
 		WHERE ID=#{id}
 	</select>
 	
+	<update id="recomcount5" parameterType="_int">
+		UPDATE MEMBER
+		SET RECOMPOINT=RECOMPOINT-5
+		WHERE MEMBERCODE=#{membercode}
+	</update>
+	
+	<update id="recomcount3" parameterType="_int">
+		UPDATE MEMBER
+		SET RECOMPOINT=RECOMPOINT-3
+		WHERE MEMBERCODE=#{membercode}
+	</update>
+	
 	<select id="havmedal" resultType="java.lang.Integer" parameterType="_int">
 		SELECT HAVMEDAL
 		FROM MEMBER

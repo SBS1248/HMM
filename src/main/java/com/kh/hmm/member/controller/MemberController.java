@@ -352,7 +352,7 @@ public class MemberController {
 		Integer result=memberService.recompoint(id);
 		
 		return result;		
-	}
+	}	
 	
 	@ResponseBody
 	@RequestMapping(value = "havmedal.do", method = RequestMethod.POST)

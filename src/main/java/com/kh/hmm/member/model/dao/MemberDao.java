@@ -89,6 +89,16 @@ public class MemberDao {
 	{
 		return sqlSession.selectOne("recompoint",id);
 	}
+	
+	public void recomcount5(int membercode) 
+	{
+		sqlSession.update("recomcount5",membercode);
+	}
+	
+	public void recomcount3(int membercode) 
+	{
+		sqlSession.update("recomcount3",membercode);
+	}
 
 	public Integer havmedal(int membercode)
 	{

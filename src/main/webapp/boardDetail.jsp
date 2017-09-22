@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="resources/img/신보선/신보선.jpg" type="image/gif" sizes="16x16">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -39,7 +40,7 @@
 			var flag=true;
 			var pan;
 			var btnName=$(this).attr('id');
-			
+
 			if(btnName=='bBest')
 			{
 				recom='best';
@@ -64,11 +65,11 @@
 				message='Worst';
 				point=5;
 			}
-			
+
 			pan=$('#b'+recom);
-			
+
 			$.ajax({
-	            type : "POST",                        
+	            type : "POST",
 	            url : "recompoint.do?id=${member.id}",
 
 	            success : function(data) {
@@ -81,12 +82,12 @@
 	            	else
 	            	{
 	            		$.ajax({
-	    		            type : "GET",                        
+	    		            type : "GET",
 	    		            url : "recommendation.do?recom="+recom+"&bcode=${board.bcode}",
 	    		            success : function(data) {
 	    		            	alert("게시글에 "+message+" 공감하셨습니다.\n현재 남은 포인트는 "+ data.point+" 입니다.");
-	    		            	
-	    		            	pan.text(data.recom);		            	
+
+	    		            	pan.text(data.recom);
 	    		            },
 	    		            error:function(request,status,error){
 	    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

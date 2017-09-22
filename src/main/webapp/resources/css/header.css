@@ -54,7 +54,9 @@ body {
   font-family: 'Pacifico', cursive;
   font-size: 36px;
   border: 3px white solid;
-  margin-right: 80%;
+  margin-right: 70%;
+  width: 200px;
+  text-align: center;
   transition: transform 1s;
 }
 

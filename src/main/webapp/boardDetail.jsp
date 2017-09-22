@@ -147,7 +147,7 @@
 					<%-- 메달 갯수가 1 이상일때만 노출, 아니면 display : none --%>
 					&nbsp;&nbsp;&nbsp; 게시글 메달 갯수 : ${writer.medal}
 					<span id="board_postdate">작성일 : ${board.postdate}</span>
-						report : ${board.point.report }<button id="report"><span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;게시글 신고하기</button><br>
+						report : ${board.point.report }<button id="report_post"><span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;게시글 신고하기</button><br>
 				</div>
 				<br>
 					<%-- 파일? --%>
@@ -158,12 +158,11 @@
 							<c:set var="num" value="${num+1 }" />
 						</c:forEach>
 					</c:if>
-
 			</div>
 
 			<div class="boardDetail-contents">${board.content}</div>
-			<hr>
-			<div class="boardDetail-footer">
+
+			<div class="boardDetail-footer"><hr>
 				<div class="post_rate_btns_area">
 				<button type="button" class="post_rate_btns" id="best_btn">최고다!</button>
 				&nbsp;&nbsp;${board.point.best} 개
@@ -192,6 +191,7 @@
 
 							<div class="comments">
 								<div class="comments-heading">${num }번째 댓글
+									<span id="give_medal" onclick="cmedal(${c.ccode},'cm')">메달 주기</span> <i id ="the_medal"class="fa fa-star-o" aria-hidden="true"></i> x ${c.point.medal }
 									<div class="comment_authordate">
 									작성자 : ${c.writerid } &nbsp;&nbsp;&nbsp;&nbsp; 작성일 :
 									${c.postdate}</div>
@@ -202,14 +202,13 @@
 									댓글 점수 : ${c.point.cal }
 									</div>
 									<div class="comment_rate">
-										<button onclick="creport(${c.ccode})">신고하기</button>
+										<button id="report_comment" onclick="creport(${c.ccode})"><span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;댓글 신고하기</button>
 									공감 : ${c.point.good }&nbsp;
 									<button type="button" class="comment_rate_btn" id="btn_good"
-										onclick="crecommendation(${c.ccode},'g')">Good!</button>
+										onclick="crecommendation(${c.ccode},'g')"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> YES!</button>
 									&nbsp; 비공감 : ${c.point.bad }&nbsp;
 									<button type="button" class="comment_rate_btn"  id="btn_bad"
-										onclick="crecommendation(${c.ccode},'b')">Fuck!</button>
-										cal : ${c.point.cal }&nbsp;medal : ${c.point.medal }<button type="button" onclick="cmedal(${c.ccode},'cm')">medal</button><br>
+										onclick="crecommendation(${c.ccode},'b')"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> NO!</button>
 										</div>
 								</div>
 							</div>

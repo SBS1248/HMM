@@ -77,7 +77,7 @@ body {
   transform: scale(1.2);
 }
 
-#report{
+#report_post{
   float: right;
   margin-right: 10px;
   padding-top: 5px;
@@ -95,8 +95,8 @@ body {
 .boardDetail-contents {
   background-color: white;
   padding: 10px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   width: 100%;
   height: auto;
 }
@@ -110,7 +110,7 @@ body {
 }
 
 .post_rate_btns_area{
-  display: inline-block; 
+  display: inline-block;
 }
 
 .post_rate_btns{
@@ -160,6 +160,18 @@ body {
   color: white;
 }
 
+#the_medal{
+  color: gold;
+}
+#give_medal{
+  text-decoration: none;
+}
+
+#give_medal:hover{
+  cursor: pointer;
+  color: gold;
+}
+
 .comment_authordate {
   float: right;
 }
@@ -197,6 +209,16 @@ body {
 
 .comment_rate_btn:hover{
   transform: scale(1.2);
+}
+
+#report_comment{
+  margin-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: red;
+  color: white;
 }
 
 #btn_good  {

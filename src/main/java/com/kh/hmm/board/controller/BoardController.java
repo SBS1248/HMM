@@ -226,22 +226,22 @@ public class BoardController
 		map.put("point", memberService.selectMember(((Member)session.getAttribute("member")).getId()).getRecompoint());
 		
 		int rResult=-1;
-		
+
 		switch(recom) 
 		{
-			case "best":rResult=boardService.selectBoardOne(bcode).getPoint().getBest();
-				break;
+			
 			case "good":rResult=boardService.selectBoardOne(bcode).getPoint().getGood();
 				break;
 			case "bad":rResult=boardService.selectBoardOne(bcode).getPoint().getBad();
 				break;
 			case "worst":rResult=boardService.selectBoardOne(bcode).getPoint().getWorst();
 				break;
+			case "best":rResult=boardService.selectBoardOne(bcode).getPoint().getBest();
+			break;
 		}
-	
 		map.put("recom",rResult);
 		map.put("cal", boardService.selectBoardOne(bcode).getPoint().getCal());
-		
+
 		return map;
 	}
     

@@ -104,18 +104,6 @@
 	    	});
 		});
 
-		$('#bGood').click(function(){
-			window.location.href="recommendation.do?recom=good&bcode=${board.bcode}";
-		});
-
-		$('#bBad').click(function(){
-			window.location.href="recommendation.do?recom=bad&bcode=${board.bcode}";
-		});
-
-		$('#bWorst').click(function(){
-			window.location.href="recommendation.do?recom=worst&bcode=${board.bcode}";
-		});
-
 		$('#bMedal').click(function(){
 			$.ajax({
 	            type : "POST",                        
@@ -249,7 +237,8 @@
     		            success : function(data) {
     		            	alert("댓글에 메달을 달아주었습니다.");
     		            	
-    		            	$('#m'+ccode).text(data);		            	
+    		            	$('#m'+ccode).text(data);	
+    		            	$('#mdiv'+ccode).css("display","block");
     		            },
     		            error:function(request,status,error){
     		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -377,11 +366,20 @@
 								<span	id="give_medal" onclick="cmedal(${c.ccode},'cm')">메달 주기</span>
 
 								<c:if test="${c.point.medal ne 0}">
-
-									<i id="the_medal" class="fa fa-star-o"
-										aria-hidden="true"></i> x <span id="m${c.ccode}">${c.point.medal } </span>
+									<div style="display:block;">
+										<i id="the_medal" class="fa fa-star-o"
+											aria-hidden="true"></i> x <span id="m${c.ccode}">${c.point.medal } </span>
+								
+									</div>
 								</c:if>
-
+								
+								<c:if test="${c.point.medal eq 0}">
+									<div id="mdiv${c.ccode }" style="display:none;">
+										<i id="the_medal" class="fa fa-star-o"
+											aria-hidden="true"></i> x <span id="m${c.ccode}">${c.point.medal } </span>
+								
+									</div>
+								</c:if>
 								<div class="comment_authordate">
 									<span>작성자 : ${c.writerid }</span> &nbsp;&nbsp;&nbsp;&nbsp; 작성일
 									: ${c.postdate}

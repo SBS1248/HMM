@@ -74,7 +74,7 @@
 		<!-- Modal content-->
 		<div class="profile">
 
-			<div class="profile-heading">내 프로필</div>
+			<div class="profile-heading">${member.id}님의 프로필</div>
 			<div class="profile-body">
 				<form id="pictureUpload" name="pictureUpload" action="uploadFile.do"
 					method="POST" enctype="multipart/form-data">
@@ -93,10 +93,10 @@
 					<button type="button" id="file_upload_btn" onclick="validationFile()">파일
 						업로드</button>
 				</form>
-				<label> 비밀번호 및 이메일 재설정 </label>
 				<form id="updateForm" action="update.do" method="POST">
-					<input type="text" name="id" value="${member.id}"
-						readonly><br>
+					<input id ="input_id" type="text" name="id" value="${member.id}"
+						readonly>
+
 					<input type="password" name="password"
 						placeholder="비밀번호" value="${member.password}" required
 						id="password"><br> <input type="password"

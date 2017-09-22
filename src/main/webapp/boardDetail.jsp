@@ -36,6 +36,12 @@
 
 		$('.post_rate_btns').click(function(){
 			
+			if(${member.membercode}==${writer.membercode})
+			{
+				alert("본인의 글은 공감할 수 없습니다.");
+				return;
+			}
+			
 			var recom="";
 			var message="";
 			var point;

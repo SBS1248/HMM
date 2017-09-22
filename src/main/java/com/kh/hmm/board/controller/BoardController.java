@@ -221,30 +221,34 @@ public class BoardController
 		logger.info("recommendation("+recom+","+bcode+") call...");
 
 		HashMap map=new HashMap();
-		
+		Member member=memberService.selectMember(((Member)session.getAttribute("member")).getId());
 		boardService.recommendation(recom,bcode);
-		map.put("point", memberService.selectMember(((Member)session.getAttribute("member")).getId()).getRecompoint());
+		map.put("point", member.getRecompoint());
 		
 		int rResult=-1;
 
 		switch(recom) 
 		{
-			
-			case "good":rResult=boardService.selectBoardOne(bcode).getPoint().getGood();
+			case "best":
+				rResult=boardService.selectBoardOne(bcode).getPoint().getBest();
+				memberService.recomcount5(member.getMembercode());
+				break;
+			case "good":
+				rResult=boardService.selectBoardOne(bcode).getPoint().getGood();
+				memberService.recomcount3(member.getMembercode());
 				break;
 			case "bad":rResult=boardService.selectBoardOne(bcode).getPoint().getBad();
 				break;
 			case "worst":rResult=boardService.selectBoardOne(bcode).getPoint().getWorst();
 				break;
-			case "best":rResult=boardService.selectBoardOne(bcode).getPoint().getBest();
-			break;
+			
 		}
 		map.put("recom",rResult);
 		map.put("cal", boardService.selectBoardOne(bcode).getPoint().getCal());
 
 		return map;
 	}
-    
+	
 	@ResponseBody
     @RequestMapping(value = "crecommendation.do", method = RequestMethod.GET)
 	public HashMap crecommendation(String recom,int ccode,HttpSession session) 
@@ -252,18 +256,22 @@ public class BoardController
 		logger.info("crecommendation("+recom+","+ccode+") call...");
 
 		boardService.crecommendation(recom,ccode);
+		Member member=memberService.selectMember(((Member)session.getAttribute("member")).getId());
 		
 		HashMap map=new HashMap();
 		
-		map.put("point", memberService.selectMember(((Member)session.getAttribute("member")).getId()).getRecompoint());
+		map.put("point", member.getRecompoint());
 		
 		int rResult=-1;
 		
 		switch(recom) 
 		{
-			case "good":rResult=commentsService.selectCommentsOne(ccode).getPoint().getGood();
+			case "good":
+				rResult=commentsService.selectCommentsOne(ccode).getPoint().getGood();
+				memberService.recomcount3(member.getMembercode());
 				break;
-			case "bad":rResult=commentsService.selectCommentsOne(ccode).getPoint().getBad();
+			case "bad":
+				rResult=commentsService.selectCommentsOne(ccode).getPoint().getBad();
 				break;
 		}
 	

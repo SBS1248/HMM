@@ -109,10 +109,6 @@ body {
   height: auto;
 }
 
-.post_rate_btns_area{
-  display: inline-block;
-}
-
 .post_rate_btns{
   padding: 10px;
   border: none;
@@ -124,35 +120,36 @@ body {
   transform: scale(1.2);
 }
 
-#best_btn{
+#bBest{
   background-color: gold;
 }
 
-#good_btn{
+#bGood{
   background-color: green;
 }
 
-#bad_btn{
+#bBad{
   background-color: grey;
 }
 
-#worst_btn{
+#bWorst{
   background-color: red;
 }
 
 .comment_section{
   background-color: #002F2F;
   width: 100%;
-  height: auto;
 }
 
 .comments {
   border: 1px silver solid;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   background-color: white;
+  height: auto;
 }
 
 .comments-heading{
+  margin-top: 5px;
   height: 50px;
   font-family: 'Hanna', serif;
   background-color: #002F2F;
@@ -165,9 +162,13 @@ body {
   margin-right: 50px;
 }
 
+.current_medal_number{
+  margin-right: 50px;
+}
+
 #give_medal{
+  margin-right: 50px;
   text-decoration: none;
-  margin-right: 5px;
   background-color: gold;
   color: black;
   padding: 6px;

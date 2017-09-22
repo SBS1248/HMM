@@ -12,10 +12,11 @@
 
 * {
   //border: 1px gold solid;
-  font-family: 'Hanna', serif;
+
 }
 
 .polls_heading {
+  font-family: 'Hanna', serif;
   text-align: center;
   color: white;
   background-color: #002F2F;
@@ -28,6 +29,7 @@
 }
 
 .polls_body {
+  font-family: 'Hanna', serif;
   background-color: grey;
   text-align: center;
   padding: 20px;
@@ -91,13 +93,20 @@
 
 .board {
   border: none;
-  margin-top: 50px;
-  margin-left: 250px;
-  margin-right: 250px;
+  height: 100%;
+  width: auto;
+  margin-left: 300px;
+  margin-right: 300px;
+  margin-top: 100px;
 }
 
 .panel {
   border: none;
+}
+
+.sort_options h3 {
+  display: inline;
+  font-size: 16px;
 }
 
 .input-group .form-control{

@@ -350,7 +350,7 @@ public class MemberController {
 		logger.info("recompoint() call...");	
 		
 		Integer result=memberService.recompoint(id);
-		
+
 		return result;		
 	}	
 	

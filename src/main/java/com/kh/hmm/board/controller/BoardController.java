@@ -221,9 +221,9 @@ public class BoardController
 		logger.info("recommendation("+recom+","+bcode+") call...");
 
 		HashMap map=new HashMap();
-		Member member=memberService.selectMember(((Member)session.getAttribute("member")).getId());
+		
 		boardService.recommendation(recom,bcode);
-		map.put("point", member.getRecompoint());
+		Member member=memberService.selectMember(((Member)session.getAttribute("member")).getId());
 		
 		int rResult=-1;
 
@@ -237,12 +237,17 @@ public class BoardController
 				rResult=boardService.selectBoardOne(bcode).getPoint().getGood();
 				memberService.recomcount3(member.getMembercode());
 				break;
-			case "bad":rResult=boardService.selectBoardOne(bcode).getPoint().getBad();
+			case "bad":
+				rResult=boardService.selectBoardOne(bcode).getPoint().getBad();
+				memberService.recomcount3(member.getMembercode());
 				break;
-			case "worst":rResult=boardService.selectBoardOne(bcode).getPoint().getWorst();
+			case "worst":
+				rResult=boardService.selectBoardOne(bcode).getPoint().getWorst();
+				memberService.recomcount5(member.getMembercode());
 				break;
 			
 		}
+		map.put("point", memberService.selectMember(member.getId()).getRecompoint());
 		map.put("recom",rResult);
 		map.put("cal", boardService.selectBoardOne(bcode).getPoint().getCal());
 
@@ -260,8 +265,6 @@ public class BoardController
 		
 		HashMap map=new HashMap();
 		
-		map.put("point", member.getRecompoint());
-		
 		int rResult=-1;
 		
 		switch(recom) 
@@ -272,9 +275,11 @@ public class BoardController
 				break;
 			case "bad":
 				rResult=commentsService.selectCommentsOne(ccode).getPoint().getBad();
+				memberService.recomcount3(member.getMembercode());
 				break;
 		}
-	
+		
+		map.put("point", memberService.selectMember(member.getId()).getRecompoint());
 		map.put("recom",rResult);
 		map.put("cal", commentsService.selectCommentsOne(ccode).getPoint().getCal());
 		

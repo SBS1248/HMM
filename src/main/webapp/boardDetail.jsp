@@ -78,7 +78,6 @@
 			$.ajax({
 	            type : "POST",
 	            url : "recompoint.do?id=${member.id}",
-
 	            success : function(data) {
 	            	alert("현재 포인트는 "+ data+" 입니다.");
 	            	if(point>data)

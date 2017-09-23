@@ -121,4 +121,10 @@ public class BoardServiceImpl implements BoardService
 	{
 		bDao.viewcount(bcode);
 	}
+
+	@Override
+	public String boardName(int dis)
+	{
+		return bDao.boardName(dis);
+	}
 }

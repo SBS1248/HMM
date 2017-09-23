@@ -1,11 +1,8 @@
 ﻿package com.kh.hmm.board.controller;
 
-import static org.junit.Assert.assertTrue;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -14,9 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -24,7 +19,6 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.hmm.board.model.service.AttachfileService;
 import com.kh.hmm.board.model.service.BoardService;
@@ -123,11 +116,17 @@ public class BoardController
 	}	
 	
 	@RequestMapping(value = "boardcode.do", method = RequestMethod.GET)
-	public String boardCode(Model m) 
+	public String boardCode(Model m,Integer dis) 
 	{//아작스 처리를 요한다.
 		logger.info("boarCode() call...");
 
 		m.addAttribute("bcode",boardService.boardCode());
+		
+		if(dis!=null) 
+		{			
+			m.addAttribute("dis", dis.intValue());
+			m.addAttribute("dname", boardService.boardName(dis.intValue()));			
+		}
 		
 		return "../../write";
 	}

@@ -77,7 +77,7 @@
 </div>
 
 <div id="writebutton">
-			<button id="write" type="button" class="btn btn-primary btn-md" onclick="location.href='boardcode.do'">내
+			<button id="write" type="button" class="btn btn-primary btn-md" onclick="location.href='boardcode.do?dis=${list[0].distinguish}'">내
 				글쓰기</button>
 		</div>
 <!-- 게시판 영역 -->

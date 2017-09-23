@@ -237,20 +237,26 @@
 	<%-- 글쓴이 아이디 숨김 --%>
 	<span style="display:none">${sessionScope.member.id }</span>
 	<br>
-
 	<div id="post_categories">
-		<h4>게시글 카테고리 선택 :
-			<select id="area" name="distinguish">
-			<option value="4" selected>아무말대잔치</option>
-			<option value="5">프로젝트게시판</option>
-			<option value="1">기업게시판</option>
-			<option value="3">신기술게시판</option>
-			<option value="2">Q&A</option>
-		</select>
-	</h4>
-
-	</div>
-
+	<c:if test="${dis ne null }">
+				<select id="area" name="distinguish" style="display:none;">
+					<option value="${dis }" selected></option>
+				</select>
+				${dname } &nbsp;게시판
+			</c:if>
+			
+			<c:if test="${dis eq null }">
+				<h4>게시글 카테고리 선택 :
+					<select id="area" name="distinguish">
+						<option value="4" selected>아무말대잔치</option>
+						<option value="5">프로젝트&소스</option>
+						<option value="1">기업게시판</option>
+						<option value="3">신기술게시판</option>
+						<option value="2">Q&A</option>
+					</select>	
+				</h4>	
+			</c:if>
+		</div>
 <br>
 	<div id="fileUpload" class="dragAndDropDiv">이 곳에 파일을 끌어다 놓으세요</div>
 <br>

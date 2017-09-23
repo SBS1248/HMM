@@ -90,7 +90,7 @@
 						class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;아무말 대잔치
 				</a></li>
 				<li><a href="boardLists.do?dis=5"> <span
-						class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;프로젝트 게시판
+						class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;프로젝트 & 소스
 				</a></li>
 				<li><a href="boardLists.do?dis=1"> <span
 						class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;기업 게시판

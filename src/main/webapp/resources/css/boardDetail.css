@@ -8,10 +8,11 @@
 #002F2F
 */
 *{
-  border: 1px pink dotted;
+  //border: 1px pink dotted;
 }
 
-body {
+html body {
+    background-color: #EFECCA;
 }
 
 .boardDetail_area{

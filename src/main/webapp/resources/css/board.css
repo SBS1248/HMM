@@ -8,6 +8,10 @@
 #002F2F
 */
 
+html body {
+    background-color: #EFECCA;
+}
+
 .board {
   border: none;
   height: 100%;

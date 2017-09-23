@@ -115,4 +115,10 @@ public class BoardServiceImpl implements BoardService
 	{
 		return bDao.isbreport(bcode,reporter);
 	}
+
+	@Override
+	public void viewcount(int bcode)
+	{
+		bDao.viewcount(bcode);
+	}
 }

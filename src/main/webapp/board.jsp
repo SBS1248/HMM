@@ -21,6 +21,20 @@
 <link href="resources/css/board.css" rel="stylesheet" type="text/css">
 <title>Hmm 게시판</title>
 
+<script type="text/javascript">
+	function viewcount(bcode)
+	{
+		$.ajax({
+            type : "GET",
+            url : "viewcount.do?bcode="+bcode,
+           	success:function(){},
+            error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+               }
+    	});
+	};
+</script>
+
 </head>
 <body>
 <%@ include file="/header.jsp"%>
@@ -80,7 +94,7 @@
 							<tr>
 								<td>${num }</td>
 								<c:set var="num" value="${num+1 }" />
-								<td><a href="boardOne.do?bcode=${l.bcode}">${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span></a></td>
+								<td><a onclick="viewcount(${l.bcode})" href="boardOne.do?bcode=${l.bcode}">${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span></a></td>
 								<td>${l.code.name}</td>
 								<td>
 									<div class="profile">

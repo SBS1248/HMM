@@ -32,7 +32,7 @@
             error:function(request,status,error){
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                }
-    	});
+    	});		
 
 		$('.post_rate_btns').click(function(){
 
@@ -335,7 +335,7 @@
 
 					<span id="board_postdate">작성일 : ${board.postdate}</span>
 					<button id="report_post"><span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;게시글 신고하기</button><br>
-
+					조회수 : ${board.point.viewnum }
 				</div>
 				<br>
 				<%-- 파일? --%>

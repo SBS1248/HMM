@@ -351,4 +351,13 @@ public class BoardController
 		
 		commentsService.creport(ccode,reporter);
 	}
+    
+    @ResponseBody
+    @RequestMapping(value = "viewcount.do", method = RequestMethod.GET)
+	public void viewcount(int bcode) 
+	{
+		logger.info("viewcount("+bcode+") call...");
+		
+		boardService.viewcount(bcode);
+	}
 }

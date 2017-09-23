@@ -37,4 +37,6 @@ public interface BoardService
 	void breport(int bcode, String reporter);
 
 	int isbreport(int bcode, String reporter);
+
+	void viewcount(int bcode);
 }

@@ -150,5 +150,9 @@
 		AND ID=#{reporter}
 	</select>
 
-
+	<update id="viewcount" parameterType="_int">
+		UPDATE BOARDPOINT
+		SET VIEWNUM=VIEWNUM+1
+		WHERE BCODE=#{bcode}
+	</update>
 </mapper>

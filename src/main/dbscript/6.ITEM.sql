@@ -1,24 +1,36 @@
-INSERT INTO ITEM VALUES(ITEM_SEQ.NEXTVAL,'1',30,'TEST1',1000);
-INSERT INTO ITEM VALUES(ITEM_SEQ.NEXTVAL,'2',60,'TEST2',2000);
-INSERT INTO ITEM VALUES(ITEM_SEQ.NEXTVAL,'3',90,'TEST3',3000);
-INSERT INTO ITEM VALUES(ITEM_SEQ.NEXTVAL,'4',30,'TEST4',4000);
-INSERT INTO ITEM VALUES(ITEM_SEQ.NEXTVAL,'5',60,'TEST5',5000);
-INSERT INTO ITEM VALUES(ITEM_SEQ.NEXTVAL,'6',90,'TEST6',6000);
-INSERT INTO ITEM VALUES(ITEM_SEQ.NEXTVAL,'7',30,'TEST7',7000);
-INSERT INTO ITEM VALUES(ITEM_SEQ.NEXTVAL,'8',60,'TEST8',8000);
-INSERT INTO ITEM VALUES(ITEM_SEQ.NEXTVAL,'9',90,'TEST9',9000);
-INSERT INTO ITEM VALUES(ITEM_SEQ.NEXTVAL,'10',30,'TEST10',10000);
+insert into item values(ITEM_SEQ.NEXTVAL, 'crazy1',30,1,'resources/img/icon/1.crazy/crazy1.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'crazy2',30,1,'resources/img/icon/1.crazy/crazy2.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'crazy3',30,1,'resources/img/icon/1.crazy/crazy3.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'crazy4',30,1,'resources/img/icon/1.crazy/crazy4.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'crazy5',30,1,'resources/img/icon/1.crazy/crazy5.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'crazy6',30,1,'resources/img/icon/1.crazy/crazy6.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'crazy7',30,1,'resources/img/icon/1.crazy/crazy7.gif',250);
+ 
+insert into item values(ITEM_SEQ.NEXTVAL, 'happy1',30,2,'resources/img/icon/2.happy/happy1.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'happy2',30,2,'resources/img/icon/2.happy/happy2.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'happy3',30,2,'resources/img/icon/2.happy/happy3.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'happy4',30,2,'resources/img/icon/2.happy/happy4.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'happy5',30,2,'resources/img/icon/2.happy/happy5.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'happy6',30,2,'resources/img/icon/2.happy/happy6.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'happy7',30,2,'resources/img/icon/2.happy/happy7.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'happy8',30,2,'resources/img/icon/2.happy/happy8.gif',250);
 
-INSERT INTO PURCHASEDITEM VALUES(1,1,SYSDATE);
-INSERT INTO PURCHASEDITEM VALUES(1,3,SYSDATE);
-INSERT INTO PURCHASEDITEM VALUES(1,5,SYSDATE);
-INSERT INTO PURCHASEDITEM VALUES(1,7,SYSDATE);
-INSERT INTO PURCHASEDITEM VALUES(1,9,SYSDATE);
-
-INSERT INTO PURCHASEDITEM VALUES(2,2,SYSDATE);
-INSERT INTO PURCHASEDITEM VALUES(2,4,SYSDATE);
-INSERT INTO PURCHASEDITEM VALUES(2,6,SYSDATE);
-INSERT INTO PURCHASEDITEM VALUES(2,8,SYSDATE);
-INSERT INTO PURCHASEDITEM VALUES(2,10,SYSDATE);
+insert into item values(ITEM_SEQ.NEXTVAL, 'sad1',30,3,'resources/img/icon/3.sad/sad1.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'sad2',30,3,'resources/img/icon/3.sad/sad2.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'sad3',30,3,'resources/img/icon/3.sad/sad3.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'sad4',30,3,'resources/img/icon/3.sad/sad4.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'sad5',30,3,'resources/img/icon/3.sad/sad5.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'sad6',30,3,'resources/img/icon/3.sad/sad6.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'sad7',30,3,'resources/img/icon/3.sad/sad7.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'sad8',30,3,'resources/img/icon/3.sad/sad8.gif',250);
+ 
+insert into item values(ITEM_SEQ.NEXTVAL, 'bad1',30,4,'resources/img/icon/4.bad/bad1.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bad2',30,4,'resources/img/icon/4.bad/bad2.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bad3',30,4,'resources/img/icon/4.bad/bad3.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bad4',30,4,'resources/img/icon/4.bad/bad4.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bad5',30,4,'resources/img/icon/4.bad/bad5.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bad6',30,4,'resources/img/icon/4.bad/bad6.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bad7',30,4,'resources/img/icon/4.bad/bad7.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bad8',30,4,'resources/img/icon/4.bad/bad8.gif',250);
 
 COMMIT;

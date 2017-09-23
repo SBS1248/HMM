@@ -45,7 +45,9 @@
 	} b
 
 	function validationDate() {
-		if ($('#password').val() == $('#passwordConfirm').val())
+		var x = document.updateForm.password.value;
+		var y = document.updateForm.passwordConfirm.value;
+		if (x == y)
 			$('#updateForm').submit();
 		else
 			alert("비밀번호를 한번 더 확인해주세요!!");
@@ -93,7 +95,7 @@
 					<button type="button" id="file_upload_btn" onclick="validationFile()">파일
 						업로드</button>
 				</form>
-				<form id="updateForm" action="update.do" method="POST">
+				<form id="updateForm" name="updateForm" action="update.do" method="POST">
 					<input id ="input_id" type="text" name="id" value="${member.id}"
 						readonly>
 

@@ -35,9 +35,47 @@
 	};
 </script>
 
+<script type="text/javascript">
+	// 타자기
+	window.onload = typeWriter;
+
+	var i = 0;
+	var txt = '모두가 하나되는 국내 최고 IT 커뮤니티에 여러분을 초대합니다!';
+	var speed = 80;
+
+	function typeWriter() {
+		if (i < txt.length) {
+			document.getElementById("demo").innerHTML += txt.charAt(i);
+			i++;
+			setTimeout(typeWriter, speed);
+		}
+	}
+	function viewcount(bcode)
+	{
+		$.ajax({
+            type : "GET",
+            url : "viewcount.do?bcode="+bcode,
+           	success:function(){},
+            error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+               }
+    	});
+	};
+
+</script>
+
 </head>
 <body>
 <%@ include file="/header.jsp"%>
+
+<div class="jumbotron jumbotron-billboard">
+	<div class="img"></div>
+	<div class="container">
+		<h1>Hmm...!</h1>
+		<p id="demo"></p>
+	</div>
+</div>
+
 <div id="writebutton">
 			<button id="write" type="button" class="btn btn-primary btn-md" onclick="location.href='boardcode.do'">내
 				글쓰기</button>

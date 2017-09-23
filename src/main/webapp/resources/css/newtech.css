@@ -10,9 +10,8 @@
 #002F2F
 */
 
-* {
-  //border: 1px gold solid;
-
+html body {
+    background-color: #EFECCA;
 }
 
 .polls_heading {

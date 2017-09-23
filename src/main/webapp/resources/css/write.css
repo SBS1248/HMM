@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+/*
+#E6E2AF
+#A7A37E
+#EFECCA
+#046380
+#002F2F
+*/
+
+html body {
+    background-color: #EFECCA;
+}
+
+body {
+  //background-color: transparent !important;
+}
+
+
+.post{
+  font-family: 'Hanna', serif;
+  //border: 1px gold solid;
+  padding: 10px;
+}
+
+#the_post_title{
+  color: white;
+  margin: 0;
+  padding: 20px;
+  background-color: #002F2F;
+
+}
+
+#the_post_title input{
+  color: black;
+  width: 500px;
+}
+
+#post_categories {
+  padding: 20px;
+  background-color: #002F2F;
+  color: white;
+}
+
+#post_categories select{
+  float: right;
+  color: black;
+  width: 200px;
+}
+
+#fileUpload {
+	border: 2px dashed #002F2F;
+  font-size: 20px;
+	width: 500px;
+	height: 200px;
+	color: #92AAB0;
+	text-align: center;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.progressBar {
+	width: 200px;
+	height: 22px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	overflow: hidden;
+	display: inline-block;
+	margin: 0px 10px 5px 5px;
+	vertical-align: top;
+}
+
+.progressBar div {
+	height: 100%;
+	color: #fff;
+	text-align: right;
+	line-height: 22px;
+	/* same as #progressBar height if we want text middle aligned */
+	width: 0;
+	background-color: #0ba1b5;
+	border-radius: 3px;
+}
+
+.statusbar {
+	border-top: 1px solid #A9CCD1;
+	min-height: 25px;
+	width: 99%;
+	padding: 10px 10px 0px 10px;
+	vertical-align: top;
+}
+
+.statusbar:nth-child(odd) {
+	background: #EBEFF0;
+}
+
+.filename {
+	display: inline-block;
+	vertical-align: top;
+	width: 250px;
+}
+
+.filesize {
+	display: inline-block;
+	vertical-align: top;
+	color: #30693D;
+	width: 100px;
+	margin-left: 10px;
+	margin-right: 5px;
+}
+
+.abort {
+	background-color: #A8352F;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	display: inline-block;
+	color: #fff;
+	font-family: arial;
+	font-size: 13px;
+	font-weight: normal;
+	padding: 4px 15px;
+	cursor: pointer;
+	vertical-align: top
+}

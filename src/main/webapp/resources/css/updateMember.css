@@ -13,8 +13,12 @@
   font-family: 'Hanna', serif;
 }
 
+html body {
+    background-color: #EFECCA;
+}
+
 .container{
-  background-color: Gainsboro;
+  background-color: #EFECCA;
 }
 
 .profile_board{

@@ -12,6 +12,10 @@
 #002F2F
 */
 
+html body {
+    background-color: #EFECCA;
+}
+
 .jumbotron {
   font-family: 'Hanna', serif;
   text-align: center;

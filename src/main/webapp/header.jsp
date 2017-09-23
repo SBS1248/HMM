@@ -101,7 +101,7 @@
 				<li><a href="boardLists.do?dis=2"> <span
 						class="glyphicon glyphicon-question-sign"></span>&nbsp;&nbsp;Q & A
 				</a></li>
-				<li><a href="cashshop.jsp"> <span
+				<li><a href="itemLists.do"> <span
 						class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp; 캐쉬샵
 				</a></li>
 

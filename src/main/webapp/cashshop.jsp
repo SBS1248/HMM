@@ -45,7 +45,7 @@ tr, td {
 		function resetXPosition() {
 			$screenSize = $('body').width();// 화면크기
 			halfScreenSize = $screenSize
-			/2;/ / 화면의반
+			/* /2;/ / 화면의반 */
 			xPosition = halfScreenSize + leftOffet;
 			if ($screenSize < pageWidth)
 				xPosition = leftMargin;
@@ -111,6 +111,20 @@ tr, td {
 			$(this).find("#test").hide();
 		});
 	});
+	
+	
+	frmName = 0;
+	function buyModal(code)
+	{
+		frmName = "itemFrm"+code;
+		 $("#buyModal").modal('show');
+		 
+	}
+	
+	function purchase()
+	{
+		document.getElementsByName(frmName).submit();
+	}
 </script>
 <c:set var="ddaru" value="${member.ddaru}" scope="session" />
 <c:set var="itemList" value="${list}" />
@@ -215,13 +229,15 @@ tr, td {
 									<div class="productinfo text-center">
 										<br> <br> <br> <img
 											style="width: 190px; height: 180px;" src="${l.filelink}">
+											<form name="itemFrm${l.itemcode}" action="itemPurchase.do" method="POST">
+											<input type="hidden" value="${l.itemcode}" name="itemcode">
+											</form>
 										<br> <br> <br>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>${l.price}따루</h2>
-											<a href="#" class="btn btn-sdefault add-to-cart"
-												data-toggle="modal" data-target="#buyModal"><i
+											<a href="#" class="btn btn-sdefault add-to-cart" onclick="buyModal(${l.itemcode})"><i
 												class="fa fa-shopping-cart"></i>구매하기</a>
 										</div>
 									</div>
@@ -466,7 +482,7 @@ tr, td {
 				</div>
 				<div class="modal-body">정말로 구매 하시겠습니까 ?</div>
 				<div class="modal-footer">
-					<button id="thisbuy" type="button" data-dismiss="modal">결제하기</button>
+					<button id="thisbuy" type="button" data-dismiss="modal" onclick="purchase()">결제하기</button>
 					<button type="button" class="cancelbtn" data-dismiss="modal">닫기</button>
 				</div>
 			</div>

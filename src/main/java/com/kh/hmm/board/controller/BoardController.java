@@ -3,18 +3,24 @@
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +32,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.hmm.board.model.service.AttachfileService;
 import com.kh.hmm.board.model.service.BoardService;
@@ -163,8 +170,8 @@ public class BoardController
          
     }
      
-    @RequestMapping(value = "fileUp.do") //ajax에서 호출하는 부분
-    @ResponseBody
+	@ResponseBody
+    @RequestMapping(value = "fileUp.do") //ajax에서 호출하는 부분    
     public String upload(MultipartHttpServletRequest multipartRequest,int bcode) 
     { //Multipart로 받는다.
     	logger.info("upload("+bcode+") call...");  
@@ -173,10 +180,21 @@ public class BoardController
         String filePath = "C:\\hmm\\Hmm\\src\\main\\webapp\\resources\\fileUpload\\post"; //설정파일로 뺀다.
         
         while (itr.hasNext()) 
-        { //받은 파일들을 모두 돌린다.            
+        { //받은 파일들을 모두 돌린다.      
+        	
             MultipartFile mpf = multipartRequest.getFile(itr.next());
       
-            String originname = mpf.getOriginalFilename(); //파일명
+            String originname = null;
+            
+			try
+			{
+				originname = new String(mpf.getOriginalFilename().getBytes("utf-8"),"utf-8");
+			} catch (UnsupportedEncodingException e1)
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
             String now = new SimpleDateFormat("yyyyMMddHmsS").format(new Date(new java.util.Date().getTime()));
             String changedname=now+originname;
             String fileFullPath = filePath+"/"+changedname; //파일 전체 경로
@@ -186,12 +204,11 @@ public class BoardController
             file.setChangedname(changedname);
             file.setFilelink(fileFullPath);
             file.setBcode(bcode);
-            System.out.println(file);
+            
+            logger.info("in upload("+file+") call...");  
             
             attachfileService.insertAttachfile(file);
-            boardService.updateAB(bcode);
-            
-            
+            boardService.updateAB(bcode);   
             
             try 
             {   //파일 저장
@@ -360,4 +377,23 @@ public class BoardController
 		
 		boardService.viewcount(bcode);
 	}
+  
+    @RequestMapping("filedown.do")//URL호출
+    public void filedown(int atcode,HttpServletResponse response) throws Exception
+    {         
+    	logger.info("filedown("+atcode+") call...");
+    	
+    	Attachfile file=attachfileService.selectFileOne(atcode);
+    	
+    	String path = file.getFilelink();
+         
+        String docName = URLEncoder.encode(file.getOriginname(),"UTF-8").replaceAll("\\+", "%20"); //한글파일명 깨지지 않도록
+        response.setHeader("Content-Disposition", "attachment;filename=" + docName + ";");
+        response.setContentType("text/plain");
+     
+        File down_file = new File(path); //파일 생성
+        FileInputStream fileIn = new FileInputStream(down_file); //파일 읽어오기
+        response.getOutputStream().write(IOUtils.toByteArray(fileIn));
+        response.flushBuffer();     
+    }
 }

@@ -1,16 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>글작성</title>
- <meta charset="UTF-8">
-    <title>bootstrap4</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.css" rel="stylesheet">
@@ -134,6 +132,7 @@ body{
                 var fileArray=new Array();
                 function handleFileUpload(files,obj)
                 {
+                   alength=files.length;
                    for (var i = 0; i < files.length; i++)
                    {
                         var fd = new FormData();
@@ -150,7 +149,9 @@ body{
                    }                 
 
                 }
-                 
+                
+                var j=1;
+                var alength=0;
                 $('#wr').click(function(){
                 	
                 	var board=new Object();
@@ -172,19 +173,13 @@ body{
                         success : function() {                               
                         	for(var i=0;i<fileArray.length;i++)
                         	{
-                        		sendFileToServer(fileArray[i].form,fileArray[i].stat);
+                        		sendFileToServer(fileArray[i].form,fileArray[i].stat,j,fileArray.length);
                         	}
-                        	
-                        	window.location.href="boardOne.do?bcode="+board.bcode;
                         },
                         error:function(request,status,error){
                             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                            }
-               		 });
-                	
-                	
-
-          			
+               		 });      
                 });              
                 
                 var rowCount=0;
@@ -263,7 +258,12 @@ body{
                         data: formData,
                         success: function(data){
                             status.setProgress(100);
-                  
+                            
+                  			if(alength==j++)
+                  			{
+                  				alert(alength+","+j);
+                  				window.location.href="boardOne.do?bcode=${bcode}"; 
+                  			}
                             //$("#status1").append("File upload Done<br>");          
                         }
                     });

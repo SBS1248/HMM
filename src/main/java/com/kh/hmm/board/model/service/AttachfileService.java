@@ -14,4 +14,6 @@ public interface AttachfileService
 	int deleteAttachfile(int atcode);
 	
 	int updateAttachfile(Attachfile file);
+
+	Attachfile selectFileOne(int atcode);
 }

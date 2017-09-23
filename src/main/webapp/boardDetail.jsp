@@ -342,7 +342,7 @@
 				<c:if test="${files ne null}">
 					<c:set var="num" value="1" />
 					<c:forEach var="f" items="${files}">
-								file${num } : name = ${f.originname }, filelink=${f.filelink }<br>
+								file${num } : <a href="filedown.do?atcode=${f.atcode }">${f.originname }</a><br>
 						<c:set var="num" value="${num+1 }" />
 					</c:forEach>
 				</c:if>

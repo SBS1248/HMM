@@ -96,7 +96,7 @@
 					</div>
 				</div>
 			</div>
-			<button onclick="location.href='boardCode.do'" style="color: white;">SSIPPAL</button>
+			
 			<!-- 게시판 테이블 -->
 			<div class="table-responsive">
 				<table id="myTable" class="table table-hover table-striped">
@@ -115,12 +115,12 @@
 						<c:set var="num" value="1" />
 						<c:forEach var="l" items="${list }">
 
-							<tr onclick="location.href='boardOne.do?bcode=${l.bcode}'">
+							<tr>
 
 								<td>${num }</td>
 								<c:set var="num" value="${num+1 }" />
 								<td><a onclick="viewcount(${l.bcode})" href="boardOne.do?bcode=${l.bcode}">${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span></a></td>
-								</td>
+								
 								<td>${l.code.name}</td>
 								<td>
 									<div class="profile">

@@ -36,5 +36,10 @@ public class AttachfileDao
 	public int updateAttachfile(Attachfile file)
 	{
 		return sqlSession.update("attachUpdate",file);
+	}
+
+	public Attachfile selectFileOne(int atcode)
+	{
+		return sqlSession.selectOne("selectFileOne",atcode);
 	}	
 }

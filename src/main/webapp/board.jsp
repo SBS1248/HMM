@@ -141,7 +141,7 @@
 										${l.writerid }
 									</div>
 								</td>
-								<td>${l.point.best*(5)+l.point.good*(3)+l.point.bad*(-3)+l.point.worst*(-5) }</td>
+								<td>${l.point.cal }</td>
 								<td>${l.point.viewnum }</td>
 								<td>${l.postdate }</td>
 							</tr>

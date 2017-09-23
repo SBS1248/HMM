@@ -33,4 +33,10 @@
 		AND BCODE=#{bcode}
 	</update>
 	
+	<select id="selectFileOne" parameterType="_int" resultType="Attachfile">
+		SELECT *
+		FROM ATTACHFILE
+		WHERE ATCODE=#{atcode}
+	</select>
+	
 </mapper>

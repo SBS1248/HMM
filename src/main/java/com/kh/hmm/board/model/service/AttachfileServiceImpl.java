@@ -41,6 +41,12 @@ public class AttachfileServiceImpl implements AttachfileService
 		return afDao.updateAttachfile(file);
 	}
 
+	@Override
+	public Attachfile selectFileOne(int atcode)
+	{
+		return afDao.selectFileOne(atcode);
+	}
+
 
 
 

@@ -102,11 +102,11 @@
 						<c:set var="num" value="1" />
 						<c:forEach var="l" items="${list }">
 
-							<tr onclick="location.href='boardOne.do?bcode=${l.bcode}'">
+							<tr>
 
 								<td>${num }</td>
 								<c:set var="num" value="${num+1 }" />
-								<td>${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span>
+								<td><a href="boardOne.do?bcode=${l.bcode}">${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span></a>
 								</td>
 								<td>${l.code.name}</td>
 								<td>

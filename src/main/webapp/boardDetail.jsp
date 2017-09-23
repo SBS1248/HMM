@@ -378,10 +378,24 @@
 
 						<div class="comments">
 							<div class="comments-heading">
+
+								<div id="reply_num_and_give_medal_area">
 								<span id="reply_number">${num }번째 댓글</span>
 
 								<%-- 댓글 메달 파트. 메달이 1개 이상일 때만 갯수 노출 --%>
 								<c:if test="${c.point.medal ne 0}">
+									<div class="current_medal_number">
+										<span id="m${c.ccode}">${c.point.medal } </span>
+									</div>
+								</c:if>
+
+								<c:if test="${c.point.medal eq 0}">
+									<div class="current_medal_number" id="mdiv${c.ccode }" style="display: none;">
+										<span id="m${c.ccode}">${c.point.medal } </span>
+									</div>
+								</c:if>
+
+								<%-- <c:if test="${c.point.medal ne 0}">
 									<span class="current_medal_number">
 										<i id="the_medal" class="fa fa-star-o" aria-hidden="true"></i> x <span id="m${c.ccode}">${c.point.medal } </span>
 									</span>
@@ -391,13 +405,14 @@
 									<span class="current_medal_number" id="mdiv${c.ccode }" style="display: none;">
 										<i id="the_medal" class="fa fa-star-o" aria-hidden="true"></i> x <span id="m${c.ccode}">${c.point.medal } </span>
 									</span>
-								</c:if>
+								</c:if> --%>
 
 								<span	id="give_medal" onclick="cmedal(${c.ccode},'cm')">메달 주기</span>
 
+								</div>
+
 								<div class="comment_authordate">
-									<span>작성자 : ${c.writerid }</span> &nbsp;&nbsp;&nbsp;&nbsp; 작성일
-									: ${c.postdate}
+									<span>작성자 : ${c.writerid }</span> 작성일 : ${c.postdate}
 								</div>
 							</div>
 

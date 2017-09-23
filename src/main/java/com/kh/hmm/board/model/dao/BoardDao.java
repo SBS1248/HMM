@@ -136,4 +136,9 @@ public class BoardDao
 		
 		return sqlSession.selectOne("isbreport",map);
 	}
+
+	public void viewcount(int bcode)
+	{
+		sqlSession.update("viewcount",bcode);
+	}
 }

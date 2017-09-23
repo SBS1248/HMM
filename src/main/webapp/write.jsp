@@ -51,6 +51,29 @@ function bw(){
 
 
 </script> 
+
+<script>
+	$(function(){
+		$('#summernote').summernote({
+	  	  height: 500,                 // set editor height
+	  	  width: '100%',
+	  	  focus: true,                  // set focus to editable area after initializing summernote
+	  	  placeholder: "이미지를 삽입 하시려면 Picture 버튼을 클릭 후 사진을 드래그 또는 찾아보기 하시오.",
+	  	  minHeight: null,      // 최소 높이값(null은 제한 없음)
+	  	  maxHeight: null,      // 최대 높이값(null은 제한 없음)
+	  	  toolbar: [
+	  		    // [groupName, [list of button]]
+	  		    ['style', ['bold', 'italic', 'underline', 'clear']],
+	  		    ['font', ['strikethrough', 'superscript', 'subscript']],
+	  		    ['fontsize', ['fontsize']],
+	  		    ['color', ['color']],
+	  		    ['para', ['ul', 'ol', 'paragraph']],
+	  		    ['height', ['height']]
+	  		  ]
+	
+			});
+	});
+</script>
 </head>
 <body>
 <form action="write.do" method="POST" id="write">
@@ -74,30 +97,11 @@ function bw(){
 	<div class="sn">
 	<div class="content">
 	<textarea id="summernote" name="summer"></textarea>
+	</div>
+	</div>
 	</form>
-	<script>
-      $('#summernote').summernote({
-    	  height: 500,                 // set editor height
-    	  width: '100%',
-    	  focus: true,                  // set focus to editable area after initializing summernote
-    	  placeholder: "이미지를 삽입 하시려면 Picture 버튼을 클릭 후 사진을 드래그 또는 찾아보기 하시오.",
-    	  minHeight: null,      // 최소 높이값(null은 제한 없음)
-    	  maxHeight: null,      // 최대 높이값(null은 제한 없음)
-    	  toolbar: [
-    		    // [groupName, [list of button]]
-    		    ['style', ['bold', 'italic', 'underline', 'clear']],
-    		    ['font', ['strikethrough', 'superscript', 'subscript']],
-    		    ['fontsize', ['fontsize']],
-    		    ['color', ['color']],
-    		    ['para', ['ul', 'ol', 'paragraph']],
-    		    ['height', ['height']]
-    		  ]
-
-		});
-      
-	</script>
-	</div>
-	</div>
+	
+	
     <div class="buttons">
     <button type="button" id="wr" onclick="bw()">작 성</button>
  	 &nbsp;&nbsp;&nbsp;

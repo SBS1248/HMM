@@ -36,7 +36,17 @@
 			setTimeout(typeWriter, speed);
 		}
 	}
-
+	function viewcount(bcode)
+	{
+		$.ajax({
+            type : "GET",
+            url : "viewcount.do?bcode="+bcode,
+           	success:function(){},
+            error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+               }
+    	});
+	};
 
 </script>
 </head>
@@ -51,8 +61,11 @@
 		</div>
 	</div>
 
-	</div>
-
+<div id="writebutton">
+			<button id="write" type="button" class="btn btn-primary btn-md" onclick="location.href='boardcode.do'">내
+				글쓰기</button>
+		</div>
+		
 	<!-- 게시판 영역 -->
 	<div class="board">
 		<!-- 검색창, 검색 정렬들의 패널 -->
@@ -106,7 +119,7 @@
 
 								<td>${num }</td>
 								<c:set var="num" value="${num+1 }" />
-								<td>${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span>
+								<td><a onclick="viewcount(${l.bcode})" href="boardOne.do?bcode=${l.bcode}">${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span></a></td>
 								</td>
 								<td>${l.code.name}</td>
 								<td>

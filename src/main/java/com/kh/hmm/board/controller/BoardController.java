@@ -119,7 +119,7 @@ public class BoardController
 	public String boardCode(Model m) 
 	{//아작스 처리를 요한다.
 		logger.info("boarCode() call...");
-		System.out.println(boardService.boardCode());
+
 		m.addAttribute("bcode",boardService.boardCode());
 		
 		return "../../write";
@@ -170,7 +170,7 @@ public class BoardController
     	logger.info("upload("+bcode+") call...");  
         Iterator<String> itr =  multipartRequest.getFileNames();
          
-        String filePath = "C:\\hmm\\Hmm\\src\\main\\webapp\\fileUpload\\post"; //설정파일로 뺀다.
+        String filePath = "C:\\hmm\\Hmm\\src\\main\\webapp\\resources\\fileUpload\\post"; //설정파일로 뺀다.
         
         while (itr.hasNext()) 
         { //받은 파일들을 모두 돌린다.            
@@ -205,13 +205,13 @@ public class BoardController
           
         return "success";
     }
+    
+    @ResponseBody
     @RequestMapping(value="write.do", method = RequestMethod.POST)
-    public String write(Board b,Model m){
-    	
-    	int write = boardService.writeService(b);
+    public void write(Board b,Model m){
+    	logger.info("write("+b+") call...");
+    	boardService.writeService(b);			
 		
-		
-		return "redirect:/boardLists.do?dis="+b.getDistinguish();
     }
 
 	@ResponseBody

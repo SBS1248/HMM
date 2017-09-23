@@ -8,7 +8,7 @@
 #002F2F
 */
 *{
-  //border: 1px pink dotted;
+  border: 1px pink dotted;
 }
 
 body {
@@ -158,21 +158,23 @@ body {
 }
 
 #reply_number{
-  float: left;
-  margin-right: 50px;
+  display: inline-block;
+  margin: auto;
 }
 
 .current_medal_number{
-  margin-right: 50px;
+  display: inline-block;
+  margin: auto;
 }
 
 #give_medal{
-  margin-right: 50px;
+  display: inline-block;
   text-decoration: none;
   background-color: gold;
   color: black;
   padding: 6px;
   border-radius: 5px;
+  margin: auto;
 }
 
 #give_medal:hover{
@@ -180,6 +182,7 @@ body {
 }
 
 #the_medal{
+  display: inline-block;
   color: gold;
 }
 

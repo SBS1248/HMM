@@ -12,8 +12,12 @@
 #002F2F
 */
 
+*{
+  //border: 1px gold solid;
+}
+
 html body {
-    background-color: #EFECCA;
+  background-color: #EFECCA;
 }
 
 .jumbotron {
@@ -47,33 +51,78 @@ html body {
   z-index:2;
 }
 
-.board {
+/*게시판 영역*/
+.board_area {
+  background-color: white;
   border: none;
-  width: auto;
   margin-left: 250px;
   margin-right: 250px;
 }
 
-.panel {
+.board-heading{
+  background-color: #002F2F;
+  padding: 20px;
+  height: 80px;
+}
+
+#write{
+  background-color: skyblue;
   border: none;
+  float: left;
+  font-family: 'Hanna', serif;
+  padding: 10px 15px 10px 15px;
+  border-radius: 5px;
 }
 
-.input-group .form-control{
-  padding: 10px;
-  font-size: 12px;
+#write:hover{
+  color: gold;
 }
 
-.input-group {
-  width: 600px;
+.search-bar{
+  font-family: 'Hanna', serif;
+  float: left;
+  margin-left: 30px;
 }
+
+.search-bar input {
+  display: inline-block;
+  float: left;
+}
+
+#search_btn{
+  display: inline-block;
+  float: right;
+  background-color: skyblue;
+  border: none;
+  font-family: 'Hanna', serif;
+  padding: 10px 15px 10px 15px;
+}
+
+#search_btn:hover {
+  color: gold;
+}
+
+.sort_options{
+  float: right;
+  font-family: 'Hanna', serif;
+}
+
+.sort_options select{
+  padding: 6px;
+}
+
 
 .sort_options select:hover, .sort_options option:hover {
   cursor: pointer;
 }
 
 .sort_options .selectpicker{
-  width: 150px;
 }
+
+.board-body{
+  padding: 20px;
+}
+
 
 .table {
   border: none;
@@ -82,11 +131,4 @@ html body {
 
 #reply_num{
   color: green;
-}
-
-.img-circle {
-  display: inline-block;
-  border: 1px silver solid;
-  width: 25px;
-  height: 25px;
 }

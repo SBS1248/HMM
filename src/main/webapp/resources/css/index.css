@@ -10,6 +10,10 @@
 #EFECCA
 #046380
 #002F2F
+
+#deeaee
+#618685;
+#c94c4c;
 */
 
 *{
@@ -70,8 +74,10 @@ html body {
 
 #write {
   padding: 10px 20px;
-  background-color: skyblue;
+  background-color: #618685;
+  color: white;
   border: none;
+  border-radius: 5px;
 }
 
 #write:hover{
@@ -143,7 +149,7 @@ html body {
 }
 
 #myTable tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #deeaee;
 }
 
 #reply_num{

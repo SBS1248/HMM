@@ -85,7 +85,7 @@
 
 				<%-- 글쓰기 버튼 --%>
 				<div id="writebutton">
-					<button id="write" type="button" onclick="location.href='boardcode.do'">글쓰기</button>
+					<button id="write" type="button" class="btn btn-primary btn-md" onclick="location.href='boardcode.do?dis=${list[0].distinguish}'">글쓰기</button>
 				</div>
 
 				<%-- 검색바 --%>
@@ -142,7 +142,7 @@
 												${l.writerid }
 											</div>
 										</td>
-										<td>${l.point.best*(5)+l.point.good*(3)+l.point.bad*(-3)+l.point.worst*(-5) }</td>
+										<td>${l.point.cal }</td>
 										<td>${l.point.viewnum }</td>
 										<td>${l.postdate }</td>
 									</tr>

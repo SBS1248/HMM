@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,7 @@
 <script type="text/javascript">
             $(document).ready(function(){
                 var objDragAndDrop = $(".dragAndDropDiv");
-
+                 
                 $(document).on("dragenter",".dragAndDropDiv",function(e){
                     e.stopPropagation();
                     e.preventDefault();
@@ -30,14 +31,14 @@
                     e.preventDefault();
                 });
                 $(document).on("drop",".dragAndDropDiv",function(e){
-
+                     
                     $(this).css('border', '2px dotted #0B85A1');
                     e.preventDefault();
                     var files = e.originalEvent.dataTransfer.files;
-
+                 
                     handleFileUpload(files,objDragAndDrop);
                 });
-
+                 
                 $(document).on('dragenter', function (e){
                     e.stopPropagation();
                     e.preventDefault();
@@ -51,8 +52,8 @@
                     e.stopPropagation();
                     e.preventDefault();
                 });
-
-
+                
+                
                 var fileArray=new Array();
                 function handleFileUpload(files,obj)
                 {
@@ -61,40 +62,40 @@
                    {
                         var fd = new FormData();
                         fd.append('file', files[i]);
-
+                  
                         var status = new createStatusbar(obj); //Using this we can set progress.
                         status.setFileNameSize(files[i].name,files[i].size);
-
+                     
                      	 var fileData=new Object();
 	                     	fileData.form=fd;
 	                     	fileData.stat=status;
 
-	                     	fileArray.push(fileData);
-                   }
+	                     	fileArray.push(fileData);                  
+                   }                 
 
                 }
-
+                
                 var j=1;
                 var alength=0;
                 $('#wr').click(function(){
-
+                	
                 	var board=new Object();
            	 		board.bcode=$('input[name=bcode]').val();
            	 		board.title=$('input[name=title]').val();
            		 	board.content=$('input[name=content]').val();
       	    		board.distinguish=$('select[name=distinguish]').val();
           		 	board.writerid=$('input[name=writerid]').val();
-
+          		 	
           		 	if(board.title == ''){
           				alert("제목이 비어있습니다.");
           				return;
           			}
-
+          		 	
                 	$.ajax({
-                        type : "POST",
+                        type : "POST",                        
                         url : "write.do",
                         data : board,
-                        success : function() {
+                        success : function() {                               
                         	for(var i=0;i<fileArray.length;i++)
                         	{
                         		sendFileToServer(fileArray[i].form,fileArray[i].stat,j,fileArray.length);
@@ -103,12 +104,12 @@
                         error:function(request,status,error){
                             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                            }
-               		 });
-                });
-
+               		 });      
+                });              
+                
                 var rowCount=0;
                 function createStatusbar(obj){
-
+                         
                     rowCount++;
                     var row="odd";
                     if(rowCount %2 ==0) row ="even";
@@ -117,9 +118,9 @@
                     this.size = $("<div class='filesize'></div>").appendTo(this.statusbar);
                     this.progressBar = $("<div class='progressBar'><div></div></div>").appendTo(this.statusbar);
                     this.abort = $("<div class='abort'>중지</div>").appendTo(this.statusbar);
-
+                     
                     obj.after(this.statusbar);
-
+                  
                     this.setFileNameSize = function(name,size){
                         var sizeStr="";
                         var sizeKB = size/1024;
@@ -129,20 +130,20 @@
                         }else{
                             sizeStr = sizeKB.toFixed(2)+" KB";
                         }
-
+                  
                         this.filename.html(name);
                         this.size.html(sizeStr);
                     }
-
-                    this.setProgress = function(progress){
-                        var progressBarWidth =progress*this.progressBar.width()/ 100;
+                     
+                    this.setProgress = function(progress){      
+                        var progressBarWidth =progress*this.progressBar.width()/ 100; 
                         this.progressBar.find('div').animate({ width: progressBarWidth }, 10).html(progress + "% ");
                         if(parseInt(progress) >= 100)
                         {
                             this.abort.hide();
                         }
                     }
-
+                     
                     this.setAbort = function(jqxhr){
                         var sb = this.statusbar;
                         this.abort.click(function()
@@ -152,7 +153,7 @@
                         });
                     }
                 }
-
+                 
                 function sendFileToServer(formData,status)
                 {
                     var uploadURL = "fileUp.do?bcode="+$('input[name=bcode]').val(); //Upload URL
@@ -182,18 +183,18 @@
                         data: formData,
                         success: function(data){
                             status.setProgress(100);
-
+                            
                   			if(alength==j++)
-                  			{
-                  				window.location.href="boardOne.do?bcode=${bcode}";
+                  			{                  				
+                  				window.location.href="boardOne.do?bcode=${bcode}"; 
                   			}
-                            //$("#status1").append("File upload Done<br>");
+                            //$("#status1").append("File upload Done<br>");          
                         }
                     });
-
+                  
                     status.setAbort(jqXHR);
                 }
-
+                 
             });
         </script>
 
@@ -216,14 +217,14 @@
 		  		    ['para', ['ul', 'ol', 'paragraph']],
 		  		    ['height', ['height']]
 		  		  ]
-
+		
 				});
 		});
 	</script>
 
 </head>
 <body>
-	<%@ include file="/header.jsp"%>
+	<%-- <%@ include file="/header.jsp"%> --%>
 
 	<div class="container">
 	<div class="post">
@@ -244,7 +245,7 @@
 				</select>
 				${dname } &nbsp;게시판
 			</c:if>
-
+			
 			<c:if test="${dis eq null }">
 				<h4>게시글 카테고리 선택 :
 					<select id="area" name="distinguish">
@@ -253,8 +254,8 @@
 						<option value="1">기업게시판</option>
 						<option value="3">신기술게시판</option>
 						<option value="2">Q&A</option>
-					</select>
-				</h4>
+					</select>	
+				</h4>	
 			</c:if>
 		</div>
 <br>
@@ -269,8 +270,7 @@
 
 	<div class="buttons">
 		<button type="button" id="wr">글 등록</button>
-		&nbsp;&nbsp;&nbsp;
-		<a href="javascript:history.go(-2)"><button
+		&nbsp;&nbsp;&nbsp; <a href="javascript:history.go(-2)"><button
 				type="reset">등록 취소</button></a>
 	</div>
 	</div>

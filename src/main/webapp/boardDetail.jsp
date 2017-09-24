@@ -324,6 +324,7 @@
 <body>
 	<%@ include file="/header.jsp"%>
 
+<div class="container">
 	<!-- 게시글 상세보기 -->
 	<div class="boardDetail_area">
 
@@ -461,7 +462,7 @@
 
 		</div>
 	</div>
-
+</div>
 </body>
 
 </html>

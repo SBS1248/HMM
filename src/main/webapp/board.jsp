@@ -75,6 +75,7 @@
 		</div>
 	</div>
 
+<div class="container">
 	<!-- 게시판 영역 -->
 	<div class="board_area">
 		<!-- 검색창, 검색 정렬들의 패널 -->
@@ -113,12 +114,12 @@
 
 				<div class="board-body">
 					<!-- 게시판 테이블 -->
-					<div class="table-responsive">
-						<table id="myTable" class="table table-hover table-striped">
+					<div class="hmm_table">
+						<table id="myTable">
 							<thead>
 								<tr>
 									<th>글번호</th>
-									<th class="col-md-5">제목</th>
+									<th style="white-space: nowrap; text-overflow:ellipsis; overflow:hidden">제목</th>
 									<th>카테고리</th>
 									<th>작성자</th>
 									<th>추천 점수</th>
@@ -160,7 +161,7 @@
 				</div>
 			</div>
 		</div>
-
+</div>
 	</body>
 
 </html>

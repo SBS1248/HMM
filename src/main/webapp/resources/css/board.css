@@ -55,8 +55,6 @@ html body {
 .board_area {
   background-color: white;
   border: none;
-  margin-left: 250px;
-  margin-right: 250px;
 }
 
 .board-heading{
@@ -105,9 +103,29 @@ html body {
 }
 
 
-.table {
+.hmm_table table {
   border: none;
   font-family: 'Nanum Gothic';
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#myTable thead{
+  border-bottom: 2px grey solid;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin: auto;
+}
+
+#myTable td, th {
+    text-align: left;
+    padding: 6px;
+}
+
+#myTable tr:nth-child(even) {
+    background-color: silver;
 }
 
 #reply_num{

@@ -55,8 +55,6 @@ html body {
 .board_area {
   background-color: white;
   border: none;
-  margin-left: 250px;
-  margin-right: 250px;
 }
 
 .board-heading{
@@ -65,41 +63,22 @@ html body {
   height: 80px;
 }
 
-#write{
-  background-color: skyblue;
-  border: none;
+#writebutton{
   float: left;
   font-family: 'Hanna', serif;
-  padding: 10px 15px 10px 15px;
-  border-radius: 5px;
 }
 
-#write:hover{
-  color: gold;
-}
-
-.search-bar{
-  font-family: 'Hanna', serif;
+.input-group{
   float: left;
-  margin-left: 30px;
-}
-
-.search-bar input {
-  display: inline-block;
-  float: left;
-}
-
-#search_btn{
-  display: inline-block;
-  float: right;
-  background-color: skyblue;
-  border: none;
   font-family: 'Hanna', serif;
-  padding: 10px 15px 10px 15px;
+  margin-left: 20px;
+  width: 600px;
 }
 
-#search_btn:hover {
-  color: gold;
+.input-group-btn button{
+  font-family: 'Hanna', serif;
+ height: auto;
+ width: auto;
 }
 
 .sort_options{
@@ -123,10 +102,28 @@ html body {
   padding: 20px;
 }
 
-
-.table {
-  border: none;
+#myTable {
+  border: 1px gold solid;
   font-family: 'Nanum Gothic';
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#myTable thead{
+  border-bottom: 2px grey solid;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  padding: 6px;
+}
+
+#myTable td, th {
+    text-align: left;
+    padding: 6px;
+}
+
+#myTable tr:nth-child(even) {
+    background-color: silver;
 }
 
 #reply_num{

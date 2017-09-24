@@ -32,7 +32,7 @@
             error:function(request,status,error){
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                }
-    	});		
+    	});
 
 		$('.post_rate_btns').click(function(){
 
@@ -115,7 +115,7 @@
 				alert("본인의 글에 메달을 부여할 수 없습니다.");
 				return;
 			}
-			
+
 			$.ajax({
 	            type : "POST",
 	            url : "havmedal.do?membercode=${member.membercode}",
@@ -155,7 +155,7 @@
 				alert("본인의 글을 신고할 수 없습니다.");
 				return;
 			}
-			
+
 			$.ajax({
 	            type : "POST",
 	            url : "isbreport.do?bcode=${board.bcode}",
@@ -192,7 +192,7 @@
 			alert("본인의 댓글은 추천할 수 없습니다.");
 			return;
 		}
-		
+
 		var recom;
 		var pan;
 		var message;
@@ -250,7 +250,7 @@
 			alert("본인의 댓글에 메달을 부여할 수 없습니다.");
 			return;
 		}
-		
+
 		$.ajax({
             type : "POST",
             url : "havmedal.do?membercode=${member.membercode}",
@@ -291,7 +291,7 @@
 			alert("본인의 댓글을 신고할 수 없습니다.");
 			return;
 		}
-		
+
 		$.ajax({
             type : "POST",
             url : "iscreport.do?ccode="+ccode,
@@ -317,8 +317,6 @@
                }
     	});
 
-
-
 	}
 </script>
 <title>Hmm 게시판</title>
@@ -333,7 +331,7 @@
 		<div class="boardDetail">
 			<div class="boardDetail-header">
 				<div class="boardDetail_title">
-					<h2>${board.title}&nbsp;&nbsp;&nbsp;<span id="posted_from">${board.code.name }게시판</span>
+					<h2>${board.title}&nbsp;&nbsp;&nbsp;<a href="#"><span id="posted_from">${board.code.name }게시판</span></a>
 					</h2>
 				</div>
 				<br>
@@ -378,7 +376,6 @@
 			</div>
 
 			<div class="boardDetail-contents">${board.content}</div>
-
 
 <hr>
 			<div class="boardDetail-footer">

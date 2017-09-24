@@ -1,3 +1,7 @@
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 @charset "UTF-8";
 
 /*
@@ -8,8 +12,12 @@
 #002F2F
 */
 
+*{
+  //border: 1px gold solid;
+}
+
 html body {
-    background-color: #EFECCA;
+  background-color: #EFECCA;
 }
 
 .jumbotron {
@@ -43,39 +51,65 @@ html body {
   z-index:2;
 }
 
-.board {
+/*게시판 영역*/
+.board_area {
+  background-color: white;
   border: none;
-  height: 100%;
-  width: auto;
-  margin-left: 300px;
-  margin-right: 300px;
-  margin-top: 100px;
+  margin-left: 250px;
+  margin-right: 250px;
 }
 
-.panel {
-  border: none;
+.board-heading{
+  background-color: #002F2F;
+  padding: 20px;
+  height: 80px;
 }
 
-.sort_options h3 {
-  display: inline;
-  font-size: 16px;
+#writebutton{
+  float: left;
+  font-family: 'Hanna', serif;
 }
 
-.selectpicker:hover {
+.input-group{
+  float: left;
+  font-family: 'Hanna', serif;
+  margin-left: 20px;
+  width: 600px;
+}
+
+.input-group-btn button{
+  font-family: 'Hanna', serif;
+ height: auto;
+ width: auto;
+}
+
+.sort_options{
+  float: right;
+  font-family: 'Hanna', serif;
+}
+
+.sort_options select{
+  padding: 6px;
+}
+
+
+.sort_options select:hover, .sort_options option:hover {
   cursor: pointer;
 }
 
+.sort_options .selectpicker{
+}
+
+.board-body{
+  padding: 20px;
+}
+
+
 .table {
   border: none;
+  font-family: 'Nanum Gothic';
 }
 
 #reply_num{
   color: green;
-}
-
-.img-circle {
-  display: inline-block;
-  border: 1px silver solid;
-  width: 25px;
-  height: 25px;
 }

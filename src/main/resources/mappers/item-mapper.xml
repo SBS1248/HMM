@@ -34,6 +34,15 @@
 		A.ITEMCODE=B.ITEMCODE
 		WHERE B.MEMBERCODE=#{membercode}
 	</select>
+	
+	<select id="selectIsPurchaseItem" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM ITEM A
+		JOIN PURCHASEDITEM B
+		ON
+		A.ITEMCODE=B.ITEMCODE
+		WHERE B.MEMBERCODE=#{membercode} AND A.ITEMCODE=#{itemcode}
+	</select>
 
 	<insert id="insertOne">
 		insert into PURCHASEDITEM values(#{membercode},#{itemcode},SYSDATE)

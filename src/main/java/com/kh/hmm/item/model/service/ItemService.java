@@ -12,6 +12,8 @@ public interface ItemService
 	ArrayList<Item> selectItemList();
 	
 	ArrayList<Item> selectPurchasedItemList(int membercode);
+	
+	int selectIsPurchaseItem(Purchaseditem pitem);
 
 	int insertOne(Purchaseditem pitem);
 

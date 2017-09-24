@@ -26,6 +26,11 @@ tr, td {
 <script type="text/javascript">
 	/* 스크롤 되는 메뉴 */
 	$(document).ready(function() {
+		 
+		if('${purchased}' == 1){
+		alert("아이템을 이미 구매 하셨습니다");
+		<c:set var="purchased" value="0"/>
+		}
 		var $doc = $(document);
 		var position = 0;
 		var top = $doc.scrollTop(); //현재 스크롤바 위치
@@ -78,16 +83,12 @@ tr, td {
 
 	/* 페이지 이동  */
 	$(document).ready(function() {
-
 		$(".filter-button").click(function() {
 			var value = $(this).attr('data-filter');
 
 			if (value == "all") {
-				//$('.filter').removeClass('hidden');
 				$('.filter').show('1000');
 			} else {
-				//            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
-				//            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
 				$(".filter").not('.' + value).hide('3000');
 				$('.filter').filter('.' + value).show('3000');
 
@@ -229,15 +230,17 @@ tr, td {
 									<div class="productinfo text-center">
 										<br> <br> <br> <img
 											style="width: 190px; height: 180px;" src="${l.filelink}">
-											<form id="itemFrm${l.itemcode}" action="itemPurchase.do" method="POST">
+										<form id="itemFrm${l.itemcode}" action="itemPurchase.do"
+											method="POST">
 											<input type="hidden" value="${l.itemcode}" name="itemcode">
-											</form>
+										</form>
 										<br> <br> <br>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>${l.price}따루</h2>
-											<a href="#" class="btn btn-sdefault add-to-cart" onclick="buyModal(${l.itemcode})"><i
+											<a href="#" class="btn btn-sdefault add-to-cart"
+												onclick="buyModal(${l.itemcode})"><i
 												class="fa fa-shopping-cart"></i>구매하기</a>
 										</div>
 									</div>
@@ -482,7 +485,8 @@ tr, td {
 				</div>
 				<div class="modal-body">정말로 구매 하시겠습니까 ?</div>
 				<div class="modal-footer">
-					<button id="thisbuy" type="button" data-dismiss="modal" onclick="purchase()">결제하기</button>
+					<button id="thisbuy" type="button" data-dismiss="modal"
+						onclick="purchase()">결제하기</button>
 					<button type="button" class="cancelbtn" data-dismiss="modal">닫기</button>
 				</div>
 			</div>

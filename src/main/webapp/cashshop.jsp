@@ -123,7 +123,7 @@ tr, td {
 	
 	function purchase()
 	{
-		document.getElementsByName(frmName).submit();
+		document.getElementById(frmName).submit();
 	}
 </script>
 <c:set var="ddaru" value="${member.ddaru}" scope="session" />
@@ -229,7 +229,7 @@ tr, td {
 									<div class="productinfo text-center">
 										<br> <br> <br> <img
 											style="width: 190px; height: 180px;" src="${l.filelink}">
-											<form name="itemFrm${l.itemcode}" action="itemPurchase.do" method="POST">
+											<form id="itemFrm${l.itemcode}" action="itemPurchase.do" method="POST">
 											<input type="hidden" value="${l.itemcode}" name="itemcode">
 											</form>
 										<br> <br> <br>

@@ -8,7 +8,8 @@
 
 	<select id="selectItemList" resultMap="itemResultMap"
 		resultType="Item">
-		select A.ITEMCODE, A.NAME, A.USAGEDATE,B.NAME MOOD, A.FILELINK,
+		select A.ITEMCODE, A.NAME, A.USAGEDATE,B.NAME MOOD,
+		A.FILELINK,
 		A.PRICE
 		from ITEM A
 		JOIN ITEMMOOD B
@@ -16,10 +17,11 @@
 	</select>
 
 	<select id="selectItemOne" resultType="Item" parameterType="_int">
-		select A.ITEMCODE, A.NAME, A.USAGEDATE,B.NAME, A.FILELINK, A.PRICE
+		select A.ITEMCODE, A.NAME, A.USAGEDATE,B.NAME MOOD, A.FILELINK,
+		A.PRICE
 		from ITEM A
 		JOIN ITEMMOOD B
-		USING (MOOD);
+		USING (MOOD)
 		WHERE A.ITEMCODE=#{itemcode}
 	</select>
 
@@ -33,4 +35,8 @@
 		WHERE B.MEMBERCODE=#{membercode}
 	</select>
 
+	<insert id="insertOne">
+		insert into PURCHASEDITEM values(#{membercode},#{itemcode},SYSDATE)
+	</insert>
+	
 </mapper>

@@ -98,7 +98,7 @@ public class ItemController
 				
 				itemService.insertOne(pitem);
 				member.setDdaru(member.getDdaru()-item.getPrice());
-				/*memberService.updateDDARU(member);*/
+				memberService.updateDDARU(member);
 				
 				returnGo="";//구매 완료 페이지, 인벤토리로 넘어가라
 			}

@@ -94,4 +94,10 @@
 		SET HAVMEDAL=HAVMEDAL-1
 		WHERE MEMBERCODE=#{membercode}
 	</update>
+	
+	<insert id="updateDDARU">
+		UPDATE MEMBER
+		SET DDARU=#{ddaru}
+		WHERE MEMBERCODE=#{membercode}
+	</insert>
 </mapper>

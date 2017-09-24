@@ -108,5 +108,9 @@ public class MemberDao {
 	public void givemedal(int membercode)
 	{
 		sqlSession.update("givemedal",membercode);
+	}
+
+	public void updateDDARU(Member member) {
+		sqlSession.update("updateDDARU",member);
 	} 
 }

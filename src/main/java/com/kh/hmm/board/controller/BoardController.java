@@ -135,8 +135,6 @@ public class BoardController
 	public void insertBoard(Board b, HttpServletResponse response) throws IOException 
 	{//아작스 처리를 요한다.
 		logger.info("insertBoard("+b+") call...");
-
-		System.out.println("개객기야 되는거 잖아");	
 		PrintWriter pw = response.getWriter();
 		pw.write(boardService.insertBoard(b));
 		pw.close();
@@ -177,7 +175,9 @@ public class BoardController
         Iterator<String> itr =  multipartRequest.getFileNames();
          
         String filePath = "C:\\hmm\\Hmm\\src\\main\\webapp\\resources\\fileUpload\\post"; //설정파일로 뺀다.
-        
+        File dir = new File(filePath);
+        if(!dir.exists())
+        	dir.mkdirs();
         while (itr.hasNext()) 
         { //받은 파일들을 모두 돌린다.      
         	

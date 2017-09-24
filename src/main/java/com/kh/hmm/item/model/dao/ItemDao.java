@@ -43,4 +43,8 @@ public class ItemDao
 		return sqlSession.delete("deleteOne",pitem);
 	}
 
+	public int selectIsPurchaseItem(Purchaseditem pitem) {
+		return sqlSession.selectOne("selectIsPurchaseItem",pitem);
+	}
+
 }

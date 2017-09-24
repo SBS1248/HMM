@@ -46,4 +46,9 @@ public class ItemServiceImpl implements ItemService
 		return iDao.deleteOne(pitem);
 	}
 
+	@Override
+	public int selectIsPurchaseItem(Purchaseditem pitem) {
+		return iDao.selectIsPurchaseItem(pitem);
+	}
+
 }

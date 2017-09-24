@@ -22,4 +22,6 @@ public interface CommentsService
 	Integer iscreport(int ccode, String reporter);
 	
 	void creport(int ccode, String reporter);
+
+	int getCcode();
 }

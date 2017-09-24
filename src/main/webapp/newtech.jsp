@@ -18,10 +18,10 @@
 <%@ include file="/header.jsp"%>
   <div class="polls_heading">
 	<h2>9월 3주차 신기술 찬/반 투표 : </h2>
-  <h1>자바는 한물갔다!</h1>
+  <h1>객체지향 프로그래밍 VS 절차지향 프로그래밍, 무엇이 더 나을까?</h1>
   </div>
   <div class="polls_body">
-	<button type="button" id="pro">한물가지 않았다.<br>니들이 활용 못할 뿐.</button>
+	<button type="button" id="pro">형식보다는 실용성.<br>객체지향 프로그래밍이 곧 미래이다.</button>
 	<script type="text/javascript">
 		$(function(){
 
@@ -80,8 +80,8 @@
 		});
 	</script>
   <div class="polls_between">VS</div>
-	<button type="button" id="con">한물갔다.
-    <br>밥벌이 하고 싶으면 파이썬이나 배우자.</button>
+	<button type="button" id="con">물이 위에서 아래로 흐르듯이,
+    <br>순차지향 프로그래밍은 곧 자연의 이치이다.</button>
   <br>
 
   <button type="button" id="polls_result_btn" onclick="location.href='newtech2.jsp'">금주 신기술 동향 투표 결과 확인하기</button>

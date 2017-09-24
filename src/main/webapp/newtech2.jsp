@@ -37,29 +37,35 @@
 <body onload="move();move2();">
 	<%@ include file="/header.jsp"%>
 
-	<h1 class="title">자바는 한물갔다?!</h1>
+	<h1 class="title">객체지향 프로그래밍 VS 절차지향 프로그래밍, 무엇이 더 나을까?</h1>
 
+<div class="container">
 	<div class="chart">
-		<div id="option-1" class="option">
+		<div id="option-yes" class="the_options">
 			<div class="results">
 				<div class="on" id="on1"></div>
 			</div>
-      <h3 class="option-label">한물가지 않았다! 니들이 활용 못할 뿐.
-        <span class="count">38% <span class="head_counts">38명</span></span>
+      <h3 class="option-label">형식보다는 실용성.<br>
+				객체지향 프로그래밍이 곧 미래이다.
+        <span class="count">38% <span class="head_counts">76명</span></span>
       </h3>
 		</div>
-		<div class="between">VS</div>
-		<div id="option-2" class="option">
+		<div class="the_vs_ball_area">
+		<div class="the_vs_ball">VS</div>
+		</div>
+		<div id="option-no" class="the_options">
 			<div class="results">
 				<div class="on" id="on2"></div>
 			</div>
-      <h3 class="option-label">한물갔다! 발벌이 하고 싶으면 파이썬이나 배우자.
-        <span class="count">62% <span class="head_counts">62명</span></span>
+      <h3 class="option-label">물이 위에서 아래로 흐르듯이,<br>
+				순차지향 프로그래밍은 곧 자연의 이치이다.
+        <span class="count">62% <span class="head_counts">124명</span></span>
       </h3>
 		</div>
 	</div>
+</div>
 
-	<div id="participants"><h2>총 투표 참여자 : 100명</h2></div>
+	<div id="participants"><h2>총 투표 참여자 : 200명</h2></div>
 
 	<script>
 

@@ -32,7 +32,7 @@
             error:function(request,status,error){
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                }
-    	});
+    	});		
 
 		$('.post_rate_btns').click(function(){
 
@@ -115,7 +115,7 @@
 				alert("본인의 글에 메달을 부여할 수 없습니다.");
 				return;
 			}
-
+			
 			$.ajax({
 	            type : "POST",
 	            url : "havmedal.do?membercode=${member.membercode}",
@@ -155,7 +155,7 @@
 				alert("본인의 글을 신고할 수 없습니다.");
 				return;
 			}
-
+			
 			$.ajax({
 	            type : "POST",
 	            url : "isbreport.do?bcode=${board.bcode}",
@@ -192,7 +192,7 @@
 			alert("본인의 댓글은 추천할 수 없습니다.");
 			return;
 		}
-
+		
 		var recom;
 		var pan;
 		var message;
@@ -250,7 +250,7 @@
 			alert("본인의 댓글에 메달을 부여할 수 없습니다.");
 			return;
 		}
-
+		
 		$.ajax({
             type : "POST",
             url : "havmedal.do?membercode=${member.membercode}",
@@ -291,7 +291,7 @@
 			alert("본인의 댓글을 신고할 수 없습니다.");
 			return;
 		}
-
+		
 		$.ajax({
             type : "POST",
             url : "iscreport.do?ccode="+ccode,
@@ -316,8 +316,37 @@
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                }
     	});
-
 	}
+	
+	function writeComment()
+	{
+		var now = new Date(); 
+		var date=now.getFullYear()+"-"+now.getMonth()+"-"+now.getDate();
+		var comment=$('.commentNumber').last();
+		var num=1;
+		
+		if(comment.length>0)
+			num=parseInt(comment.text().slice(0,-5))+1;
+				
+		$('#commentsAdd').append("<div class='comments'>"+
+					"<div class='comments-heading'>"+
+						"<div id='reply_num_and_give_medal_area'>"+
+							"<span id='reply_number' class='commentNumber'>"+num+"번째 댓글</span>"+
+						"</div>"+
+	
+						"<div class='comment_authordate'>"+
+							"<span>작성자 : ${member.id }</span> 작성일 : "+date+
+						"</div>"+					
+					"</div>"+
+					"<div class='comments-body'>SSIBAL</div>"+
+				"</div>");
+		
+		$("body").animate({	scrollTop: $('.commentNumber').last().offset().top}, 500);
+	}
+	
+       
+
+
 </script>
 <title>Hmm 게시판</title>
 </head>

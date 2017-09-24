@@ -6,15 +6,17 @@
 <head>
 <title>Hmm | 전 세계의 개발자들을 널리 이롭게 하리라.</title>
 <meta charset="utf-8">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="resources/css/header.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Pacifico"
-	rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+	<link href="resources/css/write.css" rel="stylesheet" type="text/css">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+
+<%-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --%>
 </head>
 <script type="text/javascript">
 	function profileUpdate() {
@@ -25,6 +27,9 @@
 
 <%@ include file="WEB-INF/views/member/login.jsp"%>
 <%@ include file="WEB-INF/views/member/insertMember.jsp"%>
+
+<%-- <%@ include file="WEB-INF/views/member/login.jsp"%>
+<%@ include file="WEB-INF/views/member/insertMember.jsp"%> --%>
 
 <body>
 	<c:set var="member" value="${sessionScope.member}" />

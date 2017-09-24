@@ -376,6 +376,20 @@ public class BoardController
 		
 		boardService.viewcount(bcode);
 	}
+    
+    @ResponseBody
+    @RequestMapping(value = "writeComment.do", method = RequestMethod.POST)
+	public Comments writeComment(Comments c) 
+	{
+		logger.info("writeComment("+c+") call...");
+		
+		int ccode=commentsService.getCcode();
+		c.setCcode(ccode);
+		
+		commentsService.insertComments(c);		
+		
+		return commentsService.selectCommentsOne(ccode);
+	}
   
     @RequestMapping("filedown.do")//URL호출
     public void filedown(int atcode,HttpServletResponse response) throws Exception

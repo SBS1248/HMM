@@ -176,9 +176,52 @@
 	    	});
 
 		});
-
 	});
-
+	
+	function newCButton()
+	{	
+		$.ajax({
+            type : "POST",
+            url : "writeComment.do",
+            data:{"bcode":'${board.bcode}',"content":$('#newCArea').val(),"writerid":'${member.id}'},
+            success : function(commentData) {
+            	$('.comments').last().remove();
+            	
+            	var comment=$('.commentNumber').last();
+        		var num=1;
+        		
+        		if(comment.length>0)
+        			num=parseInt(comment.text().slice(0,-5))+1;            	
+            	
+            	$('#commentsAdd').append(
+            			"<div class='comments'>"+
+            			"<div class='comments-heading'>"+
+            			"<div id='reply_num_and_give_medal_area'>"+
+            			"<span id='reply_number' class='commentNumber'>"+num+"번째 댓글</span>"+
+            			"<span id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</span>"+
+            			"</div>"+
+            			"<div class='comment_authordate'><span>작성자 : "+commentData.writerid+"</span> 작성일 : "+commentData.postdate+"</div>"+
+            			"<button id='edit"+commentData.ccode+"'>수정하기//나중에</button>"+
+            			"</div>"+
+            			"<div class='comments-body'>"+commentData.content+"</div>"+
+            			"<div class='comments-footer'>"+
+            			"<div class='comment_point'>	댓글 점수 : <span id='c"+commentData.ccode+"'>"+commentData.point.cal+"</span></div>"+
+            			"<div class='comment_rate'>"+
+            			"<button id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;댓글신고하기</button>"+
+            			"공감 : <span id='g"+commentData.ccode+"'>"+commentData.point.good+"</span>&nbsp;"+
+            			"<button type='button' class='comment_rate_btn' id='btn_good'onclick='crecommendation("+commentData.ccode+",\"g\",\""+commentData.writerid+"\")'><i class='fa fa-thumbs-o-up' aria-hidden='true'></i> YES!</button>"+
+            			"&nbsp; 비공감 : <span id='b"+commentData.ccode+"'>"+commentData.point.bad+"</span>&nbsp;"+
+            			"<button type='button' class='comment_rate_btn' id='btn_bad'	onclick='crecommendation("+commentData.ccode+",\"b\",\""+commentData.writerid+"\")'><i class='fa fa-thumbs-o-down' aria-hidden='true'></i> NO!</button>"+
+            			"</div></div></div>"            			
+            	);
+            },
+            error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+               }
+    	});
+	}
+	
+	
 	function crecommendation(ccode,flag,mid)
 	{
 		if('${member.id}'==mid)
@@ -315,7 +358,7 @@
 	function writeComment()
 	{
 		var now = new Date(); 
-		var date=now.getFullYear()+"-"+now.getMonth()+"-"+now.getDate();
+		var date=now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
 		var comment=$('.commentNumber').last();
 		var num=1;
 		
@@ -332,10 +375,14 @@
 							"<span>작성자 : ${member.id }</span> 작성일 : "+date+
 						"</div>"+					
 					"</div>"+
-					"<div class='comments-body'>SSIBAL</div>"+
+					"<div class='comments-body'>"+
+					"<textArea id='newCArea'></textArea>"+
+					"<button onclick='newCButton()'>댓글 작성하기</button>"+
+					"</div>"+
 				"</div>");
 		
-		$("body").animate({	scrollTop: $('.commentNumber').last().offset().top}, 500);
+		 $("body").animate({	scrollTop: $('.commentNumber').last().offset().top}, 500);
+		 $('#newCArea').focus();
 	}
 	
        
@@ -424,10 +471,10 @@
 			</div>
 			<%-- 댓글 공간 --%>
 			<div>
-				<button id="writeComment">댓글달기</button>
+				<button onclick="writeComment()">댓글달기</button>
 			</div>
 			
-			<div class="comment_section">
+			<div class="comment_section" id="commentsAdd">
 				<c:if test="${comments ne null}">
 					<c:set var="num" value="1" />
 
@@ -437,7 +484,7 @@
 						<div class="comments-heading">
 
 							<div id="reply_num_and_give_medal_area">
-								<span id="reply_number">${num }번째 댓글</span>
+								<span id="reply_number" class="commentNumber">${num }번째 댓글</span>
 
 								<%-- 댓글 메달 파트. 메달이 1개 이상일 때만 갯수 노출 --%>
 								<c:if test="${c.point.medal ne 0}">
@@ -500,8 +547,6 @@
 		</div>
 
 	</div>
-</div>
-
 </body>
 
 </html>

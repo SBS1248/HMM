@@ -64,5 +64,11 @@ public class CommentsServiceImpl implements CommentsService
 	public void creport(int ccode, String reporter)
 	{
 		cDao.creport(ccode, reporter);
+	}
+
+	@Override
+	public int getCcode()
+	{
+		return cDao.getCcode();
 	}	
 }

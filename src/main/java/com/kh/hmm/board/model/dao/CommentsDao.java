@@ -68,4 +68,9 @@ public class CommentsDao
 		
 		sqlSession.insert("creport",map);
 	}
+
+	public int getCcode()
+	{
+		return sqlSession.selectOne("getCcode");
+	}
 }

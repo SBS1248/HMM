@@ -136,4 +136,10 @@ public class MemberServiceImpl implements MemberService {
 	{
 		mDao.recomcount3(membercode);
 	}
+
+	@Override
+	public void updateDDARU(Member member) {
+		mDao.updateDDARU(member);
+		
+	}
 }

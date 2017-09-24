@@ -22,20 +22,19 @@
 	<input type="hidden" name="bcode" value="${bcode }">
 	<input type="hidden" name="writerid" value="${member.id }">
 
-	<h3 id="the_post_title">제목&nbsp;&nbsp;&nbsp;&nbsp;<input id="post_title" type="text" name="title"></input></h3>
+	<div id="the_post_title">제목&nbsp;&nbsp;&nbsp;<input id="post_title" type="text" name="title"></input></div>
 	<%-- 글쓴이 아이디 숨김 --%>
 	<span style="display:none">${sessionScope.member.id }</span>
-	<br>
 	<div id="post_categories">
 	<c:if test="${dis ne null }">
 				<select id="area" name="distinguish" style="display:none;">
 					<option value="${dis }" selected></option>
 				</select>
-				${dname } &nbsp;게시판
+				<span id="current_category">${dname } &nbsp;게시판</span>
 			</c:if>
 
 			<c:if test="${dis eq null }">
-				<h4>게시글 카테고리 선택 :
+				<span id="choose_category">게시글 카테고리 선택 :</span>
 					<select id="area" name="distinguish">
 						<option value="4" selected>아무말대잔치</option>
 						<option value="5">프로젝트&소스</option>
@@ -43,30 +42,39 @@
 						<option value="3">신기술게시판</option>
 						<option value="2">Q&A</option>
 					</select>
-				</h4>
 			</c:if>
 		</div>
-<br>
-	<div id="fileUpload" class="dragAndDropDiv">이 곳에 파일을 끌어다 놓으세요</div>
-<br>
+
 	<!-- 섬머노트 부분 -->
 	<div class="sn">
 		<div class="content">
-			<textarea id="summernote" name="content" cols="80" rows="8" style="resize: none"></textarea>
+			<textarea id="summernote" name="content"></textarea>
 		</div>
 	</div>
 
-	<div class="buttons">
+<div id="fileUpload" class="dragAndDropDiv"><span id="fileUpload_text">업로드를 위해서는 <br>이 곳에 파일을 끌어다 놓으세요</span></div>
+
+	<div class="button_area">
 		<button type="button" id="wr">글 등록</button>
-		&nbsp;&nbsp;&nbsp; <a href="javascript:history.go(-2)"><button
-				type="reset">등록 취소</button></a>
+		<button id="quit_post" onclick="goBack()">등록 취소</button>
 	</div>
+
 	</div>
 </div>
 
+<%-- 등록 취소 버튼 --%>
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
   <script>
-    $(document).ready(function() {
-        $('#summernote').summernote();
+
+			$('#summernote').summernote({
+				placeholder: '여기에 본문 글을 작성합니다',
+				tabsize: 2,
+				height: 200
     });
   </script>
 	<script>
@@ -261,10 +269,9 @@
 		<script>
 			$(function(){
 				$('#summernote').summernote({
-			  	  height: 500,                 // set editor height
+			  	  height: 300,                 // set editor height
 			  	  width: '100%',
 			  	  focus: true,                  // set focus to editable area after initializing summernote
-			  	  placeholder: "이미지를 삽입 하시려면 Picture 버튼을 클릭 후 사진을 드래그 또는 찾아보기 하시오.",
 			  	  minHeight: null,      // 최소 높이값(null은 제한 없음)
 			  	  maxHeight: null,      // 최대 높이값(null은 제한 없음)
 			  	  toolbar: [

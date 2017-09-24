@@ -8,17 +8,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="resources/img/신보선/신보선.jpg" type="image/gif" sizes="16x16">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
 <link href="resources/css/board.css" rel="stylesheet" type="text/css">
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+
 <title>Hmm 게시판</title>
 
 <script type="text/javascript">
@@ -112,7 +108,7 @@
 							<thead>
 								<tr>
 									<th>글번호</th>
-									<th style="white-space: nowrap; text-overflow:ellipsis; overflow:hidden">제목</th>
+									<th>제목</th>
 									<th>카테고리</th>
 									<th>작성자</th>
 									<th>추천 점수</th>
@@ -129,7 +125,7 @@
 										<td>${num }</td>
 										<c:set var="num" value="${num+1 }"/>
 										<td>
-											<a onclick="viewcount(${l.bcode})" href="boardOne.do?bcode=${l.bcode}">${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span>
+											<a id="title_row" onclick="viewcount(${l.bcode})" href="boardOne.do?bcode=${l.bcode}">${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span>
 											</a>
 										</td>
 

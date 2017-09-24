@@ -128,8 +128,17 @@ html body {
   padding: 6px;
 }
 
-#myTable td, th {
+#myTable td{
     text-align: left;
+    padding: 6px;
+}
+
+#myTable a {
+  text-decoration: none;
+}
+
+#myTable th{
+    text-align: center;
     padding: 6px;
 }
 
@@ -138,5 +147,5 @@ html body {
 }
 
 #reply_num{
-  color: green;
+  color: blue;
 }

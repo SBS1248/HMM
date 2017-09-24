@@ -21,6 +21,7 @@ body {
   font-family: 'Hanna', serif;
   //border: 1px gold solid;
   padding: 10px;
+  background-color: grey;
 }
 
 #the_post_title{
@@ -28,34 +29,50 @@ body {
   margin: 0;
   padding: 20px;
   background-color: #002F2F;
+  font-size: 30px;
 }
 
 #the_post_title input{
+  font-size: 24px;
+  padding: 7px;
   color: black;
+  border: 3px #002F2F solid;
   width: 500px;
 }
 
+#the_post_title input:focus{
+  border: 3px skyblue solid;
+}
+
 #post_categories {
+  display: inline-block;
   padding: 20px;
   background-color: #002F2F;
   color: white;
+  font-size: 20px;
+  width: 100%;
+}
+
+#choose_category{
+  font-size: 24px;
+  float: left;
+  vertical-align: middle;
+}
+
+#current_category {
+  float: right;
+}
+
+#area{
+  display: inline-block;
+  float: right;
 }
 
 #post_categories select{
   float: right;
   color: black;
   width: 200px;
-}
-
-#fileUpload {
-	border: 2px dashed #002F2F;
-  font-size: 20px;
-	width: 500px;
-	height: 200px;
-	color: #92AAB0;
-	text-align: center;
-	vertical-align: middle;
-	display: table-cell;
+  padding: auto;
 }
 
 .progressBar {
@@ -120,4 +137,49 @@ body {
 	padding: 4px 15px;
 	cursor: pointer;
 	vertical-align: top
+}
+
+#fileUpload {
+	border: 2px dashed #002F2F;
+  color: #92AAB0;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+	width: 500px;
+  height: 200px;
+  margin: auto;
+}
+
+#fileUpload_text{
+  width: 100px;
+  margin: auto;
+}
+
+.button_area{
+  margin-top: 20px;
+  height: 100px;
+  width: 100%;
+  background-color: #002F2F;
+  padding: 20px;
+  text-align: center;
+}
+
+.button_area button {
+  display: inline-block;
+  width: 200px;
+  margin: auto;
+  padding: 10px;
+  border: none;
+}
+
+.button_area button:hover {
+  color: gold;
+}
+
+#wr {
+  background-color: skyblue;
+}
+
+#quit_post{
+  background-color: pink;
 }

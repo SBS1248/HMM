@@ -141,4 +141,9 @@ public class BoardDao
 	{
 		sqlSession.update("viewcount",bcode);
 	}
+
+	public String boardName(int dis)
+	{
+		return sqlSession.selectOne("boardName",dis);
+	}
 }

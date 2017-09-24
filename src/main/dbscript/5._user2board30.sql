@@ -8,7 +8,7 @@ INSERT INTO BOARDCODE VALUES (1,'기업');
 INSERT INTO BOARDCODE VALUES (2,'QnA');
 INSERT INTO BOARDCODE VALUES (3,'신기술');
 INSERT INTO BOARDCODE VALUES (4,'아무말대잔치');
-INSERT INTO BOARDCODE VALUES (5,'프로젝트/소스');
+INSERT INTO BOARDCODE VALUES (5,'프로젝트&소스');
 
 --게시판
 INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'그린캣소프트(주)에서 함께 서비스를 개발하실 신입/초급 개발자를 모십니다','그린캣소프트(주)에서 함께 서비스를 개발하실 신입/초급 개발자를 모십니다',1,'admin',SYSDATE,NULL,NULL);

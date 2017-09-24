@@ -36,7 +36,7 @@
 
 		$('.post_rate_btns').click(function(){
 
-			if(${member.membercode}==${writer.membercode})
+			if('${member.membercode}'==${writer.membercode})
 			{
 				alert("본인의 글은 공감할 수 없습니다.");
 				return;
@@ -110,6 +110,12 @@
 		});
 
 		$('#bMedal').click(function(){
+			if('${member.membercode}'==${writer.membercode})
+			{
+				alert("본인의 글에 메달을 부여할 수 없습니다.");
+				return;
+			}
+			
 			$.ajax({
 	            type : "POST",
 	            url : "havmedal.do?membercode=${member.membercode}",
@@ -144,6 +150,12 @@
 		});
 
 		$('#report_post').click(function(){
+			if('${member.membercode}'==${writer.membercode})
+			{
+				alert("본인의 글을 신고할 수 없습니다.");
+				return;
+			}
+			
 			$.ajax({
 	            type : "POST",
 	            url : "isbreport.do?bcode=${board.bcode}",
@@ -173,8 +185,14 @@
 
 	});
 
-	function crecommendation(ccode,flag)
+	function crecommendation(ccode,flag,mid)
 	{
+		if('${member.id}'==mid)
+		{
+			alert("본인의 댓글은 추천할 수 없습니다.");
+			return;
+		}
+		
 		var recom;
 		var pan;
 		var message;
@@ -225,8 +243,14 @@
 
 	}
 
-	function cmedal(ccode)
+	function cmedal(ccode,mid)
 	{
+		if('${member.id}'==mid)
+		{
+			alert("본인의 댓글에 메달을 부여할 수 없습니다.");
+			return;
+		}
+		
 		$.ajax({
             type : "POST",
             url : "havmedal.do?membercode=${member.membercode}",
@@ -260,9 +284,14 @@
 
 	}
 
-	function creport(ccode)
+	function creport(ccode,mid)
 	{
-
+		if('${member.id}'==mid)
+		{
+			alert("본인의 댓글을 신고할 수 없습니다.");
+			return;
+		}
+		
 		$.ajax({
             type : "POST",
             url : "iscreport.do?ccode="+ccode,
@@ -395,19 +424,7 @@
 									</div>
 								</c:if>
 
-								<%-- <c:if test="${c.point.medal ne 0}">
-									<span class="current_medal_number">
-										<i id="the_medal" class="fa fa-star-o" aria-hidden="true"></i> x <span id="m${c.ccode}">${c.point.medal } </span>
-									</span>
-								</c:if>
-
-								<c:if test="${c.point.medal eq 0}">
-									<span class="current_medal_number" id="mdiv${c.ccode }" style="display: none;">
-										<i id="the_medal" class="fa fa-star-o" aria-hidden="true"></i> x <span id="m${c.ccode}">${c.point.medal } </span>
-									</span>
-								</c:if> --%>
-
-								<span	id="give_medal" onclick="cmedal(${c.ccode},'cm')">메달 주기</span>
+								<span	id="give_medal" onclick="cmedal(${c.ccode},'${c.writerid }')">메달 주기</span>
 
 								</div>
 
@@ -420,18 +437,18 @@
 							<div class="comments-footer">
                 <div class="comment_point">댓글 점수 : <span id="c${c.ccode}">${c.point.cal }</span></div>
 								<div class="comment_rate">
-									<button id="report_comment" onclick="creport(${c.ccode})">
+									<button id="report_comment" onclick="creport(${c.ccode},'${c.writerid }')">
 										<span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;댓글
 										신고하기
 									</button>
 									공감 : <span id="g${c.ccode}">${c.point.good }</span>&nbsp;
 									<button type="button" class="comment_rate_btn" id="btn_good"
-										onclick="crecommendation(${c.ccode},'g')">
+										onclick="crecommendation(${c.ccode},'g','${c.writerid }')">
 										<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> YES!
 									</button>
 									&nbsp; 비공감 : <span id="b${c.ccode}">${c.point.bad }</span>&nbsp;
 									<button type="button" class="comment_rate_btn" id="btn_bad"
-										onclick="crecommendation(${c.ccode},'b')">
+										onclick="crecommendation(${c.ccode},'b','${c.writerid }')">
 										<i class="fa fa-thumbs-o-down" aria-hidden="true"></i> NO!
 									</button>
 								</div>

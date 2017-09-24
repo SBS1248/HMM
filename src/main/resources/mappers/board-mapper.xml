@@ -155,4 +155,10 @@
 		SET VIEWNUM=VIEWNUM+1
 		WHERE BCODE=#{bcode}
 	</update>
+	
+	<select id="boardName" parameterType="_int" resultType="java.lang.String">
+		SELECT NAME
+		FROM BOARDCODE
+		WHERE DISCODE=#{dis}
+	</select>
 </mapper>

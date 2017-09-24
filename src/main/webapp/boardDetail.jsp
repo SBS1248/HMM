@@ -323,7 +323,11 @@
 </head>
 <body>
 	<%@ include file="/header.jsp"%>
+
+<div class="container">
+
 	<button id="bedit">수정하기//나중에</button>
+
 	<!-- 게시글 상세보기 -->
 	<div class="boardDetail_area">
 
@@ -471,6 +475,10 @@
 			</div>
 
 		</div>
+
+	</div>
+</div>
+
 </body>
 
 </html>

@@ -10,12 +10,11 @@
 
 
 html body {
-    background-color: #EFECCA;
+  background-color: #EFECCA;
 }
 
 .boardDetail_area{
   //border: 1px gold solid;
-  margin: 250px;
   margin-top: 50px;
   margin-bottom: 50px;
   background-color: #002F2F;
@@ -23,7 +22,6 @@ html body {
 }
 
 .boardDetail {
-  padding: 20px;
   border-radius: 10px;
 }
 
@@ -32,7 +30,7 @@ html body {
   color: white;
   font-family: 'Hanna', serif;
   height: auto;
-  padding: 10px;
+  padding: 20px;
   width: 100%;
 }
 
@@ -141,14 +139,12 @@ html body {
 }
 
 .comments {
-  border: 1px silver solid;
   margin-bottom: 20px;
   background-color: white;
   height: auto;
 }
 
 .comments-heading{
-  margin-top: 5px;
   height: 50px;
   font-family: 'Hanna', serif;
   background-color: #002F2F;

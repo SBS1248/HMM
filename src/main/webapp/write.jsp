@@ -5,18 +5,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>bootstrap4</title>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<title>글쓰기</title>
+<%-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <link href="resources/css/write.css" rel="stylesheet" type="text/css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.css"
-	rel="stylesheet">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.js"></script>
+
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+
+<link	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.css"	rel="stylesheet">
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.js"></script> --%>
+
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.js"></script>
+
+
+
 <script type="text/javascript">
             $(document).ready(function(){
                 var objDragAndDrop = $(".dragAndDropDiv");
@@ -82,7 +94,7 @@
                 	var board=new Object();
            	 		board.bcode=$('input[name=bcode]').val();
            	 		board.title=$('input[name=title]').val();
-           		 	board.content=$('input[name=content]').val();
+           		 	board.content=$('textArea[name=content]').val().slice(3,-4); 
       	    		board.distinguish=$('select[name=distinguish]').val();
           		 	board.writerid=$('input[name=writerid]').val();
 
@@ -95,11 +107,18 @@
                         type : "POST",
                         url : "write.do",
                         data : board,
-                        success : function() {
+                        success : function() {   
+                        	if(fileArray.length==0)
+                        	{
+                        		window.location.href="boardOne.do?bcode=${bcode}"; 
+                        	}
+
                         	for(var i=0;i<fileArray.length;i++)
                         	{
                         		sendFileToServer(fileArray[i].form,fileArray[i].stat,j,fileArray.length);
                         	}
+                        	
+                        	
                         },
                         error:function(request,status,error){
                             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -235,7 +254,7 @@
 
 	<h3 id="the_post_title">제목&nbsp;&nbsp;&nbsp;&nbsp;<input id="post_title" type="text" name="title"></input></h3>
 
-	<%-- 글쓴이 아이디 숨김 --%>
+	글쓴이 아이디 숨김
 	<span style="display:none">${sessionScope.member.id }</span>
 	<br>
 	<div id="post_categories">
@@ -264,7 +283,7 @@
 	<!-- 섬머노트 부분 -->
 	<div class="sn">
 		<div class="content">
-			<textarea id="summernote" name="summer" cols="80" rows="8" style="resize: none"></textarea>
+			<textarea id="summernote" name="content" cols="80" rows="8" style="resize: none"></textarea>
 		</div>
 	</div>
 

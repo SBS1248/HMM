@@ -496,6 +496,8 @@ INSERT INTO ITEMMOOD VALUES(1,'CRAZY');
 INSERT INTO ITEMMOOD VALUES(2,'HAPPY');
 INSERT INTO ITEMMOOD VALUES(3,'SAD');
 INSERT INTO ITEMMOOD VALUES(4,'BAD');
+INSERT INTO ITEMMOOD VALUES(5,'MEDAL');
+INSERT INTO ITEMMOOD VALUES(6,'BORDER');
 
 --신기술 주제
 INSERT INTO WEEKSUBJECT VALUES
@@ -545,4 +547,17 @@ insert into item values(ITEM_SEQ.NEXTVAL, 'bad6',30,4,'resources/img/icon/4.bad/
 insert into item values(ITEM_SEQ.NEXTVAL, 'bad7',30,4,'resources/img/icon/4.bad/bad7.gif',250);
 insert into item values(ITEM_SEQ.NEXTVAL, 'bad8',30,4,'resources/img/icon/4.bad/bad8.gif',250);
 
+insert into item values(ITEM_SEQ.NEXTVAL, 'medal1',30,5,'resources/img/icon/5.medal/medal1.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'medal2',30,5,'resources/img/icon/5.medal/medal2.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'medal3',30,5,'resources/img/icon/5.medal/medal3.gif',250);
+
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg1',30,6,'resources/img/icon/6.border/bg1.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg2',30,6,'resources/img/icon/6.border/bg2.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg3',30,6,'resources/img/icon/6.border/bg3.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg4',30,6,'resources/img/icon/6.border/bg4.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg5',30,6,'resources/img/icon/6.border/bg5.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg6',30,6,'resources/img/icon/6.border/bg6.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg7',30,6,'resources/img/icon/6.border/bg7.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg8',30,6,'resources/img/icon/6.border/bg8.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg9',30,6,'resources/img/icon/6.border/bg9.gif',250);
 COMMIT;

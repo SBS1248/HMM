@@ -71,20 +71,13 @@
 
 				<%-- 글쓰기 버튼 --%>
 				<div id="writebutton">
-					<button id="write" type="button" class="btn btn-primary btn-md" onclick="location.href='boardcode.do'">글쓰기</button>
+					<button id="write" type="button" onclick="location.href='boardcode.do'">글쓰기</button>
 				</div>
 
 				<%-- 검색바 --%>
-
-					<form>
-						<div class="input-group">
-							<input type="text" class="form-control" size="50" placeholder="검색어를 입력하세요...">
-								<%-- 검색버튼 --%>
-								<div class="input-group-btn">
-									<button type="button" class="btn btn-success">검색</button>
-								</div>
-							</div>
-						</form>
+				<div id="search_bar">
+					<input type="text" name="search" placeholder="검색어를 입력하세요..">
+				</div>
 
 						<%-- 게시글 정렬 --%>
 						<div class="sort_options">

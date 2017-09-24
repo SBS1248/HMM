@@ -68,28 +68,41 @@ html body {
   font-family: 'Hanna', serif;
 }
 
-.input-group{
+#write {
+  padding: 10px 20px;
+  background-color: skyblue;
+  border: none;
+}
+
+#write:hover{
+  color: gold;
+}
+
+#search_bar {
   float: left;
-  font-family: 'Hanna', serif;
-  margin-left: 20px;
+  margin-left: 30px;
   width: 600px;
 }
 
-.input-group-btn button{
-  font-family: 'Hanna', serif;
- height: auto;
- width: auto;
+#search_bar input[type=text] {
+    border: 3px #002F2F solid;
+    padding: 7px;
+    width: 300px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+#search_bar input[type=text]:focus {
+    border: 3px skyblue solid;
+    width: 100%;
+
 }
 
 .sort_options{
   float: right;
   font-family: 'Hanna', serif;
 }
-
-.sort_options select{
-  padding: 6px;
-}
-
 
 .sort_options select:hover, .sort_options option:hover {
   cursor: pointer;
@@ -102,9 +115,7 @@ html body {
   padding: 20px;
 }
 
-
-.hmm_table table {
-  border: none;
+#myTable {
   font-family: 'Nanum Gothic';
   border-collapse: collapse;
   width: 100%;
@@ -114,9 +125,7 @@ html body {
   border-bottom: 2px grey solid;
   text-align: center;
   font-weight: bold;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  margin: auto;
+  padding: 6px;
 }
 
 #myTable td, th {
@@ -125,7 +134,7 @@ html body {
 }
 
 #myTable tr:nth-child(even) {
-    background-color: silver;
+    background-color: #dddddd;
 }
 
 #reply_num{

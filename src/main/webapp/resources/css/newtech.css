@@ -90,31 +90,110 @@ html body {
   background-color: #eb7966;
 }
 
-.board {
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+@charset "UTF-8";
+
+/*
+#E6E2AF
+#A7A37E
+#EFECCA
+#046380
+#002F2F
+*/
+
+*{
+  //border: 1px gold solid;
+}
+
+html body {
+  background-color: #EFECCA;
+}
+
+.jumbotron {
+  font-family: 'Hanna', serif;
+  text-align: center;
+  height: 250px;
+  max-height: 250px;
+}
+
+.jumbotron-billboard .img {
+    margin-bottom: 0px;
+    opacity: 0.2;
+    color: #fff;
+    background: #000 url("../img/main.jpg") center center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
+    position:absolute;
+    top:0;left:0;
+    z-index:1;
+  }
+
+.jumbotron {
+  position:relative;padding:50px;
+}
+
+.jumbotron .container {
+  z-index:2;
+  position:relative;
+  z-index:2;
+}
+
+/*게시판 영역*/
+.board_area {
+  background-color: white;
   border: none;
-  height: 100%;
-  width: auto;
-  margin-left: 300px;
-  margin-right: 300px;
-  margin-top: 100px;
 }
 
-.panel {
+.board-heading{
+  background-color: #002F2F;
+  padding: 20px;
+  height: 80px;
+}
+
+#writebutton{
+  float: left;
+  font-family: 'Hanna', serif;
+}
+
+#write {
+  padding: 10px 20px;
+  background-color: skyblue;
   border: none;
 }
 
-.sort_options h3 {
-  display: inline;
-  font-size: 16px;
+#write:hover{
+  color: gold;
 }
 
-.input-group .form-control{
-  padding: 10px;
-  font-size: 12px;
-}
-
-.input-group {
+#search_bar {
+  float: left;
+  margin-left: 30px;
   width: 600px;
+}
+
+#search_bar input[type=text] {
+    border: 3px #002F2F solid;
+    padding: 7px;
+    width: 300px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+#search_bar input[type=text]:focus {
+    border: 3px skyblue solid;
+    width: 100%;
+
+}
+
+.sort_options{
+  float: right;
+  font-family: 'Hanna', serif;
 }
 
 .sort_options select:hover, .sort_options option:hover {
@@ -122,100 +201,34 @@ html body {
 }
 
 .sort_options .selectpicker{
-  width: 150px;
 }
 
-.table {
-  border: none;
+.board-body{
+  padding: 20px;
+}
+
+#myTable {
   font-family: 'Nanum Gothic';
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#myTable thead{
+  border-bottom: 2px grey solid;
+  text-align: center;
+  font-weight: bold;
+  padding: 6px;
+}
+
+#myTable td, th {
+    text-align: left;
+    padding: 6px;
+}
+
+#myTable tr:nth-child(even) {
+    background-color: #dddddd;
 }
 
 #reply_num{
   color: green;
-}
-
-.img-circle {
-  display: inline-block;
-  border: 1px silver solid;
-  width: 25px;
-  height: 25px;
-}
-
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    -webkit-animation-name: fadeIn; /* Fade in the background */
-    -webkit-animation-duration: 0.4s;
-    animation-name: fadeIn;
-    animation-duration: 0.4s
-}
-
-/* Modal Content */
-.modal-content {
-    position: fixed;
-    bottom: 0;
-    background-color: #fefefe;
-    width: 100%;
-    -webkit-animation-name: slideIn;
-    -webkit-animation-duration: 0.4s;
-    animation-name: slideIn;
-    animation-duration: 0.4s
-}
-
-/* The Close Button */
-.close {
-    color: white;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.modal-header {
-    padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
-}
-
-.modal-body {padding: 2px 16px;}
-
-.modal-footer {
-    padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
-}
-
-/* Add Animation */
-@-webkit-keyframes slideIn {
-    from {bottom: -300px; opacity: 0}
-    to {bottom: 0; opacity: 1}
-}
-
-@keyframes slideIn {
-    from {bottom: -300px; opacity: 0}
-    to {bottom: 0; opacity: 1}
-}
-
-@-webkit-keyframes fadeIn {
-    from {opacity: 0}
-    to {opacity: 1}
-}
-
-@keyframes fadeIn {
-    from {opacity: 0}
-    to {opacity: 1}
 }

@@ -5,18 +5,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>bootstrap4</title>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<title>글쓰기</title>
+<%-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <link href="resources/css/write.css" rel="stylesheet" type="text/css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.css"
-	rel="stylesheet">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.js"></script>
+
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+
+<link	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.css"	rel="stylesheet">
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.js"></script> --%>
+
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.js"></script>
+
+
+
 <script type="text/javascript">
             $(document).ready(function(){
                 var objDragAndDrop = $(".dragAndDropDiv");
@@ -82,7 +94,7 @@
                 	var board=new Object();
            	 		board.bcode=$('input[name=bcode]').val();
            	 		board.title=$('input[name=title]').val();
-           		 	board.content=$('input[name=content]').val();
+           		 	board.content=$('textArea[name=content]').val().slice(3,-4); 
       	    		board.distinguish=$('select[name=distinguish]').val();
           		 	board.writerid=$('input[name=writerid]').val();
           		 	
@@ -95,11 +107,18 @@
                         type : "POST",                        
                         url : "write.do",
                         data : board,
-                        success : function() {                               
+                        success : function() {   
+                        	if(fileArray.length==0)
+                        	{
+                        		window.location.href="boardOne.do?bcode=${bcode}"; 
+                        	}
+                        	
                         	for(var i=0;i<fileArray.length;i++)
                         	{
                         		sendFileToServer(fileArray[i].form,fileArray[i].stat,j,fileArray.length);
                         	}
+                        	
+                        	
                         },
                         error:function(request,status,error){
                             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -235,7 +254,7 @@
 
 	<h3 id="the_post_title">제목&nbsp;&nbsp;&nbsp;&nbsp;<input id="post_title" type="text" name="title"></input></h3>
 
-	<%-- 글쓴이 아이디 숨김 --%>
+	글쓴이 아이디 숨김
 	<span style="display:none">${sessionScope.member.id }</span>
 	<br>
 	<div id="post_categories">
@@ -264,7 +283,7 @@
 	<!-- 섬머노트 부분 -->
 	<div class="sn">
 		<div class="content">
-			<textarea id="summernote" name="summer" cols="80" rows="8" style="resize: none"></textarea>
+			<textarea id="summernote" name="content" cols="80" rows="8" style="resize: none"></textarea>
 		</div>
 	</div>
 
@@ -277,3 +296,112 @@
 </div>
 </body>
 </html>
+<%-- 
+ <%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>BW Editor에 오신것을 환영 합니다.</title>
+ <meta charset="UTF-8">
+    <title>bootstrap4</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.js"></script>
+    
+<style type="text/css">
+  .sn{
+	width: 60%;
+	
+	text-align: left;
+	margin: 0 auto;
+}
+/*
+.buttons{
+	margin-left: 43%;
+}
+.categorys{
+	margin-left: 45%;
+}  */
+body{
+	text-align: center;
+	background-image: ${pageContext.request.contextPath}/resources/img/bw/background.jpg;
+}
+
+</style>
+ <script type="text/javascript">
+function bw(){
+	  		/* var textareaValue = $('textarea[name=content]').html();  */
+	  		var textareaValue = $("p").eq(1).text();
+	  		$('input[name=content]').val(textareaValue);
+  			var title = $('input[name=title]').val();
+  			if(title == ''){
+  				alert("제목이 비어있습니다.");
+  				return;
+  			}
+  			var ssss  = "<c:out value='${sessionScope.member.id }'/>";
+  			alert(ssss);
+  			$('#write').submit();
+}
+
+
+</script> 
+</head>
+<body>
+<form action="write.do" method="POST" id="write">
+	<header><h1 style="text-align: center;">Bw Editor</h1></header>
+	<input type="hidden" name="bcode" value="${bcode }">
+	<input type="hidden" name="content">
+	<input type="hidden" name="writerid" value="${member.id }">
+	<input type="text" style="width: 60%" name="title"></input>
+	<br><br>
+	<p>아이디 : ${sessionScope.member.id }</p>
+	<div class="categorys">
+	<select id="area" name="distinguish" style="">
+		<option value="4" selected>아무말대잔치</option>
+			<option value="5">프로젝트게시판</option>
+			<option value="1">기업게시판</option>
+			<option value="3">신기술게시판</option>
+			<option value="2">Q&A</option>
+	</select>
+	</div>
+<!-- 섬머노트 부분 -->
+	<div class="sn">
+	<div class="content">
+	<textarea id="summernote" name="summer"></textarea>
+	</form>
+	<script>
+      $('#summernote').summernote({
+    	  height: 500,                 // set editor height
+    	  width: '100%',
+    	  focus: true,                  // set focus to editable area after initializing summernote
+    	  placeholder: "이미지를 삽입 하시려면 Picture 버튼을 클릭 후 사진을 드래그 또는 찾아보기 하시오.",
+    	  minHeight: null,      // 최소 높이값(null은 제한 없음)
+    	  maxHeight: null,      // 최대 높이값(null은 제한 없음)
+    	  toolbar: [
+    		    // [groupName, [list of button]]
+    		    ['style', ['bold', 'italic', 'underline', 'clear']],
+    		    ['font', ['strikethrough', 'superscript', 'subscript']],
+    		    ['fontsize', ['fontsize']],
+    		    ['color', ['color']],
+    		    ['para', ['ul', 'ol', 'paragraph']],
+    		    ['height', ['height']]
+    		  ]
+
+		});
+      
+	</script>
+	</div>
+	</div>
+    <div class="buttons">
+    <button type="button" id="wr" onclick="bw()">작 성</button>
+ 	 &nbsp;&nbsp;&nbsp;
+  	<a href="javascript:history.go(-2)"><button type="reset">취 소</button></a>
+  	</div><!-- buttons -->
+  
+</body>
+</html> --%>

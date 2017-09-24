@@ -7,6 +7,10 @@
 #EFECCA
 #046380
 #002F2F
+
+#deeaee
+#618685;
+#c94c4c;
 */
 
 * {
@@ -44,7 +48,7 @@ html body {
 .profile-body {
   width: 800px;
   margin: auto;
-	background-color: white;
+	background-color: #deeaee;
   padding: 50px;
   text-align: center;
 }
@@ -63,10 +67,12 @@ max-width: 300px;
 #file_upload_btn {
   padding: 10px;
   border: none;
-  background-color: skyblue;
+  color: white;
+  background-color: #618685;
   width: 100px;
   margin: auto;
   box-shadow: 2px 2px 2px grey;
+  border-radius: 5px;
 }
 
 #file_upload_btn:hover{
@@ -105,12 +111,14 @@ input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover {
 }
 
 #profile_update_btn {
+  color: white;
   padding: 10px;
   border: none;
-  background-color: pink;
+  background-color: #c94c4c;
   width: 100px;
   margin: auto;
   box-shadow: 2px 2px 2px grey;
+  border-radius: 5px;
 }
 
 #profile_update_btn:hover{

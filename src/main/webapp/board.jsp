@@ -81,7 +81,7 @@
 
 				<%-- 글쓰기 버튼 --%>
 				<div id="writebutton">
-					<button id="write" type="button" class="btn btn-primary btn-md" onclick="location.href='boardcode.do?dis=${list[0].distinguish}'">글쓰기</button>
+					<button id="write" type="button" onclick="location.href='boardcode.do'">글쓰기</button>
 				</div>
 
 				<%-- 검색바 --%>
@@ -108,7 +108,7 @@
 							<thead>
 								<tr>
 									<th>글번호</th>
-									<th>제목</th>
+									<th style="white-space: nowrap; text-overflow:ellipsis; overflow:hidden">제목</th>
 									<th>카테고리</th>
 									<th>작성자</th>
 									<th>추천 점수</th>
@@ -125,7 +125,7 @@
 										<td>${num }</td>
 										<c:set var="num" value="${num+1 }"/>
 										<td>
-											<a id="title_row" onclick="viewcount(${l.bcode})" href="boardOne.do?bcode=${l.bcode}">${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span>
+											<a onclick="viewcount(${l.bcode})" href="boardOne.do?bcode=${l.bcode}">${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span>
 											</a>
 										</td>
 
@@ -138,7 +138,7 @@
 												${l.writerid }
 											</div>
 										</td>
-										<td>${l.point.cal }</td>
+										<td>${l.point.best*(5)+l.point.good*(3)+l.point.bad*(-3)+l.point.worst*(-5) }</td>
 										<td>${l.point.viewnum }</td>
 										<td>${l.postdate }</td>
 									</tr>

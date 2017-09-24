@@ -55,7 +55,7 @@
 <div id="fileUpload" class="dragAndDropDiv"><span id="fileUpload_text">업로드를 위해서는 <br>이 곳에 파일을 끌어다 놓으세요</span></div>
 
 	<div class="button_area">
-		<button type="button" id="wr">글 등록</button>
+		<button type="button" id="wr">글 등록</button>&nbsp;&nbsp;&nbsp;&nbsp;
 		<button id="quit_post" onclick="goBack()">등록 취소</button>
 	</div>
 

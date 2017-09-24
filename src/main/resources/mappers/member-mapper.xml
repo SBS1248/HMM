@@ -95,7 +95,7 @@
 		WHERE MEMBERCODE=#{membercode}
 	</update>
 	
-	<insert id="givemedal">
+	<insert id="updateDDARU">
 		UPDATE MEMBER
 		SET DDARU=#{ddaru}
 		WHERE MEMBERCODE=#{membercode}

@@ -7,7 +7,7 @@ html body {
 .title {
 	font-family: 'Hanna', serif;
 	text-align: center;
-	font-size: 90px;
+	font-size: 48px;
 	display: inline-block;
 	width: 100%;
 	margin: auto;
@@ -19,20 +19,20 @@ html body {
 	background-color: #EFECCA;
 }
 
-.option {
-	margin-top: 150px;
+.the_options {
+  //border: 1px gold solid;
+  margin-top: 100px;
 	width: 48%;
 	height: 198px;
 	border-radius: 5px;
 	display: inline-block;
 	position: relative;
-	top: 0;
-	bottom: 0;
 	float: left;
-	background-color: grey;
+	background-color: transparent;
+  opacity: 0.9;
 }
 
-.option .results {
+.the_options .results {
 	width: 100%;
 	height: 198px;
 	border-radius: 5px;
@@ -44,7 +44,7 @@ html body {
 	bottom: 0;
 }
 
-.option .option-label {
+.the_options .option-label {
 	font-size: 20px;
 	font-family: 'Hanna', serif;
 	background-color: silver;
@@ -55,7 +55,7 @@ html body {
 	top: 20px;
 }
 
-.option .on {
+.the_options .on {
 	width: 0;
 	height: 198px;
 	display: block;
@@ -64,7 +64,7 @@ html body {
 	border-radius: 5px;
 }
 
-.option .count {
+.the_options .count {
 	display: inline-block;
 	width: 100%;
 	line-height: 1em;
@@ -79,64 +79,68 @@ html body {
 	font-size: 30px;
 }
 
-.between {
-	width: 198px;
+.the_vs_ball_area{
+  width: 100%;
+}
+
+.the_vs_ball {
+  width: 198px;
 	height: 198px;
 	border-radius: 100%;
 	line-height: 200px;
 	vertical-align: middle;
 	text-align: center;
-	position: absolute;
-	margin-left: 43%;
-	margin-top: 150px;
+  margin-top: 100px;
+  margin-left: 33%;
 	font-size: 100px;
-	z-index: 1;
+	z-index: 999;
+  position: absolute;
 }
 
-#option-1 {
+#option-yes {
 	margin-left: 2%;
   transition: transform 0.5s;
 }
 
-#option-1:hover {
+#option-yes:hover {
 	transform: scale(1.1);
 }
 
-#option-1 .on {
+#option-yes .on {
 	right: 0;
 	float: right;
 }
 
-#option-2 {
+#option-no {
   transition: transform 0.5s;
 }
 
-#option-2:hover {
+#option-no:hover {
 	transform: scale(1.1);
 }
 
-#option-2 .on {
+#option-no .on {
 	left: 0;
 	float: left;
 }
 
-#option-1 .option-label {
+#option-yes .option-label {
 	text-align: right;
 }
 
-#option-2 .option-label {
+#option-no .option-label {
 	right: 0;
 }
 
-#option-1 .count {
+#option-yes .count {
 	text-align: right;
 }
 
-#option-2 .count {
+#option-no .count {
 	left: 0;
 }
 
-body, .title, .between {
+body, .title, .the_vs_ball {
 	background-color: #3e3e3e;
 	color: #fff;
 }

@@ -16,7 +16,7 @@ DROP TABLE CONLIST CASCADE CONSTRAINTS;
 DROP TABLE LEVELING;
 
 
---¸â¹ö
+--ë©¤ë²„
 CREATE TABLE MEMBER
 (
     MEMBERCODE NUMBER PRIMARY KEY,
@@ -61,7 +61,7 @@ BEGIN
     END LOOP;       
 END;
 /
---¾ÆÀÌÅÛ
+--ì•„ì´í…œ
 CREATE TABLE ITEMMOOD
 (
     MOOD NUMBER NOT NULL PRIMARY KEY,
@@ -89,7 +89,7 @@ CREATE TABLE PURCHASEDITEM
     CONSTRAINT FK_ITEM FOREIGN KEY (ITEMCODE) REFERENCES ITEM (ITEMCODE)
 );
 
---°Ô½Ã±Û
+--ê²Œì‹œê¸€
 CREATE TABLE BOARDCODE
 (
     DISCODE NUMBER PRIMARY KEY,
@@ -123,7 +123,7 @@ CREATE TABLE BOARDPOINT
     REPORT NUMBER DEFAULT 0 NOT NULL,
     CONSTRAINT FK_BOARDPOINT FOREIGN KEY (BCODE) REFERENCES BOARD (BCODE)
 );
---Ã·ºÎÆÄÀÏ
+--ì²¨ë¶€íŒŒì¼
 CREATE TABLE ATTACHFILE
 (
     ATCODE NUMBER PRIMARY KEY,
@@ -133,7 +133,7 @@ CREATE TABLE ATTACHFILE
     FILELINK  VARCHAR2(2000) NOT NULL,
     CONSTRAINT FK_ATTA_BOARD FOREIGN KEY (BCODE) REFERENCES BOARD (BCODE)    
 );
---´ñ±Û
+--ëŒ“ê¸€
 CREATE TABLE COMMENTS
 (
     CCODE NUMBER PRIMARY KEY,
@@ -158,7 +158,7 @@ CREATE TABLE COMMENTSPOINT
     REPORT NUMBER DEFAULT 0 NOT NULL,
     CONSTRAINT FK_COMMENTSPOINT FOREIGN KEY (CCODE) REFERENCES COMMENTS (CCODE)
 );
---½Å°í ¸®½ºÆ®
+--ì‹ ê³  ë¦¬ìŠ¤íŠ¸
 CREATE TABLE REPORTLIST
 (
     BCODE NUMBER NOT NULL,
@@ -177,7 +177,7 @@ CREATE TABLE CREPORTLIST
     CONSTRAINT CREP_PK PRIMARY KEY (CCODE,ID)
 );
 
---½Å±â¼ú ÁÖÁ¦
+--ì‹ ê¸°ìˆ  ì£¼ì œ
 CREATE TABLE WEEKSUBJECT
 (
     WSCODE NUMBER PRIMARY KEY,
@@ -185,7 +185,7 @@ CREATE TABLE WEEKSUBJECT
     STARTDATE DATE NOT NULL    
 );
 
---½Å±â¼ú Âù¹Ý ¸®½ºÆ®
+--ì‹ ê¸°ìˆ  ì°¬ë°˜ ë¦¬ìŠ¤íŠ¸
 CREATE TABLE PROLIST
 (
     WSCODE NUMBER PRIMARY KEY,
@@ -287,7 +287,7 @@ BEGIN
     END IF;
 END; 
 /
---°Ô½Ã±Û ½Å°í Æ®¸®°Å
+--ê²Œì‹œê¸€ ì‹ ê³  íŠ¸ë¦¬ê±°
 CREATE OR REPLACE TRIGGER BREPORT_TRI
 AFTER INSERT ON REPORTLIST
 FOR EACH ROW
@@ -302,7 +302,7 @@ BEGIN
 END; 
 /
 
---´ñ±Û ½Å°í Æ®¸®°Å
+--ëŒ“ê¸€ ì‹ ê³  íŠ¸ë¦¬ê±°
 CREATE OR REPLACE TRIGGER CREPORT_TRI
 AFTER INSERT ON CREPORTLIST
 FOR EACH ROW
@@ -316,7 +316,7 @@ BEGIN
     WHERE CCODE=:NEW.CCODE;
 END; 
 /
---°Ô½Ã±Û °ø°¨ Æ®¸®°Å
+--ê²Œì‹œê¸€ ê³µê° íŠ¸ë¦¬ê±°
 CREATE OR REPLACE TRIGGER BRECOM_TRI
 AFTER UPDATE ON BOARDPOINT
 FOR EACH ROW
@@ -337,7 +337,7 @@ BEGIN
 END; 
 /
 
---´ñ±Û °ø°¨ Æ®¸®°Å
+--ëŒ“ê¸€ ê³µê° íŠ¸ë¦¬ê±°
 CREATE OR REPLACE TRIGGER CRECOM_TRI
 AFTER UPDATE ON COMMENTSPOINT
 FOR EACH ROW
@@ -351,7 +351,7 @@ BEGIN
 END; 
 /
 
---À¯Àú
+--ìœ ì €
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'admin','admin','eamil',null,999,999,0,0,0,0,999,null,sysdate,null);
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user','user','email',null,100,100,0,0,0,0,100,null,sysdate,null);
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user1','user1','first@hotmail.com',null,500,500,0,0,0,0,0,null,sysdate,null);
@@ -365,72 +365,72 @@ INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user8','user8','eighth@daum.net',null
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user9','user9','ninth@google.com',null,0,0,0,0,0,0,0,null,sysdate,null);
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user10','user10','tenth@kh.org',null,0,0,0,0,0,0,0,null,sysdate,null);
 
---°Ô½ÃÆÇ ÄÚµå
-INSERT INTO BOARDCODE VALUES (1,'±â¾÷');
+--ê²Œì‹œíŒ ì½”ë“œ
+INSERT INTO BOARDCODE VALUES (1,'ê¸°ì—…');
 INSERT INTO BOARDCODE VALUES (2,'QnA');
-INSERT INTO BOARDCODE VALUES (3,'½Å±â¼ú');
-INSERT INTO BOARDCODE VALUES (4,'¾Æ¹«¸»´ëÀÜÄ¡');
-INSERT INTO BOARDCODE VALUES (5,'ÇÁ·ÎÁ§Æ®/¼Ò½º');
+INSERT INTO BOARDCODE VALUES (3,'ì‹ ê¸°ìˆ ');
+INSERT INTO BOARDCODE VALUES (4,'ì•„ë¬´ë§ëŒ€ìž”ì¹˜');
+INSERT INTO BOARDCODE VALUES (5,'í”„ë¡œì íŠ¸/ì†ŒìŠ¤');
 
--- ±â¾÷ °Ô½ÃÆÇ
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'±×¸°Ä¹¼ÒÇÁÆ®(ÁÖ)¿¡¼­ ÇÔ²² ¼­ºñ½º¸¦ °³¹ßÇÏ½Ç ½ÅÀÔ/ÃÊ±Þ °³¹ßÀÚ¸¦ ¸ð½Ê´Ï´Ù','±×¸°Ä¹¼ÒÇÁÆ®(ÁÖ)¿¡¼­ ÇÔ²² ¼­ºñ½º¸¦ °³¹ßÇÏ½Ç ½ÅÀÔ/ÃÊ±Þ °³¹ßÀÚ¸¦ ¸ð½Ê´Ï´Ù',1,'admin',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'[ÇÁ¸®·£¼­] ´Ü±â/ À¥»çÀÌÆ® ±¸Ãà JAVA °í±Þ °³¹ßÀÚ ±¸ÀÎÇÕ´Ï´Ù.','[ÇÁ¸®·£¼­] ´Ü±â/ À¥»çÀÌÆ® ±¸Ãà JAVA °í±Þ °³¹ßÀÚ ±¸ÀÎÇÕ´Ï´Ù.',1,'user1',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'[eÄ¿¸Ó½º ¼±µÎ¾÷Ã¼ Á¤±ÔÁ÷] ¼­ºñ½º °³¹ßÀÚ¸¦ Ã£°íÀÖ½À´Ï´Ù.','[eÄ¿¸Ó½º ¼±µÎ¾÷Ã¼ Á¤±ÔÁ÷] ¼­ºñ½º °³¹ßÀÚ¸¦ Ã£°íÀÖ½À´Ï´Ù.',1,'user6',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'(ÁÖ)Á¦ÀÌ¾¾¿£ÅÍÅ×ÀÎ¸ÕÆ® Java À¥ ÇÁ·Î±×·¡¸Ó ¸ðÁý °ø°í','(ÁÖ)Á¦ÀÌ¾¾¿£ÅÍÅ×ÀÎ¸ÕÆ® Java À¥ ÇÁ·Î±×·¡¸Ó ¸ðÁý °ø°í',1,'user7',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'(ÁÖ)»çÀÌ³À¼ÒÇÁÆ® 2007³â ½ÅÀÔ ¹× °æ·Â »ç¿ø ¸ðÁý','(ÁÖ)»çÀÌ³À¼ÒÇÁÆ® 2007³â ½ÅÀÔ ¹× °æ·Â »ç¿ø ¸ðÁý',1,'user9',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'[Ãæ¹«·Î]º¸À°ÅëÇÕÁ¤º¸½Ã½ºÅÛ ±â´É°³¼±_Áß±Þ1¸í,PL1¸í','[Ãæ¹«·Î]º¸À°ÅëÇÕÁ¤º¸½Ã½ºÅÛ ±â´É°³¼±_Áß±Þ1¸í,PL1¸í',1,'user10',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'´ë±â¾÷ MES °³¹ß_Áß~°í±Þ_7°³¿ù_C#.NET','´ë±â¾÷ MES °³¹ß_Áß~°í±Þ_7°³¿ù_C#.NET',1,'admin',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'´ë±â¾÷) ³×ºñ°ÔÀÌ¼Ç ½Ã½ºÅÛ SM¿î¿µ_Java °³¹ßÀÚ (ÀÇ¿Õ/Áß±Þ)','´ë±â¾÷) ³×ºñ°ÔÀÌ¼Ç ½Ã½ºÅÛ SM¿î¿µ_Java °³¹ßÀÚ (ÀÇ¿Õ/Áß±Þ)',1,'user9',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'º¸Çè»ç_°ü¸®¾÷¹« ±¸Ãà_Java, Web°³¹ßÀÚ(JavaScript) [ ±¤È­¹® / Áß,°í±Þ ]','º¸Çè»ç_°ü¸®¾÷¹« ±¸Ãà_Java, Web°³¹ßÀÚ(JavaScript) [ ±¤È­¹® / Áß,°í±Þ ]',1,'user9',SYSDATE,NULL,NULL);
+-- ê¸°ì—… ê²Œì‹œíŒ
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ê·¸ë¦°ìº£ì†Œí”„íŠ¸(ì£¼)ì—ì„œ í•¨ê»˜ ì„œë¹„ìŠ¤ë¥¼ ê°œë°œí•˜ì‹¤ ì‹ ìž…/ì´ˆê¸‰ ê°œë°œìžë¥¼ ëª¨ì‹­ë‹ˆë‹¤','ê·¸ë¦°ìº£ì†Œí”„íŠ¸(ì£¼)ì—ì„œ í•¨ê»˜ ì„œë¹„ìŠ¤ë¥¼ ê°œë°œí•˜ì‹¤ ì‹ ìž…/ì´ˆê¸‰ ê°œë°œìžë¥¼ ëª¨ì‹­ë‹ˆë‹¤',1,'admin',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'[í”„ë¦¬ëžœì„œ] ë‹¨ê¸°/ ì›¹ì‚¬ì´íŠ¸ êµ¬ì¶• JAVA ê³ ê¸‰ ê°œë°œìž êµ¬ì¸í•©ë‹ˆë‹¤.','[í”„ë¦¬ëžœì„œ] ë‹¨ê¸°/ ì›¹ì‚¬ì´íŠ¸ êµ¬ì¶• JAVA ê³ ê¸‰ ê°œë°œìž êµ¬ì¸í•©ë‹ˆë‹¤.',1,'user1',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'[eì»¤ë¨¸ìŠ¤ ì„ ë‘ì—…ì²´ ì •ê·œì§] ì„œë¹„ìŠ¤ ê°œë°œìžë¥¼ ì°¾ê³ ìžˆìŠµë‹ˆë‹¤.','[eì»¤ë¨¸ìŠ¤ ì„ ë‘ì—…ì²´ ì •ê·œì§] ì„œë¹„ìŠ¤ ê°œë°œìžë¥¼ ì°¾ê³ ìžˆìŠµë‹ˆë‹¤.',1,'user6',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'(ì£¼)ì œì´ì”¨ì—”í„°í…Œì¸ë¨¼íŠ¸ Java ì›¹ í”„ë¡œê·¸ëž˜ë¨¸ ëª¨ì§‘ ê³µê³ ','(ì£¼)ì œì´ì”¨ì—”í„°í…Œì¸ë¨¼íŠ¸ Java ì›¹ í”„ë¡œê·¸ëž˜ë¨¸ ëª¨ì§‘ ê³µê³ ',1,'user7',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'(ì£¼)ì‚¬ì´ëƒ…ì†Œí”„íŠ¸ 2007ë…„ ì‹ ìž… ë° ê²½ë ¥ ì‚¬ì› ëª¨ì§‘','(ì£¼)ì‚¬ì´ëƒ…ì†Œí”„íŠ¸ 2007ë…„ ì‹ ìž… ë° ê²½ë ¥ ì‚¬ì› ëª¨ì§‘',1,'user9',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'[ì¶©ë¬´ë¡œ]ë³´ìœ¡í†µí•©ì •ë³´ì‹œìŠ¤í…œ ê¸°ëŠ¥ê°œì„ _ì¤‘ê¸‰1ëª…,PL1ëª…','[ì¶©ë¬´ë¡œ]ë³´ìœ¡í†µí•©ì •ë³´ì‹œìŠ¤í…œ ê¸°ëŠ¥ê°œì„ _ì¤‘ê¸‰1ëª…,PL1ëª…',1,'user10',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ëŒ€ê¸°ì—… MES ê°œë°œ_ì¤‘~ê³ ê¸‰_7ê°œì›”_C#.NET','ëŒ€ê¸°ì—… MES ê°œë°œ_ì¤‘~ê³ ê¸‰_7ê°œì›”_C#.NET',1,'admin',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ëŒ€ê¸°ì—…) ë„¤ë¹„ê²Œì´ì…˜ ì‹œìŠ¤í…œ SMìš´ì˜_Java ê°œë°œìž (ì˜ì™•/ì¤‘ê¸‰)','ëŒ€ê¸°ì—…) ë„¤ë¹„ê²Œì´ì…˜ ì‹œìŠ¤í…œ SMìš´ì˜_Java ê°œë°œìž (ì˜ì™•/ì¤‘ê¸‰)',1,'user9',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ë³´í—˜ì‚¬_ê´€ë¦¬ì—…ë¬´ êµ¬ì¶•_Java, Webê°œë°œìž(JavaScript) [ ê´‘í™”ë¬¸ / ì¤‘,ê³ ê¸‰ ]','ë³´í—˜ì‚¬_ê´€ë¦¬ì—…ë¬´ êµ¬ì¶•_Java, Webê°œë°œìž(JavaScript) [ ê´‘í™”ë¬¸ / ì¤‘,ê³ ê¸‰ ]',1,'user9',SYSDATE,NULL,NULL);
 
--- Q&A °Ô½ÃÆÇ
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'MySQL ÇÑ±Û Áú¹®ÀÔ´Ï´Ù.','MySQL ÇÑ±Û Áú¹®ÀÔ´Ï´Ù.',2,'user9',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'°³¹ß ÆíÀÇ¸¦ À§ÇØ¼­ VO ¹× DAO ¾È¾²¸é ¾î¶²°¡¿ä?','°³¹ß ÆíÀÇ¸¦ À§ÇØ¼­ VO ¹× DAO ¾È¾²¸é ¾î¶²°¡¿ä?',2,'user1',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'JSP °øºÎ Áß WEB-INF Æú´õ¾È¿¡ jsp ÆÄÀÏ °ü·ÃÇØ¼­ Áú¹®µå¸³´Ï´Ù','JSP °øºÎ Áß WEB-INF Æú´õ¾È¿¡ jsp ÆÄÀÏ °ü·ÃÇØ¼­ Áú¹®µå¸³´Ï´Ù',2,'user7',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ÀÌ ¹æ½ÄÀÌ ¹«¸®°¡ ¸¹ÀÌ °¡´Â ÄÚµù¹æ½ÄÀÏ±î¿ä?','ÀÌ ¹æ½ÄÀÌ ¹«¸®°¡ ¸¹ÀÌ °¡´Â ÄÚµù¹æ½ÄÀÏ±î¿ä?',2,'user3',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ÀÚ¹Ù½ºÅ©¸³Æ® ½ºÄÚÇÁ Áú¹®µå¸³´Ï´Ù.','ÀÚ¹Ù½ºÅ©¸³Æ® ½ºÄÚÇÁ Áú¹®µå¸³´Ï´Ù.',2,'admin',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'½ºÇÁ¸µ ÇÁ·ÎÁ§Æ® war·Î ¸¸µé¾î¼­ ÅèÄ¹¿¡ ¿Ã¸®´Âµ¥ ¿À·ù°¡ ³³´Ï´Ù.','½ºÇÁ¸µ ÇÁ·ÎÁ§Æ® war·Î ¸¸µé¾î¼­ ÅèÄ¹¿¡ ¿Ã¸®´Âµ¥ ¿À·ù°¡ ³³´Ï´Ù.',2,'user5',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'[Áú¹®¼öÁ¤]MySQL ³¯Â¥ ºñ±³ÇÏ¿© °¡Àå ÃÖ±Ù°ª °¡Á®¿À±â','[Áú¹®¼öÁ¤]MySQL ³¯Â¥ ºñ±³ÇÏ¿© °¡Àå ÃÖ±Ù°ª °¡Á®¿À±â',2,'user10',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'jsp ÇÑ±ÛÆÄÀÏ¸í ´Ù¿î·Îµå Áú¹®ÀÔ´Ï´Ù.','jsp ÇÑ±ÛÆÄÀÏ¸í ´Ù¿î·Îµå Áú¹®ÀÔ´Ï´Ù.',2,'user2',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ajax json¿¡·¯ ÇØ°á¹æ¹ý µµ¿ÍÁÖ¼¼¿ä! (errorThrown: SyntaxError: Unexpected end of JSON input)','ajax json¿¡·¯ ÇØ°á¹æ¹ý µµ¿ÍÁÖ¼¼¿ä! (errorThrown: SyntaxError: Unexpected end of JSON input)',2,'user4',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ORA-01722: invalid number ¿¡·¯ ÀÌÇØ°¡ Àß¾ÈµË´Ï´Ù.','ORA-01722: invalid number ¿¡·¯ ÀÌÇØ°¡ Àß¾ÈµË´Ï´Ù.',2,'user7',SYSDATE,NULL,NULL);
+-- Q&A ê²Œì‹œíŒ
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'MySQL í•œê¸€ ì§ˆë¬¸ìž…ë‹ˆë‹¤.','MySQL í•œê¸€ ì§ˆë¬¸ìž…ë‹ˆë‹¤.',2,'user9',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ê°œë°œ íŽ¸ì˜ë¥¼ ìœ„í•´ì„œ VO ë° DAO ì•ˆì“°ë©´ ì–´ë–¤ê°€ìš”?','ê°œë°œ íŽ¸ì˜ë¥¼ ìœ„í•´ì„œ VO ë° DAO ì•ˆì“°ë©´ ì–´ë–¤ê°€ìš”?',2,'user1',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'JSP ê³µë¶€ ì¤‘ WEB-INF í´ë”ì•ˆì— jsp íŒŒì¼ ê´€ë ¨í•´ì„œ ì§ˆë¬¸ë“œë¦½ë‹ˆë‹¤','JSP ê³µë¶€ ì¤‘ WEB-INF í´ë”ì•ˆì— jsp íŒŒì¼ ê´€ë ¨í•´ì„œ ì§ˆë¬¸ë“œë¦½ë‹ˆë‹¤',2,'user7',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ì´ ë°©ì‹ì´ ë¬´ë¦¬ê°€ ë§Žì´ ê°€ëŠ” ì½”ë”©ë°©ì‹ì¼ê¹Œìš”?','ì´ ë°©ì‹ì´ ë¬´ë¦¬ê°€ ë§Žì´ ê°€ëŠ” ì½”ë”©ë°©ì‹ì¼ê¹Œìš”?',2,'user3',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ìžë°”ìŠ¤í¬ë¦½íŠ¸ ìŠ¤ì½”í”„ ì§ˆë¬¸ë“œë¦½ë‹ˆë‹¤.','ìžë°”ìŠ¤í¬ë¦½íŠ¸ ìŠ¤ì½”í”„ ì§ˆë¬¸ë“œë¦½ë‹ˆë‹¤.',2,'admin',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ìŠ¤í”„ë§ í”„ë¡œì íŠ¸ warë¡œ ë§Œë“¤ì–´ì„œ í†°ìº£ì— ì˜¬ë¦¬ëŠ”ë° ì˜¤ë¥˜ê°€ ë‚©ë‹ˆë‹¤.','ìŠ¤í”„ë§ í”„ë¡œì íŠ¸ warë¡œ ë§Œë“¤ì–´ì„œ í†°ìº£ì— ì˜¬ë¦¬ëŠ”ë° ì˜¤ë¥˜ê°€ ë‚©ë‹ˆë‹¤.',2,'user5',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'[ì§ˆë¬¸ìˆ˜ì •]MySQL ë‚ ì§œ ë¹„êµí•˜ì—¬ ê°€ìž¥ ìµœê·¼ê°’ ê°€ì ¸ì˜¤ê¸°','[ì§ˆë¬¸ìˆ˜ì •]MySQL ë‚ ì§œ ë¹„êµí•˜ì—¬ ê°€ìž¥ ìµœê·¼ê°’ ê°€ì ¸ì˜¤ê¸°',2,'user10',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'jsp í•œê¸€íŒŒì¼ëª… ë‹¤ìš´ë¡œë“œ ì§ˆë¬¸ìž…ë‹ˆë‹¤.','jsp í•œê¸€íŒŒì¼ëª… ë‹¤ìš´ë¡œë“œ ì§ˆë¬¸ìž…ë‹ˆë‹¤.',2,'user2',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ajax jsonì—ëŸ¬ í•´ê²°ë°©ë²• ë„ì™€ì£¼ì„¸ìš”! (errorThrown: SyntaxError: Unexpected end of JSON input)','ajax jsonì—ëŸ¬ í•´ê²°ë°©ë²• ë„ì™€ì£¼ì„¸ìš”! (errorThrown: SyntaxError: Unexpected end of JSON input)',2,'user4',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ORA-01722: invalid number ì—ëŸ¬ ì´í•´ê°€ ìž˜ì•ˆë©ë‹ˆë‹¤.','ORA-01722: invalid number ì—ëŸ¬ ì´í•´ê°€ ìž˜ì•ˆë©ë‹ˆë‹¤.',2,'user7',SYSDATE,NULL,NULL);
 
--- ½Å±â¼ú °Ô½ÃÆÇ
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'"°³¹ßÀÚ ¾ø¾î¼­ ¸ø »Ì´Â´Ù" 10´ë ÇÁ·Î±×·¡¹Ö ±â¼ú - CIO Korea','"°³¹ßÀÚ ¾ø¾î¼­ ¸ø »Ì´Â´Ù" 10´ë ÇÁ·Î±×·¡¹Ö ±â¼ú - CIO Korea',3,'user8',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'IT °æ·Â °³¹ßÀ» À§ÇÑ 8°¡Áö Æ®·»µå ÆÄ¾Ç¹ý - CIO Korea','IT °æ·Â °³¹ßÀ» À§ÇÑ 8°¡Áö Æ®·»µå ÆÄ¾Ç¹ý - CIO Korea',3,'user10',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'"µÎµÏÇÑ ¿¬ºÀÀ» À§ÇÑ" 2017³â¿¡ ¹è¿ï ¸¸ÇÑ 10°¡Áö ÇÁ·Î±×·¡¹Ö ¾ð¾î','"µÎµÏÇÑ ¿¬ºÀÀ» À§ÇÑ" 2017³â¿¡ ¹è¿ï ¸¸ÇÑ 10°¡Áö ÇÁ·Î±×·¡¹Ö ¾ð¾î',3,'user3',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'"°³¹ßÀÚ ¾ø¾î¼­ ¸ø »Ì´Â´Ù" 10´ë ÇÁ·Î±×·¡¹Ö ±â¼ú','"°³¹ßÀÚ ¾ø¾î¼­ ¸ø »Ì´Â´Ù" 10´ë ÇÁ·Î±×·¡¹Ö ±â¼ú',3,'user8',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ÇÁ·Î±×·¡¹Ö±îÁö ÁøÃâÇÑ AI¡¤¡¤¡¤ "°³¹ßÀÚ´Â µ¥ÀÌÅÍ °úÇÐÀÚ µÅ¾ß"','ÇÁ·Î±×·¡¹Ö±îÁö ÁøÃâÇÑ AI¡¤¡¤¡¤ "°³¹ßÀÚ´Â µ¥ÀÌÅÍ °úÇÐÀÚ µÅ¾ß"',3,'user3',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'AWS-¾ÖÀú-±¸±Û, ±â¾÷¿ë Å¬¶ó¿ìµå ÇÃ·§Æû ÃÖ°­ÀÚ´Â ´©°¡ µÉ±î?','AWS-¾ÖÀú-±¸±Û, ±â¾÷¿ë Å¬¶ó¿ìµå ÇÃ·§Æû ÃÖ°­ÀÚ´Â ´©°¡ µÉ±î?',3,'user1',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ÀÌ¸ÅÁö³×ÀÌ¼Ç, ¸Ó½Å·¯´× °¡¼Ó ±â´É ³»ÀåÇÑ Ä¨ µðÀÚÀÎ ¼Ò°³','ÀÌ¸ÅÁö³×ÀÌ¼Ç, ¸Ó½Å·¯´× °¡¼Ó ±â´É ³»ÀåÇÑ Ä¨ µðÀÚÀÎ ¼Ò°³',3,'user7',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'µ¥ÀÌÅÍº£ÀÌ½º¸¦ ÀçÁ¤ÀÇÇÏ´Â ½Å±â¼ú 8°¡Áö','µ¥ÀÌÅÍº£ÀÌ½º¸¦ ÀçÁ¤ÀÇÇÏ´Â ½Å±â¼ú 8°¡Áö',3,'user3',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ÇÁ·Î±×·¡¹Ö±îÁö ÁøÃâÇÑ AI¡¤¡¤¡¤ "°³¹ßÀÚ´Â µ¥ÀÌÅÍ °úÇÐÀÚ µÅ¾ß"','ÇÁ·Î±×·¡¹Ö±îÁö ÁøÃâÇÑ AI¡¤¡¤¡¤ "°³¹ßÀÚ´Â µ¥ÀÌÅÍ °úÇÐÀÚ µÅ¾ß"',3,'admin',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'¾îµµºñ CIO°¡ IT Á¶Á÷ÀÇ Á¤Ã¼¼ºÀ» ÀçÁ¤ÀÇÇÑ ¹æ¹ý','¾îµµºñ CIO°¡ IT Á¶Á÷ÀÇ Á¤Ã¼¼ºÀ» ÀçÁ¤ÀÇÇÑ ¹æ¹ý',3,'user1',SYSDATE,NULL,NULL);
+-- ì‹ ê¸°ìˆ  ê²Œì‹œíŒ
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'"ê°œë°œìž ì—†ì–´ì„œ ëª» ë½‘ëŠ”ë‹¤" 10ëŒ€ í”„ë¡œê·¸ëž˜ë° ê¸°ìˆ  - CIO Korea','"ê°œë°œìž ì—†ì–´ì„œ ëª» ë½‘ëŠ”ë‹¤" 10ëŒ€ í”„ë¡œê·¸ëž˜ë° ê¸°ìˆ  - CIO Korea',3,'user8',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'IT ê²½ë ¥ ê°œë°œì„ ìœ„í•œ 8ê°€ì§€ íŠ¸ë Œë“œ íŒŒì•…ë²• - CIO Korea','IT ê²½ë ¥ ê°œë°œì„ ìœ„í•œ 8ê°€ì§€ íŠ¸ë Œë“œ íŒŒì•…ë²• - CIO Korea',3,'user10',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'"ë‘ë‘‘í•œ ì—°ë´‰ì„ ìœ„í•œ" 2017ë…„ì— ë°°ìš¸ ë§Œí•œ 10ê°€ì§€ í”„ë¡œê·¸ëž˜ë° ì–¸ì–´','"ë‘ë‘‘í•œ ì—°ë´‰ì„ ìœ„í•œ" 2017ë…„ì— ë°°ìš¸ ë§Œí•œ 10ê°€ì§€ í”„ë¡œê·¸ëž˜ë° ì–¸ì–´',3,'user3',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'"ê°œë°œìž ì—†ì–´ì„œ ëª» ë½‘ëŠ”ë‹¤" 10ëŒ€ í”„ë¡œê·¸ëž˜ë° ê¸°ìˆ ','"ê°œë°œìž ì—†ì–´ì„œ ëª» ë½‘ëŠ”ë‹¤" 10ëŒ€ í”„ë¡œê·¸ëž˜ë° ê¸°ìˆ ',3,'user8',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'í”„ë¡œê·¸ëž˜ë°ê¹Œì§€ ì§„ì¶œí•œ AIÂ·Â·Â· "ê°œë°œìžëŠ” ë°ì´í„° ê³¼í•™ìž ë¼ì•¼"','í”„ë¡œê·¸ëž˜ë°ê¹Œì§€ ì§„ì¶œí•œ AIÂ·Â·Â· "ê°œë°œìžëŠ” ë°ì´í„° ê³¼í•™ìž ë¼ì•¼"',3,'user3',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'AWS-ì• ì €-êµ¬ê¸€, ê¸°ì—…ìš© í´ë¼ìš°ë“œ í”Œëž«í¼ ìµœê°•ìžëŠ” ëˆ„ê°€ ë ê¹Œ?','AWS-ì• ì €-êµ¬ê¸€, ê¸°ì—…ìš© í´ë¼ìš°ë“œ í”Œëž«í¼ ìµœê°•ìžëŠ” ëˆ„ê°€ ë ê¹Œ?',3,'user1',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ì´ë§¤ì§€ë„¤ì´ì…˜, ë¨¸ì‹ ëŸ¬ë‹ ê°€ì† ê¸°ëŠ¥ ë‚´ìž¥í•œ ì¹© ë””ìžì¸ ì†Œê°œ','ì´ë§¤ì§€ë„¤ì´ì…˜, ë¨¸ì‹ ëŸ¬ë‹ ê°€ì† ê¸°ëŠ¥ ë‚´ìž¥í•œ ì¹© ë””ìžì¸ ì†Œê°œ',3,'user7',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ë°ì´í„°ë² ì´ìŠ¤ë¥¼ ìž¬ì •ì˜í•˜ëŠ” ì‹ ê¸°ìˆ  8ê°€ì§€','ë°ì´í„°ë² ì´ìŠ¤ë¥¼ ìž¬ì •ì˜í•˜ëŠ” ì‹ ê¸°ìˆ  8ê°€ì§€',3,'user3',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'í”„ë¡œê·¸ëž˜ë°ê¹Œì§€ ì§„ì¶œí•œ AIÂ·Â·Â· "ê°œë°œìžëŠ” ë°ì´í„° ê³¼í•™ìž ë¼ì•¼"','í”„ë¡œê·¸ëž˜ë°ê¹Œì§€ ì§„ì¶œí•œ AIÂ·Â·Â· "ê°œë°œìžëŠ” ë°ì´í„° ê³¼í•™ìž ë¼ì•¼"',3,'admin',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ì–´ë„ë¹„ CIOê°€ IT ì¡°ì§ì˜ ì •ì²´ì„±ì„ ìž¬ì •ì˜í•œ ë°©ë²•','ì–´ë„ë¹„ CIOê°€ IT ì¡°ì§ì˜ ì •ì²´ì„±ì„ ìž¬ì •ì˜í•œ ë°©ë²•',3,'user1',SYSDATE,NULL,NULL);
 
--- ¾Æ¹«¸» ´ëÀÜÄ¡
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'¿À´Ã »ýÀÏÀÌ³×¿ä','¿À´Ã »ýÀÏÀÌ³×¿ä',4,'admin',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ÅäÀÍ ÁØºñÇØ¾ßµÇ³ª¿ä?(ÀçÃë¾÷ÇÏ°í½Í¾î¿ä.)','ÅäÀÍ ÁØºñÇØ¾ßµÇ³ª¿ä?(ÀçÃë¾÷ÇÏ°í½Í¾î¿ä.)',4,'admin',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'¾Èµå·ÎÀÌµå ½ºÅÍµð´Â ¾îµð¼­ ±¸ÇÒ ¼ö ÀÖÀ»±î¿ä...?','¾Èµå·ÎÀÌµå ½ºÅÍµð´Â ¾îµð¼­ ±¸ÇÒ ¼ö ÀÖÀ»±î¿ä...?',4,'user3',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'Ã¤¿ë°ø°í´Â ¼ö½À±â°£ÀÌ Áö³ª¾ß »ç¶óÁö³ª¿ä?','Ã¤¿ë°ø°í´Â ¼ö½À±â°£ÀÌ Áö³ª¾ß »ç¶óÁö³ª¿ä?',4,'user7',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'26»ì °³¹ßÀÚ¸¦ ²Þ²Ù°í ÀÖ½À´Ï´Ù. Á¶¾ðºÎÅ¹µå¸³´Ï´Ù.','26»ì °³¹ßÀÚ¸¦ ²Þ²Ù°í ÀÖ½À´Ï´Ù. Á¶¾ðºÎÅ¹µå¸³´Ï´Ù.',4,'user9',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'¿¬ºÀÇù»óÀÌ¶õ°Ô ÀÌ·±°Å ¿´³×¿ä','¿¬ºÀÇù»óÀÌ¶õ°Ô ÀÌ·±°Å ¿´³×¿ä',4,'user2',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ÃëÁØ»ý ÀÔ´Ï´Ù. Á¶¾ðÁ» ÇØÁÖ¼¼¿ä','ÃëÁØ»ý ÀÔ´Ï´Ù. Á¶¾ðÁ» ÇØÁÖ¼¼¿ä',4,'user4',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'Ãë¾÷¼º°øÆÐÅ°Áö ÇÐ¿øÀ» °í¸£°íÀÖ´Âµ¥ ÆÁ°°Àº°ÔÀÖÀ»±î¿ä?','Ãë¾÷¼º°øÆÐÅ°Áö ÇÐ¿øÀ» °í¸£°íÀÖ´Âµ¥ ÆÁ°°Àº°ÔÀÖÀ»±î¿ä?',4,'user6',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'¾÷°è ¼±¹è´ÔµéÀº ¾î¶»°Ô Ã³À½À» ½ÃÀÛÇÏ¼Ì³ª¿ä?','¾÷°è ¼±¹è´ÔµéÀº ¾î¶»°Ô Ã³À½À» ½ÃÀÛÇÏ¼Ì³ª¿ä?',4,'user10',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'27»ì¿¡ µÎ¹øÂ° ÇÐ¿øÀ» °¡·ÁÇÕ´Ï´Ù','27»ì¿¡ µÎ¹øÂ° ÇÐ¿øÀ» °¡·ÁÇÕ´Ï´Ù',4,'user8',SYSDATE,NULL,NULL);
+-- ì•„ë¬´ë§ ëŒ€ìž”ì¹˜
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ì˜¤ëŠ˜ ìƒì¼ì´ë„¤ìš”','ì˜¤ëŠ˜ ìƒì¼ì´ë„¤ìš”',4,'admin',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'í† ìµ ì¤€ë¹„í•´ì•¼ë˜ë‚˜ìš”?(ìž¬ì·¨ì—…í•˜ê³ ì‹¶ì–´ìš”.)','í† ìµ ì¤€ë¹„í•´ì•¼ë˜ë‚˜ìš”?(ìž¬ì·¨ì—…í•˜ê³ ì‹¶ì–´ìš”.)',4,'admin',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ì•ˆë“œë¡œì´ë“œ ìŠ¤í„°ë””ëŠ” ì–´ë””ì„œ êµ¬í•  ìˆ˜ ìžˆì„ê¹Œìš”...?','ì•ˆë“œë¡œì´ë“œ ìŠ¤í„°ë””ëŠ” ì–´ë””ì„œ êµ¬í•  ìˆ˜ ìžˆì„ê¹Œìš”...?',4,'user3',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ì±„ìš©ê³µê³ ëŠ” ìˆ˜ìŠµê¸°ê°„ì´ ì§€ë‚˜ì•¼ ì‚¬ë¼ì§€ë‚˜ìš”?','ì±„ìš©ê³µê³ ëŠ” ìˆ˜ìŠµê¸°ê°„ì´ ì§€ë‚˜ì•¼ ì‚¬ë¼ì§€ë‚˜ìš”?',4,'user7',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'26ì‚´ ê°œë°œìžë¥¼ ê¿ˆê¾¸ê³  ìžˆìŠµë‹ˆë‹¤. ì¡°ì–¸ë¶€íƒë“œë¦½ë‹ˆë‹¤.','26ì‚´ ê°œë°œìžë¥¼ ê¿ˆê¾¸ê³  ìžˆìŠµë‹ˆë‹¤. ì¡°ì–¸ë¶€íƒë“œë¦½ë‹ˆë‹¤.',4,'user9',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ì—°ë´‰í˜‘ìƒì´ëž€ê²Œ ì´ëŸ°ê±° ì˜€ë„¤ìš”','ì—°ë´‰í˜‘ìƒì´ëž€ê²Œ ì´ëŸ°ê±° ì˜€ë„¤ìš”',4,'user2',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ì·¨ì¤€ìƒ ìž…ë‹ˆë‹¤. ì¡°ì–¸ì¢€ í•´ì£¼ì„¸ìš”','ì·¨ì¤€ìƒ ìž…ë‹ˆë‹¤. ì¡°ì–¸ì¢€ í•´ì£¼ì„¸ìš”',4,'user4',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ì·¨ì—…ì„±ê³µíŒ¨í‚¤ì§€ í•™ì›ì„ ê³ ë¥´ê³ ìžˆëŠ”ë° íŒê°™ì€ê²Œìžˆì„ê¹Œìš”?','ì·¨ì—…ì„±ê³µíŒ¨í‚¤ì§€ í•™ì›ì„ ê³ ë¥´ê³ ìžˆëŠ”ë° íŒê°™ì€ê²Œìžˆì„ê¹Œìš”?',4,'user6',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ì—…ê³„ ì„ ë°°ë‹˜ë“¤ì€ ì–´ë–»ê²Œ ì²˜ìŒì„ ì‹œìž‘í•˜ì…¨ë‚˜ìš”?','ì—…ê³„ ì„ ë°°ë‹˜ë“¤ì€ ì–´ë–»ê²Œ ì²˜ìŒì„ ì‹œìž‘í•˜ì…¨ë‚˜ìš”?',4,'user10',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'27ì‚´ì— ë‘ë²ˆì§¸ í•™ì›ì„ ê°€ë ¤í•©ë‹ˆë‹¤','27ì‚´ì— ë‘ë²ˆì§¸ í•™ì›ì„ ê°€ë ¤í•©ë‹ˆë‹¤',4,'user8',SYSDATE,NULL,NULL);
 
--- ÇÁ·ÎÁ§Æ® & ¼Ò½º
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'node.jsÀÇ passport-LocalStrategy¿¡¼­ alertÃ¢À» ¶ç¿ì·Á°í ÇÕ´Ï´Ù.','node.jsÀÇ passport-LocalStrategy¿¡¼­ alertÃ¢À» ¶ç¿ì·Á°í ÇÕ´Ï´Ù.',5,'user2',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'¼îÇÎ¸ô LG U+ ¸ð¹ÙÀÏ °áÁ¦ ½Ã½ºÅÛ ±¸ÃàÇÏ°íÀÖ°Åµç¿ä.','¼îÇÎ¸ô LG U+ ¸ð¹ÙÀÏ °áÁ¦ ½Ã½ºÅÛ ±¸ÃàÇÏ°íÀÖ°Åµç¿ä.',5,'user7',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'CHECKOUT ¹ÞÀ»¶§¸¶´Ù ¶óÀÌºê·¯¸®¸¦ µû·Î Ãß°¡ÇØ¾ß ÇØ¼­ ±ÍÂú½À´Ï´Ù.','CHECKOUT ¹ÞÀ»¶§¸¶´Ù ¶óÀÌºê·¯¸®¸¦ µû·Î Ãß°¡ÇØ¾ß ÇØ¼­ ±ÍÂú½À´Ï´Ù.',5,'user9',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'Maven ÇÁ·ÎÁ§Æ®¸¦ GitÀ¸·Î °ü¸®ÇÒ ¶§ pom.properties ¹®Á¦','Maven ÇÁ·ÎÁ§Æ®¸¦ GitÀ¸·Î °ü¸®ÇÒ ¶§ pom.properties ¹®Á¦',5,'user3',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'spring ¾÷·Îµå ÀÌ¹ÌÁö ´Ù½Ã ºÒ·¯¿À±â','spring ¾÷·Îµå ÀÌ¹ÌÁö ´Ù½Ã ºÒ·¯¿À±â',5,'user1',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'mysql/mariaDB group by ÇÏ±â Àü¿¡ Á¤·Ä ÇÏ´Â ¹æ¹ý','mysql/mariaDB group by ÇÏ±â Àü¿¡ Á¤·Ä ÇÏ´Â ¹æ¹ý',5,'user6',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ÇÏÀÌºê¸®µå¾Û°ú SPA(Single Page Application)','ÇÏÀÌºê¸®µå¾Û°ú SPA(Single Page Application)',5,'user9',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'[css, jquery, javascript] Å«È­¸é(div) ¾È¿¡ ¿©·¯ ºí·°(div) inline-block','[css, jquery, javascript] Å«È­¸é(div) ¾È¿¡ ¿©·¯ ºí·°(div) inline-block',5,'user9',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'CHECKOUT ¹ÞÀ»¶§¸¶´Ù ¶óÀÌºê·¯¸®¸¦ µû·Î Ãß°¡ÇØ¾ß ÇØ¼­ ±ÍÂú½À´Ï´Ù.','CHECKOUT ¹ÞÀ»¶§¸¶´Ù ¶óÀÌºê·¯¸®¸¦ µû·Î Ãß°¡ÇØ¾ß ÇØ¼­ ±ÍÂú½À´Ï´Ù.',5,'user9',SYSDATE,NULL,NULL);
+-- í”„ë¡œì íŠ¸ & ì†ŒìŠ¤
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'node.jsì˜ passport-LocalStrategyì—ì„œ alertì°½ì„ ë„ìš°ë ¤ê³  í•©ë‹ˆë‹¤.','node.jsì˜ passport-LocalStrategyì—ì„œ alertì°½ì„ ë„ìš°ë ¤ê³  í•©ë‹ˆë‹¤.',5,'user2',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ì‡¼í•‘ëª° LG U+ ëª¨ë°”ì¼ ê²°ì œ ì‹œìŠ¤í…œ êµ¬ì¶•í•˜ê³ ìžˆê±°ë“ ìš”.','ì‡¼í•‘ëª° LG U+ ëª¨ë°”ì¼ ê²°ì œ ì‹œìŠ¤í…œ êµ¬ì¶•í•˜ê³ ìžˆê±°ë“ ìš”.',5,'user7',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'CHECKOUT ë°›ì„ë•Œë§ˆë‹¤ ë¼ì´ë¸ŒëŸ¬ë¦¬ë¥¼ ë”°ë¡œ ì¶”ê°€í•´ì•¼ í•´ì„œ ê·€ì°®ìŠµë‹ˆë‹¤.','CHECKOUT ë°›ì„ë•Œë§ˆë‹¤ ë¼ì´ë¸ŒëŸ¬ë¦¬ë¥¼ ë”°ë¡œ ì¶”ê°€í•´ì•¼ í•´ì„œ ê·€ì°®ìŠµë‹ˆë‹¤.',5,'user9',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'Maven í”„ë¡œì íŠ¸ë¥¼ Gitìœ¼ë¡œ ê´€ë¦¬í•  ë•Œ pom.properties ë¬¸ì œ','Maven í”„ë¡œì íŠ¸ë¥¼ Gitìœ¼ë¡œ ê´€ë¦¬í•  ë•Œ pom.properties ë¬¸ì œ',5,'user3',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'spring ì—…ë¡œë“œ ì´ë¯¸ì§€ ë‹¤ì‹œ ë¶ˆëŸ¬ì˜¤ê¸°','spring ì—…ë¡œë“œ ì´ë¯¸ì§€ ë‹¤ì‹œ ë¶ˆëŸ¬ì˜¤ê¸°',5,'user1',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'mysql/mariaDB group by í•˜ê¸° ì „ì— ì •ë ¬ í•˜ëŠ” ë°©ë²•','mysql/mariaDB group by í•˜ê¸° ì „ì— ì •ë ¬ í•˜ëŠ” ë°©ë²•',5,'user6',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'í•˜ì´ë¸Œë¦¬ë“œì•±ê³¼ SPA(Single Page Application)','í•˜ì´ë¸Œë¦¬ë“œì•±ê³¼ SPA(Single Page Application)',5,'user9',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'[css, jquery, javascript] í°í™”ë©´(div) ì•ˆì— ì—¬ëŸ¬ ë¸”ëŸ­(div) inline-block','[css, jquery, javascript] í°í™”ë©´(div) ì•ˆì— ì—¬ëŸ¬ ë¸”ëŸ­(div) inline-block',5,'user9',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'CHECKOUT ë°›ì„ë•Œë§ˆë‹¤ ë¼ì´ë¸ŒëŸ¬ë¦¬ë¥¼ ë”°ë¡œ ì¶”ê°€í•´ì•¼ í•´ì„œ ê·€ì°®ìŠµë‹ˆë‹¤.','CHECKOUT ë°›ì„ë•Œë§ˆë‹¤ ë¼ì´ë¸ŒëŸ¬ë¦¬ë¥¼ ë”°ë¡œ ì¶”ê°€í•´ì•¼ í•´ì„œ ê·€ì°®ìŠµë‹ˆë‹¤.',5,'user9',SYSDATE,NULL,NULL);
 
---´ñ±Û ´ë´ñ±Û
+--ëŒ“ê¸€ ëŒ€ëŒ“ê¸€
 INSERT INTO COMMENTS VALUES(COMMENTS_SEQ.NEXTVAL,'1','user1',SYSDATE,1,NULL,1);
 INSERT INTO COMMENTS VALUES(COMMENTS_SEQ.NEXTVAL,'2','user3',SYSDATE,1,NULL,2);
 INSERT INTO COMMENTS VALUES(COMMENTS_SEQ.NEXTVAL,'3','user6',SYSDATE,1,NULL,3);
@@ -491,21 +491,24 @@ INSERT INTO COMMENTS VALUES(COMMENTS_SEQ.NEXTVAL,'49','user3',SYSDATE,3,46,5);
 INSERT INTO COMMENTS VALUES(COMMENTS_SEQ.NEXTVAL,'50','user7',SYSDATE,3,46,5);
 
 
---¾ÆÀÌÅÛ¹«µå
+--ì•„ì´í…œë¬´ë“œ
 INSERT INTO ITEMMOOD VALUES(1,'CRAZY');
 INSERT INTO ITEMMOOD VALUES(2,'HAPPY');
 INSERT INTO ITEMMOOD VALUES(3,'SAD');
 INSERT INTO ITEMMOOD VALUES(4,'BAD');
+INSERT INTO ITEMMOOD VALUES(5,'MEDAL');
+INSERT INTO ITEMMOOD VALUES(6,'BORDER');
 
---½Å±â¼ú ÁÖÁ¦
+
+--ì‹ ê¸°ìˆ  ì£¼ì œ
 INSERT INTO WEEKSUBJECT VALUES
 (
-	NEWTECH_SEQ.NEXTVAL,'Ã¹¹øÂ° ÁÖÁ¦ : ¹ÝÀåÀÇ ¿¬¾Ö´Â 30´ë Àü±îÁö °¡´ÉÇÏ´Ù?',SYSDATE-10
+	NEWTECH_SEQ.NEXTVAL,'ì²«ë²ˆì§¸ ì£¼ì œ : ë°˜ìž¥ì˜ ì—°ì• ëŠ” 30ëŒ€ ì „ê¹Œì§€ ê°€ëŠ¥í•˜ë‹¤?',SYSDATE-10
 );
 
 INSERT INTO WEEKSUBJECT VALUES
 (
-	NEWTECH_SEQ.NEXTVAL,'µÎ¹øÂ° ÁÖÁ¦ : ¹ÝÀåÀÇ ¿¬¾Ö´Â 40´ë Àü±îÁö °¡´ÉÇÏ´Ù?',SYSDATE-3
+	NEWTECH_SEQ.NEXTVAL,'ë‘ë²ˆì§¸ ì£¼ì œ : ë°˜ìž¥ì˜ ì—°ì• ëŠ” 40ëŒ€ ì „ê¹Œì§€ ê°€ëŠ¥í•˜ë‹¤?',SYSDATE-3
 );
 
 COMMIT;
@@ -545,4 +548,17 @@ insert into item values(ITEM_SEQ.NEXTVAL, 'bad6',30,4,'resources/img/icon/4.bad/
 insert into item values(ITEM_SEQ.NEXTVAL, 'bad7',30,4,'resources/img/icon/4.bad/bad7.gif',250);
 insert into item values(ITEM_SEQ.NEXTVAL, 'bad8',30,4,'resources/img/icon/4.bad/bad8.gif',250);
 
+insert into item values(ITEM_SEQ.NEXTVAL, 'medal1',30,5,'resources/img/icon/5.medal/medal1.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'medal2',30,5,'resources/img/icon/5.medal/medal2.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'medal3',30,5,'resources/img/icon/5.medal/medal3.gif',250);
+
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg1',30,6,'resources/img/icon/6.border/bg1.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg2',30,6,'resources/img/icon/6.border/bg2.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg3',30,6,'resources/img/icon/6.border/bg3.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg4',30,6,'resources/img/icon/6.border/bg4.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg5',30,6,'resources/img/icon/6.border/bg5.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg6',30,6,'resources/img/icon/6.border/bg6.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg7',30,6,'resources/img/icon/6.border/bg7.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg8',30,6,'resources/img/icon/6.border/bg8.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'bg9',30,6,'resources/img/icon/6.border/bg9.gif',250);
 COMMIT;

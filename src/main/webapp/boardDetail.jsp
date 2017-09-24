@@ -325,7 +325,7 @@
 </head>
 <body>
 	<%@ include file="/header.jsp"%>
-
+	<button id="bedit">수정하기//나중에</button>
 	<!-- 게시글 상세보기 -->
 	<div class="boardDetail_area">
 
@@ -399,16 +399,20 @@
 			</div>
 			</div>
 			<%-- 댓글 공간 --%>
+			<div>
+				<button id="writeComment">댓글달기</button>
+			</div>
+			
 			<div class="comment_section">
 				<c:if test="${comments ne null}">
 					<c:set var="num" value="1" />
 
 					<c:forEach var="c" items="${comments}">
 
-						<div class="comments">
-							<div class="comments-heading">
+					<div class="comments">
+						<div class="comments-heading">
 
-								<div id="reply_num_and_give_medal_area">
+							<div id="reply_num_and_give_medal_area">
 								<span id="reply_number">${num }번째 댓글</span>
 
 								<%-- 댓글 메달 파트. 메달이 1개 이상일 때만 갯수 노출 --%>
@@ -419,52 +423,57 @@
 								</c:if>
 
 								<c:if test="${c.point.medal eq 0}">
-									<div class="current_medal_number" id="mdiv${c.ccode }" style="display: none;">
+									<div class="current_medal_number" id="mdiv${c.ccode }"
+										style="display: none;">
 										<span id="m${c.ccode}">${c.point.medal } </span>
 									</div>
 								</c:if>
 
-								<span	id="give_medal" onclick="cmedal(${c.ccode},'${c.writerid }')">메달 주기</span>
+								<span id="give_medal" onclick="cmedal(${c.ccode},'${c.writerid }')">메달 주기</span>
 
-								</div>
-
-								<div class="comment_authordate">
-									<span>작성자 : ${c.writerid }</span> 작성일 : ${c.postdate}
-								</div>
 							</div>
 
-							<div class="comments-body">${c.content }</div>
-							<div class="comments-footer">
-                <div class="comment_point">댓글 점수 : <span id="c${c.ccode}">${c.point.cal }</span></div>
-								<div class="comment_rate">
-									<button id="report_comment" onclick="creport(${c.ccode},'${c.writerid }')">
-										<span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;댓글
-										신고하기
-									</button>
-									공감 : <span id="g${c.ccode}">${c.point.good }</span>&nbsp;
-									<button type="button" class="comment_rate_btn" id="btn_good"
-										onclick="crecommendation(${c.ccode},'g','${c.writerid }')">
-										<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> YES!
-									</button>
-									&nbsp; 비공감 : <span id="b${c.ccode}">${c.point.bad }</span>&nbsp;
-									<button type="button" class="comment_rate_btn" id="btn_bad"
-										onclick="crecommendation(${c.ccode},'b','${c.writerid }')">
-										<i class="fa fa-thumbs-o-down" aria-hidden="true"></i> NO!
-									</button>
-								</div>
+							<div class="comment_authordate">
+								<span>작성자 : ${c.writerid }</span> 작성일 : ${c.postdate}
 							</div>
+						
+							<button id="edit${c.ccode }">수정하기//나중에</button>
 						</div>
 
-						<c:set var="num" value="${num+1 }" />
+						<div class="comments-body">${c.content }</div>
+						<div class="comments-footer">
+							<div class="comment_point">
+								댓글 점수 : <span id="c${c.ccode}">${c.point.cal }</span>
+							</div>
+							<div class="comment_rate">
+								<button id="report_comment"
+									onclick="creport(${c.ccode},'${c.writerid }')">
+									<span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;댓글
+									신고하기
+								</button>
+								공감 : <span id="g${c.ccode}">${c.point.good }</span>&nbsp;
+								<button type="button" class="comment_rate_btn" id="btn_good"
+									onclick="crecommendation(${c.ccode},'g','${c.writerid }')">
+									<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> YES!
+								</button>
+								&nbsp; 비공감 : <span id="b${c.ccode}">${c.point.bad }</span>&nbsp;
+								<button type="button" class="comment_rate_btn" id="btn_bad"
+									onclick="crecommendation(${c.ccode},'b','${c.writerid }')">
+									<i class="fa fa-thumbs-o-down" aria-hidden="true"></i> NO!
+								</button>
+							</div>
+						</div>
+					</div>
 
-					</c:forEach>
+					<c:set var="num" value="${num+1 }" />
+
+				</c:forEach>
 
 				</c:if>
+				
 			</div>
 
 		</div>
-	</div>
-
 </body>
 
 </html>

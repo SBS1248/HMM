@@ -38,5 +38,6 @@ public interface MemberService
 	void givemedal(int membercode);
 	
 	void updateDDARU(Member member);
+	int buyMedal(int membercode,int medal);
 	
 }

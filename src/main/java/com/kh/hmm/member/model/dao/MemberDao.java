@@ -1,6 +1,7 @@
 package com.kh.hmm.member.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -112,5 +113,12 @@ public class MemberDao {
 
 	public void updateDDARU(Member member) {
 		sqlSession.update("updateDDARU",member);
+	}
+
+	public int buyMedal(int membercode, int medal) {
+		HashMap map=new HashMap();
+		map.put("membercode", membercode);
+		map.put("medal", medal);
+		return sqlSession.update("buyMedal",map);
 	} 
 }

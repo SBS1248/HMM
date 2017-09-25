@@ -32,7 +32,7 @@
 					<br>
 					<hr>
 					<p>구글 계정으로 로그인하기:</p>
-					<div class="g-signin2" data-width="540" data-onsuccess="onSignIn"></div>
+					<div class="g-signin2" data-width="100%" data-onsuccess="onSignIn"></div>
 				</div>
 				<span class="psw" style="float: left;">&nbsp; 혹시 <a href="#"
 					style="text-decoration: none;" onclick="popupSearch()">아이디/비밀번호</a>를

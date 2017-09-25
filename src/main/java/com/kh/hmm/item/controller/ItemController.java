@@ -57,7 +57,7 @@ public class ItemController {
 	}
 
 	@RequestMapping(value = "itemPurchasedLists.do", method = RequestMethod.GET)
-	public String selectPurchasedItemList(Model model, int membercode) {
+	public void selectPurchasedItemList(Model model, int membercode) {
 		logger.info("selectPurchasedItemList(" + membercode + ") call...");
 
 		ArrayList<Item> list = itemService.selectPurchasedItemList(membercode);
@@ -65,9 +65,6 @@ public class ItemController {
 		if (list != null) {
 			model.addAttribute("list", list);
 		}
-
-		// 인벤토리로
-		return "../../index";
 	}
 
 	@RequestMapping(value = "itemPurchase.do", method = RequestMethod.POST)
@@ -84,6 +81,25 @@ public class ItemController {
 			if (item.getPrice() > member.getDdaru())
 				returnGo = "";// 따루 부족이니 따루 구매 페이지 또는 따루 모으는 방법 페이지
 			else {
+				if (itemcode <= 34 && itemcode >= 32) {
+					int medalCharge = 0;
+					System.out.println("아이템코드 : "+itemcode);
+					switch (itemcode) {
+					case 32:
+						medalCharge = memberService.buyMedal(member.getMembercode(),1);
+						break;
+					case 33:
+						medalCharge = memberService.buyMedal(member.getMembercode(),10);
+						break;
+					case 34:
+						medalCharge = memberService.buyMedal(member.getMembercode(),50);
+						break;
+					/*
+					 * case 35: medalCharge = memberService.buyMedal(100); break;
+					 */
+					}
+
+				}
 				Purchaseditem pitem = new Purchaseditem();
 				pitem.setMembercode(member.getMembercode());
 				pitem.setItemcode(itemcode);

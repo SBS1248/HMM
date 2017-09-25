@@ -19,117 +19,127 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>CashShop</title>
 <style type="text/css">
-tr, td {
+td, tr {
 	border: 1px solid black;
 }
 </style>
 <script type="text/javascript">
-	/* 스크롤 되는 메뉴 */
-	$(document).ready(function() {
-/* 		 
+									/* 스크롤 되는 메뉴 */
+									$(document).ready(function () {
+										/*
 		if('${purchased}' == 1){
 		alert("아이템을 이미 구매 하셨습니다");
 		if (window.sessionStorage) {
             sessionStorage.setItem('purchased', 0);
         }
 		} */
-		var $doc = $(document);
-		var position = 0;
-		var top = $doc.scrollTop(); //현재 스크롤바 위치
-		var screenSize = 0; // 화면크기
-		var halfScreenSize = 0; // 화면의 반
-		/*사용자 설정 값 시작*/
-		var pageWidth = 1000; // 페이지 폭, 단위:px
-		var leftOffet = 600; // 중앙에서의 폭(왼쪽 -, 오른쪽 +), 단위:px
-		var leftMargin = 909; // 페이지 폭보다 화면이 작을때 옵셋, 단위:px, leftOffet과 pageWidth의 반만큼 차이가 난다.
-		var speed = 1100; // 따라다닐 속도 : "slow", "normal", or "fast" or numeric(단위:msec)
-		var easing = 'swing'; // 따라다니는 방법 기본 두가지 linear, swing
-		var $layer = $('#floating'); // 레이어 셀렉팅
-		var layerTopOffset = 188; // 레이어 높이 상한선, 단위:px
-		$layer.css('z-index', 10); // 레이어 z-인덱스
-		/*사용자 설정 값 끝*/
-		//좌우 값을 설정하기 위한 함수
-		function resetXPosition() {
-			$screenSize = $('body').width();// 화면크기
-			halfScreenSize = $screenSize
-			/* /2;/ / 화면의반 */
-			xPosition = halfScreenSize + leftOffet;
-			if ($screenSize < pageWidth)
-				xPosition = leftMargin;
-			$layer.css('left', xPosition);
-		}
-		// 스크롤 바를 내린 상태에서 리프레시 했을 경우를 위해
-		if (top > 0)
-			$doc.scrollTop(layerTopOffset + top);
-		else
-			$doc.scrollTop(0);
-		// 최초 레이어가 있을 자리 세팅
-		$layer.css('top', layerTopOffset);
-		resetXPosition();
-		//윈도우 크기 변경 이벤트가 발생하면
-		$(window).resize(resetXPosition);
-		//스크롤이벤트가 발생하면
-		$(window).scroll(function() {
-			yPosition = $doc.scrollTop() + layerTopOffset;
-			$layer.animate({
-				"top" : yPosition
-			}, {
-				duration : speed,
-				easing : easing,
-				queue : false
-			});
-		});
-	});
+										var $doc = $(document);
+										var position = 0;
+										var top = $doc.scrollTop(); //현재 스크롤바 위치
+										var screenSize = 0; // 화면크기
+										var halfScreenSize = 0; // 화면의 반
+										/*사용자 설정 값 시작*/
+										var pageWidth = 1000; // 페이지 폭, 단위:px
+										var leftOffet = 600; // 중앙에서의 폭(왼쪽 -, 오른쪽 +), 단위:px
+										var leftMargin = 909; // 페이지 폭보다 화면이 작을때 옵셋, 단위:px, leftOffet과 pageWidth의 반만큼 차이가 난다.
+										var speed = 1100; // 따라다닐 속도 : "slow", "normal", or "fast" or numeric(단위:msec)
+										var easing = 'swing'; // 따라다니는 방법 기본 두가지 linear, swing
+										var $layer = $('#floating'); // 레이어 셀렉팅
+										var layerTopOffset = 188; // 레이어 높이 상한선, 단위:px
+										$layer.css('z-index', 10); // 레이어 z-인덱스
+										/*사용자 설정 값 끝*/
+										//좌우 값을 설정하기 위한 함수
+										function resetXPosition() {
+											$screenSize = $('body').width(); // 화면크기
+											halfScreenSize = $screenSize
+											/* /2;/ / 화면의반 */
+											xPosition = halfScreenSize + leftOffet;
+											if ($screenSize < pageWidth)
+												xPosition = leftMargin;
+											$layer.css('left', xPosition);
+										}
+										// 스크롤 바를 내린 상태에서 리프레시 했을 경우를 위해
+										if (top > 0)
+											$doc.scrollTop(layerTopOffset + top);
+										else
+											$doc.scrollTop(0);
 
-	/* 스크롤 메뉴 end */
+										// 최초 레이어가 있을 자리 세팅
+										$layer.css('top', layerTopOffset);
+										resetXPosition();
+										//윈도우 크기 변경 이벤트가 발생하면
+										$(window).resize(resetXPosition);
+										//스크롤이벤트가 발생하면
+										$(window).scroll(function () {
+											yPosition = $doc.scrollTop() + layerTopOffset;
+											$layer.animate({
+												"top": yPosition
+											}, {
+												duration: speed,
+												easing: easing,
+												queue: false
+											});
+										});
+									});
 
-	/* 페이지 이동  */
-	$(document).ready(function() {
-		$(".filter-button").click(function() {
-			var value = $(this).attr('data-filter');
+									/* 스크롤 메뉴 end */
 
-			if (value == "all") {
-				$('.filter').show('1000');
-			} else {
-				$(".filter").not('.' + value).hide('3000');
-				$('.filter').filter('.' + value).show('3000');
+									/* 페이지 이동  */
+									$(document).ready(function () {
+										$(".filter-button").click(function () {
+											var value = $(this).attr('data-filter');
 
-			}
-		});
+											if (value == "all") {
+												$('.filter').show('1000');
+											} else {
+												$(".filter").not('.' + value).hide('3000');
+												$('.filter').filter('.' + value).show('3000');
 
-		if ($(".filter").removeClass("active")) {
-			$(this).removeClass("active");
-		}
-		$(this).addClass("active");
+											}
+										});
 
-	});
+										if ($(".filter").removeClass("active")) {
+											$(this).removeClass("active");
+										}
+										$(this).addClass("active");
 
-	/* 배너 마우스 오버 */
-	$(function() {
-		$("#flotImg").hover(function() {
-			$(this).find("#banner").css('display', 'none');
-			$(this).find("#test").show();
-		}, function() {
-			$(this).find("#banner").css('display', '');
-			$(this).find("#test").hide();
-		});
-	});
-	
-	
-	frmName = 0;
-	function buyModal(code)
-	{
-		frmName = "itemFrm"+code;
-		 $("#buyModal").modal('show');
-		 
-	}
-	
-	function purchase()
-	{
-		document.getElementById(frmName).submit();
-	}
-	
-</script>
+									});
+
+									/* 배너 마우스 오버 */
+									$(function () {
+										$("#flotImg").hover(function () {
+											$(this).find("#banner").css('display', 'none');
+											$(this).find("#test").show();
+										}, function () {
+											$(this).find("#banner").css('display', '');
+											$(this).find("#test").hide();
+										});
+									});
+
+									frmName = 0;
+									function buyModal(code) {
+										frmName = "itemFrm" + code;
+										$("#buyModal").modal('show');
+
+									}
+
+									function purchase() {
+										document.getElementById(frmName).submit();
+									}
+
+									function myItem() {
+										$.ajax({
+											type: "POST",
+											url: "itemPurchasedLists.do",
+											success: function () {
+												console.log("아이템 호출 성공");
+											},
+											error: function () {
+												alert("아이템 호출 실패!!");
+											}
+										});
+									}
+								</script>
 <c:set var="ddaru" value="${member.ddaru}" scope="session" />
 <c:set var="itemList" value="${list}" />
 <%@ include file="/header.jsp"%>
@@ -149,7 +159,8 @@ tr, td {
 				<b>남은 따루 : </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
 					id="cash" name="cash" type="text" value="${ddaru}  따루" readonly>
 				<button id="myitem" class="w3-button w3-round-xlarge w3-black"
-					data-toggle="modal" data-target="#myitemes">내 아이템보기</button>
+					data-toggle="modal" data-target="#myitemes" onclick="myItem()">내
+					아이템보기</button>
 			</p>
 		</div>
 		<div class="row">
@@ -170,8 +181,9 @@ tr, td {
 								<h4 class="panel-title">
 									<a data-toggle="collapse" data-parent="#accordian"
 										href="#emoticon" class="collapsed filter-button"
-										data-filter="emoticon"> <span class="badge pull-right"><i
-											class="fa fa-plus"></i></span> EMOTICON
+										data-filter="BAD&HAPPY&SAD&CRAZY"> <span
+										class="badge pull-right"> <i class="fa fa-plus"></i>
+									</span> EMOTICON
 									</a>
 								</h4>
 							</div>
@@ -179,10 +191,14 @@ tr, td {
 								style="height: 0px;">
 								<div class="panel-body">
 									<ul>
-										<li><a href="#" class="filter-button" data-filter="BAD">Bad</a></li>
-										<li><a href="#" class="filter-button" data-filter="HAPPY">Happy</a></li>
-										<li><a href="#" class="filter-button" data-filter="SAD">Sad</a></li>
-										<li><a href="#" class="filter-button" data-filter="CRAZY">Crazy</a></li>
+										<li><a href="#" class="filter-button" data-filter="BAD">Bad</a>
+										</li>
+										<li><a href="#" class="filter-button" data-filter="HAPPY">Happy</a>
+										</li>
+										<li><a href="#" class="filter-button" data-filter="SAD">Sad</a>
+										</li>
+										<li><a href="#" class="filter-button" data-filter="CRAZY">Crazy</a>
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -191,7 +207,7 @@ tr, td {
 							<div class="panel-heading">
 								<h4 class="panel-title">
 									<a data-toggle="collapse" data-parent="#accordian" href="#edge"
-										class="collapsed filter-button" data-filter="border">
+										class="collapsed filter-button" data-filter="BORDER">
 										EDGE,BORDER </a>
 								</h4>
 							</div>
@@ -203,7 +219,7 @@ tr, td {
 								<h4 class="panel-title">
 									<a data-toggle="collapse" data-parent="#accordian"
 										href="#medal" class="collapsed filter-button"
-										data-filter="medal"> MEDAL </a>
+										data-filter="MEDAL"> MEDAL </a>
 								</h4>
 							</div>
 							<div id="medal" class="panel-collapse collapse"></div>
@@ -243,8 +259,9 @@ tr, td {
 										<div class="overlay-content">
 											<h2>${l.price}따루</h2>
 											<a href="#" class="btn btn-sdefault add-to-cart"
-												onclick="buyModal(${l.itemcode})"><i
-												class="fa fa-shopping-cart"></i>구매하기</a>
+												onclick="buyModal(${l.itemcode})"> <i
+												class="fa fa-shopping-cart"></i>구매하기
+											</a>
 										</div>
 									</div>
 								</div>
@@ -296,106 +313,23 @@ tr, td {
 				</div>
 				<div id="itemheight" class="modal-body" style="width: 1200px;">
 					<table id="itemtable"
-						style="margin-left: 100px;; width: 900px; height: auto; padding: 0px;">
+						style="margin-left: 100px; width: 900px; height: auto; padding: 0px;">
+						
+						
+						<c:forEach var="lt" items="${list}">
 						<tr>
 							<td colspan="2"></td>
-							<td><span style="float: right; margin: 10px;"><button
-										id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button></span><a id="itemdetail"
-								href="#itdetail" data-toggle="modal"><img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
-							</a><br> <br>사용기한 : ${member.quitedate}</td>
-							<td><span style="float: right; margin: 10px;"><button
-										id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button></span><a id="itemdetail"
-								href="#itdetail" data-toggle="modal"><img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
-							</a><br> <br>사용기한 : ${member.quitedate}</td>
-							<td><span style="float: right; margin-right: 10px;"><button
-										id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button></span><a id="itemdetail"
-								href="#itdetail" data-toggle="modal"><img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
-							</a><br> <br>사용기한 : ${member.quitedate}</td>
+							<td><span style="float: right; margin: 10px;">
+									<button id="imagedel" class="close" type="button"
+										style="color: black;">&times;</button>
+							</span> <a id="itemdetail" href="#itdetail" data-toggle="modal"> <img
+									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2"></a>
+								<br> <br>사용기한 : ${member.quitedate}</td>
 						</tr>
-						<tr>
-							<td><span style="float: right; margin: 10px;"><button
-										id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button></span><a id="itemdetail"
-								href="#itdetail" data-toggle="modal"><img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
-							</a><br> <br>사용기한 : ${member.quitedate}</td>
-							<td><span style="float: right; margin: 10px;"><button
-										id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button></span><a id="itemdetail"
-								href="#itdetail" data-toggle="modal"><img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
-							</a><br> <br>사용기한 : ${member.quitedate}</td>
-							<td><span style="float: right; margin: 10px;"><button
-										id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button></span><a id="itemdetail"
-								href="#itdetail" data-toggle="modal"><img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
-							</a><br> <br>사용기한 : ${member.quitedate}</td>
-							<td><span style="float: right; margin: 10px;"><button
-										id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button></span><br> <a
-								id="itemdetail" href="#itdetail" data-toggle="modal"><img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
-							</a><br> <br>사용기한 : ${member.quitedate}</td>
-						</tr>
-						<tr>
-							<td><span style="float: right; margin: 10px;"><button
-										id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button></span><a id="itemdetail"
-								href="#itdetail" data-toggle="modal"><img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
-							</a><br> <br>사용기한 : ${member.quitedate}</td>
-							<td><span style="float: right; margin: 10px;"><button
-										id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button></span><a id="itemdetail"
-								href="#itdetail" data-toggle="modal"><img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
-							</a><br> <br>사용기한 : ${member.quitedate}</td>
-							<td><span style="float: right; margin: 10px;"><button
-										id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button></span><a id="itemdetail"
-								href="#itdetail" data-toggle="modal"><img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
-							</a><br> <br>사용기한 : ${member.quitedate}</td>
-							<td><span style="float: right; margin: 10px;"><button
-										id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button></span><a id="itemdetail"
-								href="#itdetail" data-toggle="modal"><img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
-							</a><br> <br>사용기한 : ${member.quitedate}</td>
-						</tr>
-						<tr>
-							<td><span style="float: right; margin: 10px;"><button
-										id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button></span><a id="itemdetail"
-								href="#itdetail" data-toggle="modal"><img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
-							</a><br> <br>사용기한 : ${member.quitedate}</td>
-							<td><span style="float: right; margin: 10px;"><button
-										id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button></span><a id="itemdetail"
-								href="#itdetail" data-toggle="modal"><img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
-							</a><br> <br>사용기한 : ${member.quitedate}</td>
-							<td><span style="float: right; margin: 10px;"><button
-										id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button></span><a id="itemdetail"
-								href="#itdetail" data-toggle="modal"><img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
-							</a><br> <br>사용기한 : ${member.quitedate}</td>
-							<td><span style="float: right; margin: 10px;"><button
-										id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button></span><a id="itemdetail"
-								href="#itdetail" data-toggle="modal"><img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
-							</a><br> <br>사용기한 : ${member.quitedate}</td>
-						</tr>
+						</c:forEach>
+						
+						
+						
 					</table>
 				</div>
 				<div id="myitemfooter" class="modal-footer">

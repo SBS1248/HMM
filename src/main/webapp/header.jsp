@@ -4,15 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Hmm | 전 세계의 개발자들을 널리 이롭게 하리라.</title>
 <meta charset="utf-8">
 <link href="resources/css/header.css" rel="stylesheet" type="text/css">
-	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-	<link href="resources/css/write.css" rel="stylesheet" type="text/css">
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 
 <%-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -28,9 +24,6 @@
 <%@ include file="WEB-INF/views/member/login.jsp"%>
 <%@ include file="WEB-INF/views/member/insertMember.jsp"%>
 
-<%-- <%@ include file="WEB-INF/views/member/login.jsp"%>
-<%@ include file="WEB-INF/views/member/insertMember.jsp"%> --%>
-
 <body>
 	<c:set var="member" value="${sessionScope.member}" />
 	<c:set var="password" value="${member.password}" />
@@ -43,28 +36,22 @@
 		<nav class="navbar navbar-fixed-top topnav" role="navigation">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-						aria-controls="navbar"></button>
-					<div class="navbar-brand">
-						<a id="menu-toggle" href="#"
-							class="glyphicon glyphicon-align-justify btn-menu toggle"> </a>
-					</div>
+					<button id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle"></button>
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 
 					<ul class="nav navbar-nav">
 						<!-- 홈페이지 로고 -->
-<li><a id="home_logo" href="index.jsp">Hmm</a></li>
+						<li><button onclick="location.href='index.jsp'" id="home_logo">Hmm</button></li>
 						<!-- 로그인 관련 메뉴 및 모달 -->
 						<c:choose>
 							<c:when test="${null eq member }">
 								<ul class="nav navbar-nav">
-									<li data-toggle="modal" data-target="#loginModal"><a
+									<li data-toggle="modal" data-target="#loginModal" id="header_login"><a
 										style="cursor: pointer"> <span
 											class="glyphicon glyphicon-log-in"></span> 로그인
 									</a></li>
-									<li data-toggle="modal" data-target="#insertModal"><a
+									<li data-toggle="modal" data-target="#insertModal" id="header_insert"><a
 										style="cursor: pointer"> <span
 											class="glyphicon glyphicon-user"></span> 회원가입
 									</a></li>

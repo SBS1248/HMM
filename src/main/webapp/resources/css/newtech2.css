@@ -1,5 +1,20 @@
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
+/*
+#E6E2AF
+#A7A37E
+#EFECCA
+#046380
+#002F2F
+
+#deeaee
+#618685
+#c94c4c
+
+#1abc9c
+#eb7966
+*/
+
 html body {
     background-color: #EFECCA;
 }
@@ -22,7 +37,7 @@ html body {
 .the_options {
   //border: 1px gold solid;
   text-align: center;
-  margin:100px auto;
+  margin: 60px auto;
 	width: 48%;
 	height: 198px;
 	border-radius: 5px;
@@ -91,7 +106,7 @@ html body {
 	line-height: 200px;
 	vertical-align: middle;
 	text-align: center;
-  margin-top: 100px;
+  margin-top: 60px;
 	font-size: 100px;
 	z-index: 3;
   position: absolute;
@@ -168,11 +183,12 @@ body, .title, .the_vs_ball {
 }
 
 #on1 {
-	background-color: #1abc9c;
+	background-color: #618685
+  ;
 }
 
 #on2 {
-	background-color: #eb7966;
+	background-color: #c94c4c;
 }
 
 #participants {
@@ -183,6 +199,6 @@ body, .title, .the_vs_ball {
 	display: inline-block;
 	width: 100%;
 	position: relative;
-  padding: 20px;
+  padding: 25px;
   bottom: 0;
 }

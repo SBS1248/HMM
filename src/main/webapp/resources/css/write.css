@@ -190,3 +190,8 @@ body {
 #quit_post{
   background-color: #c94c4c;
 }
+
+ .note-btn-group.btn-group.note-insert {
+   	display: none;
+}
+	

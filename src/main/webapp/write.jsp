@@ -12,6 +12,7 @@
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+  
 </head>
 <body>
 		<%@ include file="/header.jsp"%>
@@ -70,11 +71,11 @@ function goBack() {
 </script>
 
   <script>
-
 			$('#summernote').summernote({
 				placeholder: '여기에 본문 글을 작성합니다',
 				tabsize: 2,
-				height: 200
+				height: 200,
+				disableDragAndDrop: true
     });
   </script>
 	<script>
@@ -274,18 +275,12 @@ function goBack() {
 			  	  focus: true,                  // set focus to editable area after initializing summernote
 			  	  minHeight: null,      // 최소 높이값(null은 제한 없음)
 			  	  maxHeight: null,      // 최대 높이값(null은 제한 없음)
-			  	  toolbar: [
-			  		    // [groupName, [list of button]]
-			  		    ['style', ['bold', 'italic', 'underline', 'clear']],
-			  		    ['font', ['strikethrough', 'superscript', 'subscript']],
-			  		    ['fontsize', ['fontsize']],
-			  		    ['color', ['color']],
-			  		    ['para', ['ul', 'ol', 'paragraph']],
-			  		    ['height', ['height']]
-			  		  ]
-
+			  	  shortcuts: false
 					});
 			});
 		</script>
+		
+	
+		
 </body>
 </html>

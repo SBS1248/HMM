@@ -178,8 +178,16 @@ body, .title, .the_vs_ball {
 	color: #fff;
 }
 
-.option-label, .option-label .count {
+.option-label, .option-label {
 	color: #fff;
+}
+
+#chart_on1{
+  color: #034f84;
+}
+
+#chart_on2 {
+  color: #563f46;
 }
 
 #on1 {
@@ -196,9 +204,8 @@ body, .title, .the_vs_ball {
 	color: white;
 	text-align: center;
 	font-family: 'Hanna', serif;
-	display: inline-block;
 	width: 100%;
-	position: relative;
-  padding: 25px;
-  bottom: 0;
+	position: absolute;
+  margin-bottom: 0;
+  padding: 60px;
 }

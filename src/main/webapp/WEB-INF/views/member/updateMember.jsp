@@ -92,8 +92,7 @@
 					<br> <br><input type='file' id="imgUpload" name="photo" id="photo" />
 					<br>
 
-					<button type="button" id="file_upload_btn" onclick="validationFile()">파일
-						업로드</button>
+					<button type="button" id="file_upload_btn" onclick="validationFile()">프로필 사진 업로드</button>
 				</form>
 				<form id="updateForm" name="updateForm" action="update.do" method="POST">
 					<input id ="input_id" type="text" name="id" value="${member.id}"
@@ -105,8 +104,8 @@
 						name="passwordConfirm" placeholder="비밀번호 확인"
 						value="${member.password}" required id="passwordConfirm"><br>
 					<input type="email" name="email" placeholder="이메일"
-						value="${member.email}" required /><br> <select name="job"
-						id="updateJob">
+						value="${member.email}" required /><br>
+						<select name="job" id="updateJob">
 						<option value="student">학생</option>
 						<option value="business">회사원</option>
 						<option value="jobless">무직</option>

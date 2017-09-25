@@ -18,11 +18,12 @@
 }
 
 html body {
-    background-color: #EFECCA;
+    background-color: #deeaee;
 }
 
 .container{
-  background-color: #EFECCA;
+  background-color: #deeaee;
+  height: auto;
 }
 
 .profile_board{
@@ -46,9 +47,10 @@ html body {
 }
 
 .profile-body {
+  height: auto;
   width: 800px;
   margin: auto;
-	background-color: #deeaee;
+	background-color: #EFECCA;
   padding: 50px;
   text-align: center;
 }
@@ -69,7 +71,7 @@ max-width: 300px;
   border: none;
   color: white;
   background-color: #618685;
-  width: 100px;
+  width: 180px;
   margin: auto;
   box-shadow: 2px 2px 2px grey;
   border-radius: 5px;
@@ -83,31 +85,26 @@ max-width: 300px;
   display: none;
 }
 
-form input[type=text],form input[type=password],form input[type=email] {
-  width: 50%;
-  margin: auto;
-  margin-bottom: 10px;
-}
-
-form input[type=text]:focus,form input[type=password]:focus,form input[type=email]:focus {
-  border: 1px green solid;
-}
-
-form select{
-  width: 50%;
-  margin: auto;
-  margin-bottom: 10px;
-}
-
-input[type=submit], input[type=button], input[type=reset] {
-  background-color: #002F2F;
+#updateForm input[type=text], #updateForm input[type=password], #updateForm input[type=email] {
+  width: 400px;
+  border: 3px #EFECCA solid;
   padding: 10px;
-  color: white;
-  border: none;
+  margin-bottom: 5px;
 }
 
-input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover {
+#updateForm input[type=text]:focus, #updateForm input[type=password]:focus, #updateForm input[type=email]:focus {
+  border: 3px skyblue solid;
+}
 
+#updateForm select{
+  width: 400px;
+  border: 3px #EFECCA solid;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#updateForm select:focus{
+  border: 3px skyblue solid;
 }
 
 #profile_update_btn {
@@ -115,10 +112,11 @@ input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover {
   padding: 10px;
   border: none;
   background-color: #c94c4c;
-  width: 100px;
+  width: 180px;
   margin: auto;
   box-shadow: 2px 2px 2px grey;
   border-radius: 5px;
+  margin-top: 10px;
 }
 
 #profile_update_btn:hover{
@@ -127,7 +125,7 @@ input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover {
 
 .profile-footer{
   background-color: #002F2F;
-  padding: 50px;
+  padding: 40px;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
 }

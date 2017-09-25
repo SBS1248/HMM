@@ -8,7 +8,7 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="resources/css/newtech.css" rel="stylesheet" type="text/css">
-    <link href="resources/css/newtech2.css" rel="stylesheet" type="text/css">
+<link href="resources/css/index.css" rel="stylesheet" type="text/css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>9월 3주차 신기술 찬/반 투표</title>

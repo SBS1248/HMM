@@ -70,14 +70,15 @@ function goBack() {
 }
 </script>
 
-  <script>
+  <%-- <script>
 			$('#summernote').summernote({
 				placeholder: '여기에 본문 글을 작성합니다',
 				tabsize: 2,
 				height: 200,
 				disableDragAndDrop: true
     });
-  </script>
+  </script> --%>
+
 	<script>
 	            $(document).ready(function(){
 	                var objDragAndDrop = $(".dragAndDropDiv");
@@ -270,8 +271,6 @@ function goBack() {
 		<script>
 			$(function(){
 				$('#summernote').summernote({
-			  	  height: 300,                 // set editor height
-			  	  width: '100%',
 			  	  focus: true,                  // set focus to editable area after initializing summernote
 			  	  minHeight: null,      // 최소 높이값(null은 제한 없음)
 			  	  maxHeight: null,      // 최대 높이값(null은 제한 없음)

@@ -123,25 +123,24 @@ html body {
   width: 100%;
 }
 
-#myTable thead{
-  border-bottom: 2px grey solid;
-  text-align: center;
-  font-weight: bold;
-  padding: 6px;
-}
-
 #myTable td{
     text-align: left;
     padding: 10px;
 }
 
-#td_title a{
-  color: black;
+#myTable thead{
+  border-bottom: 2px grey solid;
+  text-align: center;
+  font-weight: bold;
 }
 
 #myTable th{
     text-align: center;
     padding: 6px;
+}
+
+#td_title a{
+  color: black;
 }
 
 #myTable tr:nth-child(even) {

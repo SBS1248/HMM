@@ -79,7 +79,7 @@ body {
   border: 3px #002F2F solid;
   transition: 2s;
   transition-timing-function: ease-in-out;
-  transform: rotate(1080deg);
+  /*transform: rotate(1080deg);*/
 }
 
 #wrapper .navbar .container-fluid .navbar-nav a {

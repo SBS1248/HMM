@@ -141,9 +141,11 @@
 
 										<td>${num }</td>
 										<c:set var="num" value="${num+1 }"/>
-										<td>
-											<a onclick="viewcount(${l.bcode})" href="boardOne.do?bcode=${l.bcode}">${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span>
-											</a>
+										<td id="td_title">
+											<a onclick="viewcount(${l.bcode})" href="boardOne.do?bcode=${l.bcode}">${l.title }</a><span id="reply_num">&nbsp;[${l.isdelete}]</span>
+
+											<%-- <a onclick="viewcount(${l.bcode})" href="boardOne.do?bcode=${l.bcode}">${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span>
+											</a> --%>
 										</td>
 
 										<td>${l.code.name}</td>
@@ -168,5 +170,5 @@
 			</div>
 		</div>
 </div>
-</body>
+	</body>
 	</html>

@@ -143,7 +143,7 @@ function goBack() {
 	                	var board=new Object();
 	           	 		board.bcode=$('input[name=bcode]').val();
 	           	 		board.title=$('input[name=title]').val();
-	           		 	board.content=$('textArea[name=content]').val().slice(3,-4);
+	           		 	board.content=$('textArea[name=content]').val();
 	      	    		board.distinguish=$('select[name=distinguish]').val();
 	          		 	board.writerid=$('input[name=writerid]').val();
 

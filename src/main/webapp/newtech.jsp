@@ -87,7 +87,7 @@
   <button type="button" id="polls_result_btn" onclick="location.href='newtech2.jsp'">금주 신기술 동향 투표 결과 확인하기</button>
 
 </div>
-
+<div class="polls_footer">
 <div class="container">
 	<!-- 게시판 영역 -->
 	<div class="board_area">
@@ -169,6 +169,7 @@
 				</div>
 			</div>
 		</div>
+</div>
 </div>
 	</body>
 	</html>

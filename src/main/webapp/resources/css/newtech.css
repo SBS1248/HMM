@@ -15,7 +15,7 @@
 */
 
 html body {
-    background-color: #EFECCA;
+    background-color: #deeaee;
 }
 
 .polls_heading {
@@ -33,7 +33,7 @@ html body {
 
 .polls_body {
   font-family: 'Hanna', serif;
-  background-color: #EFECCA;
+  background-color: #deeaee;
   text-align: center;
   padding: 20px;
 }
@@ -94,8 +94,15 @@ html body {
   margin: 10px;
 }
 
-
+.polls_footer{
+  width: 100%;
+  background-color: #deeaee;
+}
 /*게시판 영역*/
+
+.container {
+  background-color: #deeaee;
+}
 .board_area {
   background-color: white;
   border: none;

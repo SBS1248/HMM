@@ -2,6 +2,7 @@ package com.kh.hmm.item.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.hmm.board.controller.BoardController;
 import com.kh.hmm.item.model.service.ItemService;
@@ -29,14 +31,19 @@ public class ItemController {
 	private MemberService memberService;
 
 	@RequestMapping(value = "itemLists.do", method = RequestMethod.GET)
-	public String selectItemList(Model model) {
+	public String selectItemList(HttpSession session,Model model) {
 		logger.info("selectItemList() call...");
 
 		ArrayList<Item> list = itemService.selectItemList();
-
+		int membercode = ((Member)session.getAttribute("member")).getMembercode();
+		System.out.println("membercode : "+membercode);
+		ArrayList<Item> pList = itemService.selectPurchasedItemList(membercode);
 		if (list != null) {
 			model.addAttribute("list", list);
 		}
+		
+		if(pList != null)
+			model.addAttribute("pList",pList);
 
 		// 매점으로
 		return "../../cashshop";
@@ -56,15 +63,16 @@ public class ItemController {
 		return "../../index";
 	}
 
+	@ResponseBody
 	@RequestMapping(value = "itemPurchasedLists.do", method = RequestMethod.GET)
-	public void selectPurchasedItemList(Model model, int membercode) {
-		logger.info("selectPurchasedItemList(" + membercode + ") call...");
-
+	public void selectPurchasedItemList(HttpSession session, Model model) {
+		logger.info("selectPurchasedItemList call...");
+		int membercode = ((Member)session.getAttribute("member")).getMembercode();
+		System.out.println("membercode : "+membercode);
 		ArrayList<Item> list = itemService.selectPurchasedItemList(membercode);
-
-		if (list != null) {
-			model.addAttribute("list", list);
-		}
+		
+		if(list != null)
+			model.addAttribute("pList", list);
 	}
 
 	@RequestMapping(value = "itemPurchase.do", method = RequestMethod.POST)

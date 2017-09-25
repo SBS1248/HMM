@@ -190,7 +190,6 @@ public class BoardController
 				originname = new String(mpf.getOriginalFilename().getBytes("utf-8"),"utf-8");
 			} catch (UnsupportedEncodingException e1)
 			{
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 

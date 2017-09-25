@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -26,13 +27,6 @@ td, tr {
 <script type="text/javascript">
 									/* 스크롤 되는 메뉴 */
 									$(document).ready(function () {
-										/*
-		if('${purchased}' == 1){
-		alert("아이템을 이미 구매 하셨습니다");
-		if (window.sessionStorage) {
-            sessionStorage.setItem('purchased', 0);
-        }
-		} */
 										var $doc = $(document);
 										var position = 0;
 										var top = $doc.scrollTop(); //현재 스크롤바 위치
@@ -126,19 +120,6 @@ td, tr {
 									function purchase() {
 										document.getElementById(frmName).submit();
 									}
-
-									function myItem() {
-										$.ajax({
-											type: "POST",
-											url: "itemPurchasedLists.do",
-											success: function () {
-												console.log("아이템 호출 성공");
-											},
-											error: function () {
-												alert("아이템 호출 실패!!");
-											}
-										});
-									}
 								</script>
 <c:set var="ddaru" value="${member.ddaru}" scope="session" />
 <c:set var="itemList" value="${list}" />
@@ -159,8 +140,7 @@ td, tr {
 				<b>남은 따루 : </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
 					id="cash" name="cash" type="text" value="${ddaru}  따루" readonly>
 				<button id="myitem" class="w3-button w3-round-xlarge w3-black"
-					data-toggle="modal" data-target="#myitemes" onclick="myItem()">내
-					아이템보기</button>
+					data-toggle="modal" data-target="#myitemes">내 아이템보기</button>
 			</p>
 		</div>
 		<div class="row">
@@ -314,22 +294,17 @@ td, tr {
 				<div id="itemheight" class="modal-body" style="width: 1200px;">
 					<table id="itemtable"
 						style="margin-left: 100px; width: 900px; height: auto; padding: 0px;">
-						
-						
-						<c:forEach var="lt" items="${list}">
-						<tr>
-							<td colspan="2"></td>
-							<td><span style="float: right; margin: 10px;">
-									<button id="imagedel" class="close" type="button"
-										style="color: black;">&times;</button>
-							</span> <a id="itemdetail" href="#itdetail" data-toggle="modal"> <img
-									src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2"></a>
-								<br> <br>사용기한 : ${member.quitedate}</td>
-						</tr>
+						<c:forEach var="pt" items="${pList}">
+							<tr>
+								<td colspan='2'></td>
+								<td><span style='float: right; margin: 10px;'>
+										<button id='imagedel' class='close' type='button'
+											style='color: black;'>&times;</button>
+								</span> <a id='itemdetail' href='#itdetail' data-toggle='modal'> <img
+										src='${pt.filelink}'></a> <br> <br>사용기한 :
+									${pt.usagedate}</td>
+							</tr>
 						</c:forEach>
-						
-						
-						
 					</table>
 				</div>
 				<div id="myitemfooter" class="modal-footer">
@@ -384,27 +359,6 @@ td, tr {
 	</a>
 
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <%@ include file="/footer.jsp"%>
 </html>

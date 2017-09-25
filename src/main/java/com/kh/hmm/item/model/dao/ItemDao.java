@@ -29,7 +29,7 @@ public class ItemDao
 
 	public ArrayList<Item> selectPurchasedItemList(int membercode)
 	{
-		List<Item> list=sqlSession.selectList("selectPurchasedItemList",membercode);
+		List<Item> list=sqlSession.selectList("selectPurchasedItem",membercode);
 		return (ArrayList<Item>)list;
 	}
 

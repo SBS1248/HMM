@@ -13,7 +13,12 @@ body {
 #EFECCA
 #046380
 #002F2F
+
+#deeaee
+#618685
+#c94c4c
 */
+
 
 .topnav.navbar {
   background-color: #002F2F;
@@ -25,23 +30,29 @@ body {
 }
 
 #menu-toggle {
-  text-decoration: none;
-  font-size: 30px;
+  border: none;
+  background-color: inherit;
+  font-size: 35px;
   color: #fff;
-  height: 40px;
+  width: 40px;
+  padding: 5px;
   margin: auto;
   transition: transform 1s;
 }
 
 #menu-toggle:hover {
   color: gold;
-  -webkit-transition: all 500ms ease;
-  -moz-transition: all 500ms ease;
-  -ms-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
   transition: all 500ms ease;
   transition-timing-function: ease-in-out;
   transform: scale(1.5);
+}
+
+#header_login:hover {
+    background-color: #618685;
+}
+
+#header_insert:hover {
+    background-color: #c94c4c;
 }
 
 #wrapper .navbar .container-fluid .navbar-nav {
@@ -49,6 +60,7 @@ body {
 }
 
 #wrapper .navbar .container-fluid .navbar-nav #home_logo {
+  background-color: inherit;
   text-decoration: none;
   color: white;
   font-family: 'Pacifico', cursive;
@@ -86,7 +98,6 @@ body {
 }
 
 /*사이드바*/
-
 #sidebar-wrapper {
   font-family: 'Hanna', serif;
   margin-left: -240px;
@@ -129,10 +140,16 @@ body {
   padding-left: 26px;
 }
 
-
 .sidebar-nav li a:hover {
   font-size: 26px;
-  background-color: gold;
-  color: black;
+  color: gold;
   transition: 0.4s;
+}
+
+.sidebar-nav li:nth-child(odd):hover {
+    background-color: #618685;
+}
+
+.sidebar-nav li:nth-child(even):hover {
+    background-color: #c94c4c;
 }

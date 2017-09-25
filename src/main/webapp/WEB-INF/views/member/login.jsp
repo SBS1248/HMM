@@ -2,14 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href="resources/css/login.css" rel="stylesheet" type="text/css">
-
-	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-	<link href="resources/css/write.css" rel="stylesheet" type="text/css">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
-
 
 <%-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -33,9 +27,7 @@
 					<input type="text" name="id" placeholder="아이디를 입력해 주세요" required>
 					<input type="password" name="password" placeholder="비밀번호를 입력해 주세요"
 						required onkeydown='javascript:onEnterSubmit()'>
-					<button type="button"
-						style="color: white; background-color: #002F2F;"
-						onclick="onSubmit()">로그인</button>
+					<button type="button" id="loginbtn" onclick="onSubmit()">로그인</button>
 					<br>
 					<hr>
 					<p>구글 계정으로 로그인하기:</p>
@@ -46,9 +38,7 @@
 					잊으셨나요?
 				</span>
 				<div class="modal-footer">
-
-					<button type="button" class="cancelbtn" data-dismiss="modal">창
-						닫기</button>
+					<button type="button" id="cancelbtn" data-dismiss="modal">창 닫기</button>
 				</div>
 			</div>
 		</div>

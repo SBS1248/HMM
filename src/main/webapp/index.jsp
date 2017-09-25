@@ -10,9 +10,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>Hmm | 국내 최고 개발자 커뮤니티</title>
-<link rel="icon" href="resources/img/신보선/신보선.jpg" type="image/gif" sizes="16x16">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="resources/css/index.css" rel="stylesheet" type="text/css">
 	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
@@ -113,7 +112,7 @@
 
 										<td>${num }</td>
 										<c:set var="num" value="${num+1 }"/>
-										<td>
+										<td id="td_title">
 											<a onclick="viewcount(${l.bcode})" href="boardOne.do?bcode=${l.bcode}">${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span>
 											</a>
 										</td>

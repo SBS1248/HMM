@@ -5,17 +5,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<title>Hmm 게시판</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="resources/img/신보선/신보선.jpg" type="image/gif" sizes="16x16">
-<link href="resources/css/board.css" rel="stylesheet" type="text/css">
+<%-- index.css 사용가능? --%>
+<link href="resources/css/index.css" rel="stylesheet" type="text/css">
 	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 
-<title>Hmm 게시판</title>
 
 <script type="text/javascript">
 	function viewcount(bcode)
@@ -124,9 +123,11 @@
 
 										<td>${num }</td>
 										<c:set var="num" value="${num+1 }"/>
-										<td>
-											<a onclick="viewcount(${l.bcode})" href="boardOne.do?bcode=${l.bcode}">${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span>
-											</a>
+										<td id="td_title">
+											<a onclick="viewcount(${l.bcode})" href="boardOne.do?bcode=${l.bcode}">${l.title }</a><span id="reply_num">&nbsp;[${l.isdelete}]</span>
+
+											<%-- <a onclick="viewcount(${l.bcode})" href="boardOne.do?bcode=${l.bcode}">${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span>
+											</a> --%>
 										</td>
 
 										<td>${l.code.name}</td>

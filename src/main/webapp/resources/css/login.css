@@ -1,5 +1,17 @@
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
+/*
+#E6E2AF
+#A7A37E
+#EFECCA
+#046380
+#002F2F
+
+#deeaee
+#618685
+#c94c4c
+*/
+
 .modal-header {
   background-color: #002F2F;
   color: white;
@@ -26,7 +38,7 @@
 /* Set a style for all buttons */
 .modal-body button {
   font-family: 'Hanna', serif;
-    background-color: #002F2F;
+    background-color: #618685;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -35,16 +47,28 @@
     width: 100%;
 }
 
-.modal-body button:hover {
-    opacity: 0.8;
+#loginbtn{
+  color: white;
+  background-color: #002F2F;
+  border-radius: 5px;
+}
+
+#loginbtn:hover {
+    color: gold;
 }
 
 /* Extra styles for the cancel button */
-.modal-footer .cancelbtn {
+#cancelbtn {
     color: white;
     width: auto;
     padding: 10px 18px;
     border: none;
+    border-radius: 5px;
+    background-color: #c94c4c;
+}
+
+#cancelbtn:hover {
+    color: gold;
 }
 
 .container {

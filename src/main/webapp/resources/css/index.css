@@ -139,8 +139,8 @@ html body {
     padding: 6px;
 }
 
-#myTable a {
-  text-decoration: none;
+#td_title a{
+  color: black;
 }
 
 #myTable th{

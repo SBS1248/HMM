@@ -99,7 +99,6 @@ html body {
 #search_bar input[type=text]:focus {
     border: 3px skyblue solid;
     width: 100%;
-
 }
 
 .sort_options{
@@ -133,7 +132,7 @@ html body {
 
 #myTable td{
     text-align: left;
-    padding: 6px;
+    padding: 10px;
 }
 
 #td_title a{

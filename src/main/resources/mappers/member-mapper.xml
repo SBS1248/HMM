@@ -8,28 +8,28 @@
 		SELECT *
 		FROM MEMBER WHERE ID = #{id} AND PASSWORD = #{password}
 	</select>
-	
+
 	<select id="chkDup" parameterType="Member" resultType="Member">
 		SELECT *
 		FROM MEMBER WHERE ID = #{id}
 	</select>
-	
+
 	<select id="emailChk" parameterType="Member" resultType="Member">
 		SELECT *
 		FROM MEMBER WHERE EMAIL = #{email}
 	</select>
-	
+
 	<select id="ChkEmailId" parameterType="Member" resultType="Member">
 		SELECT *
 		FROM MEMBER WHERE ID = #{id} AND EMAIL = #{email}
 	</select>
-	
+
 	<insert id="enroll">
 		insert into member
 		values
 		(MEM_SEQ.NEXTVAL,#{id},#{password},#{email},null,0,1,0,0,0,0,90,#{job},SYSDATE,null)
 	</insert>
-	
+
 	<insert id="google">
 		insert into member
 		values
@@ -43,61 +43,75 @@
 		JOB=#{job} WHERE
 		ID=#{id}
 	</update>
-	
+
 	<update id="updatePhoto">
-	update member set
+		update member set
 		PHOTO=#{photo} where ID=#{id}
 	</update>
-	
+
 	<select id="selectMember" parameterType="string" resultType="Member">
 		SELECT *
 		FROM MEMBER
 		WHERE ID=#{writerid}
 	</select>
-	
+
 	<select id="leveling" parameterType="_long" resultType="java.lang.Integer">
-		SELECT MAX(LEV)
+		SELECT
+		MAX(LEV)
 		FROM LEVELING
 		WHERE EXP&lt;#{exp}
 		union all
-		SELECT FLOOR(#{exp}/MIN(EXP)*100)
+		SELECT
+		FLOOR(#{exp}/MIN(EXP)*100)
 		FROM LEVELING
 		WHERE EXP&gt;#{exp}
 	</select>
-	
-	<select id="recompoint" resultType="java.lang.Integer" parameterType="string">
+
+	<select id="recompoint" resultType="java.lang.Integer"
+		parameterType="string">
 		SELECT RECOMPOINT
 		FROM MEMBER
 		WHERE ID=#{id}
 	</select>
-	
+
 	<update id="recomcount5" parameterType="_int">
 		UPDATE MEMBER
-		SET RECOMPOINT=RECOMPOINT-5
+		SET
+		RECOMPOINT=RECOMPOINT-5
 		WHERE MEMBERCODE=#{membercode}
 	</update>
-	
+
 	<update id="recomcount3" parameterType="_int">
 		UPDATE MEMBER
-		SET RECOMPOINT=RECOMPOINT-3
+		SET
+		RECOMPOINT=RECOMPOINT-3
 		WHERE MEMBERCODE=#{membercode}
 	</update>
-	
-	<select id="havmedal" resultType="java.lang.Integer" parameterType="_int">
+
+	<select id="havmedal" resultType="java.lang.Integer"
+		parameterType="_int">
 		SELECT HAVMEDAL
 		FROM MEMBER
 		WHERE MEMBERCODE=#{membercode}
 	</select>
-	
+
 	<update id="givemedal" parameterType="_int">
 		UPDATE MEMBER
-		SET HAVMEDAL=HAVMEDAL-1
+		SET
+		HAVMEDAL=HAVMEDAL-1
 		WHERE MEMBERCODE=#{membercode}
 	</update>
-	
+
+	<update id="buyMedal">
+		UPDATE MEMBER
+		SET HAVMEDAL=HAVMEDAL+#{medal}
+		WHERE MEMBERCODE=#{membercode}
+	</update>
+
 	<insert id="updateDDARU">
 		UPDATE MEMBER
 		SET DDARU=#{ddaru}
-		WHERE MEMBERCODE=#{membercode}
+		WHERE
+		MEMBERCODE=#{membercode}
 	</insert>
 </mapper>

@@ -32,9 +32,6 @@ body {
   color: white;
   margin: 0;
   padding: 20px;
-  border-top: 3px #EFECCA solid;
-  border-left: 3px #EFECCA solid;
-  border-right: 3px #EFECCA solid;
   background-color: #002F2F;
   font-size: 24px;
 }
@@ -54,8 +51,6 @@ body {
 #post_categories {
   display: inline-block;
   padding: 20px;
-  border-left: 3px #EFECCA solid;
-  border-right: 3px #EFECCA solid;
   background-color: #002F2F;
   color: white;
   font-size: 20px;

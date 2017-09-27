@@ -41,7 +41,7 @@
 			setTimeout(typeWriter, speed);
 		}
 	}
-	
+
 	function viewcount(bcode)
 	{
 		$.ajax({
@@ -66,7 +66,7 @@
 			location.href="boardOne.do?bcode="+bcode;
 		}
 	}
-	
+
 	function checkWrite()
 	{
 		var data = '${sessionScope.member}';
@@ -79,7 +79,7 @@
 			location.href="boardcode.do";
 		}
 	}
-	
+
 </script>
 </head>
 
@@ -129,8 +129,7 @@
 							<thead>
 								<tr>
 									<th>글번호</th>
-									<th
-										style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">제목</th>
+									<th>제목</th>
 									<th>카테고리</th>
 									<th>작성자</th>
 									<th>추천 점수</th>
@@ -144,23 +143,22 @@
 
 									<tr>
 
-										<td>${num }</td>
+										<td id="table_num">${num }</td>
 										<c:set var="num" value="${num+1 }" />
 										<td id="td_title"><a href="#"
-											onclick="checkBoard(${l.bcode})" style="cursor: pointer">${l.title }<span
+											onclick="checkBoard(${l.bcode})">${l.title }<span
 												id="reply_num">&nbsp;[${l.isdelete}]</span>
 										</a></td>
-
-										<td>${l.code.name}</td>
+										<td id="table_category">${l.code.name}</td>
 										<td>
 											<div class="profile">
 												<a href="profile.jsp"> <img class="img-circle" src="#" />
 												</a> ${l.writerid }
 											</div>
 										</td>
-										<td>${l.point.best*(5)+l.point.good*(3)+l.point.bad*(-3)+l.point.worst*(-5) }</td>
-										<td>${l.point.viewnum }</td>
-										<td>${l.postdate }</td>
+										<td id="table_point">${l.point.best*(5)+l.point.good*(3)+l.point.bad*(-3)+l.point.worst*(-5) }</td>
+										<td id="table_viewcount">${l.point.viewnum }</td>
+										<td id="table_date">${l.postdate }</td>
 									</tr>
 
 								</c:forEach>

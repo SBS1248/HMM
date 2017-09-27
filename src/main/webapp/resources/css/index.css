@@ -123,11 +123,6 @@ html body {
   width: 100%;
 }
 
-#myTable td{
-    text-align: left;
-    padding: 10px;
-}
-
 #myTable thead{
   border-bottom: 2px grey solid;
   text-align: center;
@@ -137,10 +132,42 @@ html body {
 #myTable th{
     text-align: center;
     padding: 6px;
+    border: 1px red solid;
+    min-width: 70px;
+}
+
+#myTable td{
+    padding: 6px;
+}
+
+#table_num{
+  text-align: center;
+}
+
+#td_title{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #td_title a{
-  color: black;
+color: black;
+}
+
+#table_category{
+  text-align: center;
+}
+
+#table_point{
+  text-align: center;
+}
+
+#table_viewcount{
+  text-align: center;
+}
+
+#table_date{
+  text-align: center;
 }
 
 #myTable tr:nth-child(even) {

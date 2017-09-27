@@ -25,32 +25,22 @@
 		location.href = "updateProfile.do";
 	}
 
-	function checkLogin() {
-		var member = '${sessionScope.member}';
-		if (member == '') {
-			alert("로그인 후 이용해 주세요");
-			$('#loginModal').modal('show');
-		} else {
-			location.href = "itemLists.do";
+	expireDate = new Date
+	expireDate.setMonth(expireDate.getMonth() + 6)
+	hitCt = eval(cookieVal("pageHit"))
+	hitCt++
+	document.cookie = "pageHit=" + hitCt + ";expires="
+			+ expireDate.toGMTString()
+
+	function cookieVal(cookieName) {
+		thisCookie = document.cookie.split("; ")
+		for (i = 0; i < thisCookie.length; i++) {
+			if (cookieName == thisCookie[i].split("=")[0]) {
+				return thisCookie[i].split("=")[1]
+			}
 		}
+		return 0
 	}
-	
-	expireDate = new Date 
-	expireDate.setMonth(expireDate.getMonth()+6) 
-	hitCt = eval(cookieVal("pageHit")) 
-	hitCt++ 
-	document.cookie = "pageHit="+hitCt+";expires=" + expireDate.toGMTString() 
-	
-	function cookieVal(cookieName) { 
-	thisCookie = document.cookie.split("; ") 
-	for (i=0; i<thisCookie.length; i++) { 
-	if (cookieName == thisCookie[i].split("=")[0]) { 
-	return thisCookie[i].split("=")[1] 
-	} 
-	} 
-	return 0 
-	} 
-	
 </script>
 
 <%@ include file="WEB-INF/views/member/login.jsp"%>
@@ -129,7 +119,7 @@
 				<li><a href="boardLists.do?dis=2"> <span
 						class="glyphicon glyphicon-question-sign"></span>&nbsp;&nbsp;Q & A
 				</a></li>
-				<li><a onclick="checkLogin()" style="cursor:pointer"> <span
+				<li><a href="itemLists.do" style="cursor:pointer"> <span
 						class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp; 따루샵
 				</a></li>
 

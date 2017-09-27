@@ -55,16 +55,8 @@
 	};
 
 	function checkBoard(bcode){
-		var data = '${sessionScope.member}';
-		if(data ==''){
-			alert("로그인 후 이용 바랍니다");
-			$("#loginModal").modal('show');
-		}
-		else
-		{
 			viewcount(bcode);
 			location.href="boardOne.do?bcode="+bcode;
-		}
 	}
 
 	function checkWrite()

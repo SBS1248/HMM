@@ -25,6 +25,8 @@ td, tr {
 }
 </style>
 <script type="text/javascript">
+								frmName = 0;
+								member = '${sessionScope.member}';
 									/* 스크롤 되는 메뉴 */
 									$(document).ready(function () {
 										var $doc = $(document);
@@ -45,7 +47,7 @@ td, tr {
 										//좌우 값을 설정하기 위한 함수
 										function resetXPosition() {
 											$screenSize = $('body').width(); // 화면크기
-											halfScreenSize = $screenSize/2;
+											halfScreenSize = $screenSize / 2;
 											/*  / 화면의반 */
 											xPosition = halfScreenSize + leftOffet;
 											if ($screenSize < pageWidth)
@@ -110,15 +112,27 @@ td, tr {
 										});
 									});
 
-									frmName = 0;
+									
 									function buyModal(code) {
-										frmName = "itemFrm" + code;
-										$("#buyModal").modal('show');
-
+										if (member == null || member == '') {
+											alert("로그인 후 이용해 주시기 바랍니다");
+											$('#loginModal').modal('show');
+										} else {
+											frmName = "itemFrm" + code;
+											$("#buyModal").modal('show');
+										}
 									}
 
 									function purchase() {
 										document.getElementById(frmName).submit();
+									}
+									function loginCheck() {
+										if (member == null || member == '') {
+											alert("로그인 후 이용해 주시기 바랍니다");
+											$('#loginModal').modal('show');
+										} else {
+											location.href = "cashcharge.jsp"
+										}
 									}
 								</script>
 <c:set var="ddaru" value="${member.ddaru}" scope="session" />
@@ -294,17 +308,19 @@ td, tr {
 				<div id="itemheight" class="modal-body" style="width: 1200px;">
 					<table id="itemtable"
 						style="margin-left: 100px; width: 900px; height: auto; padding: 0px;">
-						<c:forEach var="pt" items="${pList}">
-							<tr>
-								<td colspan='2'></td>
-								<td><span style='float: right; margin: 10px;'>
-										<button id='imagedel' class='close' type='button'
-											style='color: black;'>&times;</button>
-								</span> <a id='itemdetail' href='#itdetail' data-toggle='modal'> <img
-										src='${pt.filelink}'></a> <br> <br>사용기한 :
-									${pt.usagedate}</td>
-							</tr>
-						</c:forEach>
+						<c:if test="${pList ne null }">
+							<c:forEach var="pt" items="${pList}">
+								<tr>
+									<td colspan='2'></td>
+									<td><span style='float: right; margin: 10px;'>
+											<button id='imagedel' class='close' type='button'
+												style='color: black;'>&times;</button>
+									</span> <a id='itemdetail' href='#itdetail' data-toggle='modal'> <img
+											src='${pt.filelink}'></a> <br> <br>사용기한 :
+										${pt.usagedate}</td>
+								</tr>
+							</c:forEach>
+						</c:if>
 					</table>
 				</div>
 				<div id="myitemfooter" class="modal-footer">
@@ -348,7 +364,7 @@ td, tr {
 <!--스크롤 배너 -->
 
 <div id="floating">
-	<a id="flotImg" href="cashcharge.jsp" style="text-decoration: none;">
+	<a id="flotImg" onclick="loginCheck()" style="text-decoration: none;">
 		<img id="banner"
 		src="https://image.freepik.com/free-vector/bills-and-coins-in-isometric-design_23-2147604444.jpg"
 		border="0" width="200px" height="130px">

@@ -31,19 +31,23 @@ public class ItemController {
 	private MemberService memberService;
 
 	@RequestMapping(value = "itemLists.do", method = RequestMethod.GET)
-	public String selectItemList(HttpSession session,Model model) {
+	public String selectItemList(HttpSession session, Model model) {
 		logger.info("selectItemList() call...");
-
+		int membercode = 0;
+		ArrayList<Item> pList = null;
 		ArrayList<Item> list = itemService.selectItemList();
-		int membercode = ((Member)session.getAttribute("member")).getMembercode();
-		System.out.println("membercode : "+membercode);
-		ArrayList<Item> pList = itemService.selectPurchasedItemList(membercode);
+		if (session.getAttribute("member") != null) {
+			membercode = ((Member) session.getAttribute("member")).getMembercode();
+			pList = itemService.selectPurchasedItemList(membercode);
+		}
 		if (list != null) {
 			model.addAttribute("list", list);
 		}
-		
-		if(pList != null)
-			model.addAttribute("pList",pList);
+
+		if (pList != null)
+			model.addAttribute("pList", pList);
+		else
+			model.addAttribute("pList", null);
 
 		// 매점으로
 		return "../../cashshop";
@@ -67,11 +71,11 @@ public class ItemController {
 	@RequestMapping(value = "itemPurchasedLists.do", method = RequestMethod.GET)
 	public void selectPurchasedItemList(HttpSession session, Model model) {
 		logger.info("selectPurchasedItemList call...");
-		int membercode = ((Member)session.getAttribute("member")).getMembercode();
-		System.out.println("membercode : "+membercode);
+		int membercode = ((Member) session.getAttribute("member")).getMembercode();
+		System.out.println("membercode : " + membercode);
 		ArrayList<Item> list = itemService.selectPurchasedItemList(membercode);
-		
-		if(list != null)
+
+		if (list != null)
 			model.addAttribute("pList", list);
 	}
 
@@ -91,16 +95,16 @@ public class ItemController {
 			else {
 				if (itemcode <= 34 && itemcode >= 32) {
 					int medalCharge = 0;
-					System.out.println("아이템코드 : "+itemcode);
+					System.out.println("아이템코드 : " + itemcode);
 					switch (itemcode) {
 					case 32:
-						medalCharge = memberService.buyMedal(member.getMembercode(),1);
+						medalCharge = memberService.buyMedal(member.getMembercode(), 1);
 						break;
 					case 33:
-						medalCharge = memberService.buyMedal(member.getMembercode(),10);
+						medalCharge = memberService.buyMedal(member.getMembercode(), 10);
 						break;
 					case 34:
-						medalCharge = memberService.buyMedal(member.getMembercode(),50);
+						medalCharge = memberService.buyMedal(member.getMembercode(), 50);
 						break;
 					/*
 					 * case 35: medalCharge = memberService.buyMedal(100); break;

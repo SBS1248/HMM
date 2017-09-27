@@ -79,15 +79,7 @@
 	
 	function checkWrite()
 	{
-		var data = '${sessionScope.member}';
-		if(data =='' || data == null){
-			alert("로그인 후 이용 바랍니다");
-			$("#loginModal").modal('show');
-		}
-		else
-		{
 			location.href="boardcode.do";
-		}
 	}
 	
 </script>
@@ -113,8 +105,7 @@
 
 					<%-- 글쓰기 버튼 --%>
 					<div id="writebutton">
-						<button id="write" type="button"
-							onclick="checkWrite()">글쓰기</button>
+						<button id="write" type="button" onclick="checkWrite()">글쓰기</button>
 					</div>
 
 					<%-- 검색바 --%>
@@ -158,8 +149,8 @@
 
 										<td>${num }</td>
 										<c:set var="num" value="${num+1 }" />
-										<td id="td_title"><a onclick="checkBoard(${l.bcode})" style="cursor:pointer">${l.title }</a><span
-											id="reply_num">&nbsp;[${l.isdelete}]</span></td>
+										<td id="td_title"><a onclick="checkBoard(${l.bcode})"
+											style="cursor: pointer">${l.title }</a><span id="reply_num">&nbsp;[${l.isdelete}]</span></td>
 
 										<td>${l.code.name}</td>
 										<td>

@@ -34,6 +34,23 @@
 			location.href = "itemLists.do";
 		}
 	}
+	
+	expireDate = new Date 
+	expireDate.setMonth(expireDate.getMonth()+6) 
+	hitCt = eval(cookieVal("pageHit")) 
+	hitCt++ 
+	document.cookie = "pageHit="+hitCt+";expires=" + expireDate.toGMTString() 
+	
+	function cookieVal(cookieName) { 
+	thisCookie = document.cookie.split("; ") 
+	for (i=0; i<thisCookie.length; i++) { 
+	if (cookieName == thisCookie[i].split("=")[0]) { 
+	return thisCookie[i].split("=")[1] 
+	} 
+	} 
+	return 0 
+	} 
+	
 </script>
 
 <%@ include file="WEB-INF/views/member/login.jsp"%>
@@ -60,6 +77,8 @@
 						<!-- 홈페이지 로고 -->
 						<li><button onclick="location.href='index.jsp'"
 								id="home_logo">Hmm</button></li>
+						<li style="color: white;"><script>document.write("제 홈페이지에 <font color=red>" + hitCt + "</font> 번째 방문자이시네요.") </script></li>
+						<c:if test="${member.id  eq 'admin'}"><a href="adminlist.do">관리자</a></c:if>
 						<!-- 로그인 관련 메뉴 및 모달 -->
 						<c:choose>
 							<c:when test="${null eq member }">
@@ -114,7 +133,7 @@
 						class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp; 따루샵
 				</a></li>
 
-				<li><a href="#"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;
+				<li><a href="about.jsp"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;
 						About Hmm</a></li>
 				<li><a href="#contact"><span
 						class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp; 연락처</a></li>

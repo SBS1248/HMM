@@ -132,7 +132,6 @@ html body {
 #myTable th{
     text-align: center;
     padding: 6px;
-    border: 1px red solid;
     min-width: 70px;
 }
 

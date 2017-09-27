@@ -76,7 +76,7 @@
 
 								<%-- 제목 남은 글자 수 --%>
 								<script>
-										var title_max = 50;
+										var title_max = 75;
 										 $('#title_feedback').html(title_max + ' 글자 남음');
 
 										$('#post_title').keyup(function() {

@@ -22,9 +22,9 @@
 
 								<input type="hidden" name="bcode" value="${bcode }">
 									<input type="hidden" name="writerid" value="${member.id }">
-
 										<div id="the_post_title">제목&nbsp;&nbsp;&nbsp;
-											<input id="post_title" type="text" name="title"></input>
+											<input id="post_title" type="text" name="title" maxlength="100"></input>
+											<div id="title_feedback"></div>
 										</div>
 										<%-- 글쓴이 아이디 숨김 --%>
 										<span style="display:none">${sessionScope.member.id }</span>
@@ -51,8 +51,7 @@
 											<!-- 섬머노트 부분 -->
 											<div class="sn">
 												<div class="content">
-													<textarea id="summernote" name="content" maxlength="4000"></textarea>
-													<div id="textarea_feedback"></div>
+													<textarea id="summernote" name="content" maxlength="4000"></textarea><div id="content_feedback"></div>
 												</div>
 											</div>
 
@@ -75,16 +74,29 @@
 									}
 								</script>
 
-								<%-- 남은 글자 수 --%>
+								<%-- 제목 남은 글자 수 --%>
 								<script>
-								    var text_max = 4000;
-										 $('#textarea_feedback').html(text_max + ' 글자 남음');
+										var title_max = 50;
+										 $('#title_feedback').html(title_max + ' 글자 남음');
+
+										$('#post_title').keyup(function() {
+												var title_length = $('#post_title').val().length;
+												var title_remaining = title_max - title_length;
+
+												$('#title_feedback').html(title_remaining + ' 글자 남음');
+										});
+								</script>
+
+								<%-- 내용 남은 글자 수 --%>
+								<script>
+								    var content_max = 4000;
+										 $('#content_feedback').html(content_max + ' 글자 남음');
 
 								    $('#summernote').keyup(function() {
-								        var text_length = $('#summernote').val().length;
-								        var text_remaining = text_max - text_length;
+								        var content_length = $('#summernote').val().length;
+								        var content_remaining = content_max - content_length;
 
-								        $('#textarea_feedback').html(text_remaining + ' 글자 남음');
+								        $('#content_feedback').html(content_remaining + ' 글자 남음');
 								    });
 								</script>
 

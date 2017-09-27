@@ -48,6 +48,11 @@ body {
   border: 3px skyblue solid;
 }
 
+#title_feedback{
+  font-size: 18px;
+  float: right;
+}
+
 #post_categories {
   display: inline-block;
   padding: 20px;

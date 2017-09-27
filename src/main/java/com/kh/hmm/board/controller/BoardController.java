@@ -63,6 +63,7 @@ public class BoardController
 		if(list != null)
 		{
 			model.addAttribute("list", list);
+			model.addAttribute("dis",dis);
 		}		
 		
 		if(dis==0) rturn="index";

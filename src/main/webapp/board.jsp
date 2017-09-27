@@ -79,7 +79,7 @@
 	
 	function checkWrite()
 	{
-			location.href="boardcode.do";
+			location.href="boardcode.do?dis=${dis}";
 	}
 	
 </script>

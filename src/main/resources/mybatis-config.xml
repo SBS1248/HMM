@@ -20,6 +20,9 @@
 		<typeAlias type="com.kh.hmm.newTech.model.vo.Conlist" alias="Conlist" />
 		<typeAlias type="com.kh.hmm.newTech.model.vo.Prolist" alias="Prolist" />
 		<typeAlias type="com.kh.hmm.newTech.model.vo.Weeksubject" alias="Weeksubject" />
+		
+		
+		<typeAlias type="com.kh.hmm.bw.model.vo.Service" alias="Service"/>
 	</typeAliases>
 
 	<mappers>
@@ -29,5 +32,6 @@
 		<mapper resource="mappers/attachfile-mapper.xml" />
 		<mapper resource="mappers/item-mapper.xml" />
 		<mapper resource="mappers/weeksubject-mapper.xml" />
+		<mapper resource="mappers/service-mapper.xml"	/>
 	</mappers>
 </configuration>

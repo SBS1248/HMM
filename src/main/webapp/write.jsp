@@ -23,7 +23,9 @@
 	<input type="hidden" name="bcode" value="${bcode }">
 	<input type="hidden" name="writerid" value="${member.id }">
 
-	<div id="the_post_title">제목&nbsp;&nbsp;&nbsp;<input id="post_title" type="text" name="title"></input></div>
+	<div id="the_post_title">제목&nbsp;&nbsp;&nbsp;
+		<input id="post_title" type="text" name="title"></input>
+	</div>
 	<%-- 글쓴이 아이디 숨김 --%>
 	<span style="display:none">${sessionScope.member.id }</span>
 	<div id="post_categories">
@@ -45,7 +47,7 @@
 					</select>
 			</c:if>
 		</div>
-
+	<div id="post_contents">
 	<!-- 섬머노트 부분 -->
 	<div class="sn">
 		<div class="content">
@@ -53,8 +55,10 @@
 		</div>
 	</div>
 
-<div id="fileUpload" class="dragAndDropDiv"><span id="fileUpload_text">업로드를 위해서는 <br>이 곳에 파일을 끌어다 놓으세요</span></div>
-
+<div id="fileUpload" class="dragAndDropDiv">
+	<span id="fileUpload_text">업로드를 위해서는 이 곳에 파일을 끌어다 놓으세요</span>
+</div>
+</div>
 	<div class="button_area">
 		<button type="button" id="wr">글 등록</button>&nbsp;&nbsp;&nbsp;&nbsp;
 		<button id="quit_post" onclick="goBack()">등록 취소</button>

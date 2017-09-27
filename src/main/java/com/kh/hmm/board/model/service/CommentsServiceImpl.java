@@ -29,7 +29,13 @@ public class CommentsServiceImpl implements CommentsService
 	{
 		return cDao.insertComments(c);
 	}
-
+	
+	@Override
+	public int insertUComments(Comments c)
+	{
+		return cDao.insertUComments(c);
+	}	
+	
 	@Override
 	public int updateComments(Comments c)
 	{
@@ -70,5 +76,6 @@ public class CommentsServiceImpl implements CommentsService
 	public int getCcode()
 	{
 		return cDao.getCcode();
-	}	
+	}
+
 }

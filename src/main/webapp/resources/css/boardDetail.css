@@ -6,15 +6,11 @@
 #EFECCA
 #046380
 #002F2F
-
-#deeaee
-#618685;
-#c94c4c;
 */
 
 
 html body {
-  background-color: #deeaee;
+  background-color: #EFECCA;
 }
 
 .boardDetail_area{
@@ -142,11 +138,17 @@ html body {
   width: 100%;
 }
 
-.comments {
+.comments, #newcomments, #newRecomment, .recomments{
   margin-bottom: 20px;
   background-color: white;
   height: auto;
 }
+
+.recomments
+{
+	padding-left:20px;
+}
+
 
 .comments-heading{
   height: 50px;

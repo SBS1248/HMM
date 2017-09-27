@@ -48,7 +48,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public boolean send(String subject, String text, String from, String to, String filePath) {
-		// javax.mail.internet.MimeMessage
 		MimeMessage message = javaMailSender.createMimeMessage();
 
 		try {
@@ -58,14 +57,6 @@ public class MemberServiceImpl implements MemberService {
 			helper.setText(text, true);
 			helper.setFrom(from);
 			helper.setTo(to);
-
-			// 첨부 파일 처리
-			if (filePath != null) {
-				File file = new File(filePath);
-				if (file.exists()) {
-					helper.addAttachment(file.getName(), new File(filePath));
-				}
-			}
 
 			javaMailSender.send(message);
 			return true;

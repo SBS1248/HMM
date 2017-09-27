@@ -46,6 +46,11 @@
 		<include refid="boardTemplate"/>
 	</select>
  	
+ 	<select id="selectSearchBoardList" resultMap="boardMap">
+ 	<include refid="boardTemplate"/>
+ 	where UPPER(A.TITLE) like '%#{keyword}%';
+ 	</select>
+ 	
  	<select id="selectBoardList" resultMap="boardMap" parameterType="_int">
 		<include refid="boardTemplate"/>
 		WHERE A.DISTINGUISH=#{dis}

@@ -29,21 +29,33 @@
 									<span class="glyphicon glyphicon-envelope"></span>
 									jhlee90909@gmail.com</p>
 							</div>
+							<form action="bwlist.do" method="POST">
+						
 							<div class="col-sm-7 slideanim">
 								<div class="row">
 									<div class="col-sm-6 form-group">
-										<input class="form-control" id="name" name="name" placeholder="성함" type="text" required></div>
-										<div class="col-sm-6 form-group">
-											<input class="form-control" id="email" name="email" placeholder="이메일 주소" type="email" required></div>
+									<c:if test="${member eq null }">
+										<input class="form-control" id="name" name="sername" placeholder="성함" type="text" required>
+										</c:if>
+										<c:if test="${member ne null }">
+										<input class="form-control" id="name" name="sername" value="${member.id}" placeholder="성함" type="text" readonly="readonly">
+										</c:if>
 										</div>
-										<textarea class="form-control" id="comments" name="comments" placeholder="남기실 말씀" rows="5"></textarea>
+										<div class="col-sm-6 form-group">
+											<input class="form-control" id="email" name="seradd" value="wkdgma91@gmail.com" placeholder="이메일 주소" type="email" readonly="readonly">
+											</div>									
+										</div>
+										<input class="form-control" id="title" name="sertitle" placeholder="제목" type="text" style="width: 49%">
+										<br>
+										<textarea class="form-control" id="comments" name="sercontent" placeholder="남기실 말씀" rows="5"></textarea>
 										<br>
 											<div class="row">
 												<div class="col-sm-12 form-group">
-													<button class="btn btn-default pull-right" type="submit">전송하기</button>
+													 <button class="btn btn-default pull-right" type="submit">전송하기</button>
 												</div>
 											</div>
 										</div>
+										</form>
 									</div>
 								</div>
 

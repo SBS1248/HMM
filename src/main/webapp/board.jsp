@@ -141,8 +141,7 @@
 							<thead>
 								<tr>
 									<th>글번호</th>
-									<th
-										style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">제목</th>
+									<th style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">제목</th>
 									<th>카테고리</th>
 									<th>작성자</th>
 									<th>추천 점수</th>

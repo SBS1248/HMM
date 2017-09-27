@@ -5,11 +5,16 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="icon" href="resources/img/hmm.JPG" type="image/gif"	sizes="32x16">
+<link rel="icon" href="resources/img/hmm.JPG" type="image/gif"
+	sizes="32x16">
 <link href="resources/css/header.css" rel="stylesheet" type="text/css">
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 
 <%-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -20,6 +25,15 @@
 		location.href = "updateProfile.do";
 	}
 
+	function checkLogin() {
+		var member = '${sessionScope.member}';
+		if (member == '') {
+			alert("로그인 후 이용해 주세요");
+			$('#loginModal').modal('show');
+		} else {
+			location.href = "itemLists.do";
+		}
+	}
 </script>
 
 <%@ include file="WEB-INF/views/member/login.jsp"%>
@@ -37,23 +51,25 @@
 		<nav class="navbar navbar-fixed-top topnav" role="navigation">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<button id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle"></button>
+					<button id="menu-toggle" href="#"
+						class="glyphicon glyphicon-align-justify btn-menu toggle"></button>
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 
 					<ul class="nav navbar-nav">
 						<!-- 홈페이지 로고 -->
-						<li><button onclick="location.href='index.jsp'" id="home_logo">Hmm</button></li>
+						<li><button onclick="location.href='index.jsp'"
+								id="home_logo">Hmm</button></li>
 						<!-- 로그인 관련 메뉴 및 모달 -->
 						<c:choose>
 							<c:when test="${null eq member }">
 								<ul class="nav navbar-nav">
-									<li data-toggle="modal" data-target="#loginModal" id="header_login"><a
-										style="cursor: pointer"> <span
+									<li data-toggle="modal" data-target="#loginModal"
+										id="header_login"><a style="cursor: pointer"> <span
 											class="glyphicon glyphicon-log-in"></span> 로그인
 									</a></li>
-									<li data-toggle="modal" data-target="#insertModal" id="header_insert"><a
-										style="cursor: pointer"> <span
+									<li data-toggle="modal" data-target="#insertModal"
+										id="header_insert"><a style="cursor: pointer"> <span
 											class="glyphicon glyphicon-user"></span> 회원가입
 									</a></li>
 								</ul>
@@ -64,8 +80,9 @@
 									<li onclick="profileUpdate();"><a href="#"> <span
 											class="glyphicon glyphicon-user"> ${member.id} </span>
 									</a></li>
-									<li data-toggle="modal" data-target="#myModal"><a href="logout.do"> <span
-											class="glyphicon glyphicon-log-in"></span> 로그아웃
+									<li data-toggle="modal" data-target="#myModal"><a
+										href="logout.do"> <span class="glyphicon glyphicon-log-in"></span>
+											로그아웃
 									</a></li>
 								</ul>
 							</c:when>
@@ -93,8 +110,8 @@
 				<li><a href="boardLists.do?dis=2"> <span
 						class="glyphicon glyphicon-question-sign"></span>&nbsp;&nbsp;Q & A
 				</a></li>
-				<li><a href="itemLists.do"> <span
-						class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp; 캐쉬샵
+				<li><a onclick="checkLogin()" style="cursor:pointer"> <span
+						class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp; 따루샵
 				</a></li>
 
 				<li><a href="#"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;

@@ -18,7 +18,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>CashShop</title>
+<title>따루샵</title>
 <style type="text/css">
 td, tr {
 	border: 1px solid black;
@@ -45,8 +45,8 @@ td, tr {
 										//좌우 값을 설정하기 위한 함수
 										function resetXPosition() {
 											$screenSize = $('body').width(); // 화면크기
-											halfScreenSize = $screenSize
-											/* /2;/ / 화면의반 */
+											halfScreenSize = $screenSize/2;
+											/*  / 화면의반 */
 											xPosition = halfScreenSize + leftOffet;
 											if ($screenSize < pageWidth)
 												xPosition = leftMargin;

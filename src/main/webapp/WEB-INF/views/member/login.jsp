@@ -2,13 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href="resources/css/login.css" rel="stylesheet" type="text/css">
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-
-<%-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --%>
-
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id"
 	content="419809006981-bkqqk1p2e3bhevtice98fcc9efo5fhkp.apps.googleusercontent.com">
@@ -38,7 +35,8 @@
 					잊으셨나요?
 				</span>
 				<div class="modal-footer">
-					<button type="button" id="cancelbtn" data-dismiss="modal">창 닫기</button>
+					<button type="button" id="cancelbtn" data-dismiss="modal">창
+						닫기</button>
 				</div>
 			</div>
 		</div>
@@ -116,7 +114,7 @@
 		console.log('Image URL: ' + profile.getImageUrl());
 		console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 		var email = profile.getEmail();
-		var id = email.substring(0,email.lastIndexOf('@'));
+		var id = email.substring(0, email.lastIndexOf('@'));
 
 		var member = {
 			"id" : id,

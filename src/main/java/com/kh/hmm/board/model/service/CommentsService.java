@@ -24,4 +24,6 @@ public interface CommentsService
 	void creport(int ccode, String reporter);
 
 	int getCcode();
+
+	int insertUComments(Comments c);
 }

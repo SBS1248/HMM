@@ -45,6 +45,11 @@
 		VALUES(#{ccode},#{content},#{writerid},SYSDATE,1,NULL,#{bcode})
 	</insert>
 	
+	<insert id="insertUComments" parameterType="Comments">
+		INSERT INTO COMMENTS
+		VALUES(#{ccode},#{content},#{writerid},SYSDATE,2,#{upper},#{bcode})
+	</insert>
+	
 	<update id="cgoodrecommendation" parameterType="_int">
 		UPDATE COMMENTSPOINT 
 		SET GOOD=GOOD+1,CAL=CAL+3

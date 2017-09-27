@@ -73,4 +73,9 @@ public class CommentsDao
 	{
 		return sqlSession.selectOne("getCcode");
 	}
+
+	public int insertUComments(Comments c)
+	{
+		return sqlSession.insert("insertUComments",c);
+	}
 }

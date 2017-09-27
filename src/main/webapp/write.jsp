@@ -51,7 +51,8 @@
 											<!-- 섬머노트 부분 -->
 											<div class="sn">
 												<div class="content">
-													<textarea id="summernote" name="content" maxlength="4000"></textarea><div id="content_feedback"></div>
+													<textarea id="summernote" name="content" maxlength="4000"></textarea>
+													<div id="content_feedback"></div>
 												</div>
 											</div>
 
@@ -77,27 +78,49 @@
 								<%-- 제목 남은 글자 수 --%>
 								<script>
 										var title_max = 75;
-										 $('#title_feedback').html(title_max + ' 글자 남음');
+										 $('#title_feedback').html(title_max + ' 바이트 남음');
 
 										$('#post_title').keyup(function() {
 												var title_length = $('#post_title').val().length;
-												var title_remaining = title_max - title_length;
 
-												$('#title_feedback').html(title_remaining + ' 글자 남음');
+												var title_byte=0;
+												for(var i=0;i<title_length;i++)
+												{
+													if(isHangul($('#post_title').val().charAt(i)))title_byte+=3;
+													else title_byte+=1;
+												}
+												var title_remaining = title_max - title_byte;
+												$('#title_feedback').html(title_remaining + ' 바이트 남음');
 										});
+
+										function isHangul(string){
+											check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+											return check.test(string);
+										}
 								</script>
 
 								<%-- 내용 남은 글자 수 --%>
 								<script>
-								    var content_max = 4000;
-										 $('#content_feedback').html(content_max + ' 글자 남음');
+								var content_max = 4000;
+								 $('#content_feedback').html(content_max + ' 바이트 남음');
 
-								    $('#summernote').keyup(function() {
-								        var content_length = $('#summernote').val().length;
-								        var content_remaining = content_max - content_length;
+								$('#summernote').keyup(function() {
+										var content_length = $('#summernote').val().length;
 
-								        $('#content_feedback').html(content_remaining + ' 글자 남음');
-								    });
+										var content_byte=0;
+										for(var i=0;i<content_length;i++)
+										{
+											if(isHangul($('#summernote').val().charAt(i)))content_byte+=3;
+											else content_byte+=1;
+										}
+										var content_remaining = content_max - content_byte;
+										$('#content_feedback').html(content_remaining + ' 바이트 남음');
+								});
+
+								function isHangul(string){
+									check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+									return check.test(string);
+								}
 								</script>
 
 								<script>

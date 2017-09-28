@@ -24,7 +24,9 @@
 				<div id="the_post_title">제목&nbsp;&nbsp;&nbsp;
 					<input id="post_title" type="text" name="title" maxlength="100" value="${board.title }"></input>
 					<div id="title_feedback"></div>
+
 					<button id="boardDelete">글 삭제</button>
+
 				</div>
 				
 				<%-- 글쓴이 아이디 숨김 --%>
@@ -333,8 +335,6 @@
 				}
 			});			
 		}
-		
-		
 	</script>
 
 	<script>
@@ -347,6 +347,7 @@
 		});
 	});
 	</script>
+
 	<script type="text/javascript">
 		$(function(){
 			$('#boardDelete').click(function(){

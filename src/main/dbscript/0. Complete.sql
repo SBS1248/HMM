@@ -1,3 +1,4 @@
+
 DROP TABLE MEMBER CASCADE CONSTRAINTS;
 DROP TABLE ITEM CASCADE CONSTRAINTS;
 DROP TABLE PURCHASEDITEM CASCADE CONSTRAINTS;
@@ -561,4 +562,5 @@ insert into item values(ITEM_SEQ.NEXTVAL, 'bg6',30,6,'resources/img/icon/6.borde
 insert into item values(ITEM_SEQ.NEXTVAL, 'bg7',30,6,'resources/img/icon/6.border/bg7.gif',250);
 insert into item values(ITEM_SEQ.NEXTVAL, 'bg8',30,6,'resources/img/icon/6.border/bg8.gif',250);
 insert into item values(ITEM_SEQ.NEXTVAL, 'bg9',30,6,'resources/img/icon/6.border/bg9.gif',250);
+
 COMMIT;

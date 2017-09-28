@@ -51,7 +51,7 @@
 										<br>
 											<div class="row">
 												<div class="col-sm-12 form-group">
-													 <button class="btn btn-default pull-right" type="submit">전송하기</button>
+													 <button id="footer_submit" class="btn btn-default pull-right" type="submit">전송하기</button>
 												</div>
 											</div>
 										</div>

@@ -80,10 +80,7 @@
 	
 	<update id="updateBoard" parameterType="Board">
 		UPDATE BOARD 
-		SET (	
-				TITLE=#{title},CONTENT=#{content},DISTINGUISH=#{distinguish},
-				WRITERID=#{writerid},POSTDATE=#{postdate},ISDELETE=#{isdelete},HASFILE=#{hasfile}
-			)		
+		SET TITLE=#{title},CONTENT=#{content},POSTDATE=SYSDATE,HASFILE=NULL
 		WHERE BCODE=#{bcode}
 	</update>
 	

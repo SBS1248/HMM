@@ -84,6 +84,7 @@ public class BoardDao
 
 	public int write(Board b) {
 		
+		System.out.println(b+"in wirte in Dao");
 		return sqlSession.insert("writeBoard",b);
 	}	
 	

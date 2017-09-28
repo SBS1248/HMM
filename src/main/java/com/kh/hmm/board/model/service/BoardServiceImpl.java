@@ -70,16 +70,9 @@ public class BoardServiceImpl implements BoardService
 	@Override
 	public int writeService(Board b) 
 	{	
-		
 		return bDao.write(b);
 	}
 
-/*	@Override
-	public int writeService(Board b) {
-
-		return bDao.write(b);
-	}
-*/
 	@Override
 	public void recommendation(String recom, int bcode)
 	{

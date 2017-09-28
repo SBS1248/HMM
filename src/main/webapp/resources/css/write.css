@@ -171,7 +171,7 @@ body {
 	margin-right: 5px;
 }
 
-.abort {
+.abort, .fcancle{
 	background-color: #c94c4c;
   border: none;
 	border-radius: 5px;

@@ -31,7 +31,7 @@
 						</script>
 					</head>
 
-					<body onload="move();move2();participants_num1();participants_num2();">
+					<body onload="move();move2();">
 						<%@ include file="/header.jsp"%>
 
 						<h1 class="title">9월 3주차 신기술 찬/반 투표<br>객체지향 프로그래밍 VS 절차지향 프로그래밍, 무엇이 더 나을까?</h1>
@@ -45,7 +45,7 @@
 									<h3 class="option-label">형식보다는 실용성.<br>
 											객체지향 프로그래밍이 곧 미래이다.
 											<span class="count" id="chart_on1"></span><br>
-											<span id="head_counts1"></span>
+											<span class="head_counts">76명</span>
 										</h3>
 									</div>
 									<div class="the_vs_ball_area">
@@ -58,7 +58,7 @@
 										<h3 class="option-label">물이 위에서 아래로 흐르듯이,<br>
 												순차지향 프로그래밍은 곧 자연의 이치이다.
 												<span class="count" id="chart_on2"></span><br>
-												<span id="head_counts2"></span>
+												<span class="head_counts">124명</span>
 											</h3>
 										</div>
 
@@ -70,12 +70,13 @@
 								</div>
 
 								<script>
+
 									function move() {
 										var elem = document.getElementById("on1");
 										var elem2 = document.getElementById("chart_on1");
 
 										var width = 0;
-										var id = setInterval(frame, 60);
+										var id = setInterval(frame, 30);
 										function frame() {
 											if (width >= 38) {
 												clearInterval(id);
@@ -87,27 +88,12 @@
 										}
 									}
 
-									function participants_num1() {
-										var elem = document.getElementById("head_counts1");
-
-										var width = 0;
-										var id = setInterval(frame, 30);
-										function frame() {
-											if (width >= 76) {
-												clearInterval(id);
-											} else {
-												width++;
-												elem.innerHTML = width * 1 + '명';
-											}
-										}
-									}
-
 									function move2() {
 										var elem = document.getElementById("on2");
 										var elem3 = document.getElementById("chart_on2");
 
 										var width = 0;
-										var id = setInterval(frame, 60);
+										var id = setInterval(frame, 30);
 										function frame() {
 											if (width >= 62) {
 												clearInterval(id);
@@ -115,21 +101,6 @@
 												width++;
 												elem.style.width = width + '%';
 												elem3.innerHTML = width * 1 + '%';
-											}
-										}
-									}
-
-									function participants_num2() {
-										var elem = document.getElementById("head_counts2");
-
-										var width = 0;
-										var id = setInterval(frame, 30);
-										function frame() {
-											if (width >= 124) {
-												clearInterval(id);
-											} else {
-												width++;
-												elem.innerHTML = width * 1 + '명';
 											}
 										}
 									}

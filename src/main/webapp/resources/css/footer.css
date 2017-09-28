@@ -7,10 +7,6 @@
 #EFECCA
 #046380
 #002F2F
-
-#deeaee
-#618685;
-#c94c4c;
 */
 
 * {
@@ -26,16 +22,6 @@
   padding-left: 210px;
   border-bottom: 1px silver solid;
   margin-bottom: 0px;
-}
-
-.text-center{
-  padding: 20px;
-  font-size: 30px;
-}
-
-.col-sm-5{
-  padding: 20px;
-  font-size: 20px;
 }
 
 .bottomnav ul {
@@ -63,16 +49,4 @@
 }
 
 #contact input {
-}
-
-#footer_submit {
-  color: white;
-  background-color: #618685;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-}
-
-#footer_submit:hover {
-  color: gold;
 }

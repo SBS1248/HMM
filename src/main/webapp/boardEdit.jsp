@@ -324,7 +324,6 @@
 				url : "fileDelete.do?atcode="+atcode,
 				success : function()
 				{
-					alert('fileList'+atcode);
 					$('#fileList'+atcode).remove();
 				},
 				error : function(request,status,error)

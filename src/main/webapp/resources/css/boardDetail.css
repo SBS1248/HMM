@@ -174,12 +174,6 @@ html body {
   float: right;
 }
 
-#board_postpt{
-  float: right;
-  margin-top: 15px;
-  margin-right: 15px;
-}
-
 .comment_section{
   background-color: #002F2F;
   width: 100%;
@@ -191,6 +185,10 @@ html body {
   padding: 5px 10px;
   border: none;
   border-radius: 5px;
+}
+
+#newCArea {
+  width: 100%;
 }
 
 .comments, #newcomments, #newRecomment, .recomments{
@@ -260,19 +258,25 @@ html body {
 }
 
 #comment_edit{
-  background-color: #618685;
-  color : white;
+  width: 70px;
+  margin: auto;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
-.comment_point {
+.comment_edit_add{
   float: left;
-  margin: 5px;
-  padding: 10px;
 }
 
 .comment_rate {
   float: right;
-  margin: 5px;
+}
+
+.comment_rate button{
+  width: 70px;
+  margin: auto;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 .comment_rate_btn{
@@ -282,6 +286,12 @@ html body {
 .comment_rate_btn:hover{
   transform: scale(1.2);
 }
+
+#comment_point {
+  margin-right: 10px;
+}
+
+
 
 
 #btn_good  {

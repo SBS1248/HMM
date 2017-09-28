@@ -7,6 +7,7 @@
 <!-- 회원수정 모달 -->
 <c:set var="job" value="${member.job }" scope="session" />
 <c:set var="photo" value="${member.photo }" scope="session" />
+<c:set var="quitDate" value="${member.quitdate}" scope="session" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -53,10 +54,16 @@
 	function validationDate() {
 		var x = document.updateForm.password.value;
 		var y = document.updateForm.passwordConfirm.value;
-		if (x == y)
-			$('#updateForm').submit();
-		else
-			alert("비밀번호를 한번 더 확인해주세요!!");
+		var cfm = confirm("수정 하시겠습니까?");
+		if (cfm) {
+			if (x == y)
+				$('#updateForm').submit();
+			else
+				alert("비밀번호를 한번 더 확인해주세요!!");
+		} else {
+			return;
+		}
+
 	}
 
 	function validationFile() {
@@ -71,9 +78,16 @@
 	}
 
 	function deleteMember() {
-		location.href = "deleteMember.do";
+		var cfm = confirm("회원 탈퇴 하시겠습니까?");
+		if (cfm) {
+			location.href = "deleteMember.do";
+		} else {
+			return;
+		}
 	}
 </script>
+
+<title>회원 정보 수정</title>
 </head>
 
 

@@ -118,13 +118,14 @@ public class MemberDao {
 
 	public Member deleteMember(String memberId) {
 		Member member = null;
-		int result = sqlSession.update("DeleteMember", memberId);
-		System.out.println("result : " + result);
-		if (result == 1) {
-			member = sqlSession.selectOne("chkDup", memberId);
-		} else {
-			member = null;
+		String id = memberId;
+		int result = sqlSession.update("DeleteMember", id);
+		
+		if (result >= 1) {
+			member = sqlSession.selectOne("memberInfo", id);
 		}
+		
+		System.out.println("Delete DAO Member : "+member);
 
 		return member;
 	}

@@ -17,9 +17,18 @@ public class Member {
 	private int ddaru;
 	private int report;
 	private int recompoint;
+
+	public Date getQuitdate() {
+		return quitdate;
+	}
+
+	public void setQuitdate(Date quitdate) {
+		this.quitdate = quitdate;
+	}
+
 	private String job;
 	private Date enrolldate;
-	private Date quitedate;
+	private Date quitdate;
 	private MultipartFile uploadFile;
 
 	public Member() {
@@ -27,8 +36,7 @@ public class Member {
 
 	public Member(int membercode, String id, String password, String email, String photo, int medal, int havmedal,
 			long exp, int chash, int ddaru, int report, int recompoint, String job, Date enrolldate, Date quitedate,
-			MultipartFile uploadFile)
-	{
+			MultipartFile uploadFile) {
 		super();
 		this.membercode = membercode;
 		this.id = id;
@@ -44,179 +52,136 @@ public class Member {
 		this.recompoint = recompoint;
 		this.job = job;
 		this.enrolldate = enrolldate;
-		this.quitedate = quitedate;
+		this.quitdate = quitdate;
 		this.uploadFile = uploadFile;
 	}
 
-	public int getMembercode()
-	{
+	public int getMembercode() {
 		return membercode;
 	}
 
-	public void setMembercode(int membercode)
-	{
+	public void setMembercode(int membercode) {
 		this.membercode = membercode;
 	}
 
-	public String getId()
-	{
+	public String getId() {
 		return id;
 	}
 
-	public void setId(String id)
-	{
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public String getPassword()
-	{
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password)
-	{
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public String getEmail()
-	{
+	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email)
-	{
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public String getPhoto()
-	{
+	public String getPhoto() {
 		return photo;
 	}
 
-	public void setPhoto(String photo)
-	{
+	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
 
-	public int getMedal()
-	{
+	public int getMedal() {
 		return medal;
 	}
 
-	public void setMedal(int medal)
-	{
+	public void setMedal(int medal) {
 		this.medal = medal;
 	}
 
-	public int getHavmedal()
-	{
+	public int getHavmedal() {
 		return havmedal;
 	}
 
-	public void setHavmedal(int havmedal)
-	{
+	public void setHavmedal(int havmedal) {
 		this.havmedal = havmedal;
 	}
 
-	public long getExp()
-	{
+	public long getExp() {
 		return exp;
 	}
 
-	public void setExp(long exp)
-	{
+	public void setExp(long exp) {
 		this.exp = exp;
 	}
 
-	public int getChash()
-	{
+	public int getChash() {
 		return chash;
 	}
 
-	public void setChash(int chash)
-	{
+	public void setChash(int chash) {
 		this.chash = chash;
 	}
 
-	public int getDdaru()
-	{
+	public int getDdaru() {
 		return ddaru;
 	}
 
-	public void setDdaru(int ddaru)
-	{
+	public void setDdaru(int ddaru) {
 		this.ddaru = ddaru;
 	}
 
-	public int getReport()
-	{
+	public int getReport() {
 		return report;
 	}
 
-	public void setReport(int report)
-	{
+	public void setReport(int report) {
 		this.report = report;
 	}
 
-	public int getRecompoint()
-	{
+	public int getRecompoint() {
 		return recompoint;
 	}
 
-	public void setRecompoint(int recompoint)
-	{
+	public void setRecompoint(int recompoint) {
 		this.recompoint = recompoint;
 	}
 
-	public String getJob()
-	{
+	public String getJob() {
 		return job;
 	}
 
-	public void setJob(String job)
-	{
+	public void setJob(String job) {
 		this.job = job;
 	}
 
-	public Date getEnrolldate()
-	{
+	public Date getEnrolldate() {
 		return enrolldate;
 	}
 
-	public void setEnrolldate(Date enrolldate)
-	{
+	public void setEnrolldate(Date enrolldate) {
 		this.enrolldate = enrolldate;
 	}
 
-	public Date getQuitedate()
-	{
-		return quitedate;
-	}
-
-	public void setQuitedate(Date quitedate)
-	{
-		this.quitedate = quitedate;
-	}
-
-	public MultipartFile getUploadFile()
-	{
+	public MultipartFile getUploadFile() {
 		return uploadFile;
 	}
 
-	public void setUploadFile(MultipartFile uploadFile)
-	{
+	public void setUploadFile(MultipartFile uploadFile) {
 		this.uploadFile = uploadFile;
 	}
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return "Member [membercode=" + membercode + ", id=" + id + ", password=" + password + ", email=" + email
 				+ ", photo=" + photo + ", medal=" + medal + ", havmedal=" + havmedal + ", exp=" + exp + ", chash="
 				+ chash + ", ddaru=" + ddaru + ", report=" + report + ", recompoint=" + recompoint + ", job=" + job
-				+ ", enrolldate=" + enrolldate + ", quitedate=" + quitedate + ", uploadFile=" + uploadFile + "]";
+				+ ", enrolldate=" + enrolldate + ", quitdate=" + quitdate + ", uploadFile=" + uploadFile + "]";
 	}
 
-	
-	
 }

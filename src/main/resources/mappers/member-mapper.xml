@@ -105,7 +105,8 @@
 	<update id="buyMedal">
 		UPDATE MEMBER
 		SET HAVMEDAL=HAVMEDAL+#{medal}
-		WHERE MEMBERCODE=#{membercode}
+		WHERE
+		MEMBERCODE=#{membercode}
 	</update>
 
 	<insert id="updateDDARU">
@@ -114,11 +115,16 @@
 		WHERE
 		MEMBERCODE=#{membercode}
 	</insert>
-
-		<update id="DeleteMember">
+	
+	<update id="DeleteMember">
 		UPDATE MEMBER
 		SET QUITDATE = SYSDATE+3
 		WHERE
-		ID = #{memberId}
+		ID = #{id}
 	</update>
+	
+	<select id="memberInfo" resultType="Member">
+		SELECT *
+		FROM MEMBER WHERE ID = #{id}
+	</select>
 </mapper>

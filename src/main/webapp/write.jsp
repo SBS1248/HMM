@@ -29,9 +29,10 @@
 
 			<input type="hidden" name="bcode" value="${bcode }"> <input
 				type="hidden" name="writerid" value="${member.id }">
+				<%-- 120바이트가 깨지지 않고 적절함 --%>
 			<div id="the_post_title">
 				제목&nbsp;&nbsp;&nbsp; <input id="post_title" type="text" name="title"
-					maxlength="200"></input>
+					maxlength="120"></input>
 				<div id="title_feedback"></div>
 			</div>
 			<%-- 글쓴이 아이디 숨김 --%>
@@ -86,7 +87,7 @@
 
 	<%-- 제목 남은 글자 수 --%>
 	<script>
-		var title_max = 200;
+		var title_max = 120;
 		$('#title_feedback').html(title_max + ' 바이트 남음');
 
 		$('#post_title').keyup(function() {

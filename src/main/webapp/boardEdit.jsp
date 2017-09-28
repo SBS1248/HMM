@@ -25,14 +25,14 @@
 					<input id="post_title" type="text" name="title" maxlength="100" value="${board.title }"></input>
 					<div id="title_feedback"></div>
 
-					<button id="boardDelete">글 삭제</button>
+
 
 				</div>
 
 				<%-- 글쓴이 아이디 숨김 --%>
 				<span style="display:none">${sessionScope.member.id }</span>
 				<div id="post_categories">
-					<span id="current_category">${board.code.name  } &nbsp;게시판</span>
+					<button id="boardDelete">글 삭제</button><span id="current_category">${board.code.name  } &nbsp;게시판</span>
 				</div>
 
 				<div id="post_contents">
@@ -48,11 +48,6 @@
 							</c:forEach>
 					</c:if>
 
-					<div id="fileUpload" class="dragAndDropDiv">
-						<span id="fileUpload_text">추가 업로드를 위해서는 이 곳에 파일을 끌어다 놓으세요</span>
-					</div>
-				</div>
-
 				<!-- 섬머노트 부분 -->
 					<div class="sn">
 						<div class="content">
@@ -60,6 +55,11 @@
 							<div id="content_feedback"></div>
 						</div>
 					</div>
+
+					<div id="fileUpload" class="dragAndDropDiv">
+						<span id="fileUpload_text">추가 업로드를 위해서는 이 곳에 파일을 끌어다 놓으세요</span>
+					</div>
+				</div>
 
 				<div class="button_area">
 					<button type="button" id="beditComplete">글 수정</button>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -75,7 +75,7 @@
 
 	<%-- 제목 남은 글자 수 --%>
 	<script>
-		var title_max = 75;
+		var title_max = 120;
 		$('#title_feedback').html(title_max + ' 바이트 남음');
 
 		$('#post_title').keyup(function() {
@@ -342,7 +342,7 @@
 	$(function () {
 		$('#summernote').summernote({
 			focus: true, // set focus to editable area after initializing summernote
-			minHeight: null, // 최소 높이값(null은 제한 없음)
+			minHeight: 300, // 최소 높이값(null은 제한 없음)
 			maxHeight: null, // 최대 높이값(null은 제한 없음)
 			shortcuts: false
 		});

@@ -83,7 +83,7 @@
 	
 	<update id="updateBoard" parameterType="Board">
 		UPDATE BOARD 
-		SET TITLE=#{title},CONTENT=#{content},POSTDATE=SYSDATE,HASFILE=NULL
+		SET TITLE=#{title},CONTENT=#{content},POSTDATE=SYSDATE,HASFILE=#{hasfile}
 		WHERE BCODE=#{bcode}
 	</update>
 	

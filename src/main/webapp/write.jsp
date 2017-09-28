@@ -86,7 +86,7 @@
 
 	<%-- 제목 남은 글자 수 --%>
 	<script>
-		var title_max = 75;
+		var title_max = 120;
 		$('#title_feedback').html(title_max + ' 바이트 남음');
 
 		$('#post_title').keyup(function() {
@@ -207,7 +207,7 @@
 
 							var j = 1;
 							var alength = 0;
-							$('#wr').click(function() 
+							$('#wr').click(function()
 							{
 								var board = new Object();
 								board.bcode = $('input[name=bcode]').val();
@@ -222,13 +222,13 @@
 									alert("제목이 비어있습니다.");
 									return;
 								}
-								
+
 								$.ajax({
 									type : "POST",
 									url : "write.do",
 									data : board,
 									success : function() {
-										if (fileArray.length == 0) 
+										if (fileArray.length == 0)
 										{
 											window.location.href = "boardOne.do?bcode=${bcode}";
 										}
@@ -250,12 +250,12 @@
 							function createStatusbar(obj) {
 
 								rowCount++;
-								
+
 								var row = "odd";
 								if (rowCount % 2 == 0)
 									row = "even";
 								this.statusbar = $("<div class='statusbar " + row +"' id='"+num+"'></div>");
-								
+
 								this.filename = $(
 										"<div class='filename'></div>")
 										.appendTo(this.statusbar);
@@ -302,13 +302,13 @@
 										sb.hide();
 									});
 								}
-								
+
 								this.fcancle.click(function(){
 									fileArray.splice($(this).parent().attr('id'),1);
 									alength--;
 									$(this).parent().remove();
 								});
-								
+
 							}
 
 							function sendFileToServer(formData, status) {
@@ -369,7 +369,7 @@
 		$(function() {
 			$('#summernote').summernote({
 				focus : true, // set focus to editable area after initializing summernote
-				minHeight : null, // 최소 높이값(null은 제한 없음)
+				minHeight : 300, // 최소 높이값(null은 제한 없음)
 				maxHeight : null, // 최대 높이값(null은 제한 없음)
 				shortcuts : false
 			});

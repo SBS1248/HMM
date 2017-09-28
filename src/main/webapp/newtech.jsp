@@ -88,88 +88,81 @@
 
 </div>
 <div class="polls_footer">
-<div class="container">
-	<!-- 게시판 영역 -->
-	<div class="board_area">
-		<!-- 검색창, 검색 정렬들의 패널 -->
-		<div clas="board">
+  <div class="container">
+    <!-- 게시판 영역 -->
+    <div class="board_area">
+      <!-- 검색창, 검색 정렬들의 패널 -->
+      <div class="board">
 
-			<div class="board-heading">
+        <div class="board-heading">
 
-				<%-- 글쓰기 버튼 --%>
-				<div id="writebutton">
-					<button id="write" type="button" onclick="location.href='boardcode.do'">글쓰기</button>
-				</div>
+          <%-- 글쓰기 버튼 --%>
+          <div id="writebutton">
+            <button id="write" type="button" onclick="checkWrite()">글쓰기</button>
+          </div>
 
-				<%-- 검색바 --%>
-				<div id="search_bar">
-					<input type="text" name="search" placeholder="검색어를 입력하세요..">
-				</div>
+          <%-- 검색바 --%>
+          <div id="search_bar">
+            <input type="text" name="search" placeholder="검색어를 입력하세요..">
+          </div>
 
-						<%-- 게시글 정렬 --%>
-						<div class="sort_options">
-							<select class="selectpicker">
-								<option>최신순</option>
-								<option>인기높은순</option>
-								<option>김말순</option>
-								<option>떡튀순</option>
-							</select>
-						</div>
+          <%-- 게시글 정렬 --%>
+          <div class="sort_options">
+            <select class="selectpicker">
+              <option>최신순</option>
+              <option>인기높은순</option>
+              <option>김말순</option>
+              <option>떡튀순</option>
+            </select>
+          </div>
 
-				</div>
+        </div>
+        <div class="board-body">
+          <!-- 게시판 테이블 -->
+          <div class="hmm_table">
+            <table id="myTable">
+              <thead>
+                <tr>
+                  <th>글번호</th>
+                  <th>제목</th>
+                  <th>카테고리</th>
+                  <th>작성자</th>
+                  <th>추천 점수</th>
+                  <th>조회수</th>
+                  <th>작성일자</th>
+                </tr>
+              </thead>
+              <tbody>
+                <c:set var="num" value="1" />
+                <c:forEach var="l" items="${list }">
 
-				<div class="board-body">
-					<!-- 게시판 테이블 -->
-					<div class="hmm_table">
-						<table id="myTable">
-							<thead>
-								<tr>
-									<th>글번호</th>
-									<th style="white-space: nowrap; text-overflow:ellipsis; overflow:hidden">제목</th>
-									<th>카테고리</th>
-									<th>작성자</th>
-									<th>추천 점수</th>
-									<th>조회수</th>
-									<th>작성일자</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:set var="num" value="1"/>
-								<c:forEach var="l" items="${list }">
+                  <tr>
 
-									<tr>
+                    <td id="table_num">${num }</td>
+                    <c:set var="num" value="${num+1 }" />
+                    <td id="td_title"><a href="#"
+                      onclick="checkBoard(${l.bcode})">${l.title }<span
+                        id="reply_num">&nbsp;[${l.isdelete}]</span>
+                    </a></td>
+                    <td id="table_category">${l.code.name}</td>
+                    <td>
+                      <div class="profile">
+                        <a href="profile.jsp"> <img class="img-circle" src="#" />
+                        </a> ${l.writerid }
+                      </div>
+                    </td>
+                    <td id="table_point">${l.point.best*(5)+l.point.good*(3)+l.point.bad*(-3)+l.point.worst*(-5) }</td>
+                    <td id="table_viewcount">${l.point.viewnum }</td>
+                    <td id="table_date">${l.postdate }</td>
+                  </tr>
 
-										<td>${num }</td>
-										<c:set var="num" value="${num+1 }"/>
-										<td id="td_title">
-											<a onclick="viewcount(${l.bcode})" href="boardOne.do?bcode=${l.bcode}">${l.title }</a><span id="reply_num">&nbsp;[${l.isdelete}]</span>
-
-											<%-- <a onclick="viewcount(${l.bcode})" href="boardOne.do?bcode=${l.bcode}">${l.title }<span id="reply_num">&nbsp;[${l.isdelete}]</span>
-											</a> --%>
-										</td>
-
-										<td>${l.code.name}</td>
-										<td>
-											<div class="profile">
-												<a href="profile.jsp">
-													<img class="img-circle" src="#"/>
-												</a>
-												${l.writerid }
-											</div>
-										</td>
-										<td>${l.point.best*(5)+l.point.good*(3)+l.point.bad*(-3)+l.point.worst*(-5) }</td>
-										<td>${l.point.viewnum }</td>
-										<td>${l.postdate }</td>
-									</tr>
-
-								</c:forEach>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-</div>
-</div>
-	</body>
+                </c:forEach>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
 	</html>

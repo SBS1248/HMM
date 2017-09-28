@@ -99,7 +99,7 @@ CREATE TABLE BOARDCODE
 CREATE TABLE BOARD
 (
     BCODE NUMBER PRIMARY KEY,
-    TITLE VARCHAR2(75) NOT NULL,
+    TITLE VARCHAR2(120) NOT NULL,
     CONTENT  VARCHAR2(4000),
     DISTINGUISH  NUMBER NOT NULL,
     WRITERID  VARCHAR2(20) NOT NULL,
@@ -392,7 +392,7 @@ INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'자바스크립트 스코프 질문�
 INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'스프링 프로젝트 war로 만들어서 톰캣에 올리는데 오류가 납니다.','스프링 프로젝트 war로 만들어서 톰캣에 올리는데 오류가 납니다.',2,'user5',SYSDATE,NULL,NULL);
 INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'[질문수정]MySQL 날짜 비교하여 가장 최근값 가져오기','[질문수정]MySQL 날짜 비교하여 가장 최근값 가져오기',2,'user10',SYSDATE,NULL,NULL);
 INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'jsp 한글파일명 다운로드 질문입니다.','jsp 한글파일명 다운로드 질문입니다.',2,'user2',SYSDATE,NULL,NULL);
-INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ajax json에러 해결방법 도와주세요! (errorThrown: SyntaxError: Unexpected end of JSON input)','ajax json에러 해결방법 도와주세요! (errorThrown: SyntaxError: Unexpected end of JSON input)',2,'user4',SYSDATE,NULL,NULL);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ajax json에러 해결방법 도와주세요!','ajax json에러 해결방법 도와주세요!',2,'user4',SYSDATE,NULL,NULL);
 INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'ORA-01722: invalid number 에러 이해가 잘안됩니다.','ORA-01722: invalid number 에러 이해가 잘안됩니다.',2,'user7',SYSDATE,NULL,NULL);
 
 -- 신기술 게시판

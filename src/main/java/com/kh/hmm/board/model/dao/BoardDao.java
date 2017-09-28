@@ -64,7 +64,7 @@ public class BoardDao
 	
 	public int deleteBoard(int bcode) 
 	{
-		return sqlSession.delete("deleteBoard",bcode);
+		return sqlSession.update("deleteBoard",bcode);
 	}
 
 	public int checkBoard(BoardPoint point)

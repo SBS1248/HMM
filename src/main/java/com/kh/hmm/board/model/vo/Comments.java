@@ -11,13 +11,14 @@ public class Comments
 	private int lev;
 	private int upper;
 	private int bcode;
+	private String isdelete;
 	
 	private CommentsPoint point;
 	
 	public Comments() {}
 
 	public Comments(int ccode, String content, String writerid, Date postdate, int lev, int upper, int bcode,
-			CommentsPoint point)
+			String isdelete, CommentsPoint point)
 	{
 		super();
 		this.ccode = ccode;
@@ -27,6 +28,7 @@ public class Comments
 		this.lev = lev;
 		this.upper = upper;
 		this.bcode = bcode;
+		this.isdelete = isdelete;
 		this.point = point;
 	}
 
@@ -100,6 +102,16 @@ public class Comments
 		this.bcode = bcode;
 	}
 
+	public String getIsdelete()
+	{
+		return isdelete;
+	}
+
+	public void setIsdelete(String isdelete)
+	{
+		this.isdelete = isdelete;
+	}
+
 	public CommentsPoint getPoint()
 	{
 		return point;
@@ -114,8 +126,11 @@ public class Comments
 	public String toString()
 	{
 		return "Comments [ccode=" + ccode + ", content=" + content + ", writerid=" + writerid + ", postdate=" + postdate
-				+ ", lev=" + lev + ", upper=" + upper + ", bcode=" + bcode + ", point=" + point + "]";
+				+ ", lev=" + lev + ", upper=" + upper + ", bcode=" + bcode + ", isdelete=" + isdelete + ", point="
+				+ point + "]";
 	}
+
+	
 	
 	
 }

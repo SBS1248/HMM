@@ -12,6 +12,7 @@
 	 		<result column="LEV" property="lev"/>
 	 		<result column="UPPER" property="upper"/>
 	 		<result column="BCODE" property="bcode"/>
+	 		<result column="ISDELETE" property="isdelete"/>
 	 		<association property="point" javaType="CommentsPoint">
 	 			<id column="CCODE" property="ccode" />
 		 		<result column="GOOD" property="good"/>
@@ -42,12 +43,12 @@
 	
 	<insert id="insertComments" parameterType="Comments">
 		INSERT INTO COMMENTS
-		VALUES(#{ccode},#{content},#{writerid},SYSDATE,1,NULL,#{bcode})
+		VALUES(#{ccode},#{content},#{writerid},SYSDATE,1,NULL,#{bcode},NULL)
 	</insert>
 	
 	<insert id="insertUComments" parameterType="Comments">
 		INSERT INTO COMMENTS
-		VALUES(#{ccode},#{content},#{writerid},SYSDATE,2,#{upper},#{bcode})
+		VALUES(#{ccode},#{content},#{writerid},SYSDATE,2,#{upper},#{bcode},NULL)
 	</insert>
 	
 	<update id="updateComments" parameterType="Comments">
@@ -90,5 +91,11 @@
 		SELECT COMMENTS_SEQ.NEXTVAL
 		FROM DUAL
 	</select>
+	
+	<update id="deleteComments" parameterType="_int">
+		UPDATE COMMENTS
+		SET CONTENT='삭제된 댓글입니다.', ISDELETE='y'
+		WHERE CCODE=#{ccode}
+	</update>
 	
 </mapper>

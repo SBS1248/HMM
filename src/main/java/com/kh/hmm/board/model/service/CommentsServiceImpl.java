@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service;
 import com.kh.hmm.board.model.dao.CommentsDao;
 import com.kh.hmm.board.model.vo.Comments;
 import com.kh.hmm.board.model.vo.CommentsPoint;
-import com.kh.hmm.member.model.dao.MemberDao;
-import com.kh.hmm.member.model.vo.Member;
+
 
 @Service("commentsService")
 public class CommentsServiceImpl implements CommentsService
@@ -43,12 +42,6 @@ public class CommentsServiceImpl implements CommentsService
 	}
 
 	@Override
-	public int deletComments(Comments c)
-	{
-		return cDao.deleteComments(c);
-	}
-
-	@Override
 	public int checkComments(CommentsPoint point)
 	{
 		return cDao.checkComments(point);
@@ -76,6 +69,12 @@ public class CommentsServiceImpl implements CommentsService
 	public int getCcode()
 	{
 		return cDao.getCcode();
+	}
+
+	@Override
+	public int deletComments(int ccode)
+	{		
+		return cDao.deleteComments(ccode);
 	}
 
 }

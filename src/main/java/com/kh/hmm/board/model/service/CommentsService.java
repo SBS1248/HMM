@@ -15,7 +15,7 @@ public interface CommentsService
 	
 	int updateComments(Comments c);
 	
-	int deletComments(Comments c);
+	int deletComments(int ccode);
 	
 	int checkComments(CommentsPoint point);
 

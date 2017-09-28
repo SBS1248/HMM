@@ -72,6 +72,14 @@
 		}
 	}
 
+	function onEnterSearch()
+	{
+		var keyCode = window.event.keyCode;
+		var keyword = $('input[name=search]').val();
+		if (keyCode == 13) {
+			location.href="boardSearch.do?dis=0&keyword="+keyword;
+		}
+	}
 </script>
 </head>
 
@@ -100,7 +108,7 @@
 
 					<%-- 검색바 --%>
 					<div id="search_bar">
-						<input type="text" name="search" placeholder="검색어를 입력하세요..">
+						<input type="text" name="search" placeholder="검색어를 입력하세요.." onkeydown='javascript:onEnterSearch()'>
 					</div>
 
 					<%-- 게시글 정렬 --%>

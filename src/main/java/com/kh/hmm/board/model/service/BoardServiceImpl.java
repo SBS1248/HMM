@@ -1,6 +1,7 @@
 package com.kh.hmm.board.model.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -119,5 +120,10 @@ public class BoardServiceImpl implements BoardService
 	public String boardName(int dis)
 	{
 		return bDao.boardName(dis);
+	}
+	
+	@Override
+	public List<Board> selectSearchBoardList(int dis, String keyword) {
+		return bDao.selectSearchBoardList(dis,keyword);
 	}
 }

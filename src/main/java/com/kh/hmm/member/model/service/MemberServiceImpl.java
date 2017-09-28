@@ -138,4 +138,9 @@ public class MemberServiceImpl implements MemberService {
 	public int buyMedal(int membercode,int medal) {
 		return mDao.buyMedal(membercode,medal);
 	}
+	
+	@Override
+	public Member deleteMember(String memberId) {
+		return mDao.deleteMember(memberId);
+	}
 }

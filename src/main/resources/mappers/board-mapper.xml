@@ -3,90 +3,100 @@
 "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardMapper">
-	
- 	<resultMap id="boardMap" type="Board">
- 		<id column="BCODE" property="bcode" />
- 		<result column="TITLE" property="title"/>
- 		<result column="CONTENT" property="content"/>
- 		<result column="DISTINGUISH" property="distinguish"/>
- 		<result column="WRITERID" property="writerid"/>
- 		<result column="POSTDATE" property="postdate"/>
- 		<result column="ISDELETE" property="isdelete"/>
- 		<result column="HASFILE" property="hasfile"/>
- 		<association property="code" javaType="BoardCode">
- 			<id column="DISCODE" property="discode" />
- 			<result column="NAME" property="name"/>
- 		</association>
- 		<association property="point" javaType="BoardPoint">
- 			<id column="BCODE" property="bcode" />
-	 		<result column="VIEWNUM" property="viewnum"/>
-	 		<result column="BEST" property="best"/>
-	 		<result column="GOOD" property="good"/>
-	 		<result column="BAD" property="bad"/>
-	 		<result column="WORST" property="worst"/>
-	 		<result column="CAL" property="cal"/>
-	 		<result column="MEDAL" property="medal"/>
-	 		<result column="REPORT" property="report"/>
- 		</association>
- 	</resultMap>
- 	
- 	<sql id="boardTemplate">
-		SELECT A.BCODE,A.TITLE,A.CONTENT,A.DISTINGUISH,A.WRITERID,A.POSTDATE,<!-- A.ISDELETE, -->A.HASFILE,
-			   B.DISCODE,B.NAME,
-			   C.BCODE,C.VIEWNUM,C.BEST,C.GOOD,C.BAD,C.WORST,C.CAL,C.MEDAL,C.REPORT,
-			   (SELECT TO_CHAR(COUNT(*)) FROM COMMENTS D WHERE A.BCODE=D.BCODE) ISDELETE 
+
+	<resultMap id="boardMap" type="Board">
+		<id column="BCODE" property="bcode" />
+		<result column="TITLE" property="title" />
+		<result column="CONTENT" property="content" />
+		<result column="DISTINGUISH" property="distinguish" />
+		<result column="WRITERID" property="writerid" />
+		<result column="POSTDATE" property="postdate" />
+		<result column="ISDELETE" property="isdelete" />
+		<result column="HASFILE" property="hasfile" />
+		<association property="code" javaType="BoardCode">
+			<id column="DISCODE" property="discode" />
+			<result column="NAME" property="name" />
+		</association>
+		<association property="point" javaType="BoardPoint">
+			<id column="BCODE" property="bcode" />
+			<result column="VIEWNUM" property="viewnum" />
+			<result column="BEST" property="best" />
+			<result column="GOOD" property="good" />
+			<result column="BAD" property="bad" />
+			<result column="WORST" property="worst" />
+			<result column="CAL" property="cal" />
+			<result column="MEDAL" property="medal" />
+			<result column="REPORT" property="report" />
+		</association>
+	</resultMap>
+
+	<sql id="boardTemplate">
+		SELECT A.BCODE,A.TITLE,A.CONTENT,A.DISTINGUISH,A.WRITERID,A.POSTDATE,<!-- 
+			A.ISDELETE, -->
+		A.HASFILE,
+		B.DISCODE,B.NAME,
+		C.BCODE,C.VIEWNUM,C.BEST,C.GOOD,C.BAD,C.WORST,C.CAL,C.MEDAL,C.REPORT,
+		(SELECT TO_CHAR(COUNT(*)) FROM COMMENTS D WHERE A.BCODE=D.BCODE) ISDELETE
 		FROM BOARD A
-		JOIN BOARDCODE B 
+		JOIN BOARDCODE B
 		ON A.DISTINGUISH=B.DISCODE
 		JOIN BOARDPOINT C
 		ON A.BCODE=C.BCODE
 	</sql>
- 	
- 	<select id="selectAllBoardList" resultMap="boardMap">
-		<include refid="boardTemplate"/>
+
+	<select id="selectAllBoardList" resultMap="boardMap">
+		<include refid="boardTemplate" />
 		WHERE ISDELETE IS NULL
 	</select>
- 	
- 	<select id="selectSearchBoardList" resultMap="boardMap">
- 	<include refid="boardTemplate"/>
- 		where UPPER(A.TITLE) like '%#{keyword}%'
- 		AND ISDELETE IS NULL
- 	</select>
- 	
- 	<select id="selectBoardList" resultMap="boardMap" parameterType="_int">
-		<include refid="boardTemplate"/>
+
+	<select id="selectBoardList" resultMap="boardMap" parameterType="_int">
+		<include refid="boardTemplate" />
 		WHERE A.DISTINGUISH=#{dis}
 		<if test="_parameter==3">
-		AND A.POSTDATE BETWEEN (SELECT MAX(STARTDATE) FROM WEEKSUBJECT) AND (SELECT MAX(STARTDATE) FROM WEEKSUBJECT)+6
+			AND A.POSTDATE BETWEEN (SELECT MAX(STARTDATE) FROM WEEKSUBJECT) AND
+			(SELECT MAX(STARTDATE) FROM WEEKSUBJECT)+6
 		</if>
 		AND ISDELETE IS NULL
 	</select>
- 	 	
-	
-	<select id="selectBoardOne" resultMap="boardMap" parameterType="_int">
-		<include refid="boardTemplate"/>
-		WHERE A.BCODE=#{bcode}
+
+	<select id="selectSearchBoardList" resultMap="boardMap"
+		parameterType="hashmap">
+		<include refid="boardTemplate" />
+		WHERE (UPPER(A.TITLE) LIKE '%'||#{keyword1}||'%' OR UPPER(A.CONTENT)
+		LIKE '%'||#{keyword2}||'%') AND ISDELETE IS NULL
 	</select>
 	
+	<select id="selectSearchDisBoard" resultMap="boardMap" parameterType="hashmap">
+	<include refid="boardTemplate" />
+		WHERE (UPPER(A.TITLE) LIKE '%'||#{keyword1}||'%' OR UPPER(A.CONTENT)
+		LIKE '%'||#{keyword2}||'%') AND A.DISTINGUISH = #{dis} AND ISDELETE IS NULL
+	</select>
+
+	<select id="selectBoardOne" resultMap="boardMap" parameterType="_int">
+		<include refid="boardTemplate" />
+		WHERE A.BCODE=#{bcode}
+	</select>
+
 	<insert id="insertBoard" parameterType="Board">
 		INSERT INTO BOARD VALUES
 		(
-			#{bcode},#{title},#{content},#{distinguish},
-			#{writerid},SYSDATE,'n','n'
+		#{bcode},#{title},#{content},#{distinguish},
+		#{writerid},SYSDATE,'n','n'
 		)
 	</insert>
-	
+
 	<select id="boardCode" resultType="java.lang.Integer">
 		SELECT BOARD_SEQ.NEXTVAL
-		FROM DUAL
+		FROM
+		DUAL
 	</select>
-	
+
 	<update id="updateBoard" parameterType="Board">
-		UPDATE BOARD 
+		UPDATE BOARD
 		SET TITLE=#{title},CONTENT=#{content},POSTDATE=SYSDATE,HASFILE=#{hasfile}
 		WHERE BCODE=#{bcode}
 	</update>
-	
+
 	<update id="updateAB" parameterType="_int">
 		UPDATE BOARD
 		SET HASFILE='y'
@@ -94,60 +104,60 @@
 	</update>
 
 	<update id="deleteBoard" parameterType="_int">
-		UPDATE BOARD 
+		UPDATE BOARD
 		SET ISDELETE='y'
 		WHERE BCODE=#{bcode}
 	</update>
-	
+
 	<update id="viewBoard" parameterType="BoardPoint">
-		UPDATE BOARDPOINT 
+		UPDATE BOARDPOINT
 		SET VIEWNUM=#{viewnum}
-		WHERE BCODE=#{bcode}		
+		WHERE BCODE=#{bcode}
 	</update>
-	
-	
- 	<insert id="writeBoard">
+
+
+	<insert id="writeBoard">
 		INSERT INTO BOARD VALUES
-			(
-			 ${bcode}, #{title},#{content},#{distinguish},#{writerid},sysdate,null,null			
-		) 
-	</insert> 
+		(
+		${bcode}, #{title},#{content},#{distinguish},#{writerid},sysdate,null,null
+		)
+	</insert>
 
 	<update id="bestrecommendation" parameterType="_int">
-		UPDATE BOARDPOINT 
+		UPDATE BOARDPOINT
 		SET BEST=BEST+1,CAL=CAL+5
-		WHERE BCODE=#{bcode}		
+		WHERE BCODE=#{bcode}
 	</update>
-	
+
 	<update id="goodrecommendation" parameterType="_int">
-		UPDATE BOARDPOINT 
+		UPDATE BOARDPOINT
 		SET GOOD=GOOD+1,CAL=CAL+3
-		WHERE BCODE=#{bcode}		
+		WHERE BCODE=#{bcode}
 	</update>
-	
+
 	<update id="badrecommendation" parameterType="_int">
-		UPDATE BOARDPOINT 
-		SET	BAD=BAD+1,CAL=CAL-3
-		WHERE BCODE=#{bcode}		
+		UPDATE BOARDPOINT
+		SET BAD=BAD+1,CAL=CAL-3
+		WHERE BCODE=#{bcode}
 	</update>
-	
+
 	<update id="worstrecommendation" parameterType="_int">
-		UPDATE BOARDPOINT 
+		UPDATE BOARDPOINT
 		SET WORST=WORST+1,CAL=CAL-5
-		WHERE BCODE=#{bcode}		
-	</update>	
-	
-	<update id="bmedal" parameterType="_int">
-		UPDATE BOARDPOINT 
-		SET	MEDAL=MEDAL+1
-		WHERE BCODE=#{bcode}		
+		WHERE BCODE=#{bcode}
 	</update>
-	
+
+	<update id="bmedal" parameterType="_int">
+		UPDATE BOARDPOINT
+		SET MEDAL=MEDAL+1
+		WHERE BCODE=#{bcode}
+	</update>
+
 	<insert id="breport" parameterType="hashmap">
 		INSERT INTO REPORTLIST
 		VALUES(#{bcode},#{reporter})
 	</insert>
-	
+
 	<select id="isbreport" parameterType="hashmap" resultType="java.lang.Integer">
 		SELECT COUNT(*)
 		FROM REPORTLIST
@@ -157,12 +167,14 @@
 
 	<update id="viewcount" parameterType="_int">
 		UPDATE BOARDPOINT
-		SET VIEWNUM=VIEWNUM+1
+		SET
+		VIEWNUM=VIEWNUM+1
 		WHERE BCODE=#{bcode}
 	</update>
-	
+
 	<select id="boardName" parameterType="_int" resultType="java.lang.String">
-		SELECT NAME
+		SELECT
+		NAME
 		FROM BOARDCODE
 		WHERE DISCODE=#{dis}
 	</select>

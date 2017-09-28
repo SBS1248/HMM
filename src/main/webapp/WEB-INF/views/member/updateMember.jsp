@@ -20,6 +20,11 @@
 <script type="text/javascript">
 	fileExt = 0;
 	$(function() {
+		var quitDate = '${quitDate}';
+
+		if (quitDate != '')
+			alert(quitDate + "일에 회원 탈퇴될 예정 입니다!!");
+
 		var job = "${job}";
 		$('#updateJob option').each(function() {
 			if ($(this).val() == job)
@@ -42,7 +47,8 @@
 
 			reader.readAsDataURL(input.files[0]);
 		}
-	} b
+	}
+	b
 
 	function validationDate() {
 		var x = document.updateForm.password.value;
@@ -63,6 +69,10 @@
 			return;
 		}
 	}
+
+	function deleteMember() {
+		location.href = "deleteMember.do";
+	}
 </script>
 </head>
 
@@ -72,61 +82,63 @@
 
 	<div class="container">
 
-	<div class="profile_board">
-		<!-- Modal content-->
-		<div class="profile">
+		<div class="profile_board">
+			<!-- Modal content-->
+			<div class="profile">
 
-			<div class="profile-heading">${member.id}님의 프로필</div>
-			<div class="profile-body">
-				<form id="pictureUpload" name="pictureUpload" action="uploadFile.do"
-					method="POST" enctype="multipart/form-data">
-					<c:choose>
-						<c:when test="${null eq photo}">
-							<img id="profileImg" src="resources/img/defaultImg.jpg"
-								alt="profileImg" />
-						</c:when>
-						<c:when test="${null ne photo}">
-							<img id="profileImg" src="${photo}" alt="profileImg" />
-						</c:when>
-					</c:choose>
-					<br> <br><input type='file' id="imgUpload" name="photo" id="photo" />
-					<br>
+				<div class="profile-heading">${member.id}님의프로필</div>
+				<div class="profile-body">
+					<form id="pictureUpload" name="pictureUpload"
+						action="uploadFile.do" method="POST" enctype="multipart/form-data">
+						<c:choose>
+							<c:when test="${null eq photo}">
+								<img id="profileImg" src="resources/img/defaultImg.jpg"
+									alt="profileImg" />
+							</c:when>
+							<c:when test="${null ne photo}">
+								<img id="profileImg" src="${photo}" alt="profileImg" />
+							</c:when>
+						</c:choose>
+						<br> <br> <input type='file' id="imgUpload" name="photo"
+							id="photo" /> <br>
 
-					<button type="button" id="file_upload_btn" onclick="validationFile()">프로필 사진 업로드</button>
-				</form>
-				<form id="updateForm" name="updateForm" action="update.do" method="POST">
-					<input id ="input_id" type="text" name="id" value="${member.id}"
-						readonly>
+						<button type="button" id="file_upload_btn"
+							onclick="validationFile()">프로필 사진 업로드</button>
+					</form>
+					<form id="updateForm" name="updateForm" action="update.do"
+						method="POST">
+						<input id="input_id" type="text" name="id" value="${member.id}"
+							readonly> <input type="password" name="password"
+							placeholder="비밀번호" value="${member.password}" required
+							id="password"><br> <input type="password"
+							id="passwordConfirm" name="passwordConfirm" placeholder="비밀번호 확인"
+							value="${member.password}" required id="passwordConfirm"><br>
+						<input type="email" name="email" placeholder="이메일"
+							value="${member.email}" required /><br> <select name="job"
+							id="updateJob">
+							<option value="student">학생</option>
+							<option value="business">회사원</option>
+							<option value="jobless">무직</option>
+							<option value="etc">기타</option>
+						</select> <br>
+						<button id="profile_update_btn" type="button"
+							onclick="validationDate()">수정하기</button>
+						<button id="profile_delete_btn" type="button"
+							onclick="deleteMember()">회원 탈퇴</button>
+					</form>
+				</div>
 
-					<input type="password" name="password"
-						placeholder="비밀번호" value="${member.password}" required
-						id="password"><br> <input type="password" id="passwordConfirm"
-						name="passwordConfirm" placeholder="비밀번호 확인"
-						value="${member.password}" required id="passwordConfirm"><br>
-					<input type="email" name="email" placeholder="이메일"
-						value="${member.email}" required /><br>
-						<select name="job" id="updateJob">
-						<option value="student">학생</option>
-						<option value="business">회사원</option>
-						<option value="jobless">무직</option>
-						<option value="etc">기타</option>
-					</select> <br>
-					<button id="profile_update_btn" type="button" onclick="validationDate()">수정하기</button>
+				<div class="profile-footer">
+					<label>메달 갯수 : ${member.medal}</label> <br> <label>경험치
+						: ${member.exp}</label> <br> <label>남은 캐시 : ${member.chash}</label> <br>
+					<label>남은 따루 : ${member.ddaru}</label> <br> <label>가입일
+						: ${member.enrolldate}</label>
 
-				</form>
-			</div>
-
-			<div class="profile-footer">
-				<label>메달 갯수 : ${member.medal}</label> <br> <label>경험치
-					: ${member.exp}</label> <br> <label>남은 캐시 : ${member.chash}</label> <br>
-				<label>남은 따루 : ${member.ddaru}</label> <br> <label>가입일
-					: ${member.enrolldate}</label>
-
+				</div>
 			</div>
 		</div>
+
+
 	</div>
-
-
-</div>
 </body>
 </html>

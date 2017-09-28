@@ -1,24 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link href="resources/css/insertMember.css" rel="stylesheet" type="text/css">
-	<link
-		href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
-		rel="stylesheet">
-	<script
-		src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-	<script
-		src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-	<link
-		href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css"
-		rel="stylesheet">
-	<script
-		src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
-
-<%-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --%>
+<link href="resources/css/insertMember.css" rel="stylesheet"
+	type="text/css">
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<link
+	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 
 <script type="text/javascript">
 	joinCode = 0;
@@ -35,7 +31,6 @@
 				return;
 				}
 			var SetTime = 180;		// 최초 설정 시간(기본 : 초)
-			alert(email);
 			$('#emailCode').show('slow');
 			$('#codeCheck').show('slow');
 			$.ajax({
@@ -97,13 +92,24 @@
 		if (($('#password').val() != '' || $('#passwordConfirm').val() != '')
 				&& $('#password').val() == $('#passwordConfirm').val()){
 		if($('#insertChk').val() == "YY")
-			{
+		{
 			$('form').submit();
-			}
-
+		}
+		else if($('#insertChk').val() == "Y")
+		{
+			alert("이메일 인증을 완료해주세요!!");
+			return;
 		}
 		else
+		{
+			alert("아이디 중복확인을 해주세요!!");
+			return;
+		}
+		}
+		else{
 			alert("비밀번호를 한번 더 확인해주세요!!");
+			return;
+		}
 	}
 
 	function chkDup() {

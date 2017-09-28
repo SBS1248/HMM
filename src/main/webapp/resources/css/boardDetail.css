@@ -12,6 +12,10 @@
 #c94c4c;
 */
 
+* {
+  //border: 1px gold solid;
+}
+
 
 html body {
   background-color: #deeaee;
@@ -29,12 +33,22 @@ html body {
   border-radius: 10px;
 }
 
+.boardDetail button {
+  font-family: 'Hanna', serif;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  width: 100px;
+}
+
 .boardDetail-header {
   display: block;
   color: white;
   font-family: 'Hanna', serif;
   height: auto;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   width: 100%;
 }
 
@@ -68,9 +82,6 @@ html body {
 #bMedal {
   background-color: gold;
   color: black;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border: none;
   transition: transform 0.5s;
 }
 
@@ -78,19 +89,13 @@ html body {
   transform: scale(1.2);
 }
 
-#report_post{
+#board_viewcount{
   float: right;
-  margin-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border: none;
-  border-radius: 5px;
-  background-color: red;
+  margin-right: 20px;
 }
 
 #board_postdate {
   float: right;
-  margin-right: 20px;
 }
 
 .boardDetail-contents {
@@ -100,6 +105,28 @@ html body {
   padding-bottom: 50px;
   width: 100%;
   height: auto;
+}
+
+#bedit{
+  background-color: #618685;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+#bedit:hover {
+  color: gold;
+}
+
+#report_post{
+  float: right;
+  background-color: red;
+  width: 150px;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+#report_post:hover {
+  color: gold;
 }
 
 .boardDetail-footer {
@@ -122,6 +149,7 @@ html body {
 }
 
 #bBest{
+  margin-left: 5px;
   background-color: gold;
 }
 
@@ -135,6 +163,12 @@ html body {
 
 #bWorst{
   background-color: red;
+}
+
+#board_postpt{
+  float: right;
+  margin-top: 15px;
+  margin-right: 15px;
 }
 
 .comment_section{

@@ -353,7 +353,7 @@
 					"</div>"+
 					"<div class='comments-body'>"+
 					"<textArea id='newCArea'></textArea>"+
-					"<button onclick='newCButton("+num+")'>댓글 작성하기</button>"+
+					"<button id='post_comment' onclick='newCButton("+num+")'>댓글 작성하기</button>"+
 					"</div>"+
 				"</div>");
 
@@ -401,7 +401,7 @@
 	{
 		if($('#newRecomments').length>0)
 		{
-			alert("작성 중인 대댓글이 있습니다. 개새야");
+			alert("작성 중인 대댓글이 있습니다.");
 			return;
 		}
 		var now = new Date();
@@ -433,9 +433,10 @@
 				"<div class='comments-heading'>"+
 				"<div id='reply_num_and_give_medal_area'>"+
 					"<span id='reply_number' class='commentNumber'>"+pnum+"-"+num+"번째 대댓글</span>"+
-				"</div>"+
-				"<div class='comment_authordate'>"+
+
+
 					"<span>작성자 : ${member.id }</span> 작성일 : "+date+
+
 				"</div>"+
 			"</div>"+
 			"<div class='comments-body'>"+

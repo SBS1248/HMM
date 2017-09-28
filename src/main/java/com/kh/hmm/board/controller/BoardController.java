@@ -50,9 +50,7 @@ public class BoardController
 	private AttachfileService attachfileService;
 	@Autowired
 	private MemberService memberService;
-	
-	
-	
+			
 	@RequestMapping(value = "boardLists.do", method = RequestMethod.GET)
 	public String selectBoardList(Model model,int dis) 
 	{
@@ -208,7 +206,7 @@ public class BoardController
             logger.info("in upload("+file+") call...");  
             
             attachfileService.insertAttachfile(file);
-            boardService.updateAB(bcode);   
+            boardService.updateAB(bcode);   //첨부파일 있을 때 hasfile을 y로 바꿔준다.
             
             try 
             {   //파일 저장
@@ -424,4 +422,64 @@ public class BoardController
         response.getOutputStream().write(IOUtils.toByteArray(fileIn));
         response.flushBuffer();     
     }
+
+    @RequestMapping(value = "beforedit.do", method = RequestMethod.GET)
+	public String beforedit(Model m,int bcode) 
+    {
+    	logger.info("beforedit("+bcode+") call...");
+    	
+    	Board board=boardService.selectBoardOne(bcode);
+    	
+    	if(board.getHasfile()!=null&&board.getHasfile().compareTo("y")==0) 
+    	{
+    		m.addAttribute("flist",attachfileService.selectFileList(bcode));    		
+    	}   		
+    	
+    	m.addAttribute("board",board);
+    	
+    	return "../../boardEdit";
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "afteredit.do", method = RequestMethod.GET)
+	public void afteredit(Board b) 
+    {
+    	logger.info("afterdit("+b+") call...");
+    	
+    	boardService.updateBoard(b);    	    	
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "fileDelete.do", method = RequestMethod.GET)
+	public void fileDelete(int atcode) 
+    {
+    	logger.info("fileDelete("+atcode+") call...");
+    	    	
+		Attachfile toFile=attachfileService.selectFileOne(atcode);
+		
+		File deleteFile=new File(toFile.getFilelink());
+		deleteFile.delete();
+    	
+    	attachfileService.deleteAttachfile(atcode); 	    	
+    }
+    	
+	@ResponseBody
+    @RequestMapping(value = "beforeCEdit.do", method = RequestMethod.POST)
+    public Comments beforeCEdit(int ccode) 
+    {
+	    logger.info("beforeCEdit("+ccode+") call...");
+	    return commentsService.selectCommentsOne(ccode); 	    	
+    }
+	
+	@ResponseBody
+    @RequestMapping(value = "afterCEdit.do", method = RequestMethod.POST)
+    public Comments afterCEdit(Comments c) 
+    {
+	    logger.info("afterCEdit("+c+") call...");
+	    	   
+	    commentsService.updateComments(c);
+	    
+	    return commentsService.selectCommentsOne(c.getCcode());
+    }
+	
 }

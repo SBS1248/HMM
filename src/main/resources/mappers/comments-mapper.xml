@@ -50,6 +50,12 @@
 		VALUES(#{ccode},#{content},#{writerid},SYSDATE,2,#{upper},#{bcode})
 	</insert>
 	
+	<update id="updateComments" parameterType="Comments">
+		UPDATE COMMENTS
+		SET CONTENT=#{content},POSTDATE=SYSDATE
+		WHERE CCODE=#{ccode}
+	</update>
+	
 	<update id="cgoodrecommendation" parameterType="_int">
 		UPDATE COMMENTSPOINT 
 		SET GOOD=GOOD+1,CAL=CAL+3

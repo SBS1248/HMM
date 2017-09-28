@@ -44,11 +44,13 @@
  	
  	<select id="selectAllBoardList" resultMap="boardMap">
 		<include refid="boardTemplate"/>
+		WHERE ISDELETE IS NULL
 	</select>
  	
  	<select id="selectSearchBoardList" resultMap="boardMap">
  	<include refid="boardTemplate"/>
- 	where UPPER(A.TITLE) like '%#{keyword}%';
+ 		where UPPER(A.TITLE) like '%#{keyword}%'
+ 		AND ISDELETE IS NULL
  	</select>
  	
  	<select id="selectBoardList" resultMap="boardMap" parameterType="_int">
@@ -57,6 +59,7 @@
 		<if test="_parameter==3">
 		AND A.POSTDATE BETWEEN (SELECT MAX(STARTDATE) FROM WEEKSUBJECT) AND (SELECT MAX(STARTDATE) FROM WEEKSUBJECT)+6
 		</if>
+		AND ISDELETE IS NULL
 	</select>
  	 	
 	
@@ -90,11 +93,11 @@
 		WHERE BCODE=#{bcode}
 	</update>
 
-	<delete id="deleteBoard" parameterType="_int">
+	<update id="deleteBoard" parameterType="_int">
 		UPDATE BOARD 
-		SET ISDELETE='TRUE'
+		SET ISDELETE='y'
 		WHERE BCODE=#{bcode}
-	</delete>
+	</update>
 	
 	<update id="viewBoard" parameterType="BoardPoint">
 		UPDATE BOARDPOINT 

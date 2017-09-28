@@ -36,9 +36,9 @@ public class CommentsDao
 		return sqlSession.update("updateComments",c);
 	}
 	
-	public int deleteComments(Comments c) 
+	public int deleteComments(int ccode) 
 	{
-		return sqlSession.delete("updateComments",c);
+		return sqlSession.update("deleteComments",ccode);
 	}
 	
 	public int checkComments(CommentsPoint point) 

@@ -149,15 +149,6 @@ public class BoardController
 		return result;
 	}
 	
-	@RequestMapping(value = "boardDelete.do", method = RequestMethod.POST)
-	public String deleteBoard(int bcode) 
-	{
-		logger.info("deleteBoard("+bcode+") call...");
-
-		boardService.deletBoard(bcode);
-
-		return "../../Board";
-	}
 	
 	@RequestMapping(value = "/fileUpload", method = RequestMethod.GET)
     public String dragAndDrop(Model model) {
@@ -480,6 +471,26 @@ public class BoardController
 	    commentsService.updateComments(c);
 	    
 	    return commentsService.selectCommentsOne(c.getCcode());
+    }
+	
+	@ResponseBody
+    @RequestMapping(value = "boardDelete.do", method = RequestMethod.GET)
+    public void boardDelete(int bcode) 
+    {
+	    logger.info("boardDelete("+bcode+") call...");
+	    	   
+	    boardService.deletBoard(bcode);
+    }
+	
+	@ResponseBody
+    @RequestMapping(value = "deleteComment.do", method = RequestMethod.GET)
+    public Comments deleteComment(int ccode) 
+    {
+	    logger.info("deleteComment("+ccode+") call...");
+	    	   
+	    commentsService.deletComments(ccode);
+	    
+	    return commentsService.selectCommentsOne(ccode);
     }
 	
 }

@@ -31,7 +31,7 @@
 				type="hidden" name="writerid" value="${member.id }">
 			<div id="the_post_title">
 				제목&nbsp;&nbsp;&nbsp; <input id="post_title" type="text" name="title"
-					maxlength="100"></input>
+					maxlength="120"></input>
 				<div id="title_feedback"></div>
 			</div>
 			<%-- 글쓴이 아이디 숨김 --%>
@@ -58,7 +58,7 @@
 			<div id="post_contents">
 				<!-- 섬머노트 부분 -->
 				<div class="sn">
-					<div class="content">
+					<div class>
 						<textarea id="summernote" name="content" maxlength="4000"></textarea>
 						<div id="content_feedback"></div>
 					</div>

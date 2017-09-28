@@ -77,6 +77,17 @@ body {
   float: right;
 }
 
+#boardDelete{
+  border-radius: 5px;
+  border: none;
+  padding: 5px 15px;
+  background-color: #c94c4c;
+}
+
+#boardDelete:hover{
+  color: gold;
+}
+
 #post_categories select{
   float: right;
   color: black;
@@ -206,6 +217,10 @@ body {
 
 #quit_post{
   background-color: #c94c4c;
+}
+
+#beditComplete{
+  background-color: #618685;
 }
 
  .note-btn-group.btn-group.note-insert {

@@ -129,7 +129,7 @@ public class BoardController
 		
 		return "../../write";
 	}
-	
+/*	
 	@RequestMapping(value = "boardInsert.do", method = RequestMethod.POST)
 	public void insertBoard(Board b, HttpServletResponse response) throws IOException 
 	{//아작스 처리를 요한다.
@@ -147,7 +147,7 @@ public class BoardController
 		int result=boardService.updateBoard(b);
 
 		return result;
-	}
+	}*/
 	
 	
 	@RequestMapping(value = "/fileUpload", method = RequestMethod.GET)
@@ -421,7 +421,7 @@ public class BoardController
     	
     	Board board=boardService.selectBoardOne(bcode);
     	
-    	if(board.getHasfile()!=null&&board.getHasfile().compareTo("y")==0) 
+    	if(board.getHasfile()!=null) 
     	{
     		m.addAttribute("flist",attachfileService.selectFileList(bcode));    		
     	}   		
@@ -436,6 +436,7 @@ public class BoardController
 	public void afteredit(Board b) 
     {
     	logger.info("afterdit("+b+") call...");
+    	if(boardService.selectBoardOne(b.getBcode()).getHasfile()!=null)b.setHasfile("y");
     	
     	boardService.updateBoard(b);    	    	
     }

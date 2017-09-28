@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="resources/img/신보선/신보선.jpg" type="image/gif"	sizes="16x16">
 <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -342,13 +343,11 @@
 			num=parseInt(comment.text().slice(0,-5))+1;
 		}
 
+
 		$('#commentsAdd').append("<div class='comments' id='newComments'>"+
 					"<div class='comments-heading'>"+
 						"<div id='reply_num_and_give_medal_area'>"+
 							"<span id='reply_number' class='commentNumber'>"+num+"번째 댓글</span>"+
-						"</div>"+
-
-						"<div class='comment_authordate'>"+
 							"<span>작성자 : ${member.id }</span> 작성일 : "+date+
 						"</div>"+
 					"</div>"+
@@ -374,7 +373,7 @@
             			"<div class='comments-heading'>"+
             			"<div id='reply_num_and_give_medal_area'>"+
             			"<span id='reply_number' class='commentNumber'>"+num+"번째 댓글</span>"+
-            			"<button id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</button>"+
+            			"<span id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</span>"+
             			"</div>"+
             			"<div class='comment_authordate'><span>작성자 : "+commentData.writerid+"</span> 작성일 : "+commentData.postdate+"</div>"+
             			"<button onclick=beforeCEdit("+commentData.ccode+",$(this).prev().prev().children('span[class=commentNumber]').text())>수정하기</button>"+
@@ -410,6 +409,9 @@
 		var parentComment=$("#wcomment"+code).parentsUntil(".comments").parent();//버튼의 부모 댓글 확인
 		var pnum=parentComment.find('#reply_number').text().slice(0,-5);
 		var num=1;
+
+
+
 
 		if(parentComment.next().length>0)
 		{
@@ -457,7 +459,7 @@
             			"<div class='comments-heading'>"+
             			"<div id='reply_num_and_give_medal_area'>"+
             			"<span id='reply_number' class='commentNumber'>"+pnum+"-"+num+"번째 대댓글</span>" +
-            			"<button id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</button>"+
+            			"<span id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</span>"+
             			"</div>"+
             			"<div class='comment_authordate'><span>작성자 : "+commentData.writerid+"</span> 작성일 : "+commentData.postdate+"</div>"+
             			"<button onclick=beforeCEdit("+commentData.ccode+",$(this).prev().prev().children('span[class=commentNumber]').text())>수정하기</button>"+
@@ -545,7 +547,7 @@
             		"<div class='comments-heading'>"+
             		"<div id='reply_num_and_give_medal_area'>"+
             		"<span id='reply_number' class='commentNumber'>"+text+"</span>" +
-            		"<button id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</button>"+
+            		"<span id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</span>"+
             		"</div>"+
             		"<div class='comment_authordate'><span>작성자 : "+commentData.writerid+"</span> 작성일 : "+commentData.postdate+"</div>"+
             		"<button onclick=beforeCEdit("+commentData.ccode+",$(this).prev().prev().children('span[class=commentNumber]').text())>수정하기</button>"+
@@ -588,7 +590,7 @@
                 		"<div class='comments-heading'>"+
                 		"<div id='reply_num_and_give_medal_area'>"+
                 		"<span id='reply_number' class='commentNumber'>"+text+"</span>" +
-                		"<button id='give_medal'><strike>메달 주기</strike></button>"+
+                		"<span id='give_medal'><strike>메달 주기</strike></span>"+
                 		"</div>"+
                 		"<div class='comment_authordate'><span>작성자 : "+commentData.writerid+"</span> 작성일 : "+commentData.postdate+"</div>"+
                 		"<button disabled><strike>수정하기</strike></button>"+
@@ -619,6 +621,7 @@
 
 <div class="container">
 
+
 	<!-- 게시글 상세보기 -->
 	<div class="boardDetail_area">
 
@@ -644,7 +647,7 @@
 
 					<c:if test="${board.point.medal ne 0}">
 						<span class="current_medal_number">
-							게시글 메달 갯수 :<span id="bmedal"> ${board.point.medal}</span>
+							<span class="glyphicon glyphicon-certificate"></span> x <span id="bmedal"> ${board.point.medal}</span>
 						</span>
 					</c:if>
 
@@ -654,8 +657,10 @@
 						</span>
 					</c:if>
 
-					<span id="board_postdate">작성일 : ${board.postdate}</span> <span id="board_viewcount">조회수 : ${board.point.viewnum }</span>
 
+					<span id="board_postdate">작성일 : ${board.postdate}</span>
+
+					<span id="board_viewcount">조회수 : ${board.point.viewnum }</span>
 				</div>
 				<br>
 				<%-- 파일? --%>
@@ -669,8 +674,10 @@
 			</div>
 
 			<div class="boardDetail-contents">${board.content}</div>
-			<button id="bedit">글 수정하기</button><button id="report_post"><span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;게시글 신고하기</button>
-			<button id="post_comment" onclick="writeComment()">댓글달기</button>
+			<button id="bedit">수정하기</button>
+			<button onclick="writeComment()">댓글달기</button>
+			<button id="report_post"><span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;게시글 신고하기</button>
+
 <hr>
 			<div class="boardDetail-footer">
 				<button type="button" class="post_rate_btns" id="bBest">최고다!</button>
@@ -679,16 +686,15 @@
 				<button type="button" class="post_rate_btns" id="bGood">좋아요 :)</button>
 				&nbsp;&nbsp;<span id="bgood">${board.point.good}</span> 개&nbsp;&nbsp;&nbsp;&nbsp;
 
+
 				<button type="button" class="post_rate_btns" id="bBad">안 좋아요 :(</button>
 				&nbsp;&nbsp;<span id="bbad">${board.point.bad}</span> 개&nbsp;&nbsp;&nbsp;&nbsp;
 
+
 				<button type="button" class="post_rate_btns" id="bWorst">최악이다!</button>
-				&nbsp;&nbsp;<span id="bworst">${board.point.worst}</span> 개
-				<span id="board_postpt"> 게시글 점수 합계 : <span id="bcal">${board.point.cal}</span></span><br>
+				&nbsp;&nbsp;<span id="bworst">${board.point.worst}</span> 개&nbsp;&nbsp;&nbsp;&nbsp;
+				<span id="post_score_total">게시글 점수 합계 : <span id="bcal">${board.point.cal}</span></span>
 			</div>
-			</div>
-			<%-- 댓글 공간 --%>
-			<div>
 
 			</div>
 
@@ -699,7 +705,9 @@
 
 					<c:forEach var="c" items="${comments}">
 
+
 					<c:if test="${c.isdelete eq 'y' }">
+
 
 						<div class=comments id='pa${c.ccode }'>
                 			<div class='comments-heading'>
@@ -714,7 +722,7 @@
 										<span id="reply_number" class="commentNumber">${num-1}-${cnum }번째 대댓글</span>
 										<c:set var="cnum" value="${cnum+1}"/>
 									</c:if>
-                					<button id='give_medal'><strike>메달 주기</strike></button><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;<strike>댓글신고하기</strike></button>
+                					<span id='give_medal'><strike>메달 주기</strike></span>
                 				</div>
 
                 				<div class='comment_authordate'><span>작성자 : ${c.writerid}</span> 작성일 : ${c.postdate }</div>
@@ -725,10 +733,9 @@
                 			</div>
                 			<div class='comments-body'>${c.content }</div>
                 			<div class='comments-footer'>
-
                 				<div class='comment_point'>	댓글 점수 : <span id='ccommentData.ccode'>${c.point.cal }</span></div>
                 				<div class='comment_rate'>
-                					<button id='report_comment' disabled>
+                					<button id='report_comment' disabled><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;<strike>댓글신고하기</strike></button>
                 					공감 : <span id='gcommentData.ccode'>${c.point.good }</span>&nbsp;
                 					<button type='button' class='comment_rate_btn' id='btn_good' disabled><i class='fa fa-thumbs-o-up' aria-hidden='true'></i><strike> YES!</strike></button>
                 					&nbsp; 비공감 : <span id='bcommentData.ccode'>${c.point.bad }</span>&nbsp;
@@ -737,6 +744,7 @@
                 			</div>
                 		</div>
 					</c:if>
+
 
 					<c:if test="${c.isdelete ne 'y' }">
 						<div class="comments" id="pa${c.ccode }">
@@ -754,6 +762,7 @@
 									<c:set var="cnum" value="${cnum+1}"/>
 								</c:if>
 
+
 								<%-- 댓글 메달 파트. 메달이 1개 이상일 때만 갯수 노출 --%>
 								<c:if test="${c.point.medal eq 0}">
 										<script>
@@ -766,14 +775,24 @@
 										<span id="m${c.ccode}">${c.point.medal } </span>
 									</div>
 
-								<button id="give_medal" onclick="cmedal(${c.ccode},'${c.writerid }')">메달 주기</button>
-								<button id="report_comment" onclick="creport(${c.ccode},'${c.writerid }')">
-									<span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;댓글 신고하기</button>
-									<span>작성자 : ${c.writerid }</span> 작성일 : ${c.postdate}
+								<span id="give_medal" onclick="cmedal(${c.ccode},'${c.writerid }')">메달 주기</span>
+
+								<button id="report_comment"
+									onclick="creport(${c.ccode},'${c.writerid }')">
+									<span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;댓글
+									신고하기
+								</button>
+
 							</div>
 
-							<c:if test="${c.lev ne 2}">
+							<div class="comment_authordate">
+								<span>작성자 : ${c.writerid }</span> 작성일 : ${c.postdate}
+							</div>
 
+							<button onclick="beforeCEdit(${c.ccode },$(this).prev().prev().children('span[class=commentNumber]').text())">수정하기</button>
+
+							<c:if test="${c.lev ne 2}">
+								<button id="wcomment${c.ccode }" onclick="wcomment(${c.ccode})">대댓글 달기</button>
 							</c:if>
 
 						</div>
@@ -781,8 +800,7 @@
 						<div class="comments-body">${c.content }<br></div>
 						<div class="comments-footer">
 							<div class="comment_point">
-								<button id="comment_edit" onclick="beforeCEdit(${c.ccode },$(this).prev().prev().children('span[class=commentNumber]').text())">수정하기</button>
-								<button id="wcomment${c.ccode }" onclick="wcomment(${c.ccode})">대댓글 달기</button>
+								댓글 점수 : <span id="c${c.ccode}">${c.point.cal }</span>
 							</div>
 							<div class="comment_rate">
 
@@ -796,7 +814,6 @@
 									onclick="crecommendation(${c.ccode},'b','${c.writerid }')">
 									<i class="fa fa-thumbs-o-down" aria-hidden="true"></i> NO!
 								</button>
-								댓글 점수 : <span id="c${c.ccode}">${c.point.cal }</span>
 							</div>
 						</div>
 						<script type="text/javascript">

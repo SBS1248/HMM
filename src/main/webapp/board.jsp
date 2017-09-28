@@ -82,6 +82,15 @@
 			location.href="boardcode.do?dis=${dis}";
 	}
 	
+	
+	function onEnterSearch()
+	{
+		var keyCode = window.event.keyCode;
+		var keyword = $('input[name=search]').val();
+		if (keyCode == 13) {
+			location.href="boardSearch.do?dis="+'${dis}'+"&keyword="+keyword;
+		}
+	}
 </script>
 
 </head>
@@ -110,7 +119,7 @@
 
 					<%-- 검색바 --%>
 					<div id="search_bar">
-						<input type="text" name="search" placeholder="검색어를 입력하세요..">
+						<input type="text" name="search" placeholder="검색어를 입력하세요.." onkeydown='javascript:onEnterSearch()'>
 					</div>
 
 					<%-- 게시글 정렬 --%>
@@ -132,7 +141,8 @@
 							<thead>
 								<tr>
 									<th>글번호</th>
-									<th style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">제목</th>
+									<th
+										style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">제목</th>
 									<th>카테고리</th>
 									<th>작성자</th>
 									<th>추천 점수</th>

@@ -116,6 +116,22 @@ public class MemberController {
 		return "redirect:"+url;
 	}
 
+	@RequestMapping(value="deleteMember.do", method=RequestMethod.GET)
+	public String memberDelete(HttpSession session, HttpServletRequest request)
+	{
+		logger.info("memberDelete() call...");
+		String url = request.getHeader("referer");
+		String memberId = ((Member)(session.getAttribute("member"))).getId();
+		Member member = memberService.deleteMember(memberId);
+		System.out.println("delete : "+member);
+		if(member != null)
+		{
+			session.setAttribute("member", member);
+		}
+		
+		return "redirect:"+url;
+	}
+	
 	@RequestMapping(value = "uploadFile.do", method = RequestMethod.POST)
 	public String memberUpdate(HttpServletRequest request, HttpSession session,
 			@RequestParam("photo") MultipartFile uploadfile) {

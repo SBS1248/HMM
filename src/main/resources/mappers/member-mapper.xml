@@ -114,4 +114,11 @@
 		WHERE
 		MEMBERCODE=#{membercode}
 	</insert>
+
+		<update id="DeleteMember">
+		UPDATE MEMBER
+		SET QUITDATE = SYSDATE+3
+		WHERE
+		ID = #{memberId}
+	</update>
 </mapper>

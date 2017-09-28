@@ -1,27 +1,27 @@
 package com.kh.hmm.board.model.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.kh.hmm.board.model.vo.Board;
 import com.kh.hmm.board.model.vo.BoardPoint;
 
-public interface BoardService
-{
+public interface BoardService {
 	Board selectBoardOne(int bcode);
-	
+
 	ArrayList<Board> selectBoardList(int dis);
-	//0:All,1:Com,2:QnA,3:Tech,4:Amu,5:PS
-		
+	// 0:All,1:Com,2:QnA,3:Tech,4:Amu,5:PS
+
 	int insertBoard(Board b);
-	
+
 	int updateBoard(Board b);
-	
+
 	int deletBoard(int bcode);
 
 	int checkBoard(BoardPoint point);
-	
+
 	int updateAB(int bcode);
-	
+
 	int writeService(Board b);
 
 	int boardCode();
@@ -41,4 +41,6 @@ public interface BoardService
 	void viewcount(int bcode);
 
 	String boardName(int dis);
+
+	List<Board> selectSearchBoardList(int dis, String keyword);
 }

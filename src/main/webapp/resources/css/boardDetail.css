@@ -169,6 +169,11 @@ html body {
   background-color: red;
 }
 
+#post_score_total{
+  margin-top: 15px;
+  float: right;
+}
+
 #board_postpt{
   float: right;
   margin-top: 15px;
@@ -212,8 +217,12 @@ html body {
 }
 
 .current_medal_number{
-  display: inline-block;
-  margin: auto;
+  color: gold;
+  font-size: 20px;
+}
+
+#bmedal{
+    font-size: 16px;
 }
 
 #give_medal{
@@ -221,6 +230,10 @@ html body {
 }
 
 #give_medal:hover{
+}
+
+#comment_writer{
+  float: right;
 }
 
 #report_comment{

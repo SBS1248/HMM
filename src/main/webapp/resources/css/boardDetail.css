@@ -239,14 +239,20 @@ html body {
 
 #comment_writer{
   float: right;
+  margin-right: 10px;
+}
+
+#comment_date{
+  margin-right: 10px;
+  float: right;
 }
 
 #report_comment{
   background-color: red;
   color: white;
   float: right;
+  margin-right: 10px;
 }
-
 
 #the_medal{
 }

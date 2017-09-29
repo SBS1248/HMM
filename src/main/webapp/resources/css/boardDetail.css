@@ -280,8 +280,11 @@ html body {
   border-top: 1px silver solid;
 }
 
-#comment_edit{
-  width: 70px;
+.comment_edit_add button{
+  background-color: #618685;
+  padding: 5px;
+  color: white;
+  width: auto;
   margin: auto;
   margin-top: 10px;
   margin-left: 10px;

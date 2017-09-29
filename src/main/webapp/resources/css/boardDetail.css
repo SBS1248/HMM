@@ -122,6 +122,10 @@ html body {
   color: white;
 }
 
+#post_comment:hover{
+  color: gold;
+}
+
 #report_post{
   float: right;
   background-color: red;
@@ -232,9 +236,15 @@ html body {
 
 #give_medal{
   background-color: gold;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  margin-left: 20px;
 }
 
 #give_medal:hover{
+  cursor: pointer;
 }
 
 #comment_writer{

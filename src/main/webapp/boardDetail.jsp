@@ -376,7 +376,7 @@
 									"<button id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;댓글신고하기123123</button>"+
 									"<span id='comment_date'>작성일!!! : "+commentData.postdate+"</span>"+
 									"<span id='comment_writer'>작성자!!! : "+commentData.writerid+"</span>"+
-"</div>"+
+									"</div>"+
 									"</div>"+
             			"<div class='comments-body'>"+commentData.content+"</div>"+
             			"<div class='comments-footer'>"+
@@ -472,7 +472,7 @@
             			"<button type='button' class='comment_rate_btn' id='btn_good'onclick='crecommendation("+commentData.ccode+",\"g\",\""+commentData.writerid+"\")'><i class='fa fa-thumbs-o-up' aria-hidden='true'></i> YES!</button>"+
             			"&nbsp; 비공감 : <span id='b"+commentData.ccode+"'>"+commentData.point.bad+"</span>&nbsp;"+
             			"<button type='button' class='comment_rate_btn' id='btn_bad'	onclick='crecommendation("+commentData.ccode+",\"b\",\""+commentData.writerid+"\")'><i class='fa fa-thumbs-o-down' aria-hidden='true'></i> NO!</button>"+
-									"<div class='comment_point'>	댓글 점수123 : <span id='c"+commentData.ccode+"'>"+commentData.point.cal+"</span></div>"+
+									"<span id='comment_point'>댓글 점수123 : <span id='c"+commentData.ccode+"'>"+commentData.point.cal+"</span></span>"+
             			"</div></div></div>"
             	);
             },
@@ -721,10 +721,10 @@
 										<span id="reply_number" class="commentNumber">${num-1}-${cnum }번째 대댓글</span>
 										<c:set var="cnum" value="${cnum+1}"/>
 									</c:if>
-                					<span id='give_medal'><strike>메달 주기</strike></span><span>작성자 : ${c.writerid}</span>
+                					<span id='give_medal'><strike>메달 주기</strike></span>
+													<span id="comment_writer">작성자 : ${c.writerid}</span>
                 				</div>
-
-                				<div class='comment_authordate'> 작성일 : ${c.postdate }</div>
+                				<div class='comment_authordate'><span id="comment_date">작성일 : ${c.postdate }</span></div>
                 					<button disabled><strike>수정하기</strike></button>
                 					<c:if test="${c.lev ne 2}">
 										<button id="wcomment${c.ccode }" onclick="wcomment(${c.ccode})">대댓글 달기</button>
@@ -780,11 +780,6 @@
 								</span>
 
 							</div>
-
-
-
-
-
 						</div>
 
 						<div class="comments-body">${c.content }<br></div>

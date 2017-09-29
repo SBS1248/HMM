@@ -460,9 +460,9 @@
             			"<div id='reply_num_and_give_medal_area'>"+
             			"<span id='reply_number' class='commentNumber'>"+pnum+"-"+num+"번째 대댓글123</span>" +
             			"<span id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</span>"+
-									"<span id='comment_writer'>작성자123 : "+commentData.writerid+"</span><span id='comment_date'>작성일123 : "+commentData.postdate+"</span>"+
 									"<button id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;댓글신고하기</button>"+
-            			"</div>"+
+            			"<span id='comment_writer'>작성자123 : "+commentData.writerid+"</span><span id='comment_date'>작성일123 : "+commentData.postdate+"</span>"+
+									"</div>"+
             			"</div>"+
             			"<div class='comments-body'>"+commentData.content+"</div>"+
             			"<div class='comments-footer'>"+
@@ -545,9 +545,10 @@
             		"<div id='reply_num_and_give_medal_area'>"+
             		"<span id='reply_number' class='commentNumber'>"+text+"</span>" +
             		"<span id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</span>"+
-            		"<span>작성자 : "+commentData.writerid+"</span> 작성일 : "+commentData.postdate+
 								"<button id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;대댓글신고하기</button>"+
-            		"</div>"+"</div>"+
+								"<span id='comment_date'>작성일 : "+commentData.postdate+"</span>"+
+								"<span id='comment_writer'>작성자 : "+commentData.writerid+"</span>"+
+								"</div>"+"</div>"+
             		"<div class='comments-body'>"+commentData.content+"</div>"+
             		"<div class='comments-footer'>"+
 								"<button onclick=beforeCEdit("+commentData.ccode+",$(this).prev().prev().children('span[class=commentNumber]').text())>대댓글 수정하기</button>"+
@@ -771,10 +772,9 @@
 									</div>
 
 								<span id="give_medal" onclick="cmedal(${c.ccode},'${c.writerid }')">메달 주기</span>
-								<span>작성자 : ${c.writerid } 작성일 : ${c.postdate}
-									<button id="report_comment"	onclick="creport(${c.ccode},'${c.writerid }')">
-										<span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;댓글	신고하기</button>
-								</span>
+								<span id="comment_writer">작성자 : ${c.writerid } </span><span id="comment_date">작성일 : ${c.postdate}</span>
+								<button id="report_comment"	onclick="creport(${c.ccode},'${c.writerid }')">
+									<span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;댓글	신고하기</button>
 
 							</div>
 						</div>

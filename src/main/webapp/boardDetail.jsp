@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="resources/img/신보선/신보선.jpg" type="image/gif"	sizes="16x16">
 <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -348,7 +347,7 @@
 					"<div class='comments-heading'>"+
 						"<div id='reply_num_and_give_medal_area'>"+
 							"<span id='reply_number' class='commentNumber'>"+num+"번째 댓글</span>"+
-							"<span>작성자 : ${member.id }</span> 작성일 : "+date+
+							"<span id='comment_writer'>작성자 : ${member.id }</span> <span id='comment_date'> 작성일 : "+date+"</span>"+
 						"</div>"+
 					"</div>"+
 					"<div class='comments-body'>"+
@@ -374,20 +373,24 @@
             			"<div id='reply_num_and_give_medal_area'>"+
             			"<span id='reply_number' class='commentNumber'>"+num+"번째 댓글</span>"+
             			"<span id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</span>"+
-            			"</div>"+
-            			"<div class='comment_authordate'><span>작성자 : "+commentData.writerid+"</span> 작성일 : "+commentData.postdate+"</div>"+
-            			"<button onclick=beforeCEdit("+commentData.ccode+",$(this).prev().prev().children('span[class=commentNumber]').text())>수정하기</button>"+
-            			"<button id=\"wcomment"+commentData.ccode+"\" onclick=\"wcomment("+commentData.ccode+")\">대댓글 달기</button>"+
-            			"</div>"+
+									"<span id='comment_writer'>작성자!!! : "+commentData.writerid+"</span>"+
+									"<span id='comment_date'>작성일!!! : "+commentData.postdate+"</span>"+
+									"</div>"+
+            			"<div class='comment_authordate'>"+
+									"<button id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;댓글신고하기123123</button>"+
+									"</div>"+"</div>"+
             			"<div class='comments-body'>"+commentData.content+"</div>"+
             			"<div class='comments-footer'>"+
-            			"<div class='comment_point'>	댓글 점수 : <span id='c"+commentData.ccode+"'>"+commentData.point.cal+"</span></div>"+
+									"<button onclick=beforeCEdit("+commentData.ccode+",$(this).prev().prev().children('span[class=commentNumber]').text())>수정하기</button>"+
+									"<button id=\"wcomment"+commentData.ccode+"\" onclick=\"wcomment("+commentData.ccode+")\">대댓글 달기</button>"+
+
             			"<div class='comment_rate'>"+
-            			"<button id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;댓글신고하기</button>"+
+
             			"공감 : <span id='g"+commentData.ccode+"'>"+commentData.point.good+"</span>&nbsp;"+
             			"<button type='button' class='comment_rate_btn' id='btn_good'onclick='crecommendation("+commentData.ccode+",\"g\",\""+commentData.writerid+"\")'><i class='fa fa-thumbs-o-up' aria-hidden='true'></i> YES!</button>"+
             			"&nbsp; 비공감 : <span id='b"+commentData.ccode+"'>"+commentData.point.bad+"</span>&nbsp;"+
             			"<button type='button' class='comment_rate_btn' id='btn_bad'	onclick='crecommendation("+commentData.ccode+",\"b\",\""+commentData.writerid+"\")'><i class='fa fa-thumbs-o-down' aria-hidden='true'></i> NO!</button>"+
+									"댓글 점수 : <span id='c"+commentData.ccode+"'>"+commentData.point.cal+"</span>"+
             			"</div></div></div>"
             	);
             },

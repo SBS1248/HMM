@@ -137,8 +137,7 @@
 						</select> <br>
 						<button id="profile_update_btn" type="button"
 							onclick="validationDate()">수정하기</button>
-						<button id="profile_delete_btn" type="button"
-							onclick="deleteMember()">회원 탈퇴</button>
+
 					</form>
 				</div>
 
@@ -147,6 +146,9 @@
 						: ${member.exp}</label> <br> <label>남은 캐시 : ${member.chash}</label> <br>
 					<label>남은 따루 : ${member.ddaru}</label> <br> <label>가입일
 						: ${member.enrolldate}</label>
+
+						<button id="profile_delete_btn" type="button"
+							onclick="deleteMember()">회원 탈퇴</button>
 
 				</div>
 			</div>

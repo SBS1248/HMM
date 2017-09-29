@@ -486,7 +486,7 @@
 	{//대댓글 전수정
 		if($('#editRecomments').length>0)
 		{
-			alert('수정 중인 댓글이 있습니다. 개새야');
+			alert('수정 중인 댓글이 있습니다.');
 			return;
 		}
 
@@ -509,9 +509,6 @@
             	$('#pa'+ccode).replaceWith(
             		"<div class="+flag+" id='editRecomments'>"+
             		"<div class='comments-heading'>"+
-            		"<div id='reply_num_and_give_medal_area'>"+
-            		"<span id='reply_number' class='commentNumber'>"+text+"수정</span>"+
-            		"</div>"+
             		"<div class='comment_authordate'>"+
             		"<span>작성자 : "+commentData.writerid+"</span> 작성일 : "+commentData.postdate+
             		"</div></div>"+

@@ -111,7 +111,7 @@ max-width: 300px;
   color: white;
   padding: 10px;
   border: none;
-  background-color: #c94c4c;
+  background-color: #618685;
   width: 180px;
   margin: auto;
   box-shadow: 2px 2px 2px grey;
@@ -120,6 +120,21 @@ max-width: 300px;
 }
 
 #profile_update_btn:hover{
+  color: gold;
+}
+
+#profile_delete_btn{
+  float: right;
+  color: white;
+  padding: 10px;
+  border: none;
+  background-color: #c94c4c;
+  margin: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+#profile_delete_btn:hover{
   color: gold;
 }
 

@@ -108,7 +108,8 @@
 
 					<%-- 검색바 --%>
 					<div id="search_bar">
-						<input type="text" name="search" placeholder="검색어를 입력하세요.." onkeydown='javascript:onEnterSearch()'>
+						<input type="text" name="search" placeholder="검색어를 입력하세요.."
+							onkeydown='javascript:onEnterSearch()'>
 					</div>
 
 					<%-- 게시글 정렬 --%>
@@ -152,8 +153,9 @@
 										<td id="table_category">${l.code.name}</td>
 										<td>
 											<div class="profile">
-												<a href="profile.jsp"> <img class="img-circle" src="#" />
-												</a> ${l.writerid }
+												<a href="profile.do?profileId=${l.writerid }"> <img class="img-circle" src="#" />
+													${l.writerid }
+												</a>
 											</div>
 										</td>
 										<td id="table_point">${l.point.best*(5)+l.point.good*(3)+l.point.bad*(-3)+l.point.worst*(-5) }</td>

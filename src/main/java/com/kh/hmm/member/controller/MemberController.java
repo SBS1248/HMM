@@ -382,4 +382,19 @@ public class MemberController {
 	}
 	
 	
+	@RequestMapping("profile.do")
+	public String profileMember(HttpSession session, HttpServletRequest request, Model model,String profileId) {
+		logger.info("profileMember() call...");
+		Member m;
+		
+		m = memberService.profileInfo(profileId);
+		
+		
+		if (m != null) {
+			model.addAttribute("pInfo", m);
+		}
+		
+		return "member/profile";
+	}
+	
 }

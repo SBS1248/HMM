@@ -58,4 +58,6 @@ public interface MemberService {
 
 	Member deleteMember(String memberId);
 
+	Member profileInfo(String profileId);
+
 }

@@ -127,4 +127,12 @@
 		SELECT *
 		FROM MEMBER WHERE ID = #{id}
 	</select>
+	
+	<select id="profileInfo" resultType="member" parameterType="hashmap">
+	SELECT MEMBERCODE,ID, EMAIL,PHOTO, HAVMEDAL, EXP, REPORT, RECOMPOINT,
+	(SELECT COUNT(*) FROM BOARD WHERE WRITERID=#{id1}) boardCount,
+	(SELECT COUNT(*) FROM COMMENTS WHERE WRITERID=#{id2}) commentsCount
+	FROM member 
+	WHERE ID=#{id3}
+	</select>
 </mapper>

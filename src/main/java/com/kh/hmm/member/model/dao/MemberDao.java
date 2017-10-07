@@ -120,13 +120,27 @@ public class MemberDao {
 		Member member = null;
 		String id = memberId;
 		int result = sqlSession.update("DeleteMember", id);
-		
+
 		if (result >= 1) {
 			member = sqlSession.selectOne("memberInfo", id);
 		}
-		
-		System.out.println("Delete DAO Member : "+member);
 
+		System.out.println("Delete DAO Member : " + member);
+
+		return member;
+	}
+
+	public Member profileInfo(String profileId) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id1", profileId);
+		map.put("id2", profileId);
+		map.put("id3", profileId);
+
+		Member member = sqlSession.selectOne("profileInfo", map);
+		if (member != null) {
+			System.out.println(member);
+			return member;
+		}
 		return member;
 	}
 }

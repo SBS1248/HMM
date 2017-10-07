@@ -17,6 +17,25 @@ public class Member {
 	private int ddaru;
 	private int report;
 	private int recompoint;
+	private int boardCount;
+
+	public int getBoardCount() {
+		return boardCount;
+	}
+
+	public void setBoardCount(int boardCount) {
+		this.boardCount = boardCount;
+	}
+
+	public int getCommentsCount() {
+		return commentsCount;
+	}
+
+	public void setCommentsCount(int commentsCount) {
+		this.commentsCount = commentsCount;
+	}
+
+	private int commentsCount;
 
 	public Date getQuitdate() {
 		return quitdate;
@@ -35,8 +54,8 @@ public class Member {
 	}
 
 	public Member(int membercode, String id, String password, String email, String photo, int medal, int havmedal,
-			long exp, int chash, int ddaru, int report, int recompoint, String job, Date enrolldate, Date quitedate,
-			MultipartFile uploadFile) {
+			long exp, int chash, int ddaru, int report, int recompoint, int boardCount, int commentsCount, String job,
+			Date enrolldate, Date quitdate, MultipartFile uploadFile) {
 		super();
 		this.membercode = membercode;
 		this.id = id;
@@ -50,6 +69,8 @@ public class Member {
 		this.ddaru = ddaru;
 		this.report = report;
 		this.recompoint = recompoint;
+		this.boardCount = boardCount;
+		this.commentsCount = commentsCount;
 		this.job = job;
 		this.enrolldate = enrolldate;
 		this.quitdate = quitdate;
@@ -180,8 +201,9 @@ public class Member {
 	public String toString() {
 		return "Member [membercode=" + membercode + ", id=" + id + ", password=" + password + ", email=" + email
 				+ ", photo=" + photo + ", medal=" + medal + ", havmedal=" + havmedal + ", exp=" + exp + ", chash="
-				+ chash + ", ddaru=" + ddaru + ", report=" + report + ", recompoint=" + recompoint + ", job=" + job
-				+ ", enrolldate=" + enrolldate + ", quitdate=" + quitdate + ", uploadFile=" + uploadFile + "]";
+				+ chash + ", ddaru=" + ddaru + ", report=" + report + ", recompoint=" + recompoint + ", boardCount="
+				+ boardCount + ", commentsCount=" + commentsCount + ", job=" + job + ", enrolldate=" + enrolldate
+				+ ", quitdate=" + quitdate + ", uploadFile=" + uploadFile + "]";
 	}
 
 }

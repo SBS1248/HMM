@@ -1,5 +1,6 @@
 package com.kh.hmm.board.model.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -119,5 +120,11 @@ public class BoardServiceImpl implements BoardService
 	public String boardName(int dis)
 	{
 		return bDao.boardName(dis);
+	}
+
+	@Override
+	public ArrayList<Board> selectNewTechList(Date date)
+	{
+		return bDao.selectNewTechList(date);
 	}
 }

@@ -24,20 +24,6 @@
 
 
 <script type="text/javascript">
-	function viewcount(bcode)
-	{
-		$.ajax({
-            type : "GET",
-            url : "viewcount.do?bcode="+bcode,
-           	success:function(){},
-            error:function(request,status,error){
-                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-               }
-    	});
-	};
-</script>
-
-<script type="text/javascript">
 	// 타자기
 	window.onload = typeWriter;
 

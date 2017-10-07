@@ -56,9 +56,13 @@
  	<select id="selectBoardList" resultMap="boardMap" parameterType="_int">
 		<include refid="boardTemplate"/>
 		WHERE A.DISTINGUISH=#{dis}
-		<if test="_parameter==3">
-		AND A.POSTDATE BETWEEN (SELECT MAX(STARTDATE) FROM WEEKSUBJECT) AND (SELECT MAX(STARTDATE) FROM WEEKSUBJECT)+6
-		</if>
+		AND ISDELETE IS NULL
+	</select>
+	
+	<select id="selectNewTechList" resultMap="boardMap" parameterType="hashmap">
+		<include refid="boardTemplate"/>
+		WHERE A.DISTINGUISH=3
+		AND SYSDATE BETWEEN #{first} AND #{second}+6
 		AND ISDELETE IS NULL
 	</select>
  	 	

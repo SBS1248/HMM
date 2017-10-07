@@ -1,5 +1,6 @@
 package com.kh.hmm.board.model.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import com.kh.hmm.board.model.vo.Board;
@@ -41,4 +42,6 @@ public interface BoardService
 	void viewcount(int bcode);
 
 	String boardName(int dis);
+
+	ArrayList<Board> selectNewTechList(Date date);
 }

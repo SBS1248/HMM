@@ -474,13 +474,14 @@ public class BoardController
 	    return commentsService.selectCommentsOne(c.getCcode());
     }
 	
-	@ResponseBody
     @RequestMapping(value = "boardDelete.do", method = RequestMethod.GET)
-    public void boardDelete(int bcode) 
+    public String boardDelete(int bcode) 
     {
 	    logger.info("boardDelete("+bcode+") call...");
 	    	   
 	    boardService.deletBoard(bcode);
+	    
+	    return "forward:/boardLists.do?dis="+boardService.selectBoardOne(bcode).getDistinguish();
     }
 	
 	@ResponseBody

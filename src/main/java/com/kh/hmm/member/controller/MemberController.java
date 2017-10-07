@@ -62,8 +62,8 @@ public class MemberController {
 		if (session.getAttribute("member") != null) {
 			session.invalidate();
 		}
-		
-		return "redirect:"+url;
+
+		return "redirect:" + url;
 	}
 
 	@RequestMapping(value = "enroll.do", method = RequestMethod.POST)
@@ -105,7 +105,7 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "update.do", method = RequestMethod.POST)
-	public String memberUpdate(Member m, HttpSession session,HttpServletRequest request) {
+	public String memberUpdate(Member m, HttpSession session, HttpServletRequest request) {
 		logger.info("memberUpdate() call...");
 		String url = request.getHeader("referer");
 		Member member = memberService.updateMember(m);
@@ -113,25 +113,23 @@ public class MemberController {
 			session.setAttribute("member", member);
 
 		}
-		return "redirect:"+url;
+		return "redirect:" + url;
 	}
 
-	@RequestMapping(value="deleteMember.do", method=RequestMethod.GET)
-	public String memberDelete(HttpSession session, HttpServletRequest request)
-	{
+	@RequestMapping(value = "deleteMember.do", method = RequestMethod.GET)
+	public String memberDelete(HttpSession session, HttpServletRequest request) {
 		logger.info("memberDelete() call...");
 		String url = request.getHeader("referer");
-		String memberId = ((Member)(session.getAttribute("member"))).getId();
+		String memberId = ((Member) (session.getAttribute("member"))).getId();
 		Member member = memberService.deleteMember(memberId);
-		System.out.println("delete : "+member);
-		if(member != null)
-		{
+		System.out.println("delete : " + member);
+		if (member != null) {
 			session.setAttribute("member", member);
 		}
-		
-		return "redirect:"+url;
+
+		return "redirect:" + url;
 	}
-	
+
 	@RequestMapping(value = "uploadFile.do", method = RequestMethod.POST)
 	public String memberUpdate(HttpServletRequest request, HttpSession session,
 			@RequestParam("photo") MultipartFile uploadfile) {
@@ -300,8 +298,11 @@ public class MemberController {
 			throws Exception {
 		PrintWriter out = response.getWriter();
 		System.out.println("이메일 인증(패스워드) 컨트롤러.....");
+		int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
+		String joinCode = String.valueOf(ran);
 		m.setId(request.getParameter("id"));
 		m.setEmail(request.getParameter("email"));
+		m.setPassword(joinCode);
 		if (!m.getEmail().contains("@")) {
 			out.print(0); // 유효하지 않은 이메일
 			out.flush();
@@ -316,11 +317,13 @@ public class MemberController {
 			out.close();
 			return;
 		}
+		
+		
 		System.out.println("패스워드 찾기를 위한 이메일 : " + member.getEmail());
 
 		String subject = "hmm 패스워드 안내 입니다.";
 		StringBuilder sb = new StringBuilder();
-		sb.append("귀하의 패스워드는 " + member.getPassword() + " 입니다.");
+		sb.append("귀하의 임시 패스워드는 " + joinCode + " 입니다.");
 		boolean flag = memberService.send(subject, sb.toString(), "wkdgma91@gmail.com", member.getEmail(), null);
 		if (!flag) {
 			out.print(2); // 이메일 발송 실패
@@ -334,67 +337,57 @@ public class MemberController {
 		return;
 	}
 
-	
 	@ResponseBody
 	@RequestMapping(value = "leveling.do", method = RequestMethod.POST)
-	public HashMap leveling(HttpServletResponse response,long exp)	throws Exception 
-	{
-		logger.info("leveling() call...");	
-		
-		ArrayList<Integer> lev=memberService.leveling(exp);
-		
-		HashMap map=new HashMap();
-		if(exp>0) 
-		{
+	public HashMap leveling(HttpServletResponse response, long exp) throws Exception {
+		logger.info("leveling() call...");
+
+		ArrayList<Integer> lev = memberService.leveling(exp);
+
+		HashMap map = new HashMap();
+		if (exp > 0) {
 			map.put("level", lev.get(0));
 			map.put("percent", lev.get(1));
-		}
-		else
-		{
+		} else {
 			map.put("level", 1);
 			map.put("percent", 0);
 		}
-		
-		
-		return map;		
+
+		return map;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "recompoint.do", method = RequestMethod.POST)
-	public Integer recompoint(HttpServletResponse response,String id)	throws Exception 
-	{
-		logger.info("recompoint() call...");	
-		
-		Integer result=memberService.recompoint(id);
+	public Integer recompoint(HttpServletResponse response, String id) throws Exception {
+		logger.info("recompoint() call...");
 
-		return result;		
-	}	
-	
+		Integer result = memberService.recompoint(id);
+
+		return result;
+	}
+
 	@ResponseBody
 	@RequestMapping(value = "havmedal.do", method = RequestMethod.POST)
-	public Integer havmedal(HttpServletResponse response,int membercode)	throws Exception 
-	{
-		logger.info("havmedal() call...");	
-		
-		Integer result=memberService.havmedal(membercode);
-		
-		return result;		
+	public Integer havmedal(HttpServletResponse response, int membercode) throws Exception {
+		logger.info("havmedal() call...");
+
+		Integer result = memberService.havmedal(membercode);
+
+		return result;
 	}
-	
-	
+
 	@RequestMapping("profile.do")
-	public String profileMember(HttpSession session, HttpServletRequest request, Model model,String profileId) {
+	public String profileMember(HttpSession session, HttpServletRequest request, Model model, String profileId) {
 		logger.info("profileMember() call...");
 		Member m;
-		
+
 		m = memberService.profileInfo(profileId);
-		
-		
+
 		if (m != null) {
 			model.addAttribute("pInfo", m);
 		}
-		
+
 		return "member/profile";
 	}
-	
+
 }

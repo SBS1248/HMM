@@ -12,7 +12,7 @@
 <title>프로필 상세보기</title>
 </head>
 <body>
-<%@ include file="/header.jsp"%>
+	<%@ include file="/header.jsp"%>
 	<div class="container">
 		<div class="row">
 			<div class="profile-header-container">
@@ -33,6 +33,12 @@
 					</div>
 				</div>
 			</div>
+			<h2>이메일 : ${pInfo.email}</h2>
+			<h2>메달갯수 : ${pInfo.havmedal}</h2>
+			<h2>경험치 : ${pInfo.exp}</h2>
+			<h2>신고횟수 : ${pInfo.report}</h2>
+			<h2>작성한 글 갯수 : ${pInfo.boardCount}</h2>
+			<h2>작성한 댓글 갯수 : ${pInfo.commentsCount}</h2>
 		</div>
 	</div>
 

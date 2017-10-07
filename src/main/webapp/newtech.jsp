@@ -11,6 +11,77 @@
 <link href="resources/css/index.css" rel="stylesheet" type="text/css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+	function viewcount(bcode)
+	{
+		$.ajax({
+            type : "GET",
+            url : "viewcount.do?bcode="+bcode,
+           	success:function(){},
+            error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+               }
+    	});
+	};
+</script>
+
+<script type="text/javascript">
+	// 타자기
+	window.onload = typeWriter;
+
+	var i = 0;
+	var txt = '모두가 하나되는 국내 최고 IT 커뮤니티에 여러분을 초대합니다!';
+	var speed = 80;
+
+	function typeWriter() {
+		if (i < txt.length) {
+			document.getElementById("demo").innerHTML += txt.charAt(i);
+			i++;
+			setTimeout(typeWriter, speed);
+		}
+	}
+	function viewcount(bcode)
+	{
+		$.ajax({
+            type : "GET",
+            url : "viewcount.do?bcode="+bcode,
+           	success:function(){},
+            error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+               }
+    	});
+	};
+
+	function checkBoard(bcode){
+		var data = '${sessionScope.member}';
+		if(data ==''){
+			alert("로그인 후 이용 바랍니다");
+			$("#loginModal").modal('show');
+		}
+		else
+		{
+			viewcount(bcode);
+			location.href="boardOne.do?bcode="+bcode;
+		}
+	}
+
+	function checkWrite()
+	{
+			location.href="boardcode.do?dis=${dis}";
+	}
+
+
+	function onEnterSearch()
+	{
+		var keyCode = window.event.keyCode;
+		var keyword = $('input[name=search]').val();
+		if (keyCode == 13) {
+			location.href="boardSearch.do?dis="+'${dis}'+"&keyword="+keyword;
+		}
+	}
+</script>
+
 <title>9월 3주차 신기술 찬/반 투표</title>
 </head>
 <body>
@@ -103,7 +174,7 @@
 
 					<%-- 검색바 --%>
 					<div id="search_bar">
-						<input type="text" name="search" placeholder="검색어를 입력하세요..">
+						<input type="text" name="search" placeholder="검색어를 입력하세요.." onkeydown='javascript:onEnterSearch()'>
 					</div>
 
 					<%-- 게시글 정렬 --%>
@@ -125,7 +196,8 @@
 							<thead>
 								<tr>
 									<th>글번호</th>
-									<th style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">제목</th>
+									<th
+										style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">제목</th>
 									<th>카테고리</th>
 									<th>작성자</th>
 									<th>추천 점수</th>

@@ -129,4 +129,10 @@ public class BoardServiceImpl implements BoardService
 		return bDao.selectNewTechList(date);
 
 	}
+
+	@Override
+	public List<Board> selectSearchBoardList(int dis, String keyword)
+	{
+		return bDao.selectSearchBoardList(dis,keyword);
+	}
 }

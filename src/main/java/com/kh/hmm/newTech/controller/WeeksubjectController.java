@@ -75,11 +75,20 @@ public class WeeksubjectController
 		
 		
 		m.addAttribute("weeksubject", ws);//주제 및 날짜정보
-		m.addAttribute("agreeNUm",agreeNum);
+		m.addAttribute("agreeNum",agreeNum);
 		m.addAttribute("disagreeNum",disagreeNum);
 		m.addAttribute("sum",sum);
-		m.addAttribute("agreePercent",agreeNum/sum);
-		m.addAttribute("disagreePercent",disagreeNum/sum);
+		
+		if(sum==0) 
+		{
+			m.addAttribute("agreePercent",0);
+			m.addAttribute("disagreePercent",0);
+		}
+		
+		m.addAttribute("agreePercent",((int)(agreeNum*1000.0/sum))/10.0);
+		m.addAttribute("disagreePercent",((int)(disagreeNum*1000.0/sum))/10.0);
+
+		System.out.println(((int)(agreeNum*1000.0/sum))/10.0+"//"+((int)(disagreeNum*1000.0/sum))/10.0);
 		
 		return "../../newtechResult";
 	}

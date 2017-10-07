@@ -27,12 +27,12 @@
 			location.href="boardOne.do?bcode="+bcode;
 		}
 	}
-	
+
 	function checkWrite()
 	{
 			location.href="boardcode.do?dis=3";
 	}
-	
+
 	function viewcount(bcode)
 	{
 		$.ajax({
@@ -44,7 +44,7 @@
                }
     	});
 	};
-	
+
 	$(function(){
 		$('#agree').click(function()
 		{
@@ -81,9 +81,9 @@
 		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		               }
 		    	});
-			}			
+			}
 		});
-		
+
 		$('#disagree').click(function()
 		{
 			if('${member}'=='')
@@ -128,16 +128,17 @@
 
 <%@ include file="/header.jsp"%>
   <div class="polls_heading">
-	<h2>${week }주차 신기술 찬/반 투표 </h2>
+	<h2><span id="week">${week }</span>주차 신기술 찬/반 투표 </h2>
   <h1>${weeksubject.title }</h1>
   </div>
   <div class="polls_body">
 	<button type="button" id="agree">${weeksubject.agree }</button>
   <div class="polls_between">VS</div>
 	<button type="button" id="disagree">${weeksubject.disagree }</button>
+  <button type="button" id="polls_result_btn" onclick="location.href='newTechResult.do?wscode=${weeksubject.wscode}'">금주 신기술 동향 투표 결과 확인하기</button>
   </div>
 
-  <button type="button" id="polls_result_btn" onclick="location.href='newTechResult.do?wscode=${weeksubject.wscode}'">금주 신기술 동향 투표 결과 확인하기</button>
+
 
   <div class="container">
 		<!-- 게시판 영역 -->
@@ -196,11 +197,10 @@
 											style="cursor: pointer">${l.title }</a><span id="reply_num">&nbsp;[${l.isdelete}]</span></td>
 
 										<td>${l.code.name}</td>
-										<td>
-											<div class="profile">
-												<a href="profile.jsp"> <img class="img-circle" src="#" />
-												</a> ${l.writerid }
-											</div>
+                    <td id="td_profile">
+												<a href="profile.do?profileId=${l.writerid }"> <img class="img-circle" src="#" />
+													${l.writerid }
+												</a>
 										</td>
 										<td>${l.point.cal }</td>
 										<td>${l.point.viewnum }</td>
@@ -215,6 +215,5 @@
 			</div>
 		</div>
 	</div>
-	<%@ include file="/footer.jsp"%>
 </body>
 </html>

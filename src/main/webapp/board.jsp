@@ -62,13 +62,13 @@
 			location.href="boardOne.do?bcode="+bcode;
 		}
 	}
-	
+
 	function checkWrite()
 	{
 			location.href="boardcode.do?dis=${dis}";
 	}
-	
-	
+
+
 	function onEnterSearch()
 	{
 		var keyCode = window.event.keyCode;
@@ -148,11 +148,10 @@
 											style="cursor: pointer">${l.title }</a><span id="reply_num">&nbsp;[${l.isdelete}]</span></td>
 
 										<td>${l.code.name}</td>
-										<td>
-											<div class="profile">
-												<a href="profile.jsp"> <img class="img-circle" src="#" />
-												</a> ${l.writerid }
-											</div>
+										<td id="td_profile">
+												<a href="profile.do?profileId=${l.writerid }"> <img class="img-circle" src="#" />
+													${l.writerid }
+												</a>
 										</td>
 										<td>${l.point.best*(5)+l.point.good*(3)+l.point.bad*(-3)+l.point.worst*(-5) }</td>
 										<td>${l.point.viewnum }</td>

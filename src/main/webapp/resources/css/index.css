@@ -153,6 +153,14 @@ html body {
 color: black;
 }
 
+#td_profile a{
+  color: black;
+}
+
+#td_profile a:hover{
+  text-decoration: none;
+}
+
 #table_category{
   text-align: center;
 }

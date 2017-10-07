@@ -7,6 +7,7 @@
 		window.location.href = "boardLists.do?dis=0";
 	</script>
 </c:if>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -152,10 +153,16 @@
 										</a></td>
 										<td id="table_category">${l.code.name}</td>
 										<td>
-											<div class="profile">
-												<a href="profile.do?profileId=${l.writerid }"> <img class="img-circle" src="#" />
-													${l.writerid }
+											<div class="dropdown">
+												<a data-toggle="dropdown" style="cursor:pointer"> <img class="img-circle"
+													src="#" /> ${l.writerid }
 												</a>
+												<ul class="dropdown-menu">
+													<li><a href="profile.do?profileId=${l.writerid }">프로필
+															정보</a></li>
+													<li><a href="#">작성한 글</a></li>
+													<li><a href="#">작성한 댓글</a></li>
+												</ul>
 											</div>
 										</td>
 										<td id="table_point">${l.point.best*(5)+l.point.good*(3)+l.point.bad*(-3)+l.point.worst*(-5) }</td>

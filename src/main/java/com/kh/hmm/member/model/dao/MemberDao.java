@@ -77,7 +77,16 @@ public class MemberDao {
 	}
 
 	public Member CheckEmailId(Member m) {
-		return (Member) sqlSession.selectOne("emailChk", m);
+		Member member = (Member) sqlSession.selectOne("emailChk", m);
+		System.out.println("이메일 체크 : "+member);
+		member.setPassword(m.getPassword());
+		int result = sqlSession.update("update", member);
+		if (result >= 1) {
+			member = (Member) sqlSession.selectOne("emailChk", member);
+			return member;
+		} else {
+			return member;
+		}
 	}
 
 	public ArrayList<Integer> leveling(long exp) {

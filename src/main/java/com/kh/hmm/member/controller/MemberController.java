@@ -116,6 +116,22 @@ public class MemberController {
 		return "redirect:"+url;
 	}
 
+	@RequestMapping(value="deleteMember.do", method=RequestMethod.GET)
+	public String memberDelete(HttpSession session, HttpServletRequest request)
+	{
+		logger.info("memberDelete() call...");
+		String url = request.getHeader("referer");
+		String memberId = ((Member)(session.getAttribute("member"))).getId();
+		Member member = memberService.deleteMember(memberId);
+		System.out.println("delete : "+member);
+		if(member != null)
+		{
+			session.setAttribute("member", member);
+		}
+		
+		return "redirect:"+url;
+	}
+	
 	@RequestMapping(value = "uploadFile.do", method = RequestMethod.POST)
 	public String memberUpdate(HttpServletRequest request, HttpSession session,
 			@RequestParam("photo") MultipartFile uploadfile) {
@@ -365,5 +381,20 @@ public class MemberController {
 		return result;		
 	}
 	
+	
+	@RequestMapping("profile.do")
+	public String profileMember(HttpSession session, HttpServletRequest request, Model model,String profileId) {
+		logger.info("profileMember() call...");
+		Member m;
+		
+		m = memberService.profileInfo(profileId);
+		
+		
+		if (m != null) {
+			model.addAttribute("pInfo", m);
+		}
+		
+		return "member/profile";
+	}
 	
 }

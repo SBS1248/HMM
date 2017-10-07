@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -70,6 +71,32 @@ public class BoardController
 		
 		
 		return "../../"+rturn;
+	}
+	
+	@RequestMapping(value = "boardSearch.do", method = RequestMethod.GET)
+	public String selectSearchBoardList(HttpServletRequest request, Model model, int dis, String keyword) {
+		logger.info("selectBoardList(" + dis + ") call...");
+		System.out.println("키워드 : " + keyword);
+		ArrayList<Board> list = (ArrayList<Board>) boardService.selectSearchBoardList(dis, keyword);
+		for (Board b : list)
+			System.out.println(b);
+		if (dis == 0) {
+			if (list != null)
+				model.addAttribute("list", list);
+			return "../../index";
+		} 
+		else if(dis == 3)
+		{
+			if (list != null)
+				model.addAttribute("list", list);
+			return"../../newtech";
+		}
+		else {
+			if (list != null)
+				model.addAttribute("list", list);
+			return "../../board";
+		}
+
 	}
 	
 	@RequestMapping(value = "boardOne.do", method = RequestMethod.GET)

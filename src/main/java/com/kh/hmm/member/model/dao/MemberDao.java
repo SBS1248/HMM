@@ -16,7 +16,7 @@ public class MemberDao {
 	private SqlSessionTemplate sqlSession;
 
 	public Member selectMember(String writerid) {
-		return (Member) sqlSession.selectOne("selectMember",writerid);
+		return (Member) sqlSession.selectOne("selectMember", writerid);
 	}
 
 	public Member loginMember(Member m) {
@@ -79,46 +79,68 @@ public class MemberDao {
 	public Member CheckEmailId(Member m) {
 		return (Member) sqlSession.selectOne("emailChk", m);
 	}
-	
-	public ArrayList<Integer> leveling(long exp)
-	{		
-		List<Integer> list= sqlSession.selectList("leveling", exp);
+
+	public ArrayList<Integer> leveling(long exp) {
+		List<Integer> list = sqlSession.selectList("leveling", exp);
 		return (ArrayList<Integer>) list;
 	}
 
-	public Integer recompoint(String id)
-	{
-		return sqlSession.selectOne("recompoint",id);
-	}
-	
-	public void recomcount5(int membercode) 
-	{
-		sqlSession.update("recomcount5",membercode);
-	}
-	
-	public void recomcount3(int membercode) 
-	{
-		sqlSession.update("recomcount3",membercode);
+	public Integer recompoint(String id) {
+		return sqlSession.selectOne("recompoint", id);
 	}
 
-	public Integer havmedal(int membercode)
-	{
-		return sqlSession.selectOne("havmedal",membercode);
+	public void recomcount5(int membercode) {
+		sqlSession.update("recomcount5", membercode);
 	}
 
-	public void givemedal(int membercode)
-	{
-		sqlSession.update("givemedal",membercode);
+	public void recomcount3(int membercode) {
+		sqlSession.update("recomcount3", membercode);
+	}
+
+	public Integer havmedal(int membercode) {
+		return sqlSession.selectOne("havmedal", membercode);
+	}
+
+	public void givemedal(int membercode) {
+		sqlSession.update("givemedal", membercode);
 	}
 
 	public void updateDDARU(Member member) {
-		sqlSession.update("updateDDARU",member);
+		sqlSession.update("updateDDARU", member);
 	}
 
 	public int buyMedal(int membercode, int medal) {
-		HashMap map=new HashMap();
+		HashMap map = new HashMap();
 		map.put("membercode", membercode);
 		map.put("medal", medal);
-		return sqlSession.update("buyMedal",map);
-	} 
+		return sqlSession.update("buyMedal", map);
+	}
+
+	public Member deleteMember(String memberId) {
+		Member member = null;
+		String id = memberId;
+		int result = sqlSession.update("DeleteMember", id);
+
+		if (result >= 1) {
+			member = sqlSession.selectOne("memberInfo", id);
+		}
+
+		System.out.println("Delete DAO Member : " + member);
+
+		return member;
+	}
+
+	public Member profileInfo(String profileId) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id1", profileId);
+		map.put("id2", profileId);
+		map.put("id3", profileId);
+
+		Member member = sqlSession.selectOne("profileInfo", map);
+		if (member != null) {
+			System.out.println(member);
+			return member;
+		}
+		return member;
+	}
 }

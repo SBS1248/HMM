@@ -363,14 +363,14 @@ td, tr {
 
 <!--스크롤 배너 -->
 
-<div id="floating" style="cursor: pointer;">
+<div id="floating">
 	<a id="flotImg" onclick="loginCheck()" style="text-decoration: none;">
 		<img id="banner"
-		src="resources/img/icon/cash3.png"
+		src="https://image.freepik.com/free-vector/bills-and-coins-in-isometric-design_23-2147604444.jpg"
 		border="0" width="200px" height="130px">
 		<div id="test"
 			style="display: none; width: 200px; height: 130px; font-size: 30px; text-align: center;">
-			<br>따루 충전하러<br> 가기~
+			<br>결제하러 가기~
 		</div>
 	</a>
 

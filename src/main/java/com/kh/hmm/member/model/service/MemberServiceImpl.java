@@ -133,6 +133,10 @@ public class MemberServiceImpl implements MemberService {
 		mDao.updateDDARU(member);
 		
 	}
+	@Override
+	public int buyDDARU(int membercode, int price) {
+		return mDao.buyDDARU(membercode, price);	
+	}
 
 	@Override
 	public int buyMedal(int membercode,int medal) {

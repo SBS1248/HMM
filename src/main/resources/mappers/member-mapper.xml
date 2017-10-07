@@ -109,12 +109,12 @@
 		MEMBERCODE=#{membercode}
 	</update>
 
-	<insert id="updateDDARU">
+	<update id="buyDDaru">
 		UPDATE MEMBER
 		SET DDARU=#{ddaru}
 		WHERE
 		MEMBERCODE=#{membercode}
-	</insert>
+	</update>
 	
 	<update id="DeleteMember">
 		UPDATE MEMBER

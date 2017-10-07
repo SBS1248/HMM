@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<c:set var="membercode" value="${member.membercode }" scope="session" />
-<c:set var="DDaru" value="${member.DDaru }" scope="session" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -18,16 +15,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <title>캐쉬 결제 창</title>
-<script type="text/javascript">
-var dPrice = 0;
-$(function() {
-	IMP.init('imp86108516'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
-	document.getElementById("cashbuy").onclick = function() {
-		pay_test()
-	};
-});
-var membercode=${member.membercode};
-</script>
 <style type="text/css">
 </style>
 <%@ include file="/header.jsp"%>
@@ -35,7 +22,7 @@ var membercode=${member.membercode};
 <body>
 	<div class="wrap" style="margin-bottom: 300px;">
 		<div class="WolfharuRadioCheckbox">
-			<form action="buyDDaru.do" method ="POST">
+			<form name="" action="">
 				<fieldset>
 					<legend>결제 방식을 선택하여 주십시오.</legend>
 					<p class="ti">결제 방식</p>
@@ -58,29 +45,34 @@ var membercode=${member.membercode};
 						</p>
 					</div>
 				</fieldset>
-				
+			</form>
+		</div>
+	</div>
+
 	<div id="cashbuy" class="button_base b05_3d_roll"
-		style="position: absolute; left: 40%; top: 65%; cursor: pointer;">
+		style="position: absolute; left: 40%; top: 65%;">
 		<div>결제하기</div>
 		<div>결제하기</div>
 	</div>
 
 	<div class="button_base b05_3d_roll"
-		style="position: absolute; left: 60%; top: 65%; cursor: pointer;"
+		style="position: absolute; left: 60%; top: 65%;"
 		onclick="javascript:history.back();">
 		<div>돌아가기</div>
 		<div>돌아가기</div>
 	</div>
-	</form>
-		</div>
-	</div>
-
-	
 	<!-- 아임포트 결제스크립트 -->
 	<script src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"
 		type="text/javascript"></script>
 	<script type="text/javascript">
-			
+		var dPrice = 0;
+		$(function() {
+			IMP.init('imp86108516'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+			document.getElementById("cashbuy").onclick = function() {
+				pay_test()
+			};
+		});
+		
 		function pay_test() {
 			IMP.request_pay(
 							{
@@ -88,7 +80,7 @@ var membercode=${member.membercode};
 								pay_method : 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
 								merchant_uid : 'merchant_'
 										+ new Date().getTime(), //상점에서 관리하시는 고유 주문번호를 전달
-								name : '아이템결제'/*  '주문명: $("input[type=radio]:checked").name' */,
+								name : '주문명:아이템결제'/*  '주문명: $("input[type=radio]:checked").name' */,
 								amount : $("input[type=radio]:checked").val(),
 								buyer_email : 'asdf@asdf.com',
 								buyer_name : 'test',
@@ -102,30 +94,12 @@ var membercode=${member.membercode};
 									msg += '상점 거래ID : ' + rsp.merchant_uid;
 									msg += '결제 금액 : ' + rsp.paid_amount;
 									msg += '카드 승인번호 : ' + rsp.apply_num;
-								
-			var price =rsp.paid_amount;
-			var dPrice = 0;
-			switch(price){
-			case 1000 : dPrice = 100;
-			break;
-			case 5000 : dPrice= 500;
-			break;
-			case 10000 : dPrice = 10150;
-			break;
-			case 14000 : dPrice = 15300;
-			break;
-			default : alert("유효하지 않은 값입니다.");
-			}
-		location.href = "buyDDaru.do?membercode="+membercode
-		+"&price =" +dPrice; 
-		
-							} else {
-								var msg = '결제에 실패하였습니다.';
-								msg += '에러내용 : ' + rsp.error_msg;
-							
-							alert(msg);
-							}
-						});
+								} else {
+									var msg = '결제에 실패하였습니다.';
+									msg += '에러내용 : ' + rsp.error_msg;
+								}
+								alert(msg);
+							});
 		};
 	</script>
 

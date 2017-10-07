@@ -108,13 +108,6 @@ public class MemberDao {
 	public void updateDDARU(Member member) {
 		sqlSession.update("updateDDARU", member);
 	}
-	
-	public int buyDDARU(int membercode, int price) {
-		HashMap map = new HashMap();
-		map.put("membercode",membercode);
-		map.put("price", price);
-	return	sqlSession.update("updateDDARU", map);
-	}
 
 	public int buyMedal(int membercode, int medal) {
 		HashMap map = new HashMap();

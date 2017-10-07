@@ -89,10 +89,15 @@
 
 	});
 	function validationCheck() {
-		if (($('#password').val() != '' || $('#passwordConfirm').val() != '')
-				&& $('#password').val() == $('#passwordConfirm').val()){
+		var password = $('#password').val();
+		var passwordConfirm = $('#passwordConfirm').val();
+		if ((password != '' || passwordConfirm != '')
+				&& password == passwordConfirm){
 		if($('#insertChk').val() == "YY")
 		{
+			var pwd = $('#password').val();
+			pwd = SHA256(pwd);
+			$('#password').val(pwd);
 			$('form').submit();
 		}
 		else if($('#insertChk').val() == "Y")
@@ -106,6 +111,11 @@
 			return;
 		}
 		}
+		else if(password.length < 6 || password.length > 20)
+			{
+			alert("비밀번호는 최소 6자리에서 최대 20자리 까지 입력 할수 있습니다!!");
+			return;
+			}
 		else{
 			alert("비밀번호를 한번 더 확인해주세요!!");
 			return;
@@ -301,10 +311,12 @@
 							id="insertID" required> &nbsp; &nbsp;
 						<button type="button" style="color: white" onclick="chkDup()">중복확인</button>
 						<br> <input type="password" name="password"
-							placeholder="비밀번호" required id="password"><br> <input
-							type="password" name="passwordConfirm" placeholder="비밀번호 확인"
-							required id="passwordConfirm"><br> <input
-							type="email" name="email" placeholder="이메일" required />
+							placeholder="비밀번호	ex) 최소 6 자리에서 20자리까지 가능." required
+							id="password"><br> <input type="password"
+							name="passwordConfirm"
+							placeholder="비밀번호확인	ex) 최소 6 자리에서 20자리까지 가능." required
+							id="passwordConfirm"><br> <input type="email"
+							name="email" placeholder="이메일" required />
 						<button id="emailCheck" style="color: white" type="button">이메일
 							인증</button>
 						<br> <input type="text" id="emailCode"><br>

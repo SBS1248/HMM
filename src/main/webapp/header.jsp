@@ -1,25 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="member" value="${sessionScope.member}" />
+<c:set var="password" value="${member.password}" />
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="utf-8">
 <link rel="icon" href="resources/img/hmm.JPG" type="image/gif"
 	sizes="32x16">
 <link href="resources/css/header.css" rel="stylesheet" type="text/css">
-	<link
-		href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
-		rel="stylesheet">
-	<script
-		src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-	<script
-		src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-	<link
-		href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css"
-		rel="stylesheet">
-	<script
-		src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<link
+	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 
 </head>
 <script type="text/javascript">
@@ -49,8 +52,6 @@
 <%@ include file="WEB-INF/views/member/insertMember.jsp"%>
 
 <body>
-	<c:set var="member" value="${sessionScope.member}" />
-	<c:set var="password" value="${member.password}" />
 	<%
 		System.out.println("헤더 페이지 세션 값 : " + session.getAttribute("member"));
 	%>
@@ -69,8 +70,14 @@
 						<!-- 홈페이지 로고 -->
 						<li><button onclick="location.href='index.jsp'"
 								id="home_logo">Hmm</button></li>
-						<li style="color: white;"><script>document.write("제 홈페이지에 <font color=red>" + hitCt + "</font> 번째 방문자이시네요.") </script></li>
-						<c:if test="${member.id  eq 'admin'}"><a href="adminlist.do">관리자</a></c:if>
+						<li style="color: white;"><script>
+							document.write(
+									"제 홈페이지에 <font color=red>" + hitCt
+											+ "</font> 번째 방문자이시네요.")
+						</script></li>
+						<c:if test="${member.id  eq 'admin'}">
+							<a href="adminlist.do">관리자</a>
+						</c:if>
 						<!-- 로그인 관련 메뉴 및 모달 -->
 						<c:choose>
 							<c:when test="${null eq member }">
@@ -121,12 +128,13 @@
 				<li><a href="boardLists.do?dis=2"> <span
 						class="glyphicon glyphicon-question-sign"></span>&nbsp;&nbsp;Q & A
 				</a></li>
-				<li><a href="itemLists.do" style="cursor:pointer"> <span
+				<li><a href="itemLists.do" style="cursor: pointer"> <span
 						class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp; 따루샵
 				</a></li>
 
-				<li><a href="about.jsp"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;
-						About Hmm</a></li>
+				<li><a href="about.jsp"><span
+						class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp; About
+						Hmm</a></li>
 				<li><a href="#contact"><span
 						class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp; 연락처</a></li>
 				<li><a href="#googleMap"><span

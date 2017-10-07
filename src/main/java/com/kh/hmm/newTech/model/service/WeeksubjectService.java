@@ -1,6 +1,7 @@
 package com.kh.hmm.newTech.model.service;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import com.kh.hmm.newTech.model.vo.Weeksubject;
 
@@ -18,5 +19,11 @@ public interface WeeksubjectService
 	
 	Weeksubject selectWeek();
 
-	Date getDate();
+	ArrayList<Date> selectDate();
+
+	ArrayList<Weeksubject> getDWeekService(int year);
+
+	int hproCount(int wscode);
+	
+	int hconCount(int wscode);
 }

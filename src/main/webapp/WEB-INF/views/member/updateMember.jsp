@@ -49,7 +49,7 @@
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
-	b
+	
 
 	function validationDate() {
 		var x = document.updateForm.password.value;

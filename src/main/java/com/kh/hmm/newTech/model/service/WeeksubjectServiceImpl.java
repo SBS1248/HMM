@@ -43,12 +43,6 @@ public class WeeksubjectServiceImpl implements WeeksubjectService
 	}
 
 	@Override
-	public Date getDate()
-	{
-		return wDao.getDate();
-	}
-
-	@Override
 	public int proInsert(String id, int wscode)
 	{
 		return wDao.proInsert(id,wscode);
@@ -58,5 +52,29 @@ public class WeeksubjectServiceImpl implements WeeksubjectService
 	public int conInsert(String id, int wscode)
 	{
 		return wDao.conInsert(id,wscode);
+	}
+
+	@Override
+	public ArrayList<Date> selectDate()
+	{
+		return wDao.selectDate();
+	}
+
+	@Override
+	public ArrayList<Weeksubject> getDWeekService(int year)
+	{
+		return wDao.getDWeekService(year);
+	}
+
+	@Override
+	public int hproCount(int wscode)
+	{
+		return wDao.hproCount(wscode);
+	}
+
+	@Override
+	public int hconCount(int wscode)
+	{
+		return wDao.hconCount(wscode);
 	}
 }

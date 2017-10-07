@@ -151,12 +151,10 @@
 												id="reply_num">&nbsp;[${l.isdelete}]</span>
 										</a></td>
 										<td id="table_category">${l.code.name}</td>
-										<td>
-											<div class="profile">
+										<td id="td_profile">
 												<a href="profile.do?profileId=${l.writerid }"> <img class="img-circle" src="#" />
 													${l.writerid }
 												</a>
-											</div>
 										</td>
 										<td id="table_point">${l.point.best*(5)+l.point.good*(3)+l.point.bad*(-3)+l.point.worst*(-5) }</td>
 										<td id="table_viewcount">${l.point.viewnum }</td>

@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link href="resources/css/newtech2.css" rel="stylesheet" type="text/css">
+		<link href="resources/css/newtechResult.css" rel="stylesheet" type="text/css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<title>신기술 투표 결과</title>
@@ -22,23 +22,23 @@
 					<div class="results">
 						<span class="on" id="on1"></span>
 					</div>
-					
-					<h3 class="option-label">${weeksubject.agree }
+
+					<h3 class="option-label">"${weeksubject.agree }"
 						<span class="count" id="chart_on1"></span><br>
 						<span id="head_counts1"></span>
 					</h3>
 				</div>
-				
+
 				<div class="the_vs_ball_area">
 					<div class="the_vs_ball">VS</div>
 				</div>
-				
+
 				<div id="option-no" class="the_options">
 					<div class="results">
 						<span class="on" id="on2"></span>
 					</div>
-					
-					<h3 class="option-label">${weeksubject.disagree }
+
+					<h3 class="option-label">"${weeksubject.disagree }"
 						<span class="count" id="chart_on2"></span><br>
 						<span id="head_counts2"></span>
 					</h3>
@@ -51,25 +51,25 @@
 		</div>
 
 		<script>
-			function move() 
+			function move()
 			{
 				var elem = document.getElementById("on1");
 				var elem2 = document.getElementById("chart_on1");
 
-				var width = 0.0;				
+				var width = 0.0;
 				var id = setInterval(frame, 0.5);
-				function frame() 
+				function frame()
 				{
 					if (width >= '${agreePercent}')
 					{
 						clearInterval(id);
-					} 
-					else 
+					}
+					else
 					{
 						width+=0.1;
-						
+
 						if(width>100)	width=100.0;
-						
+
 						elem.style.width = width.toFixed(1) + '%';
 						elem2.innerHTML = width.toFixed(1)  + '%';
 					}
@@ -81,13 +81,13 @@
 				var elem = document.getElementById("head_counts1");
 				var width = 0;
 				var id = setInterval(frame, 30);
-				function frame() 
+				function frame()
 				{
 					if (width >= '${agreeNum}')
 					{
 						clearInterval(id);
-					} 
-					else 
+					}
+					else
 					{
 						width++;
 						elem.innerHTML = width * 1 + '명';
@@ -102,37 +102,37 @@
 
 				var width = 0.0;
 				var id = setInterval(frame, 0.5);
-				
-				function frame() 
+
+				function frame()
 				{
-					if (width >= '${disagreePercent}') 
+					if (width >= '${disagreePercent}')
 					{
 						clearInterval(id);
-					} 
-					else 
+					}
+					else
 					{
 						width+=0.1;
-						
+
 						if(width>100)	width=100.0;
-						
+
 						elem.style.width = width.toFixed(1) + '%';
-						elem3.innerHTML = width.toFixed(1) + '%';					
+						elem3.innerHTML = width.toFixed(1) + '%';
 					}
 				}
 			}
 
-			function participants_num2() 
+			function participants_num2()
 			{
 				var elem = document.getElementById("head_counts2");
 				var width = 0;
 				var id = setInterval(frame, 30);
-				function frame() 
+				function frame()
 				{
-					if (width >= '${disagreeNum}') 
+					if (width >= '${disagreeNum}')
 					{
 						clearInterval(id);
-					} 
-					else 
+					}
+					else
 					{
 						width++;
 						elem.innerHTML = width * 1 + '명';

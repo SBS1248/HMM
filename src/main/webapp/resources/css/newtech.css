@@ -31,6 +31,10 @@ html body {
   background-color: #002F2F;
 }
 
+#week{
+  font-size: 40px;
+}
+
 .polls_body {
   font-family: 'Hanna', serif;
   background-color: #deeaee;
@@ -50,25 +54,19 @@ html body {
   transition: transform 0.5s;
 }
 
-.polls_body #con {
+.polls_body #agree {
   background-color: #618685;
 }
 
-.polls_body #pro {
+.polls_body #disagree {
   background-color: #c94c4c;
 }
 
 #polls_result_btn{
-  font-size: 24px;
-  color: white;
-  border: none;
-  padding: 20px;
-  border-radius: 10px;
+  font-size: 20px;
   width: 400px;
   height: 100px;
-  margin: 10px;
   background-color: skyblue;
-  transition: transform 0.5s;
 }
 
 #polls_result_btn:hover{
@@ -85,12 +83,12 @@ html body {
   color: white;
   background-color: #3e3e3e;
   display: inline-block;
-  width: 100px;
-  height: 100px;
-  border-radius: 100%;
-  line-height: 100px;
+  width: 150px;
+  height: 150px;
+  border-radius: 200%;
+  line-height: 150px;
   text-align: center;
-  font-size: 50px;
+  font-size: 75px;
   margin: 10px;
 }
 

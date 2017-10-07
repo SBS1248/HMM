@@ -1,5 +1,6 @@
 package com.kh.hmm.board.model.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -121,9 +122,11 @@ public class BoardServiceImpl implements BoardService
 	{
 		return bDao.boardName(dis);
 	}
-	
+  
 	@Override
-	public List<Board> selectSearchBoardList(int dis, String keyword) {
-		return bDao.selectSearchBoardList(dis,keyword);
+	public ArrayList<Board> selectNewTechList(Date date)
+	{
+		return bDao.selectNewTechList(date);
+
 	}
 }

@@ -1,5 +1,6 @@
 ﻿package com.kh.hmm.board.model.dao;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -150,5 +151,15 @@ public class BoardDao {
 			list = sqlSession.selectList("selectSearchDisBoard", map);
 		}
 		return list;
+	}
+
+	public ArrayList<Board> selectNewTechList(Date date)
+	{
+		HashMap map=new HashMap();
+		map.put("first", date);
+		map.put("second", date);
+		List<Board> list=sqlSession.selectList("selectNewTechList",map);
+		
+		return (ArrayList<Board>)list;
 	}
 }

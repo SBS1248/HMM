@@ -12,13 +12,9 @@
 		WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+6
 	</select>		
 		
-	<insert id="proInsert" parameterType="string">
-		INSERT INTO PROLIST VALUES(
-					(
-						SELECT WSCODE
-					 	FROM WEEKSUBJECT 
-					 	WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+6
-					 ),#{id})
+	<insert id="proInsert" parameterType="hashmap">
+		INSERT INTO PROLIST 
+		VALUES(#{wscode},#{id})
 	</insert>
 	
 	<select id="proCount" resultType="java.lang.Integer">
@@ -31,13 +27,9 @@
 					 )
 	</select>
 	
-	<insert id="conInsert" parameterType="string">
-		INSERT INTO CONLIST VALUES(
-					(
-						SELECT WSCODE
-					 	FROM WEEKSUBJECT 
-					 	WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+6
-					 ),#{id})
+	<insert id="conInsert" parameterType="hashmap">
+		INSERT INTO CONLIST
+		VALUES(#{wscode},#{id})
 	</insert>
 	
 	<select id="conCount" resultType="java.lang.Integer">
@@ -51,8 +43,10 @@
 	</select>
 	
 	<select id="pcSearch" resultType="java.lang.Integer" parameterType="string">
-		SELECT ((SELECT COUNT(*) FROM PROLIST WHERE ID=#{id})*2+(SELECT COUNT(*) FROM CONLIST WHERE ID=#{id})*3)
+		SELECT ((SELECT COUNT(*) FROM PROLIST WHERE ID=#{id})*1+(SELECT COUNT(*) FROM CONLIST WHERE ID=#{id})*2)
 		FROM DUAL
 	</select>
+	
+
 	
 </mapper>

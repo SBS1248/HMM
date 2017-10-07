@@ -1,14 +1,12 @@
 package com.kh.hmm.newTech.model.dao;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Date;
+import java.util.HashMap;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.kh.hmm.newTech.model.vo.Conlist;
-import com.kh.hmm.newTech.model.vo.Prolist;
 import com.kh.hmm.newTech.model.vo.Weeksubject;
 
 @Repository("weeksubjectDao")
@@ -17,14 +15,22 @@ public class WeeksubjectDao
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public int proInsert(String id)
+	public int proInsert(String id,int wscode)
 	{
-		return sqlSession.insert("proInsert",id);
+		HashMap map=new HashMap();
+		map.put("id", id);
+		map.put("wscode", wscode);
+		
+		return sqlSession.insert("proInsert",map);
 	}
 
-	public int conInsert(String id)
+	public int conInsert(String id,int wscode)
 	{
-		return sqlSession.insert("conInsert",id);
+		HashMap map=new HashMap();
+		map.put("id", id);
+		map.put("wscode", wscode);
+		
+		return sqlSession.insert("conInsert",map);
 	}	
 
 	public Weeksubject selectWeek()
@@ -45,5 +51,12 @@ public class WeeksubjectDao
 	public int pcSearch(String id)
 	{
 		return sqlSession.selectOne("pcSearch",id);
+	}
+
+	public Date getDate()
+	{
+		Date date=new Date(((java.util.Date)(sqlSession.selectOne("getDate"))).getTime());
+		
+		return date;
 	}
 }

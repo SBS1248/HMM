@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,48 +12,9 @@
 <link href="resources/css/index.css" rel="stylesheet" type="text/css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>${week }주차 신기술 찬/반 투표</title>
 
 <script type="text/javascript">
-	function viewcount(bcode)
-	{
-		$.ajax({
-            type : "GET",
-            url : "viewcount.do?bcode="+bcode,
-           	success:function(){},
-            error:function(request,status,error){
-                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-               }
-    	});
-	};
-</script>
-
-<script type="text/javascript">
-	// 타자기
-	window.onload = typeWriter;
-
-	var i = 0;
-	var txt = '모두가 하나되는 국내 최고 IT 커뮤니티에 여러분을 초대합니다!';
-	var speed = 80;
-
-	function typeWriter() {
-		if (i < txt.length) {
-			document.getElementById("demo").innerHTML += txt.charAt(i);
-			i++;
-			setTimeout(typeWriter, speed);
-		}
-	}
-	function viewcount(bcode)
-	{
-		$.ajax({
-            type : "GET",
-            url : "viewcount.do?bcode="+bcode,
-           	success:function(){},
-            error:function(request,status,error){
-                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-               }
-    	});
-	};
-
 	function checkBoard(bcode){
 		var data = '${sessionScope.member}';
 		if(data ==''){
@@ -65,105 +27,123 @@
 			location.href="boardOne.do?bcode="+bcode;
 		}
 	}
-
+	
 	function checkWrite()
 	{
-			location.href="boardcode.do?dis=${dis}";
+			location.href="boardcode.do?dis=3";
 	}
-
-
-	function onEnterSearch()
+	
+	function viewcount(bcode)
 	{
-		var keyCode = window.event.keyCode;
-		var keyword = $('input[name=search]').val();
-		if (keyCode == 13) {
-			location.href="boardSearch.do?dis="+'${dis}'+"&keyword="+keyword;
-		}
-	}
+		$.ajax({
+            type : "GET",
+            url : "viewcount.do?bcode="+bcode,
+           	success:function(){},
+            error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+               }
+    	});
+	};
+	
+	$(function(){
+		$('#agree').click(function()
+		{
+			if('${member}'=='')
+			{
+				alert("로그인이 필요합니다.");
+				return;
+			}
+			else
+			{
+				$.ajax({
+		            type : "GET",
+		            url : "isVote.do?id=${member.id}",
+		           	success:function(data)
+		           	{
+		           		if(data=='0')
+		           		{
+		           			$.ajax({
+		    		            type : "GET",
+		    		            url : "agree.do?id=${member.id}&wscode=${weeksubject.wscode}",
+		    		           	success:function()
+		    		           	{
+		    		           		alert("찬성 투표하셨습니다.");
+		    		           	},
+		    		            error:function(request,status,error){
+		    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		    		               }
+		    		    	});
+		           		}
+		           		else if(data=='1') alert("이미 찬성 투표하셨습니다.");
+		           		else alert("이미 반대 투표하셨습니다.");
+		           	},
+		            error:function(request,status,error){
+		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		               }
+		    	});
+			}			
+		});
+		
+		$('#disagree').click(function()
+		{
+			if('${member}'=='')
+			{
+				alert("로그인이 필요합니다.");
+				return;
+			}
+			else
+			{
+				$.ajax({
+		            type : "GET",
+		            url : "isVote.do?id=${member.id}",
+		           	success:function(data)
+		           	{
+		           		if(data=='0')
+		           		{
+		           			$.ajax({
+		    		            type : "GET",
+		    		            url : "disagree.do?id=${member.id}&wscode=${weeksubject.wscode}",
+		    		           	success:function()
+		    		           	{
+		    		           		alert("반대 투표하셨습니다.");
+		    		           	},
+		    		            error:function(request,status,error){
+		    		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		    		               }
+		    		    	});
+		           		}
+		           		else if(data=='1') alert("이미 찬성 투표하셨습니다.");
+		           		else alert("이미 반대 투표하셨습니다.");
+		           	},
+		            error:function(request,status,error){
+		                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		               }
+		    	});
+			}
+		});
+	});
 </script>
-
-<title>9월 3주차 신기술 찬/반 투표</title>
 </head>
 <body>
 
 <%@ include file="/header.jsp"%>
   <div class="polls_heading">
-	<h2>9월 3주차 신기술 찬/반 투표 : </h2>
-  <h1>객체지향 프로그래밍 VS 절차지향 프로그래밍, 무엇이 더 나을까?</h1>
+	<h2>${week }주차 신기술 찬/반 투표 </h2>
+  <h1>${weeksubject.title }</h1>
   </div>
   <div class="polls_body">
-	<button type="button" id="pro">형식보다는 실용성.<br>객체지향 프로그래밍이 곧 미래이다.</button>
-	<script type="text/javascript">
-		$(function(){
-
-			$('#pro').click(function(){
-				$.ajax({
-                    type : "POST",
-                    url : "proInsert.do",
-                    dataType:"text",
-                    success : function(data) {
-                    	if($.isNumeric(data))
-                    	{
-                    		alert("찬성하셨습니다.");
-                        	$('#proCount').text(data);
-                    	}
-                    	else
-                    	{
-                    		if(data=='p')
-                    			alert("이미 찬성하셨습니다.");
-                    		else
-                    			alert("이미 반대하셨습니다.");
-                    	}
-
-                    },
-                    error:function(request,status,error){
-                        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                       }
-            	});
-
-			});
-
-      $('#con').click(function(){
-				$.ajax({
-                    type : "POST",
-                    url : "conInsert.do",
-                    dataType:"text",
-                    success : function(data) {
-                    	if($.isNumeric(data))
-                    	{
-                    		alert("찬성하셨습니다.");
-                        	$('#proCount').text(data);
-                    	}
-                    	else
-                    	{
-                    		if(data=='p')
-                    			alert("이미 찬성하셨습니다.");
-                    		else
-                    			alert("이미 반대하셨습니다.");
-                    	}
-                    },
-                    error:function(request,status,error){
-                        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                       }
-            	});
-			});
-
-		});
-	</script>
+	<button type="button" id="agree">${weeksubject.agree }</button>
   <div class="polls_between">VS</div>
-	<button type="button" id="con">물이 위에서 아래로 흐르듯이,
-    <br>순차지향 프로그래밍은 곧 자연의 이치이다.</button>
-  <br>
+	<button type="button" id="disagree">${weeksubject.disagree }</button>
+  </div>
 
-  <button type="button" id="polls_result_btn" onclick="location.href='newtech2.jsp'">금주 신기술 동향 투표 결과 확인하기</button>
+  <button type="button" id="polls_result_btn" onclick="location.href='newTechResult.do?wscode=${weeksubject.wscode}'">금주 신기술 동향 투표 결과 확인하기</button>
 
-</div>
-<div class="polls_footer">
   <div class="container">
 		<!-- 게시판 영역 -->
 		<div class="board_area">
 			<!-- 검색창, 검색 정렬들의 패널 -->
-			<div clas="board">
+			<div class="board">
 
 				<div class="board-heading">
 
@@ -174,7 +154,7 @@
 
 					<%-- 검색바 --%>
 					<div id="search_bar">
-						<input type="text" name="search" placeholder="검색어를 입력하세요.." onkeydown='javascript:onEnterSearch()'>
+						<input type="text" name="search" placeholder="검색어를 입력하세요..">
 					</div>
 
 					<%-- 게시글 정렬 --%>
@@ -196,8 +176,7 @@
 							<thead>
 								<tr>
 									<th>글번호</th>
-									<th
-										style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">제목</th>
+									<th style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">제목</th>
 									<th>카테고리</th>
 									<th>작성자</th>
 									<th>추천 점수</th>
@@ -223,7 +202,7 @@
 												</a> ${l.writerid }
 											</div>
 										</td>
-										<td>${l.point.best*(5)+l.point.good*(3)+l.point.bad*(-3)+l.point.worst*(-5) }</td>
+										<td>${l.point.cal }</td>
 										<td>${l.point.viewnum }</td>
 										<td>${l.postdate }</td>
 									</tr>
@@ -236,5 +215,6 @@
 			</div>
 		</div>
 	</div>
+	<%@ include file="/footer.jsp"%>
 </body>
-	</html>
+</html>

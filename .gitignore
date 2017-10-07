@@ -4,3 +4,4 @@ pom.properties
 MANIFEST.MF
 */META-INF/*
 */fileUpload/post/*
+*/fileUpload/*

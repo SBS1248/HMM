@@ -1,5 +1,6 @@
 package com.kh.hmm.board.model.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,5 +43,6 @@ public interface BoardService {
 
 	String boardName(int dis);
 
-	List<Board> selectSearchBoardList(int dis, String keyword);
+	ArrayList<Board> selectNewTechList(Date date);
+
 }

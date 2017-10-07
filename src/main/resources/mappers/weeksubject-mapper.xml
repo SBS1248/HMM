@@ -9,7 +9,7 @@
 	<select id="selectWeek" resultType="Weeksubject">
 		SELECT *
 		FROM WEEKSUBJECT
-		WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+6
+		WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+7
 	</select>		
 		
 	<insert id="proInsert" parameterType="hashmap">
@@ -23,7 +23,7 @@
 		WHERE WSCODE=(
 						SELECT WSCODE
 					 	FROM WEEKSUBJECT 
-					 	WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+6
+					 	WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+7
 					 )
 	</select>
 	
@@ -38,7 +38,7 @@
 		WHERE WSCODE=(
 						SELECT WSCODE
 					 	FROM WEEKSUBJECT 
-					 	WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+6
+					 	WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+7
 					 )
 	</select>
 	
@@ -47,6 +47,29 @@
 		FROM DUAL
 	</select>
 	
-
+	<select id="selectDate" resultType="date">
+		SELECT STARTDATE
+		FROM WEEKSUBJECT
+		WHERE STARTDATE &lt; SYSDATE-7
+		ORDER BY 1
+	</select>
+	
+	<select id="hproCount" resultType="java.lang.Integer" parameterType="_int">
+		SELECT COUNT(*)
+		FROM PROLIST
+		WHERE WSCODE=#{wscode}
+	</select>
+	
+	<select id="hconCount" resultType="java.lang.Integer" parameterType="_int">
+		SELECT COUNT(*)
+		FROM CONLIST
+		WHERE WSCODE=#{wscode}
+	</select>
+	
+	<select id="selectYWsubject" resultType="Weeksubject" parameterType="hashmap">
+		SELECT *
+		FROM WEEKSUBJECT
+		WHERE STARTDATE BETWEEN TO_DATE(#{first}||'0101','RRRRMMDD') AND TO_DATE(#{second}||'1231','RRRRMMDD')
+	</select>
 	
 </mapper>

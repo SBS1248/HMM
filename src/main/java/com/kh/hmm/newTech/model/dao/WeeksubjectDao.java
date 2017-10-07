@@ -1,7 +1,9 @@
 package com.kh.hmm.newTech.model.dao;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,10 +55,29 @@ public class WeeksubjectDao
 		return sqlSession.selectOne("pcSearch",id);
 	}
 
-	public Date getDate()
+	public ArrayList<Date> selectDate()
 	{
-		Date date=new Date(((java.util.Date)(sqlSession.selectOne("getDate"))).getTime());
+		List<Date> hlist=sqlSession.selectList("selectDate");
+		return (ArrayList<Date>)hlist;
+	}
+
+	public ArrayList<Weeksubject> getDWeekService(int year)
+	{
+		HashMap map=new HashMap();
+		map.put("first", year);
+		map.put("second", year);
 		
-		return date;
+		List<Weeksubject> wlist=sqlSession.selectList("selectYWsubject",map);
+		return (ArrayList<Weeksubject>)wlist;
+	}
+
+	public int hproCount(int wscode)
+	{
+		return sqlSession.selectOne("hproCount",wscode);
+	}
+
+	public int hconCount(int wscode)
+	{
+		return sqlSession.selectOne("hconCount",wscode);
 	}
 }

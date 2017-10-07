@@ -1,14 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link href="resources/css/newtech.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="resources/css/newtech.css" rel="stylesheet" type="text/css">
 <link href="resources/css/index.css" rel="stylesheet" type="text/css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -121,6 +120,10 @@
 		    	});
 			}
 		});
+		
+		$('#newtecHistory').bind('change',function(){
+			window.location.href="historyResult.do?yweek="+$(this).val();
+		});
 	});
 </script>
 </head>
@@ -130,6 +133,14 @@
   <div class="polls_heading">
 	<h2><span id="week">${week }</span>주차 신기술 찬/반 투표 </h2>
   <h1>${weeksubject.title }</h1>
+  
+  <select id="newtecHistory">
+  	<option selected disabled>과거 결과보기</option>
+  	<c:forEach var="s" items="${slist }" varStatus="status">  		
+  		<option value="${dlist[status.index] }">${s }</option>
+  	</c:forEach>
+  </select>
+  
   </div>
   <div class="polls_body">
 	<button type="button" id="agree">${weeksubject.agree }</button>

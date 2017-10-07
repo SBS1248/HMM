@@ -50,6 +50,7 @@
 		}
 	}
 
+
 	function validationDate() {
 		var x = document.updateForm.pwd.value;
 		var y = document.updateForm.pwdc.value;

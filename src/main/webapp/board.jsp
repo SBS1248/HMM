@@ -94,7 +94,7 @@
 		<!-- 게시판 영역 -->
 		<div class="board_area">
 			<!-- 검색창, 검색 정렬들의 패널 -->
-			<div clas="board">
+			<div class="board">
 
 				<div class="board-heading">
 

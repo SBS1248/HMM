@@ -1,16 +1,10 @@
 package com.kh.hmm.newTech.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kh.hmm.board.controller.BoardController;
 import com.kh.hmm.board.model.service.BoardService;
 import com.kh.hmm.board.model.vo.Board;
-import com.kh.hmm.member.model.vo.Member;
 import com.kh.hmm.newTech.model.service.WeeksubjectService;
-import com.kh.hmm.newTech.model.vo.Conlist;
-import com.kh.hmm.newTech.model.vo.Prolist;
 import com.kh.hmm.newTech.model.vo.Weeksubject;
 
 @Controller
@@ -46,11 +37,31 @@ public class WeeksubjectController
 		logger.info("weeksubject() call...");		
 		
 		Weeksubject ws=weekService.selectWeek();
+			
+		ArrayList<Date> hlist=weekService.selectDate();
+		ArrayList<String> dlist=new ArrayList<String>();
+		ArrayList<String> slist=new ArrayList<String>();
+		
+		Calendar c = Calendar.getInstance();
+		for(java.util.Date d:hlist) 
+		{
+			c.setTime(d);
+			int wks=c.get(Calendar.WEEK_OF_YEAR);
+			if(wks/10==0)	dlist.add(c.get(Calendar.YEAR)+"0"+wks);
+			else dlist.add(c.get(Calendar.YEAR)+""+wks);
+			
+			String temp=wks+"주차 : "+c.get(Calendar.YEAR)+"-"+(c.get(Calendar.MONTH)+1)+"-"+c.get(Calendar.DATE);
+			
+			slist.add(temp);			
+		}
+		m.addAttribute("slist",slist);
+		m.addAttribute("dlist",dlist);
+		
 		
 		Date date=ws.getStartdate();
-		Calendar c = Calendar.getInstance();
+		c = Calendar.getInstance();
 	 	c.setTime(date);
-	 	
+		
 	 	ArrayList<Board> list=boardService.selectNewTechList(date);
 	 	
 	 	m.addAttribute("week",String.valueOf(c.get(Calendar.WEEK_OF_YEAR)));//전체 주차
@@ -71,8 +82,7 @@ public class WeeksubjectController
 		
 		int agreeNum=weekService.proCount();
 		int disagreeNum=weekService.conCount();
-		int sum=agreeNum+disagreeNum;
-		
+		int sum=agreeNum+disagreeNum;		
 		
 		m.addAttribute("weeksubject", ws);//주제 및 날짜정보
 		m.addAttribute("agreeNum",agreeNum);
@@ -88,8 +98,6 @@ public class WeeksubjectController
 		m.addAttribute("agreePercent",((int)(agreeNum*1000.0/sum))/10.0);
 		m.addAttribute("disagreePercent",((int)(disagreeNum*1000.0/sum))/10.0);
 
-		System.out.println(((int)(agreeNum*1000.0/sum))/10.0+"//"+((int)(disagreeNum*1000.0/sum))/10.0);
-		
 		return "../../newtechResult";
 	}
 	
@@ -114,24 +122,75 @@ public class WeeksubjectController
 	
 	@ResponseBody
 	@RequestMapping(value = "disagree.do", method = RequestMethod.GET)
-	public void disagree(String id,int wscode) throws IOException 
+	public void disagree(String id,int wscode)
 	{
 		logger.info("disagree("+id+","+wscode+") call...");		
 		
 		weekService.conInsert(id,wscode);	
 	}
-		
-	@RequestMapping(value = "multiCount.do", method = RequestMethod.GET)
-	public void multiCount(HttpServletResponse response) throws IOException 
+	
+	
+	@RequestMapping(value = "newtechAdmin.do", method = RequestMethod.GET)
+	public void newtechAdmin(Model m)  
 	{
-		logger.info("multiCount() call...");
+		logger.info("newtechAdmin() call...");
 		
-		int pro=weekService.proCount();
-		int con=weekService.conCount();
-
-		PrintWriter out = response.getWriter();
-		out.write("[\""+pro+"\",\""+con+"\"]");
-		out.flush();
-		out.close();
+		//아직 미정
+	}
+	
+	@RequestMapping(value = "newtecHistory.do", method = RequestMethod.GET)
+	public void newtecHistory(Model m) 
+	{
+		logger.info("newtecHistory() call...");
+		
+		ArrayList<Date> hlist=weekService.selectDate();
+		
+		m.addAttribute("hlist", hlist);
+	}
+		
+	@RequestMapping(value = "historyResult.do", method = RequestMethod.GET)
+	public String historyResult(Model m,String yweek) 
+	{
+		logger.info("historyResult("+yweek+") call...");
+		
+		int year=Integer.parseInt(yweek.substring(0, 4));
+		int week=Integer.parseInt(yweek.substring(4,6));
+		
+	 	ArrayList<Weeksubject> wlist=weekService.getDWeekService(year);
+	 	Weeksubject ws=null;
+	 	
+	 	for(Weeksubject wsubject:wlist) 
+	 	{
+	 		Date date=wsubject.getStartdate();
+			Calendar c = Calendar.getInstance();
+		 	c.setTime(date);
+	 		
+	 		if(week==c.get(Calendar.WEEK_OF_YEAR)) 
+	 		{
+	 			ws=wsubject;
+	 			break;
+	 		}
+	 	}	
+	 	
+	 	int agreeNum=weekService.hproCount(ws.getWscode());
+		int disagreeNum=weekService.hconCount(ws.getWscode());
+		int sum=agreeNum+disagreeNum;		
+		
+		m.addAttribute("weeksubject", ws);//주제 및 날짜정보
+		m.addAttribute("agreeNum",agreeNum);
+		m.addAttribute("disagreeNum",disagreeNum);
+		m.addAttribute("sum",sum);
+		
+		if(sum==0) 
+		{
+			m.addAttribute("agreePercent",0);
+			m.addAttribute("disagreePercent",0);
+		}
+		
+		m.addAttribute("agreePercent",((int)(agreeNum*1000.0/sum))/10.0);
+		m.addAttribute("disagreePercent",((int)(disagreeNum*1000.0/sum))/10.0);
+	 	
+		
+		return "../../newtechResult";
 	}
 }

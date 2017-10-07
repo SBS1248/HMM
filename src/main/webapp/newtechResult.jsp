@@ -56,9 +56,8 @@
 				var elem = document.getElementById("on1");
 				var elem2 = document.getElementById("chart_on1");
 
-				var width = 0;
-				var id = setInterval(frame, 60);
-				
+				var width = 0.0;				
+				var id = setInterval(frame, 1);
 				function frame() 
 				{
 					if (width >= '${agreePercent}')
@@ -67,9 +66,10 @@
 					} 
 					else 
 					{
-						width++;
-						elem.style.width = width + '%';
-						elem2.innerHTML = width * 1 + '%';
+						width+=0.1;
+						
+						elem.style.width = width.toFixed(1) + '%';
+						elem2.innerHTML = width.toFixed(1)  + '%';
 					}
 				}
 			}
@@ -98,8 +98,8 @@
 				var elem = document.getElementById("on2");
 				var elem3 = document.getElementById("chart_on2");
 
-				var width = 0;
-				var id = setInterval(frame, 60);
+				var width = 0.0;
+				var id = setInterval(frame, 6);
 				function frame() 
 				{
 					if (width >= '${disagreePercent}') 
@@ -108,9 +108,10 @@
 					} 
 					else 
 					{
-						width++;
-						elem.style.width = width + '%';
-						elem3.innerHTML = width * 1 + '%';
+						width+=0.1;
+						
+						elem.style.width = width.toFixed(1) + '%';
+						elem3.innerHTML = width.toFixed(1) + '%';
 					}
 				}
 			}

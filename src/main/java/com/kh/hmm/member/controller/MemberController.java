@@ -396,5 +396,18 @@ public class MemberController {
 		
 		return "member/profile";
 	}
+	@RequestMapping(value = "buyDDaru.do", method = RequestMethod.GET)
+	public int buyDDaru(HttpServletRequest request, int membercode, int price) throws Exception
+	{
+		logger.info("buyDDaru() call...");
+		
+		
+		System.out.println("request membercode 값 : " + request.getParameter("membercode"));
+		System.out.println("request price 값 : " + request.getParameter("price"));
+		
+		int result =  memberService.buyDDARU(membercode, price);
+		
+		return result;
+	}
 	
 }

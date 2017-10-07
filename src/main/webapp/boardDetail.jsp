@@ -466,7 +466,7 @@
             			"</div>"+
             			"<div class='comments-body'>"+commentData.content+"</div>"+
             			"<div class='comments-footer'>"+
-									"<button onclick=beforeCEdit("+commentData.ccode+",$(this).prev().prev().children('span[class=commentNumber]').text())>수정하기</button>"+
+									"<button onclick=beforeCEdit("+commentData.ccode+",$(this).parent().parent().prev().prev().children('span[class=commentNumber]').text())>수정하기</button>"+
 									"<div class='comment_rate'>"+
 									"공감 : <span id='g"+commentData.ccode+"'>"+commentData.point.good+"</span>&nbsp;"+
             			"<button type='button' class='comment_rate_btn' id='btn_good'onclick='crecommendation("+commentData.ccode+",\"g\",\""+commentData.writerid+"\")'><i class='fa fa-thumbs-o-up' aria-hidden='true'></i> YES!</button>"+
@@ -489,7 +489,6 @@
 			alert('수정 중인 댓글이 있습니다.');
 			return;
 		}
-
 		$.ajax({
             type : "POST",
             url : "beforeCEdit.do?ccode="+ccode,
@@ -509,6 +508,7 @@
             	$('#pa'+ccode).replaceWith(
             		"<div class="+flag+" id='editRecomments'>"+
             		"<div class='comments-heading'>"+
+            		"<span id='reply_number' class='commentNumber'>"+text+"</span>" +
             		"<div class='comment_authordate'>"+
             		"<span>작성자 : "+commentData.writerid+"</span> 작성일 : "+commentData.postdate+
             		"</div></div>"+
@@ -539,20 +539,20 @@
                 var reC="<button id=\"wcomment"+commentData.ccode+"\" onclick=\"wcomment("+commentData.ccode+")\">대댓글 달기</button>";
                 if(commentData.lev==2) reC="";
 
-            	$('#editRecomments').replaceWith(
+                $('#editRecomments').replaceWith(
             		"<div class="+flag+" id='pa"+commentData.ccode+"'>"+
             		"<div class='comments-heading'>"+
             		"<div id='reply_num_and_give_medal_area'>"+
             		"<span id='reply_number' class='commentNumber'>"+text+"</span>" +
             		"<span id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</span>"+
-								"<button id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;대댓글신고하기</button>"+
-								"<span id='comment_date'>작성일 : "+commentData.postdate+"</span>"+
-								"<span id='comment_writer'>작성자 : "+commentData.writerid+"</span>"+
-								"</div>"+"</div>"+
+					"<button id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;대댓글신고하기</button>"+
+					"<span id='comment_date'>작성일 : "+commentData.postdate+"</span>"+
+					"<span id='comment_writer'>작성자 : "+commentData.writerid+"</span>"+
+					"</div>"+"</div>"+
             		"<div class='comments-body'>"+commentData.content+"</div>"+
             		"<div class='comments-footer'>"+
-								"<button onclick=beforeCEdit("+commentData.ccode+",$(this).prev().prev().children('span[class=commentNumber]').text())>대댓글 수정하기</button>"+
-								reC+
+					"<button onclick=beforeCEdit("+commentData.ccode+",$(this).parent().prev().prev().find(\'span[id=reply_number]\').text())>대댓글 수정하기</button>"+
+					reC+
             		"<div class='comment_rate'>"+
             		"공감 : <span id='g"+commentData.ccode+"'>"+commentData.point.good+"</span>&nbsp;"+
             		"<button type='button' class='comment_rate_btn' id='btn_good'onclick='crecommendation("+commentData.ccode+",\"g\",\""+commentData.writerid+"\")'><i class='fa fa-thumbs-o-up' aria-hidden='true'></i> YES!</button>"+
@@ -693,7 +693,8 @@
 			</div>
 
 			</div>
-
+		
+		<!-- 댓글 파트 -->
 			<div class="comment_section" id="commentsAdd">
 
 				<c:if test="${comments ne null}">
@@ -725,14 +726,14 @@
                 				<div class='comment_authordate'><span id="comment_date">작성일 : ${c.postdate }</span></div>
                 					<button disabled><strike>수정하기</strike></button>
                 					<c:if test="${c.lev ne 2}">
-										<button id="wcomment${c.ccode }" onclick="wcomment(${c.ccode})">대댓글 달기</button>
+										<button disabled><strike>대댓글 달기</strike></button>
 									</c:if>
                 			</div>
                 			<div class='comments-body'>${c.content }</div>
                 			<div class='comments-footer'>
                 				<div class='comment_point'>	댓글 점수 : <span id='ccommentData.ccode'>${c.point.cal }</span></div>
                 				<div class='comment_rate'>
-                					<button id='report_comment' disabled><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;<strike>삭제 댓글신고하기</strike></button>
+                					<button id='report_comment' disabled><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;<strike>댓글신고하기</strike></button>
                 					공감 : <span id='gcommentData.ccode'>${c.point.good }</span>&nbsp;
                 					<button type='button' class='comment_rate_btn' id='btn_good' disabled><i class='fa fa-thumbs-o-up' aria-hidden='true'></i><strike> YES!</strike></button>
                 					&nbsp; 비공감 : <span id='bcommentData.ccode'>${c.point.bad }</span>&nbsp;
@@ -783,7 +784,7 @@
 						<div class="comments-footer">
 
 							<div class="comment_edit_add">
-								<button id="comment_edit" onclick="beforeCEdit(${c.ccode },$(this).prev().prev().children('span[class=commentNumber]').text())">수정하기</button>
+								<button id="comment_edit" onclick="beforeCEdit(${c.ccode },$(this).parent().parent().prev().prev().find('span[id=\'reply_number\']').text())">수정하기</button>
 								<c:if test="${c.lev ne 2}">
 									<button id="wcomment${c.ccode }" onclick="wcomment(${c.ccode})">대댓글 달기</button>
 								</c:if>

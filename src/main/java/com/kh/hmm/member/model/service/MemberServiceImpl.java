@@ -143,4 +143,9 @@ public class MemberServiceImpl implements MemberService {
 	public Member deleteMember(String memberId) {
 		return mDao.deleteMember(memberId);
 	}
+
+	@Override
+	public Member profileInfo(String profileId) {
+		return mDao.profileInfo(profileId);
+	}
 }

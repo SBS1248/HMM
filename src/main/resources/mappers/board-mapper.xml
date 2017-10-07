@@ -91,13 +91,15 @@
 
 	<select id="boardCode" resultType="java.lang.Integer">
 		SELECT BOARD_SEQ.NEXTVAL
-		FROM
-		DUAL
+		FROM DUAL
 	</select>
 
 	<update id="updateBoard" parameterType="Board">
 		UPDATE BOARD
-		SET TITLE=#{title},CONTENT=#{content},POSTDATE=SYSDATE,HASFILE=#{hasfile}
+		SET TITLE=#{title},CONTENT=#{content},POSTDATE=SYSDATE,
+		<if test="hasfile==null">HASFILE=NULL</if>
+		<if test="hasfile!=null">HASFILE=#{hasfile}</if>
+		
 		WHERE BCODE=#{bcode}
 	</update>
 

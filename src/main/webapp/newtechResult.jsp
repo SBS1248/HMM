@@ -57,7 +57,7 @@
 				var elem2 = document.getElementById("chart_on1");
 
 				var width = 0.0;				
-				var id = setInterval(frame, 1);
+				var id = setInterval(frame, 0.5);
 				function frame() 
 				{
 					if (width >= '${agreePercent}')
@@ -67,6 +67,8 @@
 					else 
 					{
 						width+=0.1;
+						
+						if(width>100)	width=100.0;
 						
 						elem.style.width = width.toFixed(1) + '%';
 						elem2.innerHTML = width.toFixed(1)  + '%';
@@ -99,7 +101,8 @@
 				var elem3 = document.getElementById("chart_on2");
 
 				var width = 0.0;
-				var id = setInterval(frame, 6);
+				var id = setInterval(frame, 0.5);
+				
 				function frame() 
 				{
 					if (width >= '${disagreePercent}') 
@@ -110,8 +113,10 @@
 					{
 						width+=0.1;
 						
+						if(width>100)	width=100.0;
+						
 						elem.style.width = width.toFixed(1) + '%';
-						elem3.innerHTML = width.toFixed(1) + '%';
+						elem3.innerHTML = width.toFixed(1) + '%';					
 					}
 				}
 			}

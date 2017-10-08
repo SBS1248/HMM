@@ -13,6 +13,7 @@
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+
 <title>관리자 페이지</title>
 </head>
 <body>
@@ -51,7 +52,8 @@
 						</table>
 					</div>
 				</div>
-
+<br><br><br>
+<a id="insertNewtech" href="newtechAdmin.do">신기술 찬/반 투표 주제 넣기</a>
 
 </body>
 </html>

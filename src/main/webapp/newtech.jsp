@@ -125,9 +125,6 @@
 			window.location.href="historyResult.do?yweek="+$(this).val();
 		});
 
-		$('#insertNewtech').click(function(){
-			window.location.href="newtechAdmin.do";
-		});
 	});
 </script>
 </head>
@@ -145,9 +142,9 @@
   	</c:forEach>
   </select>
 
-  <c:if test="${member.id eq 'admin'}">
+  <%-- <c:if test="${member.id eq 'admin'}">
   	<button id="insertNewtech">신기술 찬/반 투표 주제 넣기</button>
-  </c:if>
+  </c:if> --%>
 
   </div>
   <div class="polls_body">

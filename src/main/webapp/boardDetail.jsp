@@ -767,7 +767,7 @@
 										</script>
 								</c:if>
 
-								<div class="current_medal_number" id="mdiv${c.ccode }">
+								<div class="current_medal_number" id="mdiv${c.ccode }" style="display:none;">
 										<span id="m${c.ccode}">${c.point.medal } </span>
 									</div>
 

@@ -179,33 +179,6 @@ CREATE TABLE CREPORTLIST
     CONSTRAINT CREP_PK PRIMARY KEY (CCODE,ID)
 );
 
---신기술 주제
-CREATE TABLE WEEKSUBJECT
-(
-    WSCODE NUMBER PRIMARY KEY,
-    TITLE VARCHAR2(100),
-    AGREE VARCHAR2(100),
-    DISAGREE VARCHAR2(100),
-    STARTDATE DATE NOT NULL    
-);
-
---신기술 찬반 리스트
-CREATE TABLE PROLIST
-(
-    WSCODE NUMBER,
-    ID VARCHAR2(11),
-    CONSTRAINT PK_PROLIST PRIMARY KEY (WSCODE,ID),
-    CONSTRAINT PL_ID FOREIGN KEY (ID) REFERENCES MEMBER(ID)
-);
-
-CREATE TABLE CONLIST
-(
-    WSCODE NUMBER,
-    ID VARCHAR2(11),
-    CONSTRAINT PK_CONLIST PRIMARY KEY (WSCODE,ID),
-    CONSTRAINT CL_ID FOREIGN KEY (ID) REFERENCES MEMBER(ID)
-);
-
 DROP SEQUENCE MEM_SEQ;
 DROP SEQUENCE ITEM_SEQ;
 DROP SEQUENCE BOARD_SEQ;
@@ -370,6 +343,21 @@ INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user7','user7','seventh@hotmail.com',
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user8','user8','eighth@daum.net',null,0,0,0,0,0,0,0,null,sysdate,null);
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user9','user9','ninth@google.com',null,0,0,0,0,0,0,0,null,sysdate,null);
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user10','user10','tenth@kh.org',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user11','user11','eleventh@omg.com',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user12','user12','tweltwel@reddit.com',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user13','user13','thethirteen@abc.edu',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user14','user14','fourfourten@hacker.com',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user15','user15','onefive@ybn.net',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user16','user16','thexis@pro.net',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user17','user17','sevenone@daum.net',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user18','user18','yeeyee@reddot.org',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user19','user19','hehehe@lol.com',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user20','user20','treenut@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user21','user21','qnqwbe@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user22','user22','123xcq2@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user23','user23','y324s@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user24','user24','8rfgs@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user25','user25','234fg@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null);
 
 --게시판 코드
 INSERT INTO BOARDCODE VALUES (1,'기업');
@@ -412,6 +400,60 @@ INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'이매지네이션, 머신러닝 가
 INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'데이터베이스를 재정의하는 신기술 8가지','데이터베이스를 재정의하는 신기술 8가지',3,'user3',SYSDATE,NULL,NULL);
 INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'프로그래밍까지 진출한 AI··· "개발자는 데이터 과학자 돼야"','프로그래밍까지 진출한 AI··· "개발자는 데이터 과학자 돼야"',3,'admin',SYSDATE,NULL,NULL);
 INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'어도비 CIO가 IT 조직의 정체성을 재정의한 방법','어도비 CIO가 IT 조직의 정체성을 재정의한 방법',3,'user1',SYSDATE,NULL,NULL);
+
+--신기술 주제
+CREATE TABLE WEEKSUBJECT
+(
+    WSCODE NUMBER PRIMARY KEY,
+    TITLE VARCHAR2(100),
+    AGREE VARCHAR2(100),
+    DISAGREE VARCHAR2(100),
+    STARTDATE DATE NOT NULL    
+);
+
+--신기술 찬반 리스트
+CREATE TABLE PROLIST
+(
+    WSCODE NUMBER,
+    ID VARCHAR2(11),
+    CONSTRAINT PK_PROLIST PRIMARY KEY (WSCODE,ID),
+    CONSTRAINT PL_ID FOREIGN KEY (ID) REFERENCES MEMBER(ID)
+);
+
+INSERT INTO "HMM"."PROLIST" (WSCODE, ID) VALUES ('6', 'user1');
+INSERT INTO "HMM"."PROLIST" (WSCODE, ID) VALUES ('6', 'user2');
+INSERT INTO "HMM"."PROLIST" (WSCODE, ID) VALUES ('6', 'user3');
+INSERT INTO "HMM"."PROLIST" (WSCODE, ID) VALUES ('6', 'user4');
+INSERT INTO "HMM"."PROLIST" (WSCODE, ID) VALUES ('6', 'user5');
+INSERT INTO "HMM"."PROLIST" (WSCODE, ID) VALUES ('6', 'user6');
+INSERT INTO "HMM"."PROLIST" (WSCODE, ID) VALUES ('6', 'user7');
+INSERT INTO "HMM"."PROLIST" (WSCODE, ID) VALUES ('6', 'user8');
+
+CREATE TABLE CONLIST
+(
+    WSCODE NUMBER,
+    ID VARCHAR2(11),
+    CONSTRAINT PK_CONLIST PRIMARY KEY (WSCODE,ID),
+    CONSTRAINT CL_ID FOREIGN KEY (ID) REFERENCES MEMBER(ID)
+);
+
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user9');
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user10');
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user11');
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user12');
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user13');
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user14');
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user15');
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user16');
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user17');
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user18');
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user19');
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user20');
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user21');
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user22');
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user23');
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user24');
+INSERT INTO "HMM"."CONLIST" (WSCODE, ID) VALUES ('6', 'user25');
 
 -- 아무말 대잔치
 INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'오늘 생일이네요','오늘 생일이네요',4,'admin',SYSDATE,NULL,NULL);
@@ -513,32 +555,32 @@ INSERT INTO WEEKSUBJECT VALUES
 
 INSERT INTO WEEKSUBJECT VALUES
 (
-	NEWTECH_SEQ.NEXTVAL,'반장의 연애는 40대 전까지 가능하다?','당연히 가능하다.','가능할거 같냐?',TO_DATE('2017-09-04','YYYY-MM-DD')
+	NEWTECH_SEQ.NEXTVAL,'스타워즈? 스타트렉?','당연히 스타워즈','물론 스타트렉',TO_DATE('2017-09-04','YYYY-MM-DD')
 );
 
 INSERT INTO WEEKSUBJECT VALUES
 (
-	NEWTECH_SEQ.NEXTVAL,'반장의 연애는 50대 전까지 가능하다?','JUST DO IT','힘냌ㅋㅋㅋ',TO_DATE('2017-09-11','YYYY-MM-DD')
+	NEWTECH_SEQ.NEXTVAL,'웹 개발자? 프로그래머? 우리 자신을 어떻게 불러야 할까요?','웹 개발자','프로그래머',TO_DATE('2017-09-11','YYYY-MM-DD')
 );
 
 INSERT INTO WEEKSUBJECT VALUES
 (
-	NEWTECH_SEQ.NEXTVAL,'반장의 연애는 60대 전까지 가능하다?','WE CAN DO IT','언제까지 가능만 따지나?',TO_DATE('2017-09-18','YYYY-MM-DD')
+	NEWTECH_SEQ.NEXTVAL,'차세대 웹개발의 주역인 학생분들! 무엇을 공부하고 있습니까?','자바','자바스크립트',TO_DATE('2017-09-18','YYYY-MM-DD')
 );
 
 INSERT INTO WEEKSUBJECT VALUES
 (
-	NEWTECH_SEQ.NEXTVAL,'반장의 연애는 70대 전까지 가능하다?','YES I CAN DO','이미...',TO_DATE('2017-09-25','YYYY-MM-DD')
+	NEWTECH_SEQ.NEXTVAL,'풀 스택 개발자가 갖춰야할 가장 중요한 기술은?','자바스크립트','SQL',TO_DATE('2017-09-25','YYYY-MM-DD')
 );
 
 INSERT INTO WEEKSUBJECT VALUES
 (
-	NEWTECH_SEQ.NEXTVAL,'반장의 연애는 80대 전까지 가능하다?','가능을 넘어선 그대','그대는 넘어선 가능',TO_DATE('2017-10-02','YYYY-MM-DD')
+	NEWTECH_SEQ.NEXTVAL,'2018년 웹개발의 중점은 무엇일까?','심미성과 편의성이 중요한 프론트 엔드!','안정성과 유지보수가 중요한 백 엔드!',TO_DATE('2017-10-02','YYYY-MM-DD')
 );
 
 INSERT INTO WEEKSUBJECT VALUES
 (
-	NEWTECH_SEQ.NEXTVAL,'반장의 연애는 90대 전까지 가능하다?','이제는 좀...','영감이 다되부렀어',TO_DATE('2017-10-09','YYYY-MM-DD')
+	NEWTECH_SEQ.NEXTVAL,'프론트 엔드의 핵심 기술은 바로 무엇인가?','자바스크립트','앵귤러',TO_DATE('2017-10-09','YYYY-MM-DD')
 );
 
 INSERT INTO WEEKSUBJECT VALUES

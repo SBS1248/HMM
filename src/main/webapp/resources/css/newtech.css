@@ -21,14 +21,17 @@ html body {
 .polls_heading {
   font-family: 'Hanna', serif;
   text-align: center;
-  color: white;
   background-color: #002F2F;
   width: 100%;
   padding: 20px;
 }
 
 .polls_heading h1 {
-  background-color: #002F2F;
+  color: white;
+}
+
+.polls_heading h2 {
+  color: white;
 }
 
 #week{

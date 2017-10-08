@@ -128,16 +128,7 @@ public class WeeksubjectController
 		
 		weekService.conInsert(id,wscode);	
 	}
-	
-	
-	@RequestMapping(value = "newtechAdmin.do", method = RequestMethod.GET)
-	public void newtechAdmin(Model m)  
-	{
-		logger.info("newtechAdmin() call...");
 		
-		//아직 미정
-	}
-	
 	@RequestMapping(value = "newtecHistory.do", method = RequestMethod.GET)
 	public void newtecHistory(Model m) 
 	{
@@ -192,5 +183,26 @@ public class WeeksubjectController
 	 	
 		
 		return "../../newtechResult";
+	}
+	
+	@RequestMapping(value = "newtechAdmin.do", method = RequestMethod.GET)
+	public String newtechAdmin(Model m)  
+	{
+		logger.info("newtechAdmin() call...");
+		
+		ArrayList<Weeksubject> wlist=weekService.selectWeekList();
+		
+		m.addAttribute("wlist", wlist);
+		
+		return "../../newtechAdmin";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "insertNewtech.do", method = RequestMethod.POST)
+	public void insertNewtech(int wscode, String title, String agree, String disagree) 
+	{
+		logger.info("insertNewtech() call...");
+		
+		weekService.updateWeekSubject(wscode,title,agree,disagree);
 	}
 }

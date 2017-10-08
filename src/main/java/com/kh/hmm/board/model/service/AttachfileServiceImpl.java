@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.kh.hmm.board.model.dao.AttachfileDao;
 import com.kh.hmm.board.model.vo.Attachfile;
-import com.kh.hmm.member.model.dao.MemberDao;
-import com.kh.hmm.member.model.vo.Member;
 
 @Service("attachfileService")
 public class AttachfileServiceImpl implements AttachfileService

@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.hmm.newTech.model.dao.WeeksubjectDao;
-import com.kh.hmm.newTech.model.vo.Conlist;
-import com.kh.hmm.newTech.model.vo.Prolist;
 import com.kh.hmm.newTech.model.vo.Weeksubject;
 
 @Service("weeksubjectService")
@@ -76,5 +74,17 @@ public class WeeksubjectServiceImpl implements WeeksubjectService
 	public int hconCount(int wscode)
 	{
 		return wDao.hconCount(wscode);
+	}
+
+	@Override
+	public ArrayList<Weeksubject> selectWeekList()
+	{
+		return wDao.selectWeekList();
+	}
+
+	@Override
+	public void updateWeekSubject(int wscode, String title, String agree, String disagree)
+	{
+		wDao.updateWeekSubject(wscode,title,agree,disagree);
 	}
 }

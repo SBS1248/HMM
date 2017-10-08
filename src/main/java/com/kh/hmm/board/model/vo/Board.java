@@ -1,7 +1,6 @@
 package com.kh.hmm.board.model.vo;
 
 import java.sql.Date;
-import java.util.ArrayList;
 
 public class Board
 {

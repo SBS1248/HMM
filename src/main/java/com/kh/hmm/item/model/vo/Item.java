@@ -1,7 +1,5 @@
 package com.kh.hmm.item.model.vo;
 
-import java.sql.Date;
-
 public class Item
 {
 	private int itemcode;

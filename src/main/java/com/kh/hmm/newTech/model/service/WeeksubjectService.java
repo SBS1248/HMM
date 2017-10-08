@@ -26,4 +26,8 @@ public interface WeeksubjectService
 	int hproCount(int wscode);
 	
 	int hconCount(int wscode);
+
+	ArrayList<Weeksubject> selectWeekList();
+
+	void updateWeekSubject(int wscode, String title, String agree, String disagree);
 }

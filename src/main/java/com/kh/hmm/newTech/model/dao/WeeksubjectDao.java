@@ -80,4 +80,21 @@ public class WeeksubjectDao
 	{
 		return sqlSession.selectOne("hconCount",wscode);
 	}
+
+	public ArrayList<Weeksubject> selectWeekList()
+	{
+		List<Weeksubject> wlist=sqlSession.selectList("selectWeekList");
+		return (ArrayList<Weeksubject>)wlist;
+	}
+
+	public void updateWeekSubject(int wscode, String title, String agree, String disagree)
+	{
+		HashMap map=new HashMap();
+		map.put("wscode", wscode);
+		map.put("title", title);
+		map.put("agree", agree);
+		map.put("disagree", disagree);
+		
+		sqlSession.update("updateWeekSubject", map);
+	}
 }

@@ -223,11 +223,19 @@ html body {
   font-family: 'Hanna', serif;
   background-color: purple;
   color: white;
-  padding-top: 14px;
 }
 
 #reply_number{
   padding-left: 10px;
+  margin-right: 10px;
+}
+
+#comment_writer{
+  float: left;
+  margin-left: 10px;
+  position: relative;
+  top: 50%;
+  transform: 			translateY(-50%);
 }
 
 .current_medal_number{
@@ -239,21 +247,24 @@ html body {
     font-size: 16px;
 }
 
-#comment_writer{
-  float: right;
-  margin-right: 10px;
-}
-
 #comment_date{
   margin-right: 10px;
   float: right;
+  position: relative;
+  top: 50%;
+  transform: 			translateY(-50%);
 }
 
 #report_comment{
+  border-radius: 5px;
+  padding: 5px;
   background-color: red;
   color: white;
-  margin-right: 10px;
   float: right;
+  position: relative;
+	top: 50%;
+	transform: 			translateY(-50%);
+  margin-right: 10px;
 }
 
 #the_medal{

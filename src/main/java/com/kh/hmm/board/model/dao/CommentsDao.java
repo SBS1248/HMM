@@ -8,10 +8,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.kh.hmm.board.model.vo.Board;
 import com.kh.hmm.board.model.vo.Comments;
 import com.kh.hmm.board.model.vo.CommentsPoint;
-import com.kh.hmm.member.model.vo.Member;
 
 @Repository("commentsDao")
 public class CommentsDao

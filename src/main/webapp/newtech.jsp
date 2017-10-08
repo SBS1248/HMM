@@ -124,6 +124,10 @@
 		$('#newtecHistory').bind('change',function(){
 			window.location.href="historyResult.do?yweek="+$(this).val();
 		});
+		
+		$('#insertNewtech').click(function(){
+			window.location.href="newtechAdmin.do";
+		});
 	});
 </script>
 </head>
@@ -140,6 +144,10 @@
   		<option value="${dlist[status.index] }">${s }</option>
   	</c:forEach>
   </select>
+  
+  <c:if test="${member.id eq 'admin'}">
+  	<button id="insertNewtech">신기술 넣기</button>
+  </c:if>
   
   </div>
   <div class="polls_body">

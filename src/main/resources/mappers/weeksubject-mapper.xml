@@ -72,4 +72,15 @@
 		WHERE STARTDATE BETWEEN TO_DATE(#{first}||'0101','RRRRMMDD') AND TO_DATE(#{second}||'1231','RRRRMMDD')
 	</select>
 	
+	<select id="selectWeekList" resultType="Weeksubject">
+		SELECT *
+		FROM WEEKSUBJECT
+		WHERE STARTDATE&lt;=SYSDATE+62
+	</select>
+	
+	<update id="updateWeekSubject" parameterType="hashmap">
+		UPDATE WEEKSUBJECT
+		SET TITLE=#{title}, AGREE=#{agree}, DISAGREE=#{disagree}
+		WHERE WSCODE=#{wscode}
+	</update>
 </mapper>

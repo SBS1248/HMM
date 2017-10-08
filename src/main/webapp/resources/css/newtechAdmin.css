@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+/*
+#E6E2AF
+#A7A37E
+#EFECCA
+#046380
+#002F2F
+
+#deeaee
+#618685
+#c94c4c
+*/
+
+html body {
+    background-color: #deeaee;
+}
+
+.newtech_subject{
+  border: 1px skyblue solid;
+
+}

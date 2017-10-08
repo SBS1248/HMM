@@ -120,11 +120,11 @@
 		    	});
 			}
 		});
-		
+
 		$('#newtecHistory').bind('change',function(){
 			window.location.href="historyResult.do?yweek="+$(this).val();
 		});
-		
+
 		$('#insertNewtech').click(function(){
 			window.location.href="newtechAdmin.do";
 		});
@@ -137,18 +137,18 @@
   <div class="polls_heading">
 	<h2><span id="week">${week }</span>주차 신기술 찬/반 투표 </h2>
   <h1>${weeksubject.title }</h1>
-  
+
   <select id="newtecHistory">
   	<option selected disabled>과거 결과보기</option>
-  	<c:forEach var="s" items="${slist }" varStatus="status">  		
+  	<c:forEach var="s" items="${slist }" varStatus="status">
   		<option value="${dlist[status.index] }">${s }</option>
   	</c:forEach>
   </select>
-  
+
   <c:if test="${member.id eq 'admin'}">
-  	<button id="insertNewtech">신기술 넣기</button>
+  	<button id="insertNewtech">신기술 찬/반 투표 주제 넣기</button>
   </c:if>
-  
+
   </div>
   <div class="polls_body">
 	<button type="button" id="agree">${weeksubject.agree }</button>

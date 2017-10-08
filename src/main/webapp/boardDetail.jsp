@@ -343,7 +343,8 @@
 		$('#commentsAdd').append("<div class='comments' id='newComments'>"+
 					"<div class='comments-heading'>"+
 						"<div id='reply_num_and_give_medal_area'>"+
-							"<span id='reply_number' class='commentNumber'>"+num+"번째 댓글</span>"+
+						"<span id='reply_number' class='commentNumber'></span>"+
+						// "<span id='reply_number' class='commentNumber'>"+num+"번째 댓글</span>"+
 							"<span id='comment_writer'>작성자 : ${member.id }</span> <span id='comment_date'> 작성일 : "+date+"</span>"+
 						"</div>"+
 					"</div>"+
@@ -369,9 +370,10 @@
             	$('#newComments').replaceWith(
             			"<div class='comments' id='pa"+commentData.ccode+"'>"+
             			"<div class='comments-heading'>"+
-            			"<span id='reply_number' class='commentNumber'>"+num+"번째 댓글</span>"+
-									"<button id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;댓글신고하기123123</button>"+
+									"<span id='reply_number' class='commentNumber'></span>"+
+            			// "<span id='reply_number' class='commentNumber'>"+num+"번째 댓글</span>"+
 									"<span id='comment_writer'>작성자!!! : "+commentData.writerid+"</span>"+
+									"<span id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;댓글신고하기123123</span>"+
 									"<span id='comment_date'>작성일!!! : "+commentData.postdate+"</span>"+
 									"</div>"+
 
@@ -412,8 +414,6 @@
 		var num=1;
 
 
-
-
 		if(parentComment.next().length>0)
 		{
 			while(parentComment.next().attr('class')!='comments')
@@ -432,11 +432,12 @@
 
 		parentComment.after("<div class=recomments id='newRecomments'>"+
 				"<div class='comments-heading'>"+
-				"<div id='reply_num_and_give_medal_area'>"+
-					"<span id='reply_number' class='commentNumber'>"+pnum+"-"+num+"번째 대댓글</span>"+
+
+					"<span id='reply_number' class='commentNumber'>대댓글</span>"+
+					// "<span id='reply_number' class='commentNumber'>"+pnum+"-"+num+"번째 대댓글</span>"+
 					"<span id='comment_writer'>작성자 : ${member.id }</span> <span id='comment_date'>작성일 : "+date+
 				"</span></div>"+
-			"</div>"+
+
 			"<div class='comments-body'>"+
 			"<textArea id='newCArea'></textArea>"+
 			"<button onclick='newUCButton("+code+","+num+","+pnum+")'>대댓글 작성하기</button>"+
@@ -456,8 +457,8 @@
             	$('#newRecomments').replaceWith(
             			"<div class='recomments' id='pa"+commentData.ccode+"'>"+
             			"<div class='comments-heading'>"+
-            			"<span id='reply_number' class='commentNumber'>"+pnum+"-"+num+"번째 대댓글123</span>" +
-            			"<span id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</span>"+
+            			"<span id='reply_number' class='commentNumber'>대댓글</span>" +
+									// "<span id='reply_number' class='commentNumber'>"+pnum+"-"+num+"번째 대댓글123</span>" +
             			"<span id='comment_writer'>작성자123 : "+commentData.writerid+"</span><span id='comment_date'>작성일123 : "+commentData.postdate+"</span>"+
 									"<span id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;댓글신고하기</span>"+
 									"</div>"+
@@ -465,6 +466,7 @@
             			"<div class='comments-footer'>"+
 									"<button onclick=beforeCEdit("+commentData.ccode+",$(this).parent().parent().prev().prev().children('span[class=commentNumber]').text())>수정하기</button>"+
 									"<div class='comment_rate'>"+
+									"<span id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</span>"+
 									"공감 : <span id='g"+commentData.ccode+"'>"+commentData.point.good+"</span>&nbsp;"+
             			"<button type='button' class='comment_rate_btn' id='btn_good'onclick='crecommendation("+commentData.ccode+",\"g\",\""+commentData.writerid+"\")'><i class='fa fa-thumbs-o-up' aria-hidden='true'></i> YES!</button>"+
             			"&nbsp; 비공감 : <span id='b"+commentData.ccode+"'>"+commentData.point.bad+"</span>&nbsp;"+
@@ -506,9 +508,8 @@
             		"<div class="+flag+" id='editRecomments'>"+
             		"<div class='comments-heading'>"+
             		"<span id='reply_number' class='commentNumber'>"+text+"</span>" +
-            		"<div class='comment_authordate'>"+
             		"<span>작성자 : "+commentData.writerid+"</span> 작성일 : "+commentData.postdate+
-            		"</div></div>"+
+            		"</div>"+
             		"<div class='comments-body'>"+
             		"<textArea id='newCArea'>"+commentData.content+"</textArea>"+
             		"<button onclick=\"afterCEdit("+ccode+",\'"+text+"\')\">댓글 수정하기</button>"+
@@ -539,18 +540,17 @@
                 $('#editRecomments').replaceWith(
             		"<div class="+flag+" id='pa"+commentData.ccode+"'>"+
             		"<div class='comments-heading'>"+
-            		"<div id='reply_num_and_give_medal_area'>"+
             		"<span id='reply_number' class='commentNumber'>"+text+"</span>" +
-            		"<span id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</span>"+
 					"<button id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;대댓글신고하기</button>"+
 					"<span id='comment_date'>작성일 : "+commentData.postdate+"</span>"+
 					"<span id='comment_writer'>작성자 : "+commentData.writerid+"</span>"+
-					"</div>"+"</div>"+
+					"</div>"+
             		"<div class='comments-body'>"+commentData.content+"</div>"+
             		"<div class='comments-footer'>"+
 					"<button onclick=beforeCEdit("+commentData.ccode+",$(this).parent().prev().prev().find(\'span[id=reply_number]\').text())>대댓글 수정하기</button>"+
 					reC+
             		"<div class='comment_rate'>"+
+								"<span id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</span>"+
             		"공감 : <span id='g"+commentData.ccode+"'>"+commentData.point.good+"</span>&nbsp;"+
             		"<button type='button' class='comment_rate_btn' id='btn_good'onclick='crecommendation("+commentData.ccode+",\"g\",\""+commentData.writerid+"\")'><i class='fa fa-thumbs-o-up' aria-hidden='true'></i> YES!</button>"+
             		"&nbsp; 비공감 : <span id='b"+commentData.ccode+"'>"+commentData.point.bad+"</span>&nbsp;"+
@@ -707,13 +707,15 @@
                 			<div class='comments-heading'>
                 				<div id='reply_num_and_give_medal_area'>
                 					<c:if test="${c.lev eq 1}">
-										<span id="reply_number" class="commentNumber">${num }번째 댓글</span>
+										<span id="reply_number" class="commentNumber"></span>
+										<%-- <span id="reply_number" class="commentNumber">${num }번째 댓글</span> --%>
 										<c:set var="cnum" value="1"/>
 										<c:set var="num" value="${num+1 }" />
 									</c:if>
 
 									<c:if test="${c.lev eq 2}">
-										<span id="reply_number" class="commentNumber">${num-1}-${cnum }번째 대댓글</span>
+										<span id="reply_number" class="commentNumber">대댓글</span>
+										<%-- <span id="reply_number" class="commentNumber">${num-1}-${cnum }번째 대댓글</span> --%>
 										<c:set var="cnum" value="${cnum+1}"/>
 									</c:if>
                 					<span id='give_medal'><strike>메달 주기</strike></span>
@@ -739,23 +741,24 @@
                 		</div>
 					</c:if>
 <%-- ---------------------------------------------- --%>
-
 					<c:if test="${c.isdelete ne 'y' }">
 						<div class="comments" id="pa${c.ccode }">
 						<div class="comments-heading">
 
-							<div id="reply_num_and_give_medal_area">
+							<span id="comment_writer">작성자zxc : ${c.writerid } </span>
+
 								<c:if test="${c.lev eq 1}">
-									<span id="reply_number" class="commentNumber">${num }번째 댓글</span>
+									<span id="reply_number" class="commentNumber"></span>
+									<%-- <span id="reply_number" class="commentNumber">${num }번째 댓글</span> --%>
 									<c:set var="cnum" value="1"/>
 									<c:set var="num" value="${num+1 }" />
 								</c:if>
 
 								<c:if test="${c.lev eq 2}">
-									<span id="reply_number" class="commentNumber">${num-1}-${cnum }번째 대댓글</span>
+									<span id="reply_number" class="commentNumber">대댓글</span>
+									<%-- <span id="reply_number" class="commentNumber">${num-1}-${cnum }번째 대댓글</span> --%>
 									<c:set var="cnum" value="${cnum+1}"/>
 								</c:if>
-
 
 								<%-- 댓글 메달 파트. 메달이 1개 이상일 때만 갯수 노출 --%>
 								<c:if test="${c.point.medal eq 0}">
@@ -768,12 +771,10 @@
 										<span id="m${c.ccode}">${c.point.medal } </span>
 									</div>
 
-								<span id="give_medal" onclick="cmedal(${c.ccode},'${c.writerid }')">메달 주기</span>
-								<span id="comment_writer">작성자 : ${c.writerid } </span><span id="comment_date">작성일 : ${c.postdate}</span>
 								<button id="report_comment"	onclick="creport(${c.ccode},'${c.writerid }')">
 									<span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;댓글	신고하기</button>
+								<span id="comment_date">작성일 : ${c.postdate}</span>
 
-							</div>
 						</div>
 
 						<div class="comments-body">${c.content }<br></div>
@@ -786,6 +787,7 @@
 								</c:if>
 							</div>
 							<div class="comment_rate">
+								<span id="give_medal" onclick="cmedal(${c.ccode},'${c.writerid }')">메달 주기</span>
 									공감 : <span id="g${c.ccode}">${c.point.good }</span>&nbsp;
 									<button type="button" class="comment_rate_btn" id="btn_good"
 										onclick="crecommendation(${c.ccode},'g','${c.writerid }')">

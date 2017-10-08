@@ -16,7 +16,7 @@ button {
 }
 
 #cash {
-	
+
 	width: 25%;
 	text-align: right;
 }
@@ -45,7 +45,7 @@ font-size: 20px;
 	 width: auto;
     padding: 10px 18px;
     border: none;
-	
+
 }
 #thiscash{
 	 width: auto;
@@ -73,7 +73,7 @@ font-size: 20px;
 }
 #itemdetail img{
 	width:200px;
-	 height:130px; 
+	 height:130px;
 	 margin-left: 30px;
 }
 
@@ -88,7 +88,7 @@ font-size: 20px;
 
 /* 아이템 상세보기 */
 #selectimage {
-	
+
 	width: auto;
 	height: 20%;
 	padding: 20px;

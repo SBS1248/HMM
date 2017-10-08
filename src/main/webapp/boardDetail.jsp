@@ -373,9 +373,9 @@
             			"<div id='reply_num_and_give_medal_area'>"+
             			"<span id='reply_number' class='commentNumber'>"+num+"번째 댓글</span>"+
             			"<span id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</span>"+
-									"<button id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;댓글신고하기123123</button>"+
 									"<span id='comment_date'>작성일!!! : "+commentData.postdate+"</span>"+
 									"<span id='comment_writer'>작성자!!! : "+commentData.writerid+"</span>"+
+									"<button id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;댓글신고하기123123</button>"+
 									"</div>"+
 									"</div>"+
             			"<div class='comments-body'>"+commentData.content+"</div>"+
@@ -457,13 +457,11 @@
             	$('#newRecomments').replaceWith(
             			"<div class='recomments' id='pa"+commentData.ccode+"'>"+
             			"<div class='comments-heading'>"+
-            			"<div id='reply_num_and_give_medal_area'>"+
             			"<span id='reply_number' class='commentNumber'>"+pnum+"-"+num+"번째 대댓글123</span>" +
             			"<span id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</span>"+
-									"<button id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;댓글신고하기</button>"+
             			"<span id='comment_writer'>작성자123 : "+commentData.writerid+"</span><span id='comment_date'>작성일123 : "+commentData.postdate+"</span>"+
+									"<span id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;댓글신고하기</span>"+
 									"</div>"+
-            			"</div>"+
             			"<div class='comments-body'>"+commentData.content+"</div>"+
             			"<div class='comments-footer'>"+
 									"<button onclick=beforeCEdit("+commentData.ccode+",$(this).parent().parent().prev().prev().children('span[class=commentNumber]').text())>수정하기</button>"+
@@ -609,6 +607,7 @@
                }
     	});
 	}
+
 </script>
 <title>Hmm 게시판</title>
 </head>
@@ -617,7 +616,6 @@
 
 <div class="container">
 
-
 	<!-- 게시글 상세보기 -->
 	<div class="boardDetail_area">
 
@@ -625,7 +623,7 @@
 		<div class="boardDetail">
 			<div class="boardDetail-header">
 				<div class="boardDetail_title">
-					<h2>${board.title}&nbsp;&nbsp;&nbsp;<a href="#"><span id="posted_from">${board.code.name }게시판</span></a>
+					<h2>${board.title}&nbsp;&nbsp;&nbsp;<a href="boardLists.do?dis=${board.distinguish}"><span id="posted_from">${board.code.name } 게시판</span></a>
 					</h2>
 				</div>
 				<br>
@@ -652,7 +650,6 @@
 							게시글 메달 갯수 :<span id="bmedal"> ${board.point.medal}</span>
 						</span>
 					</c:if>
-
 
 					<span id="board_postdate">작성일 : ${board.postdate}</span>
 
@@ -693,7 +690,7 @@
 			</div>
 
 			</div>
-		
+
 		<!-- 댓글 파트 -->
 			<div class="comment_section" id="commentsAdd">
 

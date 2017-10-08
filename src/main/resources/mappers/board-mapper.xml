@@ -58,7 +58,7 @@
 	<select id="selectNewTechList" resultMap="boardMap" parameterType="hashmap">
 		<include refid="boardTemplate"/>
 		WHERE A.DISTINGUISH=3
-		AND SYSDATE BETWEEN #{first} AND #{second}+6
+		AND SYSDATE BETWEEN #{first} AND #{second}+7
 
 		AND ISDELETE IS NULL
 	</select>

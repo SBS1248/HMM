@@ -63,6 +63,7 @@
 	function checkWrite()
 	{
 		var data = '${sessionScope.member}';
+		
 		if(data =='' || data == null){
 			alert("로그인 후 이용 바랍니다");
 			$("#loginModal").modal('show');

@@ -213,16 +213,16 @@ html body {
 }
 
 .comments-heading{
+  border: 3px gold dotted;
   height: 50px;
   font-family: 'Hanna', serif;
-  background-color: #002F2F;
-  padding: 15px;
+  background-color: purple;
   color: white;
+  padding-top: 10px;
 }
 
 #reply_number{
-  display: inline-block;
-  margin: auto;
+  padding: 10px;
 }
 
 .current_medal_number{
@@ -236,11 +236,11 @@ html body {
 
 #give_medal{
   background-color: gold;
-  padding: 10px;
   border: none;
   border-radius: 5px;
   color: black;
-  margin-left: 20px;
+  padding: 8px;
+
 }
 
 #give_medal:hover{
@@ -260,8 +260,8 @@ html body {
 #report_comment{
   background-color: red;
   color: white;
-  float: right;
   margin-right: 10px;
+  float: right;
 }
 
 #the_medal{

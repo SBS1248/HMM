@@ -189,9 +189,6 @@
 		});
 	});
 
-
-
-
 	function crecommendation(ccode,flag,mid)
 	{
 		if('${member.id}'==mid)
@@ -360,6 +357,8 @@
 		 $('#newCArea').focus();
 	}
 
+
+// 새로 댓글 작성시
 	function newCButton(num)
 	{
 		$.ajax({
@@ -370,21 +369,21 @@
             	$('#newComments').replaceWith(
             			"<div class='comments' id='pa"+commentData.ccode+"'>"+
             			"<div class='comments-heading'>"+
-            			"<div id='reply_num_and_give_medal_area'>"+
             			"<span id='reply_number' class='commentNumber'>"+num+"번째 댓글</span>"+
-            			"<span id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</span>"+
-									"<span id='comment_date'>작성일!!! : "+commentData.postdate+"</span>"+
-									"<span id='comment_writer'>작성자!!! : "+commentData.writerid+"</span>"+
 									"<button id='report_comment' onclick='creport("+commentData.ccode+",\""+commentData.writerid+"\")'><span class='glyphicon glyphicon-alert'></span>&nbsp;&nbsp;댓글신고하기123123</button>"+
+									"<span id='comment_writer'>작성자!!! : "+commentData.writerid+"</span>"+
+									"<span id='comment_date'>작성일!!! : "+commentData.postdate+"</span>"+
 									"</div>"+
-									"</div>"+
+
             			"<div class='comments-body'>"+commentData.content+"</div>"+
+
             			"<div class='comments-footer'>"+
+									"<div class='comment_edit_add'>"+
 									"<button onclick=beforeCEdit("+commentData.ccode+",$(this).prev().prev().children('span[class=commentNumber]').text())>수정하기</button>"+
 									"<button id=\"wcomment"+commentData.ccode+"\" onclick=\"wcomment("+commentData.ccode+")\">대댓글 달기</button>"+
-
+									"</div>"+
             			"<div class='comment_rate'>"+
-
+									"<button id='give_medal' onclick='cmedal("+commentData.ccode+",\""+commentData.writerid+"\")'>메달 주기</button>"+
             			"공감 : <span id='g"+commentData.ccode+"'>"+commentData.point.good+"</span>&nbsp;"+
             			"<button type='button' class='comment_rate_btn' id='btn_good'onclick='crecommendation("+commentData.ccode+",\"g\",\""+commentData.writerid+"\")'><i class='fa fa-thumbs-o-up' aria-hidden='true'></i> YES!</button>"+
             			"&nbsp; 비공감 : <span id='b"+commentData.ccode+"'>"+commentData.point.bad+"</span>&nbsp;"+
@@ -623,7 +622,7 @@
 		<div class="boardDetail">
 			<div class="boardDetail-header">
 				<div class="boardDetail_title">
-					<h2>${board.title}&nbsp;&nbsp;&nbsp;<a href="boardLists.do?dis=${board.distinguish}"><span id="posted_from">${board.code.name } 게시판</span></a>
+					<h2>${board.title}&nbsp;&nbsp;&nbsp;<a id="posted_from" href="boardLists.do?dis=${board.distinguish}"><span>${board.code.name } 게시판</span></a>
 					</h2>
 				</div>
 				<br>
@@ -646,7 +645,7 @@
 					</c:if>
 
 					<c:if test="${board.point.medal eq 0}">
-						<span class="current_medal_number" id="pmdiv" style="display: none;">
+						<span class="current_medal_number" id="pmdiv">
 							게시글 메달 갯수 :<span id="bmedal"> ${board.point.medal}</span>
 						</span>
 					</c:if>
@@ -765,7 +764,7 @@
 										</script>
 								</c:if>
 
-								<div class="current_medal_number" id="mdiv${c.ccode }" style="display: none;">
+								<div class="current_medal_number" id="mdiv${c.ccode }">
 										<span id="m${c.ccode}">${c.point.medal } </span>
 									</div>
 

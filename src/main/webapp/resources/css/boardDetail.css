@@ -66,6 +66,11 @@ html body {
 #posted_from {
   font-size: 16px;
   color: silver;
+  text-decoration: none;
+}
+
+#posted_from:hover{
+  color: white;
 }
 
 .boardDetail_author{
@@ -218,11 +223,11 @@ html body {
   font-family: 'Hanna', serif;
   background-color: purple;
   color: white;
-  padding-top: 10px;
+  padding-top: 14px;
 }
 
 #reply_number{
-  padding: 10px;
+  padding-left: 10px;
 }
 
 .current_medal_number{
@@ -232,19 +237,6 @@ html body {
 
 #bmedal{
     font-size: 16px;
-}
-
-#give_medal{
-  background-color: gold;
-  border: none;
-  border-radius: 5px;
-  color: black;
-  padding: 8px;
-
-}
-
-#give_medal:hover{
-  cursor: pointer;
 }
 
 #comment_writer{
@@ -280,6 +272,11 @@ html body {
   border-top: 1px silver solid;
 }
 
+.comment_edit_add{
+  float: left;
+  margin-left: 10px;
+}
+
 .comment_edit_add button{
   background-color: #618685;
   padding: 5px;
@@ -287,22 +284,19 @@ html body {
   width: auto;
   margin: auto;
   margin-top: 10px;
-  margin-left: 10px;
-}
-
-.comment_edit_add{
-  float: left;
+  margin-left: 5px;
 }
 
 .comment_rate {
   float: right;
+  margin-right: 10px;
 }
 
 .comment_rate button{
   width: 70px;
   margin: auto;
   margin-top: 10px;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .comment_rate_btn{
@@ -311,6 +305,14 @@ html body {
 
 .comment_rate_btn:hover{
   transform: scale(1.2);
+}
+
+#give_medal{
+  background-color: gold;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  padding: 8px;
 }
 
 #comment_point {

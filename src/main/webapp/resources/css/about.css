@@ -61,3 +61,7 @@ html body {
 .item span {
     font-style: normal;
 }
+
+.thumbnail{
+  height: 330px;
+}

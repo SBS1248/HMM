@@ -17,6 +17,7 @@
             <body>
               <%@ include file="/header.jsp"%>
 
+              <%-- 팀 사진 --%>
               <div class="the_container">
                 <h1>Hmm 팀을 소개합니다.</h1>
                 <img id="the_team" src="resources/img/about_hmm.jpg"/>
@@ -33,7 +34,7 @@
                     <li data-target="#myCarousel" data-slide-to="4"></li>
                   </ol>
 
-                  <!-- Wrapper for slides -->
+                  <!-- 슬라이드 -->
                   <div class="carousel-inner" role="listbox">
                     <div class="item active">
                       <h4>"Hmm 최고의 IT 커뮤니티입니다. 자신있게 추천합니다."<br>
@@ -74,7 +75,38 @@
                       </div>
                     </div>
 
-                    <div class="the_container"></div>
+
+                    <%-- Hmm 살펴보기 --%>
+
+                    <div class="the_container">
+                      <div class="container-fluid text-center bg-grey">
+  <h2>Hmm 살펴보기</h2>
+  <h4>우리 커뮤니티는 다음과 같은 기능을 제공합니다.</h4>
+  <div class="row text-center">
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="resources/img/function1.JPG">
+        <h3><strong>손쉬운 커뮤니티 활동</strong></h3>
+        <h4>원하는 대로 즉시 정렬 가능한 게시글들!</h4>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="resources/img/function2.JPG">
+        <h3><strong>트렌드를 파악할 수 있는 주간투표</strong></h3>
+        <h4>가장 뜨거운 화젯거리를 언제든지 살펴볼 수 있습니다</h4>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="resources/img/function3.JPG">
+        <h3><strong>남아도는 돈으로 유료결제!</strong></h3>
+        <h4>물론 할인은 없습니다(환불도 없음)</h4>
+      </div>
+    </div>
+</div>
+
+                    </div>
                     <div class="the_container"></div>
                     <div class="the_container"></div>
                     <div class="the_container"></div>

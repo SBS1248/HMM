@@ -133,8 +133,13 @@ html body {
     text-align: center;
     padding: 6px;
     min-width: 70px;
+    background: #618685;
+    color: white;
 }
 
+#myTable td{
+  //border: 1px gold dotted;
+}
 
 /*카테고리 사이즈*/
 #myTable td:nth-child(3){
@@ -142,9 +147,15 @@ html body {
   width: 110px;
 }
 
+/*작성자 사이즈*/
+#myTable td:nth-child(4){
+  /*border: 1px gold dotted;*/
+  width: 100px;
+}
+
 #myTable td{
-    padding: 6px;
-    font-size: 1vw;
+    padding: 3px;
+    font-size: 0.9vw;
 }
 
 #table_num{

@@ -12,7 +12,7 @@
 					<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 				</head>
 				<body>
-					
+
 					<!-- Container (연락처) -->
 					<div id="contact" class="container-fluid bg-grey">
 						<h2 class="text-center">Hmm 연락처</h2>
@@ -29,8 +29,8 @@
 									<span class="glyphicon glyphicon-envelope"></span>
 									jhlee90909@gmail.com</p>
 							</div>
-							<form action="bwlist.do" method="POST">
-						
+							<form action="bwlist.do" method="POST"  onSubmit="alert('성공적으로 운영자에게 메시지 전달하였습니다!');">
+
 							<div class="col-sm-7 slideanim">
 								<div class="row">
 									<div class="col-sm-6 form-group">
@@ -43,7 +43,7 @@
 										</div>
 										<div class="col-sm-6 form-group">
 											<input class="form-control" id="email" name="seradd" value="wkdgma91@gmail.com" placeholder="이메일 주소" type="email" readonly="readonly">
-											</div>									
+											</div>
 										</div>
 										<input class="form-control" id="title" name="sertitle" placeholder="제목" type="text" style="width: 49%">
 										<br>

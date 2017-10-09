@@ -133,4 +133,10 @@ public class BoardServiceImpl implements BoardService
 	{
 		return bDao.selectSearchBoardList(dis,keyword);
 	}
+
+	@Override
+	public ArrayList<Board> sortList(char sm, int dis)
+	{
+		return bDao.sortList(sm,dis);
+	}
 }

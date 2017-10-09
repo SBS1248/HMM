@@ -46,4 +46,6 @@ public interface BoardService {
 	ArrayList<Board> selectNewTechList(Date date);
 
 	List<Board> selectSearchBoardList(int dis, String keyword);
+
+	ArrayList<Board> sortList(char sm, int dis);
 }

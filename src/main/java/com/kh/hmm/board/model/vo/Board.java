@@ -9,7 +9,7 @@ public class Board
 	private String content;
 	private int distinguish;
 	private String writerid;
-	private Date postdate;
+	private String postdate;
 	private String isdelete;
 	private String hasfile;
 	
@@ -18,7 +18,7 @@ public class Board
 	
 	public Board() {}
 
-	public Board(int bcode, String title, String content, int distinguish, String writerid, Date postdate,
+	public Board(int bcode, String title, String content, int distinguish, String writerid, String postdate,
 			String isdelete, String hasfile, BoardCode code, BoardPoint point)
 	{
 		super();
@@ -84,12 +84,12 @@ public class Board
 		this.writerid = writerid;
 	}
 
-	public Date getPostdate()
+	public String getPostdate()
 	{
 		return postdate;
 	}
 
-	public void setPostdate(Date postdate)
+	public void setPostdate(String postdate)
 	{
 		this.postdate = postdate;
 	}

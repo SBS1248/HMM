@@ -2,6 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="org.springframework.ui.Model"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<jsp:useBean id="today" class="java.util.Date" />
+
 <c:if test="${list eq null}">
 	<script>
 		window.location.href = "boardLists.do?dis=0";
@@ -86,7 +90,7 @@
 	$(function(){
 		$('#sort').bind('change',function(){
 			var val=$(this).val();
-			
+
 			window.location.href="sortList.do?sm="+val+"&dis=0";
 		});
 	});
@@ -125,9 +129,9 @@
 					<%-- 게시글 정렬 --%>
 					<div class="sort_options">
 						<select class="selectpicker" id="sort">
-							<option value="l" selected>최신순</option>
-							<option value="f">인기순</option>
-							<option value="g">추천순</option>
+							<option value="r" ${sFlag eq null or sFlag eq 'r'?"selected":""}>최신순</option>
+							<option value="f" ${sFlag eq 'f'?"selected":""}>인기순</option>
+							<option value="g" ${sFlag eq 'g'?"selected":""}>추천순</option>
 						</select>
 					</div>
 
@@ -173,9 +177,24 @@
 												</ul>
 											</div>
 										</td>
-										<td id="table_point">${l.point.best*(5)+l.point.good*(3)+l.point.bad*(-3)+l.point.worst*(-5) }</td>
+										<td id="table_point">${l.point.cal }</td>
 										<td id="table_viewcount">${l.point.viewnum }</td>
-										<td id="table_date">${l.postdate }</td>
+										
+										<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="toDay"/>
+										<c:set var="postdate" value="${fn:substring(l.postdate,0,10) }"/>
+										<c:set var="tpostdate" value="${fn:substring(l.postdate,10,19) }"/>
+										
+										<c:if test="${toDay eq postdate }">
+											<td id="table_date">${tpostdate }</td>
+										</c:if>
+										
+										<c:if test="${toDay ne postdate }">
+											<td id="table_date">${postdate }</td>
+										</c:if>
+										
+										
+										
+										
 									</tr>
 
 								</c:forEach>

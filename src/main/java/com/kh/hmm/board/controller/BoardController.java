@@ -68,7 +68,6 @@ public class BoardController
 		if(dis==0) rturn="index";
 		else rturn="board";
 		
-		
 		return "../../"+rturn;
 	}
 	
@@ -82,6 +81,7 @@ public class BoardController
 		
 		m.addAttribute("list", sortedList);
 		m.addAttribute("dis",dis);
+		m.addAttribute("sFlag", Character.toString(sm));
 		
 		if(dis==0) rturn="index";
 		else rturn="board";

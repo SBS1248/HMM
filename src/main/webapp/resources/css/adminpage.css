@@ -4,18 +4,6 @@ html body {
     background-color: #deeaee;
 }
 
-.board_area {
-  background-color: white;
-  border: none;
-}
-
-.board-heading{
-  background-color: #002F2F;
-  padding: 20px;
-  height: 80px;
-}
-
-
 #insertNewtech{
   padding: 10px;
   border-radius: 10px;

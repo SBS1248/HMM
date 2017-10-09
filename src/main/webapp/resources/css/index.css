@@ -1,7 +1,5 @@
-
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-
 @charset "UTF-8";
 
 /*
@@ -16,7 +14,6 @@
 #c94c4c;
 */
 
-
 html body {
   background-color: #deeaee;
 }
@@ -29,42 +26,46 @@ html body {
 }
 
 .jumbotron-billboard .img {
-    margin-bottom: 0px;
-    opacity: 0.2;
-    color: #fff;
-    background: #000 url("../img/main.jpg") center center;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    overflow: hidden;
-    position:absolute;
-    top:0;left:0;
-    z-index:1;
-  }
+  margin-bottom: 0px;
+  opacity: 0.2;
+  color: #fff;
+  background: #000 url("../img/main.jpg") center center;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
 
 .jumbotron {
-  position:relative;padding:50px;
+  position: relative;
+  padding: 50px;
 }
 
 .jumbotron .container {
-  z-index:2;
-  position:relative;
-  z-index:2;
+  z-index: 2;
+  position: relative;
+  z-index: 2;
 }
 
+
 /*게시판 영역*/
+
 .board_area {
   background-color: white;
   border: none;
 }
 
-.board-heading{
+.board-heading {
   background-color: #002F2F;
   padding: 20px;
   height: 80px;
 }
 
-#writebutton{
+#writebutton {
   float: left;
   font-family: 'Hanna', serif;
 }
@@ -77,7 +78,7 @@ html body {
   border-radius: 5px;
 }
 
-#write:hover{
+#write:hover {
   color: gold;
 }
 
@@ -88,20 +89,22 @@ html body {
 }
 
 #search_bar input[type=text] {
-    border: 3px #002F2F solid;
-    padding: 7px;
-    width: 300px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
+  border: 3px #002F2F solid;
+  padding: 7px;
+  width: 300px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
 }
+
 
 /* When the input field gets focus, change its width to 100% */
+
 #search_bar input[type=text]:focus {
-    border: 3px skyblue solid;
-    width: 100%;
+  border: 3px skyblue solid;
+  width: 100%;
 }
 
-.sort_options{
+.sort_options {
   float: right;
   font-family: 'Hanna', serif;
 }
@@ -110,10 +113,9 @@ html body {
   cursor: pointer;
 }
 
-.sort_options .selectpicker{
-}
+.sort_options .selectpicker {}
 
-.board-body{
+.board-body {
   padding: 20px;
 }
 
@@ -123,80 +125,83 @@ html body {
   width: 100%;
 }
 
-#myTable thead{
+#myTable thead {
   border-bottom: 2px grey solid;
   text-align: center;
   font-weight: bold;
 }
 
-#myTable th{
-    text-align: center;
-    padding: 6px;
-    min-width: 70px;
-    background: #618685;
-    color: white;
+#myTable th {
+  text-align: center;
+  padding: 6px;
+  min-width: 70px;
+  background: #618685;
+  color: white;
 }
 
-#myTable td{
+#myTable td {
   //border: 1px gold dotted;
 }
 
+
 /*카테고리 사이즈*/
-#myTable td:nth-child(3){
+
+#myTable td:nth-child(3) {
   /*border: 1px gold dotted;*/
   width: 110px;
 }
 
+
 /*작성자 사이즈*/
-#myTable td:nth-child(4){
+
+#myTable td:nth-child(4) {
   /*border: 1px gold dotted;*/
   width: 100px;
 }
 
-#myTable td{
-    padding: 3px;
-    font-size: 0.9vw;
+#myTable td {
+  padding: 3px;
+  font-size: 0.9vw;
 }
 
-#table_num{
+#table_num {
   text-align: center;
 }
 
-#td_title{
-}
+#td_title {}
 
-#td_title a{
-color: black;
-}
-
-#td_profile a{
+#td_title a {
   color: black;
 }
 
-#td_profile a:hover{
+#td_profile a {
+  color: black;
+}
+
+#td_profile a:hover {
   text-decoration: none;
 }
 
-#table_category{
+#table_category {
   text-align: center;
 }
 
-#table_point{
+#table_point {
   text-align: center;
 }
 
-#table_viewcount{
+#table_viewcount {
   text-align: center;
 }
 
-#table_date{
+#table_date {
   text-align: center;
 }
 
 #myTable tr:nth-child(even) {
-    background-color: #deeaee;
+  background-color: #deeaee;
 }
 
-#reply_num{
+#reply_num {
   color: blue;
 }

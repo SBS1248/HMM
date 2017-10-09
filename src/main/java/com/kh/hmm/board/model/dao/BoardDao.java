@@ -170,7 +170,7 @@ public class BoardDao {
 		
 		switch(sm) 
 		{
-		case 'l': val="A.POSTDATE DESC";
+		case 'r': val="POSTDATE DESC";
 			break;
 		case 'f': val="C.VIEWNUM DESC";
 			break;

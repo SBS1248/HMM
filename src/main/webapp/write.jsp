@@ -59,7 +59,7 @@
 			<div id="post_contents">
 				<!-- 섬머노트 부분 -->
 				<div class="sn">
-					<div class>
+					<div class="summernote">
 						<textarea id="summernote" name="content" maxlength="4000"></textarea>
 						<div id="content_feedback"></div>
 					</div>
@@ -85,16 +85,27 @@
 		}
 	</script>
 
-	<%-- 리사이즈 방지 --%>
+	<%-- 써머노트 --%>
 	<script>
-	$("#summernote").summernote({
-	    // toolbar: [
-	    //     ['para', ['ul']]
-	    // ],
-	    // focus: true,
-	    disableResizeEditor: true
-	});
-	// $('.note-statusbar').hide();
+	      $('#summernote').summernote({
+	        placeholder: '여기에 글을 입력하세요',
+	        tabsize: 2,
+					height: 300,
+					minHeight: null,             // set minimum height of editor
+					maxHeight: null,             // set maximum height of editor
+					focus: true,
+					disableResizeEditor: true,
+					toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['fontsize', ['fontsize']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol', 'paragraph']],
+    ['height', ['height']]
+  ]
+
+	      });
 	</script>
 
 	<%-- 제목 남은 글자 수 --%>
@@ -127,12 +138,12 @@
 		var content_max = 4000;
 		$('#content_feedback').html(content_max + ' 바이트 남음');
 
-		$('#summernote').keyup(function() {
-			var content_length = $('#summernote').val().length;
+		$('.summernote').keyup(function() {
+			var content_length = $('.summernote').val().length;
 
 			var content_byte = 0;
 			for (var i = 0; i < content_length; i++) {
-				if (isHangul($('#summernote').val().charAt(i)))
+				if (isHangul($('.summernote').val().charAt(i)))
 					content_byte += 3;
 				else
 					content_byte += 1;
@@ -377,17 +388,5 @@
 
 						});
 	</script>
-
-	<script>
-		$(function() {
-			$('#summernote').summernote({
-				focus : true, // set focus to editable area after initializing summernote
-				minHeight : 300, // 최소 높이값(null은 제한 없음)
-				maxHeight : null, // 최대 높이값(null은 제한 없음)
-				shortcuts : false
-			});
-		});
-	</script>
-
 </body>
 </html>

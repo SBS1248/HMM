@@ -77,7 +77,6 @@
 
 
                     <%-- Hmm 살펴보기 --%>
-
                     <div class="the_container">
                       <div class="container-fluid text-center bg-grey">
   <h2>Hmm 살펴보기</h2>

@@ -98,7 +98,7 @@ body {
 #summernote{
   padding: 20px;
   margin: auto;
-  word-wrap: break-word;
+  overflow: hidden;
 }
 
 #fileUpload {

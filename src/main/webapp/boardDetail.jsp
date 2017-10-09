@@ -334,10 +334,9 @@
 
 		$('#commentsAdd').append("<div class='comments' id='newComments'>"+
 					"<div class='comments-heading'>"+
-					"<div id='reply_num_and_give_medal_area'>"+
 					"<span id='reply_number' class='commentNumber'>댓글</span>"+
 					"<span id='comment_writer'>작성자 : ${member.id }</span> <span id='comment_date'> 작성일 : "+date+"</span>"+
-					"</div>"+"</div>"+
+					"</div>"+
 					"<div class='comments-body'>"+
 					"<textArea id='newCArea'></textArea>"+
 					"<button id='post_comment' onclick='newCButton()'>댓글 작성하기</button>"+

@@ -741,7 +741,7 @@
 						<div class='${classLev }'  id="pa${c.ccode }">
 						<div class="comments-heading">
 
-							<span id="comment_writer">작성자zxc : ${c.writerid } </span>
+							<span id="comment_writer">작성자zxc : <a href="profile.do?profileId=${c.writerid }">${c.writerid }</a></span>
 
 								<c:if test="${c.lev eq 1}">
 									<span id="reply_number" class="commentNumber"></span>

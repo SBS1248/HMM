@@ -135,8 +135,16 @@ html body {
     min-width: 70px;
 }
 
+
+/*카테고리 사이즈*/
+#myTable td:nth-child(3){
+  /*border: 1px gold dotted;*/
+  width: 110px;
+}
+
 #myTable td{
     padding: 6px;
+    font-size: 1vw;
 }
 
 #table_num{
@@ -144,9 +152,6 @@ html body {
 }
 
 #td_title{
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 #td_title a{

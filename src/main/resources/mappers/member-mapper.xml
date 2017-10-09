@@ -116,6 +116,18 @@
 		MEMBERCODE=#{membercode}
 	</insert>
 	
+	<update id="buyDDaru">
+		UPDATE MEMBER
+		SET DDARU=#{ddaru}
+		WHERE
+		MEMBERCODE=#{membercode}
+	</update>
+	
+	<select id="DDaruInfo" resultType="Member">
+		SELECT *
+		FROM MEMBER WHERE MEMBERCODE = #{membercode}
+	</select>
+	
 	<update id="DeleteMember">
 		UPDATE MEMBER
 		SET QUITDATE = SYSDATE+3

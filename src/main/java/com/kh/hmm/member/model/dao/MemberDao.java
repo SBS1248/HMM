@@ -117,6 +117,11 @@ public class MemberDao {
 	public void updateDDARU(Member member) {
 		sqlSession.update("updateDDARU", member);
 	}
+	
+	public Member buyDDARU(Member member) {
+		sqlSession.update("updateDDARU", member);
+		return	sqlSession.selectOne("DDaruInfo",member);
+	}
 
 	public int buyMedal(int membercode, int medal) {
 		HashMap map = new HashMap();

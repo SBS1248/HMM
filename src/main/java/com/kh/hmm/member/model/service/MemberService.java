@@ -60,4 +60,5 @@ public interface MemberService {
 
 	Member profileInfo(String profileId);
 
+	Member buyDDARU(Member member);
 }

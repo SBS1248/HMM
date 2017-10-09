@@ -1,52 +1,85 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Welcome to the About Home </title>
-<meta charset="utf-8">
-<link href="resources/css/about.css" rel="stylesheet" type="text/css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>About Hmm</title>
+      <meta charset="utf-8">
+        <link href="resources/css/about.css" rel="stylesheet" type="text/css">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+ <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+            <body>
+              <%@ include file="/header.jsp"%>
 
-<body>
-	<%@ include file="/header.jsp"%>
-	  <div class="bwcontainer-fluid">
-	  <div class="row">
-	  <div class="col-sm-8">
-	      <h2>About Hmm Page</h2>
-	      <h4 style="font-style: italic;">Hmm는
-			  누구나 IT관련 정보를 서로관에 공유하며 상부상조 할 수 있는 커뮤니티 홈페이지 입니다.
-			서로간에 소통하며 원하는 가치를 끌어낼 수 있는 본질적 아름다움을 이끌어 내고자 합니다.</h4>      
-	     <h2>세계 어디서든 Hmm의 가치를 알아주는 날을 기대하며..</h2>
-	      <h4 style="font-style: italic;">
-			Hmm는 앞으로도 Hmm을 이용해주시는 사용자들의 의견을 수렴하여 적극적으로 웹에 적용하여
-			보다 사용자들이 편리하고 많은 정보를 공유할 수 있는 홈페이지로 나아가겠습니다.</h4>
-	    </div>
-	    <div class="col-sm-4">
-	      <span class="glyphicon glyphicon-signal logo"></span>
-	    </div>
-	  </div>
-	</div>
-	
-	<div class="bwcontainer-fluid bg-grey">
-	  <div class="row">
-	    <div class="col-sm-4">
-	      <span class="glyphicon glyphicon-globe logo"></span>
-	    </div>
-	    <div class="col-sm-8">
-	      <h2>Our Values</h2>
-	      <h4 style="font-style: italic;"><strong>MISSION:</strong>편리하고 보다 많은 정보를 공유 할 수 있는!!</h4>      
-	      <h4 style="font-style: italic;"><strong>VISION:</strong>전세계 모든 사람들이 Hmm을 외칠 수 있는 날까지 !!</h4>
-	    </div>
-	  </div>
-	</div>
-	
-</body>
-<%@ include file="/footer.jsp"%>
-</html>
+              <div class="the_container">
+                <h1>Hmm 팀을 소개합니다.</h1>
+                <img id="the_team" src="resources/img/about_hmm.jpg"/>
+              </div>
+              <div class="the_container">
+                <h2>Hmm에 쏟아지는 사회 곳곳에서의 찬사!</h2>
+                <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
+                  </ol>
+
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                      <h4>"Hmm 최고의 IT 커뮤니티입니다. 자신있게 추천합니다."<br>
+                          <span style="font-style:normal;">빌 게이츠, 前 마이크로소프트 사장, 전라남도 전주시 덕진구</span>
+                        </h4>
+                      </div>
+                      <div class="item">
+                        <h4>"이것은 혁명이다... 이전까지 이런 커뮤니티는 존재하지 않았다."<br>
+                            <span style="font-style:normal;">김효숙, 이재훈 어머니, 청솔 부동산 대표</span>
+                          </h4>
+                        </div>
+                        <div class="item">
+                          <h4>"신이시여, 왜 다음카카오를 만드시고 Hmm을 다시 만드셨습니까?"<br>
+                              <span style="font-style:normal;">스티브 잡스, 前 애플뮤직 대표, 무직</span>
+                            </h4>
+                          </div>
+                          <div class="item">
+                            <h4>"아, 배고프다. 피자 먹고 싶어."<br>
+                                <span style="font-style:normal;">이기승, 웹개발 취업 희망자, 상록시티 주민</span>
+                              </h4>
+                            </div>
+                            <div class="item">
+                              <h4>"대한민국 대표 유산균 청인 딱좋아! 장 건강에 딱 좋아! 쾌변에 딱 좋아!"<br>
+                                  <span style="font-style:normal;">박세준, 힐링 바이오 대표, 변비 환자</span>
+                                </h4>
+                              </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="the_container"></div>
+                    <div class="the_container"></div>
+                    <div class="the_container"></div>
+                    <div class="the_container"></div>
+
+                  </body>
+                  <%@ include file="/footer.jsp"%>
+
+                </html>

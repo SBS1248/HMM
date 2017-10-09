@@ -45,9 +45,9 @@
 											<input class="form-control" id="email" name="seradd" value="wkdgma91@gmail.com" placeholder="이메일 주소" type="email" readonly="readonly">
 											</div>
 										</div>
-										<input class="form-control" id="title" name="sertitle" placeholder="제목" type="text" style="width: 49%">
+										<input class="form-control" id="title" name="sertitle" placeholder="제목" type="text" style="width: 49%" required>
 										<br>
-										<textarea class="form-control" id="comments" name="sercontent" placeholder="남기실 말씀" rows="5"></textarea>
+										<textarea class="form-control" id="comments" name="sercontent" placeholder="남기실 말씀" rows="5" required></textarea>
 										<br>
 											<div class="row">
 												<div class="col-sm-12 form-group">

@@ -47,13 +47,31 @@
 	<select id="selectAllBoardList" resultMap="boardMap">
 		<include refid="boardTemplate" />
 		WHERE ISDELETE IS NULL
+		ORDER BY A.POSTDATE DESC
 	</select>
 
 	<select id="selectBoardList" resultMap="boardMap" parameterType="_int">
 		<include refid="boardTemplate" />
 		WHERE A.DISTINGUISH=#{dis}
 		AND ISDELETE IS NULL
+		ORDER BY A.POSTDATE DESC
 	</select>
+	
+	<select id="sortList" resultMap="boardMap" parameterType="hashmap">
+		<include refid="boardTemplate" />
+		<choose>
+		    <when test="dis == 0">
+		    	WHERE A.ISDELETE IS NULL
+		    </when>
+		    		    
+		    <otherwise>
+		     	WHERE A.DISTINGUISH=#{dis}
+				AND A.ISDELETE IS NULL
+		    </otherwise>
+		  </choose>
+		  ORDER BY ${sort}
+	</select>
+	
 	
 	<select id="selectNewTechList" resultMap="boardMap" parameterType="hashmap">
 		<include refid="boardTemplate"/>

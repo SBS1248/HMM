@@ -77,6 +77,14 @@
 			location.href="boardSearch.do?dis="+'${dis}'+"&keyword="+keyword;
 		}
 	}
+	
+	$(function(){
+		$('#sort').bind('change',function(){
+			var val=$(this).val();
+			
+			window.location.href="sortList.do?sm="+val+"&dis=${dis}";
+		});
+	});
 </script>
 
 </head>
@@ -110,11 +118,10 @@
 
 					<%-- 게시글 정렬 --%>
 					<div class="sort_options">
-						<select class="selectpicker">
-							<option>최신순</option>
-							<option>인기높은순</option>
-							<option>김말순</option>
-							<option>떡튀순</option>
+						<select class="selectpicker" id="sort">
+							<option value="l" selected>최신순</option>
+							<option value="f">인기순</option>
+							<option value="g">추천순</option>
 						</select>
 					</div>
 

@@ -162,4 +162,26 @@ public class BoardDao {
 		
 		return (ArrayList<Board>)list;
 	}
+
+	public ArrayList<Board> sortList(char sm, int dis)
+	{
+		HashMap map=new HashMap();
+		String val=null;
+		
+		switch(sm) 
+		{
+		case 'l': val="A.POSTDATE DESC";
+			break;
+		case 'f': val="C.VIEWNUM DESC";
+			break;
+		case 'g': val="C.CAL DESC";
+			break;
+		}
+		map.put("sort",val );
+		map.put("dis", dis);
+
+		List<Board> list=sqlSession.selectList("sortList",map);
+		
+		return (ArrayList<Board>)list;
+	}
 }

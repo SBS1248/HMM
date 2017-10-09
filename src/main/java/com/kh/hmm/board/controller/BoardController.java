@@ -22,9 +22,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.hmm.board.model.service.AttachfileService;
 import com.kh.hmm.board.model.service.BoardService;
@@ -64,7 +66,24 @@ public class BoardController
 		}		
 		
 		if(dis==0) rturn="index";
-		else if(dis==3) rturn="newtech";
+		else rturn="board";
+		
+		
+		return "../../"+rturn;
+	}
+	
+	@RequestMapping(value="sortList.do",method=RequestMethod.GET)
+	public String sortList(char sm,int dis,Model m)
+	{
+		logger.info("sortList("+sm+","+dis+") call...");
+		String rturn=null;
+		
+		ArrayList<Board> sortedList=boardService.sortList(sm,dis);
+		
+		m.addAttribute("list", sortedList);
+		m.addAttribute("dis",dis);
+		
+		if(dis==0) rturn="index";
 		else rturn="board";
 		
 		
@@ -154,26 +173,6 @@ public class BoardController
 		
 		return "../../write";
 	}
-/*	
-	@RequestMapping(value = "boardInsert.do", method = RequestMethod.POST)
-	public void insertBoard(Board b, HttpServletResponse response) throws IOException 
-	{//아작스 처리를 요한다.
-		logger.info("insertBoard("+b+") call...");
-		PrintWriter pw = response.getWriter();
-		pw.write(boardService.insertBoard(b));
-		pw.close();
-	}
-	
-	@RequestMapping(value = "boardUpdate.do", method = RequestMethod.POST)
-	public int updateBoard(Board b) 
-	{//아작스 처리를 요한다.
-		logger.info("updateBoard("+b+") call...");
-		
-		int result=boardService.updateBoard(b);
-
-		return result;
-	}*/
-	
 	
 	@RequestMapping(value = "/fileUpload", method = RequestMethod.GET)
     public String dragAndDrop(Model model) {

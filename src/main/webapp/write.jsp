@@ -85,6 +85,18 @@
 		}
 	</script>
 
+	<%-- 리사이즈 방지 --%>
+	<script>
+	$("#summernote").summernote({
+	    // toolbar: [
+	    //     ['para', ['ul']]
+	    // ],
+	    // focus: true,
+	    disableResizeEditor: true
+	});
+	// $('.note-statusbar').hide();
+	</script>
+
 	<%-- 제목 남은 글자 수 --%>
 	<script>
 		var title_max = 120;

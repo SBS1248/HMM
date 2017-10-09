@@ -54,6 +54,8 @@ html body {
   height: auto;
   padding: 20px 20px 0 20px;
   width: 100%;
+  font-size: 1vw;
+  word-wrap: break-word;
 }
 
 .boardDetail-header input {
@@ -112,8 +114,12 @@ html body {
   padding: 10px;
   padding-top: 50px;
   padding-bottom: 50px;
-  width: 100%;
+  width: auto;
   height: auto;
+}
+
+#boardDetail-content{
+  word-wrap: break-word;
 }
 
 #bedit{

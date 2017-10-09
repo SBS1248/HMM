@@ -393,17 +393,17 @@
 			alert("작성 중인 대댓글이 있습니다.");
 			return;
 		}
-		
+
 		var now=new Date();
 		var date=now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
 		var parentComment=$('#wcomment'+code).parents('div[class=comments]');//자신 바로 위의 댓글이나 대댓글을 찾는다.
-		
+
 		while(parentComment.next().attr('class')!='comments')
 		{//자신 바로 위의 댓글이나 대댓글을 찾는다.
 			if(parentComment.next().length<=0) break;
 			parentComment=parentComment.next();
-		}		
-		
+		}
+
 		parentComment.after("<div class=recomments id='newRecomments'>"+
 			"<div class='comments-heading'>"+
 			"<span id='reply_number' class='commentNumber'>대댓글</span>"+
@@ -414,7 +414,7 @@
 			"<button onclick='newUCButton("+code+")'>대댓글 작성하기</button>"+
 			"</div>"+
 		"</div>");
-		
+
 		$("body").animate({	scrollTop: $('#newCArea').offset().top-200}, 500);
 		$('#newCArea').focus();
 	}
@@ -633,7 +633,10 @@
 				</c:if>
 			</div>
 
-			<div class="boardDetail-contents">${board.content}</div>
+			<div class="boardDetail-contents">
+				<div id="boardDetail-content">${board.content}</div>
+			</div>
+
 			<button id="bedit">수정하기</button>
 			<button id="post_comment" onclick="writeComment()">댓글달기</button>
 			<button id="report_post"><span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;게시글 신고하기</button>
@@ -662,13 +665,13 @@
 			<div class="comment_section" id="commentsAdd">
 
 				<c:if test="${comments ne null}">
-			
+
 					<c:forEach var="c" items="${comments}">
-					
+
 					<c:if test="${c.lev eq 1}">
 						<c:set var="classLev" value="comments"/>
 					</c:if>
-					
+
 					<c:if test="${c.lev eq 2}">
 						<c:set var="classLev" value="recomments"/>
 					</c:if>
@@ -680,13 +683,13 @@
                 			<div class='comments-heading'>
                 				<div id='reply_num_and_give_medal_area'>
                 					<c:if test="${c.lev eq 1}">
-										<span id="reply_number" class="commentNumber"></span>					
+										<span id="reply_number" class="commentNumber"></span>
 									</c:if>
 
 									<c:if test="${c.lev eq 2}">
 										<span id="reply_number" class="commentNumber">대댓글</span>
 									</c:if>
-									
+
                 					<span id='give_medal'><strike>메달 주기</strike></span>
 									<span id="comment_writer">작성자 : ${c.writerid}</span>
                 				</div>
@@ -771,7 +774,7 @@
 						</div>
 
 					</div>
-					</c:if>					
+					</c:if>
 
 				</c:forEach>
 

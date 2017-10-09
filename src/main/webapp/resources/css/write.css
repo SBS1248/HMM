@@ -96,15 +96,9 @@ body {
 }
 
 #summernote{
-  border: 3px #002F2F solid;
-  width: 100%;
-  height: 400px;
   padding: 20px;
   margin: auto;
-}
-
-#summernote:focus{
-  border: 3px skyblue solid;
+  word-wrap: break-word;
 }
 
 #fileUpload {

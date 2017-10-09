@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<jsp:useBean id="today" class="java.util.Date" />
 
 <!DOCTYPE html>
 <html>
@@ -329,8 +332,13 @@
 			alert("작성중인 댓글이 있습니다.");
 			return;
 		}
+		if($('#newRecomments').length>0)
+		{
+			alert("작성 중인 대댓글이 있습니다.");
+			return;
+		}
 		var now = new Date();
-		var date=now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
+		var date=now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate()+" "+now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
 
 		$('#commentsAdd').append("<div class='comments' id='newComments'>"+
 					"<div class='comments-heading'>"+
@@ -388,14 +396,19 @@
 
 	function wcomment(code)
 	{
+		if($('#newComment').length>0)
+		{
+			alert("작성중인 댓글이 있습니다.");
+			return;
+		}
 		if($('#newRecomments').length>0)
 		{
 			alert("작성 중인 대댓글이 있습니다.");
 			return;
 		}
 
-		var now=new Date();
-		var date=now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
+		var now = new Date();
+		var date=now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate()+" "+now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
 		var parentComment=$('#wcomment'+code).parents('div[class=comments]');//자신 바로 위의 댓글이나 대댓글을 찾는다.
 
 		while(parentComment.next().attr('class')!='comments')
@@ -663,10 +676,14 @@
 
 		<!-- 댓글 파트 -->
 			<div class="comment_section" id="commentsAdd">
-
+				<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="toDay"/>
+				
 				<c:if test="${comments ne null}">
 
 					<c:forEach var="c" items="${comments}">
+
+					<c:set var="postdate" value="${fn:substring(c.postdate,0,10) }"/>
+					<c:set var="tpostdate" value="${fn:substring(c.postdate,10,19) }"/>
 
 					<c:if test="${c.lev eq 1}">
 						<c:set var="classLev" value="comments"/>
@@ -677,7 +694,6 @@
 					</c:if>
 <%-- ---------------------------------------------- --%>
 					<c:if test="${c.isdelete eq 'y' }">
-
 
 						<div class='${classLev }' id='pa${c.ccode }'>
                 			<div class='comments-heading'>
@@ -693,9 +709,16 @@
                 					<span id='give_medal'><strike>메달 주기</strike></span>
 									<span id="comment_writer">작성자 : ${c.writerid}</span>
                 				</div>
+                				
                 				<div class='comment_authordate'>
                 					<span id="comment_date">작성일 : ${c.postdate }</span>
                 				</div>
+                				
+                				
+                				
+                				
+                				
+                				
                 				<button disabled><strike>수정하기</strike></button>
                 				<c:if test="${c.lev ne 2}">
 										<button disabled><strike>대댓글 달기</strike></button>
@@ -742,7 +765,12 @@
 
 								<button id="report_comment"	onclick="creport(${c.ccode},'${c.writerid }')">
 									<span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;댓글	신고하기</button>
+										
+								
 								<span id="comment_date">작성일 : ${c.postdate}</span>
+								
+
+
 
 						</div>
 

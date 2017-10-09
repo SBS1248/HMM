@@ -65,6 +65,14 @@
 #contact input {
 }
 
+#name{
+  display: none;
+}
+
+#email{
+  display: none;
+}
+
 #footer_submit {
   color: white;
   background-color: #618685;

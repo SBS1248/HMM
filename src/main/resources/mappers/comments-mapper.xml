@@ -24,7 +24,7 @@
  	</resultMap>
  	
 	<select id="selectComments" resultMap="commentsMap" parameterType="_int">		
-		SELECT A.*,B.*
+		SELECT A.CCODE, A.CONTENT, A.WRITERID, TO_CHAR(A.POSTDATE,'RRRR-MM-DD HH24:MI:SS') POSTDATE, A.LEV, A.UPPER, A.BCODE, A.ISDELETE,B.*
 		FROM COMMENTS A
 		JOIN COMMENTSPOINT B
 		ON A.CCODE=B.CCODE
@@ -34,7 +34,7 @@
 	</select>
 	
 	<select id="selectCommentsOne" resultMap="commentsMap" parameterType="_int">
-		SELECT A.*,B.*
+		SELECT A.CCODE, A.CONTENT, A.WRITERID, TO_CHAR(A.POSTDATE,'RRRR-MM-DD HH24:MI:SS') POSTDATE, A.LEV, A.UPPER, A.BCODE, A.ISDELETE,B.*
 		FROM COMMENTS A
 		JOIN COMMENTSPOINT B
 		ON A.CCODE=B.CCODE

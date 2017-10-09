@@ -7,7 +7,7 @@ public class Comments
 	private int ccode;
 	private String content;
 	private String writerid;
-	private Date postdate;
+	private String postdate;
 	private int lev;
 	private int upper;
 	private int bcode;
@@ -17,7 +17,7 @@ public class Comments
 	
 	public Comments() {}
 
-	public Comments(int ccode, String content, String writerid, Date postdate, int lev, int upper, int bcode,
+	public Comments(int ccode, String content, String writerid, String postdate, int lev, int upper, int bcode,
 			String isdelete, CommentsPoint point)
 	{
 		super();
@@ -62,12 +62,12 @@ public class Comments
 		this.writerid = writerid;
 	}
 
-	public Date getPostdate()
+	public String getPostdate()
 	{
 		return postdate;
 	}
 
-	public void setPostdate(Date postdate)
+	public void setPostdate(String postdate)
 	{
 		this.postdate = postdate;
 	}

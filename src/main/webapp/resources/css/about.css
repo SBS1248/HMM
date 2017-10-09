@@ -28,6 +28,10 @@ html body {
   background-color: white;
 }
 
+.the_container:nth-child(odd) {
+  background-color: #deeaee;
+}
+
 #the_team{
   width: 75%;
 }

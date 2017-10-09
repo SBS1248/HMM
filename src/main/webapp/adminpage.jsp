@@ -18,13 +18,9 @@
 </head>
 <body>
 <%@ include file="/header.jsp"%>
-					<div class="jumbotron jumbotron-billboard">
-		<div class="img"></div>
-		<div class="container">
-			<h1>Hmm...!</h1>
-			<p id="demo"></p>
-		</div>
-	</div>
+
+<div class="container">
+
 		<div class="board-body">
 					<!-- 게시판 테이블 -->
 					<div class="hmm_table">
@@ -33,6 +29,7 @@
 								<tr>
 									<th>성함 </th>
 									<th>이메일주소</th>
+                  <th>제목</th>
 									<th>내용</th>
 									<th>작성일자</th>
 									<th>읽음여부</th>
@@ -43,6 +40,7 @@
 							<tr>
 							<td style="text-align: center;">${s.sername}</td>
 							<td style="text-align: center;">${s.seradd}</td>
+              <td style="text-align: center;">${s.sertitle}</td>
 							<td style="text-align: center;">${s.sercontent}</td>
 							<td style="text-align: center;">${s.yncheck }</td>
 							</tr>
@@ -54,6 +52,6 @@
 				</div>
 <br><br><br>
 <a id="insertNewtech" href="newtechAdmin.do">신기술 찬/반 투표 주제 넣기</a>
-
+</div>
 </body>
 </html>

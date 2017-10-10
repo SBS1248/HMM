@@ -133,12 +133,13 @@ public class BoardController {
 		return list;
 	}
 
-	@RequestMapping(value = "sortList.do", method = RequestMethod.GET)
-	public String sortList(char sm, int dis, Model m) {
-		logger.info("sortList(" + sm + "," + dis + ") call...");
-		String rturn = null;
-
-		ArrayList<Board> sortedList = boardService.sortList(sm, dis);
+	@RequestMapping(value="sortList.do",method=RequestMethod.GET)
+	public String sortList(char sm,int dis,int first,Model m)
+	{
+		logger.info("sortList("+sm+","+dis+","+first+") call...");
+		String rturn=null;
+		
+		ArrayList<Board> sortedList=boardService.sortList(sm,dis,first);
 
 		m.addAttribute("list", sortedList);
 		m.addAttribute("dis", dis);

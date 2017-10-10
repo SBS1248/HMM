@@ -45,11 +45,13 @@ public class BoardDao {
 	public ArrayList<Board> selectBoardList(int dis,int first) {
 		pre = "select";
 		post = "BoardList";
+		String val="A.POSTDATE DESC";
 		
 		HashMap map=new HashMap();
 		map.put("dis", dis);
 		map.put("first", first);
 		map.put("second", first+boardNumber);
+		map.put("sort",val );
 		
 		List<Board> list = sqlSession.selectList(distributor(dis, pre, post), map);
 
@@ -169,24 +171,27 @@ public class BoardDao {
 		return (ArrayList<Board>)list;
 	}
 
-	public ArrayList<Board> sortList(char sm, int dis)
+	public ArrayList<Board> sortList(char sm, int dis, int first)
 	{
 		HashMap map=new HashMap();
 		String val=null;
 		
 		switch(sm) 
 		{
-		case 'r': val="POSTDATE DESC";
+		case 'r': val="A.POSTDATE DESC";
 			break;
 		case 'f': val="C.VIEWNUM DESC";
 			break;
 		case 'g': val="C.CAL DESC";
 			break;
 		}
+		map.put("first", first);
+		map.put("second", first+boardNumber);
 		map.put("sort",val );
 		map.put("dis", dis);
 
-		List<Board> list=sqlSession.selectList("sortList",map);
+		//List<Board> list=sqlSession.selectList("sortList",map);
+		List<Board> list = sqlSession.selectList(distributor(dis, pre, post), map);
 		
 		return (ArrayList<Board>)list;
 	}

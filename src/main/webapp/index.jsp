@@ -107,7 +107,7 @@
 		$('#sort').bind('change',function(){
 			var val=$(this).val();
 
-			window.location.href="sortList.do?sm="+val+"&dis=0";
+			window.location.href="sortList.do?sm="+val+"&dis=0&first=1";
 		});
 	});
 

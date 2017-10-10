@@ -67,6 +67,8 @@ public class BoardController {
 		else
 			rturn = "board";
 
+		for(Board b:list)System.out.println(b.getBcode());
+		
 		return "../../" + rturn;
 	}
 
@@ -125,11 +127,13 @@ public class BoardController {
 
 	@ResponseBody
 	@RequestMapping(value = "loadMore.do", method = RequestMethod.GET)
-	public ArrayList<Board> loadMore(int dis, int first) {
-		logger.info("loadMore(" + dis + "," + first + ") call...");
+	public ArrayList<Board> loadMore(char sm,int dis, int first) {
+		logger.info("loadMore("+sm+","+dis+","+first+") call...");
 
-		ArrayList<Board> list = boardService.selectBoardList(dis, first);
+		ArrayList<Board> list = boardService.sortList(sm,dis,first);
 
+		for(Board b:list)System.out.println(b.getBcode());
+		
 		return list;
 	}
 

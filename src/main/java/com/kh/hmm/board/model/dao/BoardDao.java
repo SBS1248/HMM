@@ -53,7 +53,7 @@ public class BoardDao {
 		map.put("second", first+boardNumber);
 		map.put("sort",val );
 		
-		List<Board> list = sqlSession.selectList(distributor(dis, pre, post), map);
+		List<Board> list = sqlSession.selectList("selectAllBoardList", map);
 
 		return (ArrayList<Board>) list;
 	}
@@ -191,7 +191,7 @@ public class BoardDao {
 		map.put("dis", dis);
 
 		//List<Board> list=sqlSession.selectList("sortList",map);
-		List<Board> list = sqlSession.selectList(distributor(dis, pre, post), map);
+		List<Board> list = sqlSession.selectList("selectAllBoardList", map);
 		
 		return (ArrayList<Board>)list;
 	}

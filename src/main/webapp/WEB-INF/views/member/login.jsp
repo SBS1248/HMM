@@ -66,12 +66,13 @@
 
 		var id = $('input[name=id]').val();
 		var pwd = $('input[name=password]').val();
-		var n = pwd.includes("admin");
-		if (!n){
-			pwd.includes("user");
-			alert(n);
-		}
-		if (!n) {
+
+		var i = pwd.indexOf("admin");
+		if (i == -1) {
+			i = pwd.indexOf("user");
+		} else
+			i = 1;
+		if (i == -1) {
 			if (id == '' || pwd == '') {
 				alert("아이디/패스워드를 입력해 주세요!!");
 				return;
@@ -95,11 +96,14 @@
 			success : function(rData, textStatus, xhr) {
 				var chkRst = rData;
 				if (chkRst == "true") {
-					if (pwd.length == 5) {
-						window.location.href = "updateProfile.do";
-					} else {
+					if (i == -1) {
+						if (pwd.length == 5) {
+							window.location.href = "updateProfile.do";
+						} else {
+							window.location.reload();
+						}
+					} else
 						window.location.reload();
-					}
 				} else {
 					count = count + 1;
 					if (count == 4) {

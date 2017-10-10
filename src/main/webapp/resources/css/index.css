@@ -80,10 +80,14 @@ html body {
   color: gold;
 }
 
-#search_bar {
-  float: left;
+#search_bar{
+  border: 1px #002F2F solid;
+}
+
+#searchCheck {
   margin-left: 30px;
-  width: 600px;
+  display: inline-block;
+  width: 150px;
 }
 
 #search_bar input[type=text] {
@@ -97,7 +101,7 @@ html body {
 /* When the input field gets focus, change its width to 100% */
 #search_bar input[type=text]:focus {
   border: 3px skyblue solid;
-  width: 100%;
+  width: 66%;
 }
 
 .sort_options {

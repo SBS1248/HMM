@@ -67,7 +67,7 @@
 	function checkWrite()
 	{
 		var data = '${sessionScope.member}';
-		
+
 		if(data =='' || data == null){
 			alert("로그인 후 이용 바랍니다");
 			$("#loginModal").modal('show');
@@ -86,30 +86,30 @@
 			location.href="boardSearch.do?dis=0&keyword="+keyword;
 		}
 	}
-	
+
 	$(function(){
 		$('#sort').bind('change',function(){
 			var val=$(this).val();
 
 			window.location.href="sortList.do?sm="+val+"&dis=0";
-		});		
+		});
 	});
-	
+
 	function loadMore(first)
 	{
 		var now = new Date();
 		var tdate=now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
-		
+
 		$.ajax({
             type : "GET",
             url : "loadMore.do?dis=0&first="+first,
-           	success:function(mlist){       		
+           	success:function(mlist){
            		for(var i=0;i<mlist.length;i++)
            		{
            			var pdate=mlist[i].postdate.substring(0,10);
-           			
+
            			if(pdate==tdate) pdate==mlist[i].postdate.substring(11,19);
-           			
+
            			$('#myTable > tbody:last').append(
            					"<tr>"+
 							"<td id=table_num>"+first+"</td>"+
@@ -131,20 +131,20 @@
 								"</div>"+
 							"</td>"+
 							"<td id=table_point>"+mlist[i].point.cal+"</td>"+
-							"<td id=table_viewcount>"+mlist[i].point.viewnum+"</td>"+				
-							"<td id=table_date>"+pdate+"</td>"+							
-						"</tr>"	           			
+							"<td id=table_viewcount>"+mlist[i].point.viewnum+"</td>"+
+							"<td id=table_date>"+pdate+"</td>"+
+						"</tr>"
            			);
            			first+=1;
            		}
             	$('#iloadMore').attr('onclick','loadMore('+first+')');
-           		
+
            	},
             error:function(request,status,error){
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                }
     	});
-	}	
+	}
 </script>
 </head>
 
@@ -215,7 +215,19 @@
 										</a></td>
 										<td id="table_category">${l.code.name}</td>
 										<td>
-											<div class="dropdown">
+
+											  <div id="tooltip">${l.writerid }
+													<span id="tooltiptext">
+														<ul>
+															<li><a href="profile.do?profileId=${l.writerid }">프로필
+																	정보</a></li>
+															<li>2</li>
+															<li>3</li>
+														</ul>
+													</span>
+												</div>
+
+											<%-- <div class="dropdown">
 												<a data-toggle="dropdown" style="cursor:pointer"> <img class="img-circle"
 													src="#" /> ${l.writerid }
 												</a>
@@ -225,19 +237,19 @@
 													<li><a href="#">작성한 글</a></li>
 													<li><a href="#">작성한 댓글</a></li>
 												</ul>
-											</div>
+											</div> --%>
 										</td>
 										<td id="table_point">${l.point.cal }</td>
 										<td id="table_viewcount">${l.point.viewnum }</td>
-										
+
 										<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="toDay"/>
 										<c:set var="postdate" value="${fn:substring(l.postdate,0,10) }"/>
 										<c:set var="tpostdate" value="${fn:substring(l.postdate,10,19) }"/>
-										
+
 										<c:if test="${toDay eq postdate }">
 											<td id="table_date">${tpostdate }</td>
 										</c:if>
-										
+
 										<c:if test="${toDay ne postdate }">
 											<td id="table_date">${postdate }</td>
 										</c:if>

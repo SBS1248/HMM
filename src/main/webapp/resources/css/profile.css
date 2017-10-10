@@ -1,28 +1,49 @@
 @charset "UTF-8";
 
-.profile-header-container {
-	margin: 0 auto;
-	text-align: center;
+*{
+	  font-family: 'Hanna', serif;
 }
 
-.profile-header-img {
-	padding: 50px;
+html body {
+  background-color: #deeaee;
 }
 
-.profile-header-img>img.img-circle {
-	width: 160px;
-	height: 160px;
-	border: 2px solid Gainsboro;
+.container{
+	border: 1px right: ; solid;
 }
 
-.rank-label-container {
-	margin-top: -15px;
-	text-align: center;
-	font-size: 20px;
+.profile_area{
+	display: inline-block;
+	width: 100%;
+	background-color: lime;
+	border: 1px gold solid;
+	padding: 30px;
+	margin-top: 30px;
 }
 
-.label.label-default.rank-label {
-	background-color: rgb(81, 210, 183);
-	padding: 10px 15px 10px 15px;
-	border-radius: 20px;
+.profile_area .profile_img{
+	float: left;
+	width: 30%;
+	height: 100%;
+	background-color: pink;
+}
+
+#profile_user_img{
+	width: 25%;
+	height: 25%;
+	min-width: 200px;
+	min-height: 200px;
+}
+
+#profile_id{
+	display: inline-block;
+	padding: 30px;
+	border: 1px gold solid;
+}
+
+.profile_area .intro{
+	display: inline-block;
+	width: 100%;
+	background-color: lime;
+	border: 1px gold solid;
 }

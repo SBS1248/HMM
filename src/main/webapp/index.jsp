@@ -192,18 +192,22 @@
 						<select id="searchCheck">
 							<option value="1" selected>제목&내용</option>
 							<option value="2">작성자</option>
-						</select> <input type="text" name="search" placeholder="검색어를 입력하세요.."
+						</select>
+						<input id="search_input" type="text" name="search" placeholder="검색어를 입력하세요.."
 							onkeydown='javascript:onEnterSearch()'>
+
+							<%-- 게시글 정렬 --%>
+							<div class="sort_options">
+								<select class="selectpicker" id="sort">
+									<option value="r" ${sFlag eq null or sFlag eq 'r'?"selected":""}>최신순</option>
+									<option value="f" ${sFlag eq 'f'?"selected":""}>인기순</option>
+									<option value="g" ${sFlag eq 'g'?"selected":""}>추천순</option>
+								</select>
+							</div>
+
 					</div>
 
-					<%-- 게시글 정렬 --%>
-					<div class="sort_options">
-						<select class="selectpicker" id="sort">
-							<option value="r" ${sFlag eq null or sFlag eq 'r'?"selected":""}>최신순</option>
-							<option value="f" ${sFlag eq 'f'?"selected":""}>인기순</option>
-							<option value="g" ${sFlag eq 'g'?"selected":""}>추천순</option>
-						</select>
-					</div>
+
 
 				</div>
 				<div class="board-body">

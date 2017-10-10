@@ -9,7 +9,7 @@
 <c:if test="${list eq null}">
 	<script>
 		window.location.href = "boardLists.do?dis=0&first=1";
-		
+
 	</script>
 </c:if>
 
@@ -241,27 +241,29 @@
 														<ul>
 															<li><a href="profile.do?profileId=${l.writerid }">프로필
 																	정보</a></li>
-															<li>2</li>
-															<li>3</li>
+															<li><a
+																href="boardWriterList.do?writerId=${l.writerid}">작성한 글</a></li>
+															<li><a
+																href="boardCommentsList.do?writerId=${l.writerid}">작성한
+																	댓글</a></li>
 														</ul>
 													</span>
 												</div>
+<%--
+												<div id="tooltip">${l.writerid }
+													<span id="tooltiptext">
+														<ul>
+															<li><a href="profile.do?profileId=${l.writerid }">프로필
+																	정보</a></li>
+															<li><a
+																href="boardWriterList.do?writerId=${l.writerid}">작성한 글</a></li>
+															<li><a
+																href="boardCommentsList.do?writerId=${l.writerid}">작성한
+																	댓글</a></li>
+														</ul>
+													</span>
+												</div> --%>
 
-											<%-- <div class="dropdown">
-												<a data-toggle="dropdown" style="cursor:pointer"> <img class="img-circle"
-													src="#" /> ${l.writerid }
-
-												</a>
-												<ul class="dropdown-menu">
-													<li><a href="profile.do?profileId=${l.writerid}">프로필
-															정보</a></li>
-													<li><a
-														href="boardWriterList.do?writerId=${l.writerid}">작성한 글</a></li>
-													<li><a
-														href="boardCommentsList.do?writerId=${l.writerid}">작성한
-															댓글</a></li>
-												</ul>
-											</div> --%>
 										</td>
 										<td id="table_point">${l.point.cal }</td>
 										<td id="table_viewcount">${l.point.viewnum }</td>

@@ -138,7 +138,7 @@ html body {
 #myTable td {
   word-wrap:break-word;
   white-space: nowrap;
-  overflow: auto;
+  /*overflow: hidden;*/
   text-overflow: ellipsis;
   max-width: 200px;
 }
@@ -150,6 +150,7 @@ html body {
 
 #td_title {
   width: 50%;
+  overflow: hidden;
  }
 
 #td_title a {
@@ -177,29 +178,30 @@ html body {
 #tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
+    overflow: visible !important;
 }
 
 #tooltip #tooltiptext {
     visibility: hidden;
     width: 120px;
-    background-color: black;
-    color: #fff;
+    background-color: silver;
+    color: black;
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
     position: absolute;
     z-index: 1;
+    overflow: visible !important;
     bottom: 100%;
     left: 50%;
     margin-left: -60px;
-
     /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
     opacity: 0;
-    transition: opacity 0.5s;
+    transition: opacity 0.2s;
 }
 
 #tooltip:hover #tooltiptext {
+overflow: visible !important;
     visibility: visible;
     opacity: 1;
 }

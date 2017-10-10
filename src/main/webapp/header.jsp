@@ -92,7 +92,6 @@
 									</a></li>
 								</ul>
 							</c:when>
-
 							<c:when test="${null ne member }">
 								<ul class="nav navbar-nav">
 									<li onclick="profileUpdate();"><a href="#"> <span

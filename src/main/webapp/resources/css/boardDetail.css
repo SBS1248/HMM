@@ -247,12 +247,12 @@ html body {
   cursor: pointer;
 }
 
-#comment_writer{
+ #comment_writer{
   float: right;
   margin-right: 10px;
 }
 
-#comment_date{
+ #comment_date{
   margin-right: 10px;
   float: right;
 }

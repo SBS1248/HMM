@@ -7,11 +7,12 @@
 		window.location.href = "boardLists.do?dis=0";
 	</script>
 </c:if>
-
 <!DOCTYPE html>
 <html>
 <head>
+<c:set var="writerId" value="${writerId}"/>
 <title>Hmm | 국내 최고 개발자 커뮤니티</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="resources/css/index.css" rel="stylesheet" type="text/css">
 <link
@@ -56,8 +57,16 @@
 	};
 
 	function checkBoard(bcode){
+		var sComment = '${sComment}';
+		alert(sComment);
 			viewcount(bcode);
-			location.href="boardOne.do?bcode="+bcode;
+			if(sComment == 1){
+				location.href="boardSearchComment.do?bcode="+bcode+"&sWriter=${writerId}";
+			}
+			else
+			{
+				location.href="boardOne.do?bcode="+bcode;
+			}
 	}
 
 	function checkWrite()
@@ -142,9 +151,7 @@
 							<tbody>
 								<c:set var="num" value="1" />
 								<c:forEach var="l" items="${list }">
-
 									<tr>
-
 										<td id="table_num">${num }</td>
 										<c:set var="num" value="${num+1 }" />
 										<td id="td_title"><a href="#"
@@ -154,14 +161,17 @@
 										<td id="table_category">${l.code.name}</td>
 										<td>
 											<div class="dropdown">
-												<a data-toggle="dropdown" style="cursor:pointer"> <img class="img-circle"
-													src="#" /> ${l.writerid }
+												<a data-toggle="dropdown" style="cursor: pointer"> <img
+													class="img-circle" src="#" /> ${l.writerid }
 												</a>
 												<ul class="dropdown-menu">
-													<li><a href="profile.do?profileId=${l.writerid }">프로필
+													<li><a href="profile.do?profileId=${l.writerid}">프로필
 															정보</a></li>
-													<li><a href="#">작성한 글</a></li>
-													<li><a href="#">작성한 댓글</a></li>
+													<li><a
+														href="boardWriterList.do?writerId=${l.writerid}">작성한 글</a></li>
+													<li><a
+														href="boardCommentsList.do?writerId=${l.writerid}">작성한
+															댓글</a></li>
 												</ul>
 											</div>
 										</td>

@@ -162,4 +162,14 @@ public class BoardDao {
 		
 		return (ArrayList<Board>)list;
 	}
+
+	public ArrayList<Board> selectBoardList(String writerId) {
+		List<Board> list = sqlSession.selectList("selectWriterList",writerId);
+		return (ArrayList<Board>) list;
+	}
+	
+	public ArrayList<Board> selectCommnetsWriterList(String writerId) {
+		List<Board> list = sqlSession.selectList("selectCommentsWriterList",writerId);
+		return (ArrayList<Board>) list;
+	}
 }

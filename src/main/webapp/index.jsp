@@ -2,19 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="org.springframework.ui.Model"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <jsp:useBean id="today" class="java.util.Date" />
 
 <c:if test="${list eq null}">
 	<script>
 		window.location.href = "boardLists.do?dis=0&first=1";
+		
 	</script>
 </c:if>
 
 <!DOCTYPE html>
 <html>
 <head>
+<c:set var="writerId" value="${writerId}" />
 <title>Hmm | 국내 최고 개발자 커뮤니티</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="resources/css/index.css" rel="stylesheet" type="text/css">
@@ -60,8 +62,15 @@
 	};
 
 	function checkBoard(bcode){
+		var sComment = '${sComment}';
 			viewcount(bcode);
-			location.href="boardOne.do?bcode="+bcode;
+			if(sComment == 1){
+				location.href="boardSearchComment.do?bcode="+bcode+"&sWriter=${writerId}";
+			}
+			else
+			{
+				location.href="boardOne.do?bcode="+bcode;
+			}
 	}
 
 	function checkWrite()
@@ -83,7 +92,14 @@
 		var keyCode = window.event.keyCode;
 		var keyword = $('input[name=search]').val();
 		if (keyCode == 13) {
+			var sNum = $('#searchCheck').val();
+			if(sNum == 1){
 			location.href="boardSearch.do?dis=0&keyword="+keyword;
+			}
+			else if(sNum == 2)
+				{
+				location.href="boardWriterList.do?writerId="+keyword;
+				}
 		}
 	}
 	
@@ -173,7 +189,10 @@
 
 					<%-- 검색바 --%>
 					<div id="search_bar">
-						<input type="text" name="search" placeholder="검색어를 입력하세요.."
+						<select id="searchCheck">
+							<option value="1" selected>제목&내용</option>
+							<option value="2">작성자</option>
+						</select> <input type="text" name="search" placeholder="검색어를 입력하세요.."
 							onkeydown='javascript:onEnterSearch()'>
 					</div>
 
@@ -216,28 +235,34 @@
 										<td id="table_category">${l.code.name}</td>
 										<td>
 											<div class="dropdown">
-												<a data-toggle="dropdown" style="cursor:pointer"> <img class="img-circle"
-													src="#" /> ${l.writerid }
+												<a data-toggle="dropdown" style="cursor: pointer"> <img
+													class="img-circle" src="#" /> ${l.writerid }
 												</a>
 												<ul class="dropdown-menu">
-													<li><a href="profile.do?profileId=${l.writerid }">프로필
+													<li><a href="profile.do?profileId=${l.writerid}">프로필
 															정보</a></li>
-													<li><a href="#">작성한 글</a></li>
-													<li><a href="#">작성한 댓글</a></li>
+													<li><a
+														href="boardWriterList.do?writerId=${l.writerid}">작성한 글</a></li>
+													<li><a
+														href="boardCommentsList.do?writerId=${l.writerid}">작성한
+															댓글</a></li>
 												</ul>
 											</div>
 										</td>
 										<td id="table_point">${l.point.cal }</td>
 										<td id="table_viewcount">${l.point.viewnum }</td>
-										
-										<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="toDay"/>
-										<c:set var="postdate" value="${fn:substring(l.postdate,0,10) }"/>
-										<c:set var="tpostdate" value="${fn:substring(l.postdate,10,19) }"/>
-										
+
+										<fmt:formatDate value="${today}" pattern="yyyy-MM-dd"
+											var="toDay" />
+										<c:set var="postdate"
+											value="${fn:substring(l.postdate,0,10) }" />
+										<c:set var="tpostdate"
+											value="${fn:substring(l.postdate,10,19) }" />
+
 										<c:if test="${toDay eq postdate }">
 											<td id="table_date">${tpostdate }</td>
 										</c:if>
-										
+
 										<c:if test="${toDay ne postdate }">
 											<td id="table_date">${postdate }</td>
 										</c:if>
@@ -246,7 +271,9 @@
 								</c:forEach>
 							</tbody>
 						</table>
-						<button id="iloadMore" onclick="loadMore(${num})">더보기</button>
+						<c:if test="${empty keyword && empty sComment && empty writerS}">
+							<button id="iloadMore" onclick="loadMore(${num})">더보기</button>
+						</c:if>
 					</div>
 				</div>
 			</div>

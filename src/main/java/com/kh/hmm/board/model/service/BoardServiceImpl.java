@@ -139,4 +139,14 @@ public class BoardServiceImpl implements BoardService
 	{
 		return bDao.sortList(sm,dis);
 	}
+	
+	@Override
+	public ArrayList<Board> selectBoardList(String writerId) {
+		return bDao.selectBoardList(writerId);
+	}
+
+	@Override
+	public ArrayList<Board> selectCommentsWriterList(String writerId) {
+		return bDao.selectCommnetsWriterList(writerId);
+	}
 }

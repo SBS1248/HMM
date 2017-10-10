@@ -2,19 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="org.springframework.ui.Model"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <jsp:useBean id="today" class="java.util.Date" />
 
 <c:if test="${list eq null}">
 	<script>
 		window.location.href = "boardLists.do?dis=0&first=1";
+
 	</script>
 </c:if>
 
 <!DOCTYPE html>
 <html>
 <head>
+<c:set var="writerId" value="${writerId}" />
 <title>Hmm | 국내 최고 개발자 커뮤니티</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="resources/css/index.css" rel="stylesheet" type="text/css">
@@ -60,14 +62,21 @@
 	};
 
 	function checkBoard(bcode){
+		var sComment = '${sComment}';
 			viewcount(bcode);
-			location.href="boardOne.do?bcode="+bcode;
+			if(sComment == 1){
+				location.href="boardSearchComment.do?bcode="+bcode+"&sWriter=${writerId}";
+			}
+			else
+			{
+				location.href="boardOne.do?bcode="+bcode;
+			}
 	}
 
 	function checkWrite()
 	{
 		var data = '${sessionScope.member}';
-		
+
 		if(data =='' || data == null){
 			alert("로그인 후 이용 바랍니다");
 			$("#loginModal").modal('show');
@@ -83,33 +92,40 @@
 		var keyCode = window.event.keyCode;
 		var keyword = $('input[name=search]').val();
 		if (keyCode == 13) {
+			var sNum = $('#searchCheck').val();
+			if(sNum == 1){
 			location.href="boardSearch.do?dis=0&keyword="+keyword;
+			}
+			else if(sNum == 2)
+				{
+				location.href="boardWriterList.do?writerId="+keyword;
+				}
 		}
 	}
-	
+
 	$(function(){
 		$('#sort').bind('change',function(){
 			var val=$(this).val();
 
 			window.location.href="sortList.do?sm="+val+"&dis=0";
-		});		
+		});
 	});
-	
+
 	function loadMore(first)
 	{
 		var now = new Date();
 		var tdate=now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
-		
+
 		$.ajax({
             type : "GET",
             url : "loadMore.do?dis=0&first="+first,
-           	success:function(mlist){       		
+           	success:function(mlist){
            		for(var i=0;i<mlist.length;i++)
            		{
            			var pdate=mlist[i].postdate.substring(0,10);
-           			
+
            			if(pdate==tdate) pdate==mlist[i].postdate.substring(11,19);
-           			
+
            			$('#myTable > tbody:last').append(
            					"<tr>"+
 							"<td id=table_num>"+first+"</td>"+
@@ -131,20 +147,20 @@
 								"</div>"+
 							"</td>"+
 							"<td id=table_point>"+mlist[i].point.cal+"</td>"+
-							"<td id=table_viewcount>"+mlist[i].point.viewnum+"</td>"+				
-							"<td id=table_date>"+pdate+"</td>"+							
-						"</tr>"	           			
+							"<td id=table_viewcount>"+mlist[i].point.viewnum+"</td>"+
+							"<td id=table_date>"+pdate+"</td>"+
+						"</tr>"
            			);
            			first+=1;
            		}
             	$('#iloadMore').attr('onclick','loadMore('+first+')');
-           		
+
            	},
             error:function(request,status,error){
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                }
     	});
-	}	
+	}
 </script>
 </head>
 
@@ -173,18 +189,25 @@
 
 					<%-- 검색바 --%>
 					<div id="search_bar">
-						<input type="text" name="search" placeholder="검색어를 입력하세요.."
+						<select id="searchCheck">
+							<option value="1" selected>제목&내용</option>
+							<option value="2">작성자</option>
+						</select>
+						<input id="search_input" type="text" name="search" placeholder="검색어를 입력하세요.."
 							onkeydown='javascript:onEnterSearch()'>
+
+							<%-- 게시글 정렬 --%>
+							<div class="sort_options">
+								<select class="selectpicker" id="sort">
+									<option value="r" ${sFlag eq null or sFlag eq 'r'?"selected":""}>최신순</option>
+									<option value="f" ${sFlag eq 'f'?"selected":""}>인기순</option>
+									<option value="g" ${sFlag eq 'g'?"selected":""}>추천순</option>
+								</select>
+							</div>
+
 					</div>
 
-					<%-- 게시글 정렬 --%>
-					<div class="sort_options">
-						<select class="selectpicker" id="sort">
-							<option value="r" ${sFlag eq null or sFlag eq 'r'?"selected":""}>최신순</option>
-							<option value="f" ${sFlag eq 'f'?"selected":""}>인기순</option>
-							<option value="g" ${sFlag eq 'g'?"selected":""}>추천순</option>
-						</select>
-					</div>
+
 
 				</div>
 				<div class="board-body">
@@ -215,29 +238,49 @@
 										</a></td>
 										<td id="table_category">${l.code.name}</td>
 										<td>
-											<div class="dropdown">
-												<a data-toggle="dropdown" style="cursor:pointer"> <img class="img-circle"
-													src="#" /> ${l.writerid }
-												</a>
-												<ul class="dropdown-menu">
-													<li><a href="profile.do?profileId=${l.writerid }">프로필
-															정보</a></li>
-													<li><a href="#">작성한 글</a></li>
-													<li><a href="#">작성한 댓글</a></li>
-												</ul>
-											</div>
+
+
+											  <div id="tooltip">${l.writerid }
+													<span id="tooltiptext">
+														<ul>
+															<li><a href="profile.do?profileId=${l.writerid }">프로필
+																	정보</a></li>
+															<li><a
+																href="boardWriterList.do?writerId=${l.writerid}">작성한 글</a></li>
+															<li><a
+																href="boardCommentsList.do?writerId=${l.writerid}">작성한
+																	댓글</a></li>
+														</ul>
+													</span>
+												</div>
+<%--
+												<div id="tooltip">${l.writerid }
+													<span id="tooltiptext">
+														<ul>
+															<li><a href="profile.do?profileId=${l.writerid }">프로필
+																	정보</a></li>
+															<li><a
+																href="boardWriterList.do?writerId=${l.writerid}">작성한 글</a></li>
+															<li><a
+																href="boardCommentsList.do?writerId=${l.writerid}">작성한
+																	댓글</a></li>
+														</ul>
+													</span>
+												</div> --%>
+
 										</td>
 										<td id="table_point">${l.point.cal }</td>
 										<td id="table_viewcount">${l.point.viewnum }</td>
-										
+
 										<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="toDay"/>
 										<c:set var="postdate" value="${fn:substring(l.postdate,0,10) }"/>
 										<c:set var="tpostdate" value="${fn:substring(l.postdate,10,19) }"/>
-										
+
+
 										<c:if test="${toDay eq postdate }">
 											<td id="table_date">${tpostdate }</td>
 										</c:if>
-										
+
 										<c:if test="${toDay ne postdate }">
 											<td id="table_date">${postdate }</td>
 										</c:if>
@@ -246,7 +289,9 @@
 								</c:forEach>
 							</tbody>
 						</table>
-						<button id="iloadMore" onclick="loadMore(${num})">더보기</button>
+						<c:if test="${empty keyword && empty sComment && empty writerS}">
+							<button id="iloadMore" onclick="loadMore(${num})">더보기</button>
+						</c:if>
 					</div>
 				</div>
 			</div>

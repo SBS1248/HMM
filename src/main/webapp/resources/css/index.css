@@ -51,9 +51,7 @@ html body {
   z-index: 2;
 }
 
-
 /*게시판 영역*/
-
 .board_area {
   background-color: white;
   border: none;
@@ -82,10 +80,14 @@ html body {
   color: gold;
 }
 
-#search_bar {
-  float: left;
+#search_bar{
+  border: 1px #002F2F solid;
+}
+
+#searchCheck {
   margin-left: 30px;
-  width: 600px;
+  display: inline-block;
+  width: 150px;
 }
 
 #search_bar input[type=text] {
@@ -96,12 +98,10 @@ html body {
   transition: width 0.4s ease-in-out;
 }
 
-
 /* When the input field gets focus, change its width to 100% */
-
 #search_bar input[type=text]:focus {
   border: 3px skyblue solid;
-  width: 100%;
+  width: 66%;
 }
 
 .sort_options {
@@ -123,6 +123,7 @@ html body {
   font-family: 'Nanum Gothic';
   border-collapse: collapse;
   width: 100%;
+  table-layout:auto;
 }
 
 #myTable thead {
@@ -134,56 +135,91 @@ html body {
 #myTable th {
   text-align: center;
   padding: 6px;
-  min-width: 70px;
   background: #618685;
   color: white;
 }
 
 #myTable td {
-  //border: 1px gold dotted;
-}
-
-
-/*카테고리 사이즈*/
-
-#myTable td:nth-child(3) {
-  /*border: 1px gold dotted;*/
-  width: 110px;
-}
-
-
-/*작성자 사이즈*/
-
-#myTable td:nth-child(4) {
-  /*border: 1px gold dotted;*/
-  width: 100px;
-}
-
-#myTable td {
-  padding: 3px;
-  font-size: 0.9vw;
+  word-wrap:break-word;
+  white-space: nowrap;
+  /*overflow: hidden;*/
+  text-overflow: ellipsis;
+  max-width: 200px;
 }
 
 #table_num {
   text-align: center;
+  width: 60px;
 }
 
-#td_title {}
+#td_title {
+  width: 50%;
+  overflow: hidden;
+ }
 
 #td_title a {
   color: black;
 }
 
-#td_profile a {
-  color: black;
-}
-
-#td_profile a:hover {
-  text-decoration: none;
+/*카테고리 사이즈*/
+#myTable td:nth-child(3) {
+  /*border: 1px gold dotted;*/
+  width: 110px;
 }
 
 #table_category {
   text-align: center;
+}
+
+/*작성자 사이즈*/
+#myTable td:nth-child(4) {
+  /*border: 1px gold dotted;*/
+  text-align: center;
+  width: 100px;
+  color: black;
+}
+
+#tooltip {
+    position: relative;
+    display: inline-block;
+    overflow: visible !important;
+}
+
+#tooltip #tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: silver;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    overflow: visible !important;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+    /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+#tooltip:hover #tooltiptext {
+overflow: visible !important;
+    visibility: visible;
+    opacity: 1;
+}
+
+/*.profile_pics {
+	width: 20px;
+	height: 20px;
+	border: 2px solid Gainsboro;
+  border-radius: 50%;
+}*/
+
+#myTable td {
+  padding: 3px;
+  font-size: 0.9vw;
 }
 
 #table_point {

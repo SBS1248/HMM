@@ -75,6 +75,17 @@
 		ORDER BY A.POSTDATE DESC
 	</select>
 	
+		<select id="selectCommentsWriterList" resultMap="boardMap" parameterType="string">
+	<include refid="boardTemplate"/>
+	 WHERE A.BCODE IN (SELECT DISTINCT BCODE FROM COMMENTS WHERE WRITERID=#{writerId})
+	</select>
+
+	<select id="selectWriterList" resultMap="boardMap"
+		parameterType="string">
+		<include refid="boardTemplate" />
+		WHERE A.WRITERID = #{writerId} AND ISDELETE IS NULL
+	</select>
+	
 	<select id="sortList" resultMap="boardMap" parameterType="hashmap">
 		<include refid="boardTemplate" />
 		<choose>

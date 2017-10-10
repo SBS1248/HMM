@@ -41,12 +41,32 @@
 		JOIN BOARDPOINT C
 		ON A.BCODE=C.BCODE
 	</sql>
+	
+	<sql id="boardTemplate2">
+		SELECT ROW_NUMBER() OVER (ORDER BY A.POSTDATE DESC) RNUM, A.BCODE,A.TITLE,A.CONTENT,A.DISTINGUISH,A.WRITERID,TO_CHAR(A.POSTDATE,'RRRR-MM-DD HH24:MI:SS') POSTDATE,A.HASFILE,
+		            B.DISCODE,B.NAME,
+		            C.BCODE CB,C.VIEWNUM,C.BEST,C.GOOD,C.BAD,C.WORST,C.CAL,C.MEDAL,C.REPORT,
+		            (SELECT TO_CHAR(COUNT(*)) FROM COMMENTS D WHERE A.BCODE=D.BCODE) ISDELETE
+		FROM BOARD A
+		JOIN BOARDCODE B ON A.DISTINGUISH=B.DISCODE
+		JOIN BOARDPOINT C ON A.BCODE=C.BCODE
+		WHERE ISDELETE IS NULL  
+	</sql>
 
-	<select id="selectAllBoardList" resultMap="boardMap">
+	<select id="selectAllBoardList" resultMap="boardMap" parameterType="hashmap">
+		SELECT D.*
+		FROM( <include refid="boardTemplate2" /> ) D
+		WHERE RNUM BETWEEN #{first} AND #{second}    
+	</select>
+
+
+
+
+	<!-- <select id="selectAllBoardList" resultMap="boardMap">
 		<include refid="boardTemplate" />
 		WHERE ISDELETE IS NULL
 		ORDER BY A.POSTDATE DESC
-	</select>
+	</select> -->
 
 	<select id="selectBoardList" resultMap="boardMap" parameterType="_int">
 		<include refid="boardTemplate" />

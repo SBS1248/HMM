@@ -19,6 +19,7 @@ public class BoardDao {
 
 	private String pre = null;
 	private String post = null;
+	private int boardNumber=9; 
 
 	public BoardDao() {
 	}
@@ -41,11 +42,16 @@ public class BoardDao {
 		return (Board) sqlSession.selectOne("selectBoardOne", bcode);
 	}
 
-	public ArrayList<Board> selectBoardList(int dis) {
+	public ArrayList<Board> selectBoardList(int dis,int first) {
 		pre = "select";
 		post = "BoardList";
-
-		List<Board> list = sqlSession.selectList(distributor(dis, pre, post), dis);
+		
+		HashMap map=new HashMap();
+		map.put("dis", dis);
+		map.put("first", first);
+		map.put("second", first+boardNumber);
+		
+		List<Board> list = sqlSession.selectList(distributor(dis, pre, post), map);
 
 		return (ArrayList<Board>) list;
 	}

@@ -8,7 +8,7 @@
 
 <c:if test="${list eq null}">
 	<script>
-		window.location.href = "boardLists.do?dis=0";
+		window.location.href = "boardLists.do?dis=0&first=1";
 	</script>
 </c:if>
 
@@ -92,8 +92,59 @@
 			var val=$(this).val();
 
 			window.location.href="sortList.do?sm="+val+"&dis=0";
-		});
+		});		
 	});
+	
+	function loadMore(first)
+	{
+		var now = new Date();
+		var tdate=now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
+		
+		$.ajax({
+            type : "GET",
+            url : "loadMore.do?dis=0&first="+first,
+           	success:function(mlist){       		
+           		for(var i=0;i<mlist.length;i++)
+           		{
+           			var pdate=mlist[i].postdate.substring(0,10);
+           			
+           			if(pdate==tdate) pdate==mlist[i].postdate.substring(11,19);
+           			
+           			$('#myTable > tbody:last').append(
+           					"<tr>"+
+							"<td id=table_num>"+first+"</td>"+
+							"<td id=td_title>"+
+							"<a href=# onclick=checkBoard("+mlist[i].bcode+")>"+mlist[i].title+
+							"<span id=reply_num>&nbsp;["+mlist[i].isdelete+"}]</span>"+
+							"</a></td>"+
+							"<td id=table_category>"+mlist[i].code.name+"</td>"+
+							"<td>"+
+								"<div class=dropdown>"+
+									"<a data-toggle=dropdown style=cursor:pointer>"+
+										"<img class=img-circle src=# /> "+mlist[i].writerid+
+									"</a>"+
+									"<ul class=dropdown-menu>"+
+										"<li><a href=profile.do?profileId="+mlist[i].writerid+">프로필 정보</a></li>"+
+										"<li><a href=#>작성한 글</a></li>"+
+										"<li><a href=#>작성한 댓글</a></li>"+
+									"</ul>"+
+								"</div>"+
+							"</td>"+
+							"<td id=table_point>"+mlist[i].point.cal+"</td>"+
+							"<td id=table_viewcount>"+mlist[i].point.viewnum+"</td>"+				
+							"<td id=table_date>"+pdate+"</td>"+							
+						"</tr>"	           			
+           			);
+           			first+=1;
+           		}
+            	$('#iloadMore').attr('onclick','loadMore('+first+')');
+           		
+           	},
+            error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+               }
+    	});
+	}	
 </script>
 </head>
 
@@ -156,7 +207,6 @@
 								<c:forEach var="l" items="${list }">
 
 									<tr>
-
 										<td id="table_num">${num }</td>
 										<c:set var="num" value="${num+1 }" />
 										<td id="td_title"><a href="#"
@@ -191,15 +241,12 @@
 										<c:if test="${toDay ne postdate }">
 											<td id="table_date">${postdate }</td>
 										</c:if>
-										
-										
-										
-										
 									</tr>
 
 								</c:forEach>
 							</tbody>
 						</table>
+						<button id="iloadMore" onclick="loadMore(${num})">더보기</button>
 					</div>
 				</div>
 			</div>

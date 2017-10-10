@@ -25,9 +25,9 @@ public class BoardServiceImpl implements BoardService
 	}
 
 	@Override
-	public ArrayList<Board> selectBoardList(int dis)
+	public ArrayList<Board> selectBoardList(int dis,int first)
 	{
-		return bDao.selectBoardList(dis);
+		return bDao.selectBoardList(dis,first);
 	}
 
 	@Override

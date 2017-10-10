@@ -10,7 +10,7 @@ import com.kh.hmm.board.model.vo.BoardPoint;
 public interface BoardService {
 	Board selectBoardOne(int bcode);
 
-	ArrayList<Board> selectBoardList(int dis);
+	ArrayList<Board> selectBoardList(int dis,int first);
 	// 0:All,1:Com,2:QnA,3:Tech,4:Amu,5:PS
 
 	int insertBoard(Board b);

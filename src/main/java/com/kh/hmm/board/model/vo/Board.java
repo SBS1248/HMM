@@ -12,7 +12,7 @@ public class Board
 	private String postdate;
 	private String isdelete;
 	private String hasfile;
-	
+	private String photo;
 	private BoardCode code;	
 	private BoardPoint point;	
 	

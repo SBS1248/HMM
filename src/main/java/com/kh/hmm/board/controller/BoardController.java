@@ -53,11 +53,11 @@ public class BoardController
 	private MemberService memberService;
 			
 	@RequestMapping(value = "boardLists.do", method = RequestMethod.GET)
-	public String selectBoardList(Model model,int dis) 
+	public String selectBoardList(Model model,int dis,int first) 
 	{
 		logger.info("selectBoardList("+dis+") call...");
 		String rturn=null;
-		ArrayList<Board> list=boardService.selectBoardList(dis);		
+		ArrayList<Board> list=boardService.selectBoardList(dis,first);		
 		
 		if(list != null)
 		{
@@ -69,6 +69,17 @@ public class BoardController
 		else rturn="board";
 		
 		return "../../"+rturn;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="loadMore.do",method=RequestMethod.GET)
+	public ArrayList<Board> loadMore(int dis,int first)
+	{
+		logger.info("loadMore("+dis+","+first+") call...");
+				
+		ArrayList<Board> list=boardService.selectBoardList(dis,first);
+		
+		return list;
 	}
 	
 	@RequestMapping(value="sortList.do",method=RequestMethod.GET)

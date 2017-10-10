@@ -30,8 +30,14 @@
                }
     	});
 
-		$('.post_rate_btns').click(function(){
-
+		$('.post_rate_btns').click(function(){//게시글 공감 버튼
+			
+			if('${member}' ==''){
+				alert("로그인 후 이용 바랍니다");
+				$("#loginModal").modal('show');
+				return;
+			}
+			
 			if('${member.membercode}'=='${writer.membercode}')
 			{
 				alert("본인의 글은 공감할 수 없습니다.");
@@ -105,7 +111,14 @@
 	    	});
 		});
 
-		$('#bMedal').click(function(){
+		$('#bMedal').click(function(){//게시글 메달 버튼
+			
+			if('${member}' ==''){
+				alert("로그인 후 이용 바랍니다");
+				$("#loginModal").modal('show');
+				return;
+			}
+			
 			if('${member.membercode}'=='${writer.membercode}')
 			{
 				alert("본인의 글에 메달을 부여할 수 없습니다.");
@@ -145,7 +158,13 @@
 	    	});
 		});
 
-		$('#report_post').click(function(){
+		$('#report_post').click(function(){//게시글 신고 버튼
+			
+			if('${member}' ==''){
+				alert("로그인 후 이용 바랍니다");
+				$("#loginModal").modal('show');
+				return;
+			}
 			if('${member.membercode}'=='${writer.membercode}')
 			{
 				alert("본인의 글을 신고할 수 없습니다.");
@@ -179,7 +198,14 @@
 
 		});
 
-		$('#bedit').click(function(){
+		$('#bedit').click(function(){//게시글 수정 버튼
+			
+			if('${member}' ==''){
+				alert("로그인 후 이용 바랍니다");
+				$("#loginModal").modal('show');
+				return;
+			}
+			
 			if('${member.id}'=='${writer.id}')
 			{
 				location.href="beforedit.do?bcode=${board.bcode}";
@@ -193,7 +219,13 @@
 	});
 
 	function crecommendation(ccode,flag,mid)
-	{
+	{//댓글 추천 
+		if('${member}' ==''){
+			alert("로그인 후 이용 바랍니다");
+			$("#loginModal").modal('show');
+			return;
+		}
+		
 		if('${member.id}'==mid)
 		{
 			alert("본인의 댓글은 추천할 수 없습니다.");
@@ -251,7 +283,14 @@
 	}
 
 	function cmedal(ccode,mid)
-	{
+	{//댓글 메달
+		
+		if('${member}' ==''){
+			alert("로그인 후 이용 바랍니다");
+			$("#loginModal").modal('show');
+			return;
+		}
+	
 		if('${member.id}'==mid)
 		{
 			alert("본인의 댓글에 메달을 부여할 수 없습니다.");
@@ -292,7 +331,13 @@
 	}
 
 	function creport(ccode,mid)
-	{
+	{//댓글 신고
+		if('${member}' ==''){
+			alert("로그인 후 이용 바랍니다");
+			$("#loginModal").modal('show');
+			return;
+		}
+	
 		if('${member.id}'==mid)
 		{
 			alert("본인의 댓글을 신고할 수 없습니다.");
@@ -326,7 +371,13 @@
 	}
 
 	function writeComment()
-	{
+	{//댓글 작성
+		if('${member}' ==''){
+			alert("로그인 후 이용 바랍니다");
+			$("#loginModal").modal('show');
+			return;
+		}
+	
 		if($('#newComment').length>0)
 		{
 			alert("작성중인 댓글이 있습니다.");
@@ -394,7 +445,13 @@
 	}
 
 	function wcomment(code)
-	{
+	{//대댓글 작성
+		if('${member}' ==''){
+			alert("로그인 후 이용 바랍니다");
+			$("#loginModal").modal('show');
+			return;
+		}
+	
 		if($('#newComment').length>0)
 		{
 			alert("작성중인 댓글이 있습니다.");
@@ -466,6 +523,12 @@
 
 	function beforeCEdit(ccode,text)
 	{//대댓글 전수정
+		if('${member}' ==''){
+			alert("로그인 후 이용 바랍니다");
+			$("#loginModal").modal('show');
+			return;
+		}
+	
 		if($('#editRecomments').length>0)
 		{
 			alert('수정 중인 댓글이 있습니다.');
@@ -547,7 +610,7 @@
 	}
 
 	function deleteComment(ccode,text)
-	{
+	{//댓글 삭제
 		$.ajax({
             type : "GET",
             url : "deleteComment.do?ccode="+ccode,
@@ -712,11 +775,6 @@
                 				<div class='comment_authordate'>
                 					<span id="comment_date">작성일 : ${c.postdate }</span>
                 				</div>
-                				
-                				
-                				
-                				
-                				
                 				
                 				<button disabled><strike>수정하기</strike></button>
                 				<c:if test="${c.lev ne 2}">

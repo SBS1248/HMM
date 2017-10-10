@@ -9,8 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="resources/css/cashshop.css">
-<link rel="stylesheet" type="text/css"
-	href="resources/css/cashshop2.css">
+<!-- <link rel="stylesheet" type="text/css"
+	href="resources/css/cashshop2.css"> -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -238,11 +238,11 @@ td, tr {
 					<!--------------------------------------------------emticon---------------------------------------------------------------------------- -->
 					<c:forEach var="l" items="${itemList}">
 						<div class="col-sm-4 filter emoticon ${l.mood}">
-							<div class="product-image-wrapper" style="margin-bottom: 27px;">
+							<div class="product-image-wrapper" style="heigth : 10px; margin-bottom: 27px; margin-top : 0;">
 								<div class="single-products">
 									<div class="productinfo text-center">
 										<br> <br> <br> <img
-											style="width: 190px; height: 180px;" src="${l.filelink}">
+											style="width: 170px; height: 180px;" src="${l.filelink}">
 										<form id="itemFrm${l.itemcode}" action="itemPurchase.do"
 											method="POST">
 											<input type="hidden" value="${l.itemcode}" name="itemcode">

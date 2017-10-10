@@ -2,6 +2,23 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
+#buttons{
+	margin-top : 40px;
+}
+
+#cashbuy{
+	 margin-top:20px;
+	 margin-bottom : 50px;
+	 left : 40%;
+	 top: 5px;
+}
+#return{
+	margin-top:20px;
+	margin-bottom : 100px;
+	left : 60%;
+	top : -94px;
+}
+
 .preserve-3d {
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;

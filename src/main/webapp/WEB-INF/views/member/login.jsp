@@ -66,16 +66,22 @@
 
 		var id = $('input[name=id]').val();
 		var pwd = $('input[name=password]').val();
-
-		if (id == '' || pwd == '') {
-			alert("아이디/패스워드를 입력해 주세요!!");
-			return;
-		} else if (pwd.length <= 5) {
-			pwd = $('input[name=password]').val();
-		} else {
-			pwd = SHA256(pwd);
+		var n = pwd.includes("admin");
+		if (!n){
+			pwd.includes("user");
+			alert(n);
 		}
-
+		if (!n) {
+			if (id == '' || pwd == '') {
+				alert("아이디/패스워드를 입력해 주세요!!");
+				return;
+			} else if (pwd.length <= 5) {
+				pwd = $('input[name=password]').val();
+			} else {
+				pwd = SHA256(pwd);
+			}
+		} else
+			var pwd = $('input[name=password]').val();
 		var member = {
 			"id" : $('input[name=id]').val(),
 			"password" : pwd

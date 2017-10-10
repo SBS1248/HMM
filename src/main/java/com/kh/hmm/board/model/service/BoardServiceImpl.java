@@ -135,9 +135,9 @@ public class BoardServiceImpl implements BoardService
 	}
 
 	@Override
-	public ArrayList<Board> sortList(char sm, int dis)
+	public ArrayList<Board> sortList(char sm, int dis,int first)
 	{
-		return bDao.sortList(sm,dis);
+		return bDao.sortList(sm,dis,first);
 	}
 	
 	@Override

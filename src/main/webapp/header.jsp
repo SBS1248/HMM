@@ -69,7 +69,7 @@
 					<ul class="nav navbar-nav">
 						<!-- 홈페이지 로고 -->
 						<li><button onclick="location.href='index.jsp'"
-								id="home_logo">Hmm</button></li>
+								id="home_logo">Hmm</button></li> 
 
 						<!-- 방문자 새로고침 횟수 -->
 						<!-- <li style="color: white;"><script>

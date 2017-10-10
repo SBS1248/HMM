@@ -239,35 +239,26 @@
 										<td id="table_category">${l.code.name}</td>
 										<td>
 
-
-											  <div id="tooltip">${l.writerid }
+											  <div id="tooltip"><a href="profile.do?profileId=${l.writerid }">${l.writerid }</a>
 													<span id="tooltiptext">
-														<ul>
-															<li><a href="profile.do?profileId=${l.writerid }">프로필
-																	정보</a></li>
-															<li><a
-																href="boardWriterList.do?writerId=${l.writerid}">작성한 글</a></li>
-															<li><a
-																href="boardCommentsList.do?writerId=${l.writerid}">작성한
-																	댓글</a></li>
-														</ul>
+														<div class="tooltip_1">
+
+																<span><a
+																	href="boardWriterList.do?writerId=${l.writerid}">작성한 글</a></span>
+																	<br>
+																<span><a
+																	href="boardCommentsList.do?writerId=${l.writerid}">작성한
+																		댓글</a></span>
+																		<br>
+																<span>총 받은 메달 : ${pInfo.havmedal}</span>
+																<br>
+
+															</div>
+															<div class="tooltip_2">
+																</div>
+
 													</span>
 												</div>
-<%--
-												<div id="tooltip">${l.writerid }
-													<span id="tooltiptext">
-														<ul>
-															<li><a href="profile.do?profileId=${l.writerid }">프로필
-																	정보</a></li>
-															<li><a
-																href="boardWriterList.do?writerId=${l.writerid}">작성한 글</a></li>
-															<li><a
-																href="boardCommentsList.do?writerId=${l.writerid}">작성한
-																	댓글</a></li>
-														</ul>
-													</span>
-												</div> --%>
-
 										</td>
 										<td id="table_point">${l.point.cal }</td>
 										<td id="table_viewcount">${l.point.viewnum }</td>

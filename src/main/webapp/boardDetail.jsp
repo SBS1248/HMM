@@ -28,7 +28,7 @@
 		var offset = $('#comment_writer_${sWriter}').offset();
 		 $('html, body').animate({scrollTop : offset.top-110}, 400);
 		}
- 		
+
 		$.ajax({
             type : "POST",
             url : "leveling.do?exp=${writer.exp}",
@@ -43,13 +43,13 @@
     	});
 
 		$('.post_rate_btns').click(function(){//게시글 공감 버튼
-			
+
 			if('${member}' ==''){
 				alert("로그인 후 이용 바랍니다");
 				$("#loginModal").modal('show');
 				return;
 			}
-			
+
 			if('${member.membercode}'=='${writer.membercode}')
 			{
 				alert("본인의 글은 공감할 수 없습니다.");
@@ -124,13 +124,13 @@
 		});
 
 		$('#bMedal').click(function(){//게시글 메달 버튼
-			
+
 			if('${member}' ==''){
 				alert("로그인 후 이용 바랍니다");
 				$("#loginModal").modal('show');
 				return;
 			}
-			
+
 			if('${member.membercode}'=='${writer.membercode}')
 			{
 				alert("본인의 글에 메달을 부여할 수 없습니다.");
@@ -171,7 +171,7 @@
 		});
 
 		$('#report_post').click(function(){//게시글 신고 버튼
-			
+
 			if('${member}' ==''){
 				alert("로그인 후 이용 바랍니다");
 				$("#loginModal").modal('show');
@@ -211,13 +211,13 @@
 		});
 
 		$('#bedit').click(function(){//게시글 수정 버튼
-			
+
 			if('${member}' ==''){
 				alert("로그인 후 이용 바랍니다");
 				$("#loginModal").modal('show');
 				return;
 			}
-			
+
 			if('${member.id}'=='${writer.id}')
 			{
 				location.href="beforedit.do?bcode=${board.bcode}";
@@ -231,13 +231,13 @@
 	});
 
 	function crecommendation(ccode,flag,mid)
-	{//댓글 추천 
+	{//댓글 추천
 		if('${member}' ==''){
 			alert("로그인 후 이용 바랍니다");
 			$("#loginModal").modal('show');
 			return;
 		}
-		
+
 		if('${member.id}'==mid)
 		{
 			alert("본인의 댓글은 추천할 수 없습니다.");
@@ -296,13 +296,13 @@
 
 	function cmedal(ccode,mid)
 	{//댓글 메달
-		
+
 		if('${member}' ==''){
 			alert("로그인 후 이용 바랍니다");
 			$("#loginModal").modal('show');
 			return;
 		}
-	
+
 		if('${member.id}'==mid)
 		{
 			alert("본인의 댓글에 메달을 부여할 수 없습니다.");
@@ -349,7 +349,7 @@
 			$("#loginModal").modal('show');
 			return;
 		}
-	
+
 		if('${member.id}'==mid)
 		{
 			alert("본인의 댓글을 신고할 수 없습니다.");
@@ -389,7 +389,7 @@
 			$("#loginModal").modal('show');
 			return;
 		}
-	
+
 		if($('#newComment').length>0)
 		{
 			alert("작성중인 댓글이 있습니다.");
@@ -463,7 +463,7 @@
 			$("#loginModal").modal('show');
 			return;
 		}
-	
+
 		if($('#newComment').length>0)
 		{
 			alert("작성중인 댓글이 있습니다.");
@@ -540,7 +540,7 @@
 			$("#loginModal").modal('show');
 			return;
 		}
-	
+
 		if($('#editRecomments').length>0)
 		{
 			alert('수정 중인 댓글이 있습니다.');
@@ -684,7 +684,7 @@
 					</div>
 					<br>
 					<div class="boardDetail_author">
-					<img alt="${writer.id} 프로필 사진" src="${writer.photo}" width="100" height="100">
+					<img id="writer_img" alt="${writer.id} 프로필 사진" src="${writer.photo}" width="100" height="100">
 						작성자 : ${writer.id} &nbsp;&nbsp;&nbsp; 레벨 : <input disabled
 							id="lev" /> &nbsp;&nbsp;&nbsp; 경험치 : ${writer.exp}점
 						&nbsp;&nbsp;&nbsp;&nbsp; 경험치 진행도 : <input disabled id="per" />%
@@ -843,10 +843,10 @@
 											<span id="comment_writer_${sWriter}"><a href="profile.do?profileId=${c.writerid}">작성자 : ${c.writerid } </a></span>
 											</c:if>
 											<c:if test="${sWriter ne c.writerid}">
-											
+
 											<span id="comment_writer">
 											<a href="profile.do?profileId=${c.writerid}">
-											작성자 : ${c.writerid } 
+											작성자 : ${c.writerid }
 											</a>
 											</span>
 											</c:if>

@@ -187,19 +187,19 @@ html body {
 
 #tooltip #tooltiptext {
     visibility: hidden;
-    width: 120px;
-    background-color: silver;
+    width: 240px;
+    height: 120px;
+    background-color: #EFECCA;
     color: black;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
+    box-shadow: 2px 2px 2px grey;
     position: absolute;
     z-index: 1;
     overflow: visible !important;
     bottom: 100%;
     left: 50%;
-    margin-left: -60px;
-    /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+    margin-left: -120px;
     opacity: 0;
     transition: opacity 0.2s;
 }
@@ -208,6 +208,15 @@ html body {
 overflow: visible !important;
     visibility: visible;
     opacity: 1;
+}
+
+.tooltip_1{
+height: 70%;
+}
+
+.tooltip_2{
+  height: 30%;
+  background-color: white;
 }
 
 /*.profile_pics {

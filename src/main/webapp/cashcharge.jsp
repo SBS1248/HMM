@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
+<c:set var="membercode" value="${member.membercode}" scope="session" />
+<c:set var="price" value="${item.price }" scope="session" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -20,9 +23,9 @@
 <%@ include file="/header.jsp"%>
 </head>
 <body>
-	<div class="wrap" style="margin-bottom: 300px;">
+<form action="buyDDaru.do" method = "POST">
+	<div class="wrap" style="margin-top: 80px;">
 		<div class="WolfharuRadioCheckbox">
-			<form name="" action="">
 				<fieldset>
 					<legend>결제 방식을 선택하여 주십시오.</legend>
 					<p class="ti">결제 방식</p>
@@ -45,22 +48,21 @@
 						</p>
 					</div>
 				</fieldset>
-			</form>
 		</div>
 	</div>
-
-	<div id="cashbuy" class="button_base b05_3d_roll"
-		style="position: absolute; left: 40%; top: 65%;">
+<div id = "buttons">
+	<div id="cashbuy" class="button_base b05_3d_roll">
 		<div>결제하기</div>
 		<div>결제하기</div>
 	</div>
 
-	<div class="button_base b05_3d_roll"
-		style="position: absolute; left: 60%; top: 65%;"
+	<div id="return" class="button_base b05_3d_roll" 
 		onclick="javascript:history.back();">
 		<div>돌아가기</div>
 		<div>돌아가기</div>
 	</div>
+	</div>
+	</form>
 	<!-- 아임포트 결제스크립트 -->
 	<script src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"
 		type="text/javascript"></script>
@@ -114,8 +116,7 @@
 										alert("유효하지 않은 값입니다.");
 									}
 
-									location.href = "buyDDaru.do?membercode="+"${membercode}"
-											+ "&price =" + dPrice;
+									location.href = "buyDDaru.do?membercode=${membercode}&price="+ dPrice;
 
 								} else {
 									var msg = '결제에 실패하였습니다.';

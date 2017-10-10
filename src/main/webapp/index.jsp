@@ -36,7 +36,7 @@
 	window.onload = typeWriter;
 
 	var i = 0;
-	var txt = '모두가 하나되는 국내 최고 IT 커뮤니티에 여러분을 초대합니다!';
+	var txt = ' 모두가 하나되는 국내 최고 IT 커뮤니티에 여러분을 초대합니다!';
 	var speed = 80;
 
 	function typeWriter() {

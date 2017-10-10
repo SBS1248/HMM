@@ -2,7 +2,7 @@
 
 html, body { font-size:0.85em; font-family:Dotum, Arial, Helvetica, sans-serif; color:#ffffff; background-color:#f0f0f0; -webkit-text-size-adjust: none;  height:  auto;}
 
-.wrap { width:1200px; margin:0 auto;  margin-top : 100px; padding:2em 0; }
+.wrap { width:1200px; margin:0 auto;  padding:2em 0; }
 
 .WolfharuRadioCheckbox {
 	-webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px;

@@ -396,7 +396,7 @@ public class MemberController {
 		System.out.println("request membercode 값 : " + request.getParameter("membercode"));
 		System.out.println("request price 값 : " + request.getParameter("price"));
 		
-		m.setDdaru(Integer.parseInt(request.getParameter("ddaru")));
+		m.setDdaru(Integer.parseInt(request.getParameter("price")));
 		m.setMembercode(Integer.parseInt(request.getParameter("membercode")));
 		Member member = memberService.buyDDARU(m);
 		
@@ -406,7 +406,7 @@ public class MemberController {
 			session.setAttribute("Member", null);
 		}
 				
-		return "../../cashshop";
+		return "forward:/itemLists.do";
 		
 	}
 }

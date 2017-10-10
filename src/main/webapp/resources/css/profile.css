@@ -15,8 +15,7 @@ html body {
 .profile_area{
 	display: inline-block;
 	width: 100%;
-	background-color: lime;
-	border: 1px gold solid;
+	background-color: #EFECCA;
 	padding: 30px;
 	margin-top: 30px;
 }
@@ -24,20 +23,18 @@ html body {
 .profile_area .profile_img{
 	float: left;
 	width: 30%;
-	height: 100%;
-	background-color: pink;
 }
 
 #profile_user_img{
 	width: 25%;
 	height: 25%;
-	min-width: 200px;
-	min-height: 200px;
+	min-width: 250px;
+	min-height: 250px;
+	border-radius: 50%;
 }
 
 #profile_id{
 	display: inline-block;
-	padding: 30px;
 	border: 1px gold solid;
 }
 

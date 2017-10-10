@@ -8,6 +8,23 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 					<link href="resources/css/profile.css" rel="stylesheet" type="text/css">
+						<script type="text/javascript">
+						$(function(){
+
+							$.ajax({
+											type : "POST",
+											url : "leveling.do?exp=${writer.exp}",
+											success : function(data) {
+
+												$('#lev').val(data.level);
+												$('#per').val(data.percent);
+											},
+											error:function(request,status,error){
+													alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+												 }
+								});
+});
+						</script>
 						<title>프로필 상세보기</title>
 					</head>
 					<body>
@@ -29,16 +46,20 @@
 
 								</div>
 
-								<h3	id="profile_id">${pInfo.id}</h3>
+								<div class="profile_id">
+
+								<h1>${pInfo.id}</h1>
+								<h4>회원 가입일 : ${pInfo.enrolldate}</h4>
+								<h4>이메일 : ${pInfo.email}</h4>
+								<h4>경험치 : ${pInfo.exp}</h4>
+								</div>
 							</div>
 							<div class="profile_area intro">
-								<h3>회원 가입일 : ${pInfo.enrolldate}</h3>
-								<h3>이메일 : ${pInfo.email}</h3>
-								<h3>메달갯수 : ${pInfo.havmedal}</h3>
-								<h3>경험치 : ${pInfo.exp}</h3>
-								<h3>신고횟수 : ${pInfo.report}</h3>
-								<h3>작성한 글 갯수 : ${pInfo.boardCount}</h3>
-								<h3>작성한 댓글 갯수 : ${pInfo.commentsCount}</h3>
+
+								<h4>수여받은 메달 갯수 : ${pInfo.havmedal}</h4>
+								<h4>신고당한 횟수 : ${pInfo.report}</h4>
+								<h4>작성한 글 갯수 : ${pInfo.boardCount}</h4>
+								<h4>작성한 댓글 갯수 : ${pInfo.commentsCount}</h4>
 							</div>
 						</div>
 

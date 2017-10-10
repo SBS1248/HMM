@@ -678,7 +678,7 @@
 				<div class="boardDetail-header">
 					<div class="boardDetail_title">
 						<h2>${board.title}&nbsp;&nbsp;&nbsp;<a id="posted_from"
-								href="boardLists.do?dis=${board.distinguish}"><span>${board.code.name }
+								href="boardLists.do?dis=${board.distinguish}&first=1"><span>${board.code.name }
 									게시판</span></a>
 						</h2>
 					</div>

@@ -113,13 +113,16 @@
 
 	function loadMore(first)
 	{
+		var val=$('#sort').val();
 		var now = new Date();
 		var tdate=now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
 
 		$.ajax({
             type : "GET",
-            url : "loadMore.do?dis=0&first="+first,
+            url : "loadMore.do?dis=0&first="+first+"&sm="+val,
            	success:function(mlist){
+           		if(mlist.length<=0) $('#iloadMore').remove();
+           		
            		for(var i=0;i<mlist.length;i++)
            		{
            			var pdate=mlist[i].postdate.substring(0,10);
@@ -131,7 +134,7 @@
 							"<td id=table_num>"+first+"</td>"+
 							"<td id=td_title>"+
 							"<a href=# onclick=checkBoard("+mlist[i].bcode+")>"+mlist[i].title+
-							"<span id=reply_num>&nbsp;["+mlist[i].isdelete+"}]</span>"+
+							"<span id=reply_num>&nbsp;["+mlist[i].isdelete+"]</span>"+
 							"</a></td>"+
 							"<td id=table_category>"+mlist[i].code.name+"</td>"+
 							"<td>"+

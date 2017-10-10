@@ -18,7 +18,7 @@
 			<result column="NAME" property="name" />
 		</association>
 		<association property="point" javaType="BoardPoint">
-			<id column="BCODE" property="bcode" />
+			<id column="CB" property="bcode" />
 			<result column="VIEWNUM" property="viewnum" />
 			<result column="BEST" property="best" />
 			<result column="GOOD" property="good" />
@@ -31,11 +31,9 @@
 	</resultMap>
 
 	<sql id="boardTemplate">
-		SELECT A.BCODE,A.TITLE,A.CONTENT,A.DISTINGUISH,A.WRITERID,TO_CHAR(A.POSTDATE,'RRRR-MM-DD HH24:MI:SS') POSTDATE,<!-- 
-			A.ISDELETE, -->
-		A.HASFILE,
+		SELECT A.BCODE,A.TITLE,A.CONTENT,A.DISTINGUISH,A.WRITERID,TO_CHAR(A.POSTDATE,'RRRR-MM-DD HH24:MI:SS') POSTDATE,A.HASFILE,
 		B.DISCODE,B.NAME,
-		C.BCODE,C.VIEWNUM,C.BEST,C.GOOD,C.BAD,C.WORST,C.CAL,C.MEDAL,C.REPORT,
+		C.BCODE CB,C.VIEWNUM,C.BEST,C.GOOD,C.BAD,C.WORST,C.CAL,C.MEDAL,C.REPORT,
 		(SELECT TO_CHAR(COUNT(*)) FROM COMMENTS D WHERE A.BCODE=D.BCODE) ISDELETE
 		FROM BOARD A
 		JOIN BOARDCODE B

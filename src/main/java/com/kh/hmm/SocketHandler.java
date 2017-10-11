@@ -12,7 +12,7 @@ import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-
+												
 public class SocketHandler extends TextWebSocketHandler implements InitializingBean {
 
 	private final Logger logger = LogManager.getLogger(getClass());

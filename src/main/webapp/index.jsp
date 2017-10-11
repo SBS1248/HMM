@@ -122,7 +122,7 @@
             url : "loadMore.do?dis=0&first="+first+"&sm="+val,
            	success:function(mlist){
            		if(mlist.length<=0) $('#iloadMore').remove();
-           		
+
            		for(var i=0;i<mlist.length;i++)
            		{
            			var pdate=mlist[i].postdate.substring(0,10);
@@ -138,16 +138,22 @@
 							"</a></td>"+
 							"<td id=table_category>"+mlist[i].code.name+"</td>"+
 							"<td>"+
-								"<div class=dropdown>"+
-									"<a data-toggle=dropdown style=cursor:pointer>"+
-										"<img class=img-circle src=# /> "+mlist[i].writerid+
-									"</a>"+
-									"<ul class=dropdown-menu>"+
-										"<li><a href=profile.do?profileId="+mlist[i].writerid+">프로필 정보</a></li>"+
-										"<li><a href=#>작성한 글</a></li>"+
-										"<li><a href=#>작성한 댓글</a></li>"+
-									"</ul>"+
-								"</div>"+
+
+							"<div id=tooltip><a href=profile.do?profileId="+mlist[i].writerid+">"+mlist[i].writerid+"</a>"+
+								"<span id=tooltiptext>"+
+									"<div class=tooltip_1>"+
+											"<span><a href=boardWriterList.do?writerId="+mlist[i].writerid+"}>작성한 글</a></span>"+
+												"<br>"+
+											"<span><a href=boardCommentsList.do?writerId="+mlist[i].writerid+"}>작성한 댓글</a></span>"+
+													"<br>"+
+											"<span>총 받은 메달 : ${pInfo.havmedal}</span>"+
+											"<br>"+
+										"</div>"+
+										"<div class=tooltip_2>"+
+											"</div>"+
+								"</span>"+
+							"</div>"+
+
 							"</td>"+
 							"<td id=table_point>"+mlist[i].point.cal+"</td>"+
 							"<td id=table_viewcount>"+mlist[i].point.viewnum+"</td>"+
@@ -239,15 +245,15 @@
 											onclick="checkBoard(${l.bcode})">${l.title }<span
 												id="reply_num">&nbsp;[${l.isdelete}]</span>
 										</a></td>
-										
+
 										<c:if test="${l.code.discode eq 3 }">
 											<td id="table_category" onclick="location.href='weeksubject.do?sm=r&first=1'">${l.code.name}</td>
 										</c:if>
-										
+
 										<c:if test="${l.code.discode ne 3 }">
 											<td id="table_category" onclick="location.href='boardLists.do?dis=${l.code.discode}&first=1'">${l.code.name}</td>
 										</c:if>
-										
+
 										<td>
 
 											  <div id="tooltip"><a href="profile.do?profileId=${l.writerid }">${l.writerid }</a>

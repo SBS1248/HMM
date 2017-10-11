@@ -152,7 +152,7 @@ td, tr {
 <body id="body">
 
 	<div id="jumbotron" class="jumbotron" style="margin-left: 20px; padding-top:0px; background-color: white;">
-	<div class="w3-content w3-section" style="max-width:100%;">
+	<div class="w3-content w3-section" style="max-width:100%; background-color : #deeaee;">
   <img class="mySlides" src="resources/img/slider/sliderimg1.jpg" style=" height: 480px; width:99%">
   <img class="mySlides" src="resources/img/slider/sliderimg2.jpg" style="height: 480px; width:99%">
   <img class="mySlides" src="resources/img/slider/sliderimg3.jpg" style="height: 480px; width:99%">
@@ -185,7 +185,7 @@ td, tr {
 		<div id="residualcash" style="margin: 0px;">
 			<p style="text-align: center; width: 100%;">
 				<b>남은 따루 : </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-					id="cash" name="cash" type="text" value="${ddaru}  따루" readonly>
+					id="cash" name="cash" type="text" value="${ddaru}  따루    " readonly>
 				<button id="myitem" class="w3-button w3-round-xlarge w3-black"
 					data-toggle="modal" data-target="#myitemes">내 아이템보기</button>
 			</p>

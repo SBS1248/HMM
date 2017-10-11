@@ -54,6 +54,13 @@
 		ORDER BY 1
 	</select>
 	
+	<select id="selectSubject" resultType="string">
+		SELECT TITLE
+		FROM WEEKSUBJECT
+		WHERE STARTDATE &lt; SYSDATE-7
+		ORDER BY STARTDATE
+	</select>
+	
 	<select id="hproCount" resultType="java.lang.Integer" parameterType="_int">
 		SELECT COUNT(*)
 		FROM PROLIST

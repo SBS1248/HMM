@@ -39,18 +39,23 @@ public class WeeksubjectController
 		Weeksubject ws=weekService.selectWeek();
 			
 		ArrayList<Date> hlist=weekService.selectDate();
+		ArrayList<String> sublist=weekService.selectSubject();
 		ArrayList<String> dlist=new ArrayList<String>();
 		ArrayList<String> slist=new ArrayList<String>();
 		
 		Calendar c = Calendar.getInstance();
+		int i=0;
 		for(java.util.Date d:hlist) 
 		{//주제도 넣는 방법 생각하기
 			c.setTime(d);
 			int wks=c.get(Calendar.WEEK_OF_YEAR);
+			String month=(c.get(Calendar.MONTH)+1)/10==0?"0"+(c.get(Calendar.MONTH)+1):""+(c.get(Calendar.MONTH)+1);
+			String date=c.get(Calendar.DATE)/10==0?"0"+c.get(Calendar.DATE):""+c.get(Calendar.DATE);
+			
 			if(wks/10==0)	dlist.add(c.get(Calendar.YEAR)+"0"+wks);
 			else dlist.add(c.get(Calendar.YEAR)+""+wks);
 			
-			String temp=wks+"주차 : "+c.get(Calendar.YEAR)+"-"+(c.get(Calendar.MONTH)+1)+"-"+c.get(Calendar.DATE);
+			String temp=wks+"주차 : "+c.get(Calendar.YEAR)+"-"+month+"-"+date+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+sublist.get(i++);
 			
 			slist.add(temp);			
 		}

@@ -87,4 +87,10 @@ public class WeeksubjectServiceImpl implements WeeksubjectService
 	{
 		wDao.updateWeekSubject(wscode,title,agree,disagree);
 	}
+
+	@Override
+	public ArrayList<String> selectSubject()
+	{
+		return wDao.selectSubject();
+	}
 }

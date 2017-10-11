@@ -97,4 +97,10 @@ public class WeeksubjectDao
 		
 		sqlSession.update("updateWeekSubject", map);
 	}
+
+	public ArrayList<String> selectSubject()
+	{
+		List<String> slist=sqlSession.selectList("selectSubject");
+		return (ArrayList<String>)slist;
+	}
 }

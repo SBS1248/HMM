@@ -30,4 +30,6 @@ public interface WeeksubjectService
 	ArrayList<Weeksubject> selectWeekList();
 
 	void updateWeekSubject(int wscode, String title, String agree, String disagree);
+	
+	ArrayList<String> selectSubject();
 }

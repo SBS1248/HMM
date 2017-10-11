@@ -199,7 +199,7 @@ td, tr {
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a href="#" class="filter-button" data-filter="all">전체보기</a>
+									<a href="#" class="filter-button" data-filter="all"><b>전체보기</b></a>
 								</h4>
 							</div>
 						</div>
@@ -210,7 +210,7 @@ td, tr {
 										href="#emoticon" class="collapsed filter-button"
 										data-filter="BAD&HAPPY&SAD&CRAZY"> <span
 										class="badge pull-right"> <i class="fa fa-plus"></i>
-									</span> 이모티콘
+									</span> <b>이모티콘</b>
 									</a>
 								</h4>
 							</div>
@@ -218,13 +218,13 @@ td, tr {
 								style="height: 0px;">
 								<div class="panel-body">
 									<ul>
-										<li><a href="#" class="filter-button" data-filter="BAD">기분나쁜</a>
+										<li><a href="#" class="filter-button" data-filter="BAD"><b>기분나쁜</b></a>
 										</li>
-										<li><a href="#" class="filter-button" data-filter="HAPPY">행복한</a>
+										<li><a href="#" class="filter-button" data-filter="HAPPY"><b>행복한</b></a>
 										</li>
-										<li><a href="#" class="filter-button" data-filter="SAD">슬픔</a>
+										<li><a href="#" class="filter-button" data-filter="SAD"><b>슬픔</b></a>
 										</li>
-										<li><a href="#" class="filter-button" data-filter="CRAZY">미치게 좋은</a>
+										<li><a href="#" class="filter-button" data-filter="CRAZY"><b>미치게 좋은</b></a>
 										</li>
 									</ul>
 								</div>
@@ -235,7 +235,7 @@ td, tr {
 								<h4 class="panel-title">
 									<a data-toggle="collapse" data-parent="#accordian" href="#edge"
 										class="collapsed filter-button" data-filter="BORDER">
-										테두리 </a>
+										<b>테두리</b> </a>
 								</h4>
 							</div>
 							<div id="edge" class="panel-collapse collapse"></div>
@@ -246,7 +246,7 @@ td, tr {
 								<h4 class="panel-title">
 									<a data-toggle="collapse" data-parent="#accordian"
 										href="#medal" class="collapsed filter-button"
-										data-filter="MEDAL"> 메달 </a>
+										data-filter="MEDAL"> <b>메달</b> </a>
 								</h4>
 							</div>
 							<div id="medal" class="panel-collapse collapse"></div>

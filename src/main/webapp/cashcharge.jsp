@@ -27,8 +27,8 @@
 	<div class="wrap" style="margin-top: 80px;">
 		<div class="WolfharuRadioCheckbox">
 				<fieldset>
-					<legend id="legend">결제 방식을 선택하여 주십시오.</legend>
-					<p class="ti">결제 방식</p>
+					<legend id="legend">결제 금액을 선택하여 주십시오.</legend>
+					<p class="ti">결제 금액</p>
 					<div class="para">
 						<p>
 							<input type="radio" name="cash" id="d1" value="1000"

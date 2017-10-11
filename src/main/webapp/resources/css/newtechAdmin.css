@@ -49,6 +49,10 @@ h1{
   color: white;
 }
 
+.col-sm-6 input{
+  color: black;
+}
+
 .col-sm-6.newtech_pro{
 background-color: #618685;
 }

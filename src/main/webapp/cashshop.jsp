@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="resources/css/cashshop.css">
+<link rel="stylesheet" href="resources/css/w3.css">
 <!-- <link rel="stylesheet" type="text/css"
 	href="resources/css/cashshop2.css"> -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -36,12 +37,12 @@ td, tr {
 										var halfScreenSize = 0; // 화면의 반
 										/*사용자 설정 값 시작*/
 										var pageWidth = 1000; // 페이지 폭, 단위:px
-										var leftOffet = 600; // 중앙에서의 폭(왼쪽 -, 오른쪽 +), 단위:px
+										var leftOffet = 620; // 중앙에서의 폭(왼쪽 -, 오른쪽 +), 단위:px
 										var leftMargin = 909; // 페이지 폭보다 화면이 작을때 옵셋, 단위:px, leftOffet과 pageWidth의 반만큼 차이가 난다.
 										var speed = 1100; // 따라다닐 속도 : "slow", "normal", or "fast" or numeric(단위:msec)
 										var easing = 'swing'; // 따라다니는 방법 기본 두가지 linear, swing
 										var $layer = $('#floating'); // 레이어 셀렉팅
-										var layerTopOffset = 188; // 레이어 높이 상한선, 단위:px
+										var layerTopOffset = 550; // 레이어 높이 상한선, 단위:px
 										$layer.css('z-index', 10); // 레이어 z-인덱스
 										/*사용자 설정 값 끝*/
 										//좌우 값을 설정하기 위한 함수
@@ -134,6 +135,15 @@ td, tr {
 											location.href = "cashcharge.jsp"
 										}
 									}
+										
+										/* function delitem(){
+											$('#itemitem').remove();
+											
+										} */
+										
+										
+									
+									
 								</script>
 <c:set var="ddaru" value="${member.ddaru}" scope="session" />
 <c:set var="itemList" value="${list}" />
@@ -141,12 +151,35 @@ td, tr {
 </head>
 <body id="body">
 
-	<div class="jumbotron">
-		<div class="container text-center">
-			<h1>Hmm CashShop</h1>
-			<p style="font-size: 30px;">Cash shop</p>
+	<div id="jumbotron" class="jumbotron" style="margin-left: 20px; padding-top:0px; background-color: white;">
+	<div class="w3-content w3-section" style="max-width:100%;">
+  <img class="mySlides" src="resources/img/slider/sliderimg1.jpg" style=" height: 480px; width:99%">
+  <img class="mySlides" src="resources/img/slider/sliderimg2.jpg" style="height: 480px; width:99%">
+  <img class="mySlides" src="resources/img/slider/sliderimg3.jpg" style="height: 480px; width:99%">
+  <img class="mySlides" src="resources/img/slider/sliderimg4.jpg" style="height: 480px; width:99%">
+  <img class="mySlides" src="resources/img/slider/sliderimg5.jpg" style="height: 480px; width:99%">
+  <div class="container text-center">
+			<!-- <h1>Hmm CashShop</h1>
+			<p style="font-size: 30px;">Cash shop</p> -->
 		</div>
 	</div>
+</div>
+	<script type="text/javascript">
+	var slideIndex = 0;
+	carousel();
+	function carousel() {
+	    var i;
+	    var x = document.getElementsByClassName("mySlides");
+	    for (i = 0; i < x.length; i++) {
+	      x[i].style.display = "none"; 
+	    }
+	    slideIndex++;
+	    if (slideIndex > x.length) {slideIndex = 1} 
+	    x[slideIndex-1].style.display = "block"; 
+	    setTimeout(carousel, 2000); // Change image every 2 seconds
+	}
+	</script>
+		
 
 	<div class="container">
 		<div id="residualcash" style="margin: 0px;">
@@ -312,9 +345,9 @@ td, tr {
 							<c:forEach var="pt" items="${pList}">
 								<tr>
 									<td colspan='2'></td>
-									<td><span style='float: right; margin: 10px;'>
+									<td id="itemitem"><span style='float: right; margin: 10px;'>
 											<button id='imagedel' class='close' type='button'
-												style='color: black;'>&times;</button>
+												style='color: black;' onclick="delitem();">&times;</button>
 									</span> <a id='itemdetail' href='#itdetail' data-toggle='modal'> <img
 											src='${pt.filelink}'></a> <br> <br>사용기한 :
 										${pt.usagedate}</td>
@@ -329,9 +362,8 @@ td, tr {
 			</div>
 		</div>
 	</div>
-
-	<!-- 아이템 상세보기 -->
-	<div class="modal modal-center fade" id="itdetail" tabindex="-1"
+ 	<!-- 아이템 상세보기 -->
+	<%-- <div class="modal modal-center fade" id="itdetail" tabindex="-1"
 		role="dialog" aria-labelledby="my80sizeCenterModalLabel">
 		<div class="modal-dialog modal-80size modal-center" role="document">
 			<div class="modal-content modal-80size" style="width: 630px;">
@@ -339,19 +371,21 @@ td, tr {
 					<h4 class="modal-title" id="myModalLabel">아이템 상세보기</h4>
 				</div>
 				<div class="modal-body">
-
+					<c:if test="${pList ne null }">
 					<div id="selectimage">
+					
 						<!-- 선택이미지 보여주기 -->
-						<img
-							src="http://mblogthumb1.phinf.naver.net/20160420_291/donga-bacchus_14611160044242ryl6_GIF/002.gif?type=w2">
+						<img src="${pt.filelink}">
+					
 					</div>
+					</c:if>
 					<div id="information">
 						<p>
 							&nbsp; 이름 : <br> <br> &nbsp; 사용기한 :
 
 						</p>
 					</div>
-
+	
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="cancelbtn" data-dismiss="modal">닫기</button>
@@ -359,7 +393,7 @@ td, tr {
 			</div>
 		</div>
 	</div>
-</body>
+</body> --%>
 
 <!--스크롤 배너 -->
 

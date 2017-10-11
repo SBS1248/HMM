@@ -27,12 +27,12 @@
 	<div class="wrap" style="margin-top: 80px;">
 		<div class="WolfharuRadioCheckbox">
 				<fieldset>
-					<legend>결제 방식을 선택하여 주십시오.</legend>
+					<legend id="legend">결제 방식을 선택하여 주십시오.</legend>
 					<p class="ti">결제 방식</p>
 					<div class="para">
 						<p>
 							<input type="radio" name="cash" id="d1" value="1000"
-								checked="checked"> <label for="onecash">1000원(100따루)</label>
+								checked="checked"><label for="onecash">1000원(100따루)</label>
 						</p>
 						<p>
 							<input type="radio" name="cash" id="d2" value="5000"> <label
@@ -53,13 +53,13 @@
 <div id = "buttons">
 	<div id="cashbuy" class="button_base b05_3d_roll">
 		<div>결제하기</div>
-		<div>결제하기</div>
+		<div id="ddarubuy">결제하기</div>
 	</div>
 
 	<div id="return" class="button_base b05_3d_roll" 
 		onclick="javascript:history.back();">
 		<div>돌아가기</div>
-		<div>돌아가기</div>
+		<div id="returnbuy">돌아가기</div>
 	</div>
 	</div>
 	</form>

@@ -29,6 +29,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="lib" path="src/main/webapp/WEB-INF/lib/json_simple-1.1.jar"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

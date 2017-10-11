@@ -83,6 +83,7 @@
 		SELECT *
 		FROM WEEKSUBJECT
 		WHERE STARTDATE&lt;=SYSDATE+62
+		ORDER BY STARTDATE DESC
 	</select>
 	
 	<update id="updateWeekSubject" parameterType="hashmap">

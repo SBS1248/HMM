@@ -170,6 +170,13 @@
                }
     	});
 	}
+	
+	function popupChat()
+	{
+		var popUrl = "resources/chat.jsp";
+		var popOption = "width=700, height=auto, resizable=yes, scrollbars=yes, status=no;"; //팝업창 옵션(optoin)
+		window.open(popUrl, "", popOption);
+	}
 </script>
 </head>
 
@@ -182,7 +189,7 @@
 			<p id="demo"></p>
 		</div>
 	</div>
-
+<button onclick="popupChat()">채팅하러가기~~</button>
 	<div class="container">
 		<!-- 게시판 영역 -->
 		<div class="board_area">

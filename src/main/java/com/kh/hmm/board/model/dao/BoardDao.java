@@ -161,12 +161,29 @@ public class BoardDao {
 		return list;
 	}
 
-	public ArrayList<Board> selectNewTechList(Date date)
+	public ArrayList<Board> selectNewTechList(char sm,Date date,int first)
 	{
 		HashMap map=new HashMap();
-		map.put("first", date);
-		map.put("second", date);
-		List<Board> list=sqlSession.selectList("selectNewTechList",map);
+		String val=null;
+		
+		switch(sm) 
+		{
+		case 'r': val="A.POSTDATE DESC";
+			break;
+		case 'f': val="C.VIEWNUM DESC";
+			break;
+		case 'g': val="C.CAL DESC";
+			break;
+		}
+		System.out.println(date+","+first+","+val);
+		map.put("prev", date);
+		map.put("next", date);
+		map.put("dis", 3);
+		map.put("first", first);
+		map.put("second", first+boardNumber);
+		map.put("sort",val );
+		
+		List<Board> list=sqlSession.selectList("selectAllBoardList",map);
 		
 		return (ArrayList<Board>)list;
 	}

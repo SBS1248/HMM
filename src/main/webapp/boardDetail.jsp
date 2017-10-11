@@ -662,6 +662,17 @@
     	});
 	}
 
+	function toBoard()
+	{
+		if('${board.distinguish}'==3)
+		{
+			window.location.href="weeksubject.do?sm=r&first=1";
+		}
+		else
+		{
+			window.location.href="boardLists.do?dis=${board.distinguish}&first=1";
+		}
+	}
 </script>
 <title>Hmm 게시판</title>
 </head>
@@ -678,7 +689,7 @@
 				<div class="boardDetail-header">
 					<div class="boardDetail_title">
 						<h2>${board.title}&nbsp;&nbsp;&nbsp;<a id="posted_from"
-								href="boardLists.do?dis=${board.distinguish}&first=1"><span>${board.code.name }
+								href="#" onclick="toBoard()"><span>${board.code.name }
 									게시판</span></a>
 						</h2>
 					</div>

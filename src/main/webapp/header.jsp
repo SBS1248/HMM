@@ -125,7 +125,7 @@
 				<li><a href="boardLists.do?dis=1&first=1"> <span
 						class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;기업 게시판
 				</a></li>
-				<li><a href="weeksubject.do"> <span
+				<li><a href="weeksubject.do?sm=r&first=1"> <span
 						class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;신기술 게시판
 				</a></li>
 				<li><a href="boardLists.do?dis=2&first=1"> <span

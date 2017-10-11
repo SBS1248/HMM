@@ -208,7 +208,14 @@
 										<td id="td_title"><a onclick="checkBoard(${l.bcode})"
 											style="cursor: pointer">${l.title }</a><span id="reply_num">&nbsp;[${l.isdelete}]</span></td>
 
-										<td>${l.code.name}</td>
+										<c:if test="${l.code.discode eq 3 }">
+											<td id="table_category" onclick="location.href='weeksubject.do?sm=r&first=1'">${l.code.name}</td>
+										</c:if>
+										
+										<c:if test="${l.code.discode ne 3 }">
+											<td id="table_category" onclick="location.href='boardLists.do?dis=${l.code.discode}&first=1'">${l.code.name}</td>
+										</c:if>
+										
 										<td id="td_profile">
 												<a href="profile.do?profileId=${l.writerid }"> <img class="img-circle" src="#" />
 													${l.writerid }

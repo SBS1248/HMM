@@ -282,7 +282,9 @@
 
 										<td>
 
+
 											<div id="tooltip" onmouseover="havMedal('${l.writerid}')">
+                        <img class="profile_pics" src="${l.photo }"/>
 												<a href="profile.do?profileId=${l.writerid }">${l.writerid }</a>
 												<span id="tooltiptext">
 													<div class="tooltip_1">
@@ -299,6 +301,7 @@
 
 												</span>
 											</div>
+                      
 										</td>
 										<td id="table_point">${l.point.cal }</td>
 										<td id="table_viewcount">${l.point.viewnum }</td>

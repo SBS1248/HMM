@@ -219,12 +219,12 @@ height: 70%;
   background-color: white;
 }
 
-/*.profile_pics {
+.profile_pics {
 	width: 20px;
 	height: 20px;
 	border: 2px solid Gainsboro;
   border-radius: 50%;
-}*/
+}
 
 #myTable td {
   padding: 3px;

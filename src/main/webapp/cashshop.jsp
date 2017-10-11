@@ -152,7 +152,7 @@ td, tr {
 <body id="body">
 
 	<div id="jumbotron" class="jumbotron" style="margin-left: 20px; padding-top:0px; background-color: white;">
-	<div class="w3-content w3-section" style="max-width:100%;">
+	<div class="w3-content w3-section" style="max-width:100%; background-color : #deeaee;">
   <img class="mySlides" src="resources/img/slider/sliderimg1.jpg" style=" height: 480px; width:99%">
   <img class="mySlides" src="resources/img/slider/sliderimg2.jpg" style="height: 480px; width:99%">
   <img class="mySlides" src="resources/img/slider/sliderimg3.jpg" style="height: 480px; width:99%">
@@ -185,7 +185,7 @@ td, tr {
 		<div id="residualcash" style="margin: 0px;">
 			<p style="text-align: center; width: 100%;">
 				<b>남은 따루 : </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-					id="cash" name="cash" type="text" value="${ddaru}  따루" readonly>
+					id="cash" name="cash" type="text" value="${ddaru}  따루    " readonly>
 				<button id="myitem" class="w3-button w3-round-xlarge w3-black"
 					data-toggle="modal" data-target="#myitemes">내 아이템보기</button>
 			</p>
@@ -193,13 +193,14 @@ td, tr {
 		<div class="row">
 			<div class="col-sm-3">
 				<div id="sidebar" class="left-sidebar">
-					<h2 style="padding : 20px;">Category</h2>
+					<h2 style="padding : 20px;">카테고리</h2>
 					<div class="panel-group category-products" id="accordian">
 						<!--category-productsr-->
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
 									<a class="filter-button" data-filter="all" style="cursor:pointer">ALL</a>
+
 								</h4>
 							</div>
 						</div>
@@ -220,7 +221,7 @@ td, tr {
 										href="#emoticon" class="collapsed filter-button"
 										data-filter="BAD&HAPPY&SAD&CRAZY"> <span
 										class="badge pull-right"> <i class="fa fa-plus"></i>
-									</span> EMOTICON
+									</span> <b>이모티콘</b>
 									</a>
 								</h4>
 							</div>
@@ -235,6 +236,7 @@ td, tr {
 										<li><a class="filter-button" data-filter="SAD" style="cursor:pointer">Sad</a>
 										</li>
 										<li><a class="filter-button" data-filter="CRAZY" style="cursor:pointer">Crazy</a>
+
 										</li>
 									</ul>
 								</div>
@@ -245,7 +247,7 @@ td, tr {
 								<h4 class="panel-title">
 									<a data-toggle="collapse" data-parent="#accordian" href="#edge"
 										class="collapsed filter-button" data-filter="BORDER">
-										EDGE,BORDER </a>
+										<b>테두리</b> </a>
 								</h4>
 							</div>
 							<div id="edge" class="panel-collapse collapse"></div>
@@ -256,7 +258,7 @@ td, tr {
 								<h4 class="panel-title">
 									<a data-toggle="collapse" data-parent="#accordian"
 										href="#medal" class="collapsed filter-button"
-										data-filter="MEDAL"> MEDAL </a>
+										data-filter="MEDAL"> <b>메달</b> </a>
 								</h4>
 							</div>
 							<div id="medal" class="panel-collapse collapse"></div>
@@ -276,7 +278,7 @@ td, tr {
 			<div class="col-sm-9 padding-right">
 				<div id="items" class="items">
 					<!--features_items-->
-					<h2 class="title text-center">ITEMS</h2>
+					<h2 class="title text-center">아이템</h2>
 
 					<!--------------------------------------------------emticon---------------------------------------------------------------------------- -->
 					<c:forEach var="l" items="${itemList}">

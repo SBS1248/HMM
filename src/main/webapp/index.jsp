@@ -146,6 +146,7 @@
 							"<td>"+
 
 							"<div id=tooltip onmouseover=havMedal('"+mlist[i].writerid+"',"+first+")><img class='profile_pics' src="+photoSrc+"/><a href=profile.do?profileId="+mlist[i].writerid+">"+mlist[i].writerid+"</a>"+
+
 								"<span id=tooltiptext>"+
 									"<div class=tooltip_1>"+
 											"<span><a href=boardWriterList.do?writerId="+mlist[i].writerid+"}>작성한 글</a></span>"+
@@ -285,7 +286,6 @@
 										</c:if>
 
 										<td>
-
 
 											<div id="tooltip"
 												onmouseover="havMedal('${l.writerid}',${num})">

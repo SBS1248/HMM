@@ -1,6 +1,17 @@
 @CHARSET "UTF-8";
 
-html, body { font-size:0.85em; font-family:Dotum, Arial, Helvetica, sans-serif; color:#ffffff; background-color:#f0f0f0; -webkit-text-size-adjust: none;  height:  auto;}
+html, body { font-size:0.85em; font-family:Dotum, Arial, Helvetica, sans-serif; color:#ffffff; -webkit-text-size-adjust: none;  height:  auto;}
+
+html body{
+	background-color: #deeaee;
+}
+.WolfharuRadioCheckbox{
+ padding-top : 50px;
+ padding-bottom : 50px;
+ padding-left : 40px;
+ padding-right: 40px;
+
+ }
 
 .wrap { width:1200px; margin:0 auto;  padding:2em 0; }
 

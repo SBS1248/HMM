@@ -35,7 +35,6 @@
             success : function(data) {
 
             	$('#lev').val(data.level);
-            	$('#per').val(data.percent);
             },
             error:function(request,status,error){
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -698,7 +697,6 @@
 					<img id="writer_img" alt="${writer.id} 프로필 사진" src="${writer.photo}" width="100" height="100">
 						작성자 : ${writer.id} &nbsp;&nbsp;&nbsp; 레벨 : <input disabled
 							id="lev" /> &nbsp;&nbsp;&nbsp; 경험치 : ${writer.exp}점
-						&nbsp;&nbsp;&nbsp;&nbsp; 경험치 진행도 : <input disabled id="per" />%
 					</div>
 					<br>
 					<div class="boardDetail_date">

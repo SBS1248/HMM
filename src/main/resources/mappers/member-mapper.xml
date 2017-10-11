@@ -23,6 +23,12 @@
 		SELECT *
 		FROM MEMBER WHERE ID = #{id} AND EMAIL = #{email}
 	</select>
+	
+	<select id="selectExp" parameterType="string" resultType="_long">
+	SELECT EXP
+	FROM MEMBER
+	WHERE ID=#{writerid}
+	</select>
 
 	<insert id="enroll">
 		insert into member
@@ -60,11 +66,6 @@
 		MAX(LEV)
 		FROM LEVELING
 		WHERE EXP&lt;#{exp}
-		union all
-		SELECT
-		FLOOR(#{exp}/MIN(EXP)*100)
-		FROM LEVELING
-		WHERE EXP&gt;#{exp}
 	</select>
 
 	<select id="recompoint" resultType="java.lang.Integer"
@@ -133,6 +134,12 @@
 		SET QUITDATE = SYSDATE+3
 		WHERE
 		ID = #{id}
+	</update>
+	
+	<update id="buyLevelItem">
+	UPDATE MEMBER
+	SET LEVELITEM = 'Y'
+	WHERE MEMBERCODE=#{membercode}
 	</update>
 	
 	<select id="memberInfo" resultType="Member">

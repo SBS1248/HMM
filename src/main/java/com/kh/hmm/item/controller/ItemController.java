@@ -106,11 +106,12 @@ public class ItemController {
 					case 34:
 						medalCharge = memberService.buyMedal(member.getMembercode(), 50);
 						break;
-					/*
-					 * case 35: medalCharge = memberService.buyMedal(100); break;
-					 */
 					}
 
+				}
+				else if(itemcode == 44)
+				{
+					memberService.buyLevelItem(member.getMembercode());
 				}
 				Purchaseditem pitem = new Purchaseditem();
 				pitem.setMembercode(member.getMembercode());

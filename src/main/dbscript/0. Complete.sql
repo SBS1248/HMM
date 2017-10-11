@@ -33,7 +33,8 @@ CREATE TABLE MEMBER
     RECOMPOINT NUMBER NOT NULL,
     JOB VARCHAR2(24),
     ENROLLDATE DATE DEFAULT SYSDATE NOT NULL,
-    QUITDATE DATE
+    QUITDATE DATE,
+    LEVELITEM CHAR(1) DEFAULT 'N'
 );
 
 CREATE TABLE LEVELING
@@ -330,33 +331,33 @@ END;
 /
 
 --유저
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'admin','admin','eamil',null,999,999,0,0,0,0,999,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user','user','email',null,100,100,0,0,0,0,100,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user1','user1','first@hotmail.com',null,500,500,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user2','user2','second@naver.com',null,500,500,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user3','user3','third@hanmail.net',null,500,500,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user4','user4','fourth@google.com',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user5','user5','fifth@yahoo.com',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user6','user6','sixth@hotmail.com',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user7','user7','seventh@hotmail.com',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user8','user8','eighth@daum.net',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user9','user9','ninth@google.com',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user10','user10','tenth@kh.org',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user11','user11','eleventh@omg.com',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user12','user12','tweltwel@reddit.com',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user13','user13','thethirteen@abc.edu',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user14','user14','fourfourten@hacker.com',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user15','user15','onefive@ybn.net',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user16','user16','thexis@pro.net',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user17','user17','sevenone@daum.net',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user18','user18','yeeyee@reddot.org',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user19','user19','hehehe@lol.com',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user20','user20','treenut@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user21','user21','qnqwbe@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user22','user22','123xcq2@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user23','user23','y324s@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user24','user24','8rfgs@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user25','user25','234fg@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'admin','admin','eamil',null,999,999,0,0,0,0,999,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user','user','email',null,100,100,0,0,0,0,100,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user1','user1','first@hotmail.com',null,500,500,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user2','user2','second@naver.com',null,500,500,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user3','user3','third@hanmail.net',null,500,500,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user4','user4','fourth@google.com',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user5','user5','fifth@yahoo.com',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user6','user6','sixth@hotmail.com',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user7','user7','seventh@hotmail.com',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user8','user8','eighth@daum.net',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user9','user9','ninth@google.com',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user10','user10','tenth@kh.org',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user11','user11','eleventh@omg.com',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user12','user12','tweltwel@reddit.com',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user13','user13','thethirteen@abc.edu',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user14','user14','fourfourten@hacker.com',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user15','user15','onefive@ybn.net',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user16','user16','thexis@pro.net',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user17','user17','sevenone@daum.net',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user18','user18','yeeyee@reddot.org',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user19','user19','hehehe@lol.com',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user20','user20','treenut@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user21','user21','qnqwbe@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user22','user22','123xcq2@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user23','user23','y324s@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user24','user24','8rfgs@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user25','user25','234fg@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
 
 --게시판 코드
 INSERT INTO BOARDCODE VALUES (1,'기업');
@@ -591,6 +592,7 @@ INSERT INTO ITEMMOOD VALUES(3,'SAD');
 INSERT INTO ITEMMOOD VALUES(4,'BAD');
 INSERT INTO ITEMMOOD VALUES(5,'MEDAL');
 INSERT INTO ITEMMOOD VALUES(6,'BORDER');
+insert into itemmood values(7, 'LEVEL');
 
 --신기술 주제
 INSERT INTO WEEKSUBJECT VALUES
@@ -695,5 +697,7 @@ insert into item values(ITEM_SEQ.NEXTVAL, 'bg6',30,6,'resources/img/icon/6.borde
 insert into item values(ITEM_SEQ.NEXTVAL, 'bg7',30,6,'resources/img/icon/6.border/bg7.gif',250);
 insert into item values(ITEM_SEQ.NEXTVAL, 'bg8',30,6,'resources/img/icon/6.border/bg8.gif',250);
 insert into item values(ITEM_SEQ.NEXTVAL, 'bg9',30,6,'resources/img/icon/6.border/bg9.gif',250);
+insert into item values(ITEM_SEQ.NEXTVAL, 'level',30,7,'resources/img/bw/0.gif',500);
+
 
 COMMIT;

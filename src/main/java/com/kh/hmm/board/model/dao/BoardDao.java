@@ -207,7 +207,6 @@ public class BoardDao {
 		map.put("sort",val );
 		map.put("dis", dis);
 
-		//List<Board> list=sqlSession.selectList("sortList",map);
 		List<Board> list = sqlSession.selectList("selectAllBoardList", map);
 		
 		return (ArrayList<Board>)list;

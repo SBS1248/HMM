@@ -335,18 +335,16 @@ public class MemberController {
 
 	@ResponseBody
 	@RequestMapping(value = "leveling.do", method = RequestMethod.POST)
-	public HashMap leveling(HttpServletResponse response, long exp) throws Exception {
+	public HashMap<String, Integer> leveling(HttpServletResponse response, long exp) throws Exception {
 		logger.info("leveling() call...");
 
-		ArrayList<Integer> lev = memberService.leveling(exp);
+		int lev = memberService.leveling(exp);
 
-		HashMap map = new HashMap();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		if (exp > 0) {
-			map.put("level", lev.get(0));
-			map.put("percent", lev.get(1));
+			map.put("level", lev);
 		} else {
 			map.put("level", 1);
-			map.put("percent", 0);
 		}
 
 		return map;

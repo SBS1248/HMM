@@ -89,9 +89,9 @@ public class MemberDao {
 		}
 	}
 
-	public ArrayList<Integer> leveling(long exp) {
-		List<Integer> list = sqlSession.selectList("leveling", exp);
-		return (ArrayList<Integer>) list;
+	public int leveling(long exp) {
+		int list = sqlSession.selectOne("leveling", exp);
+		return  list;
 	}
 
 	public Integer recompoint(String id) {
@@ -155,5 +155,13 @@ public class MemberDao {
 			return member;
 		}
 		return member;
+	}
+
+	public long selectExp(String writerid) {
+		return sqlSession.selectOne("selectExp", writerid);
+	}
+
+	public int buyLevelItem(int membercode) {
+		return sqlSession.update("buyLevelItem",membercode);
 	}
 }

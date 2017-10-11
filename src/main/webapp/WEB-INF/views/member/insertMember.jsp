@@ -328,7 +328,7 @@
 							<option value="jobless">무직</option>
 							<option value="etc">기타</option>
 						</select> <br> &nbsp;&nbsp;
-						<button type="submit" style="color: white"
+						<button type="button" style="color: white"
 							onclick="validationCheck()">회원가입</button>
 
 					</form>

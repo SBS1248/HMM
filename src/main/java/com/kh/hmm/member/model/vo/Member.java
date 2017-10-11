@@ -18,6 +18,19 @@ public class Member {
 	private int report;
 	private int recompoint;
 	private int boardCount;
+	private String job;
+	private Date enrolldate;
+	private Date quitdate;
+	private MultipartFile uploadFile;
+	private String levelitem;
+
+	public String getLevelitem() {
+		return levelitem;
+	}
+
+	public void setLevelitem(String levelitem) {
+		this.levelitem = levelitem;
+	}
 
 	public int getBoardCount() {
 		return boardCount;
@@ -44,11 +57,6 @@ public class Member {
 	public void setQuitdate(Date quitdate) {
 		this.quitdate = quitdate;
 	}
-
-	private String job;
-	private Date enrolldate;
-	private Date quitdate;
-	private MultipartFile uploadFile;
 
 	public Member() {
 	}

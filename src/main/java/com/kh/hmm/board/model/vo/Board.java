@@ -11,14 +11,6 @@ public class Board
 	private String writerid;
 	private String postdate;
 	private String isdelete;
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-
 	private String hasfile;
 	private String photo;
 	private BoardCode code;	
@@ -42,6 +34,14 @@ public class Board
 		this.point = point;
 	}
 
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+	
 	public int getBcode()
 	{
 		return bcode;
@@ -143,15 +143,11 @@ public class Board
 	}
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return "Board [bcode=" + bcode + ", title=" + title + ", content=" + content + ", distinguish=" + distinguish
 				+ ", writerid=" + writerid + ", postdate=" + postdate + ", isdelete=" + isdelete + ", hasfile="
-				+ hasfile + ", code=" + code + ", point=" + point + "]";
+				+ hasfile + ", photo=" + photo + ", code=" + code + ", point=" + point + "]";
 	}
-
 	
-	
-
 	
 }

@@ -260,7 +260,7 @@
 							</thead>
 							<tbody>
 								<c:set var="num" value="1" />
-								<c:forEach var="l" items="${list }">
+								<c:forEach var="l" items="${list}">
 
 									<tr>
 										<td id="table_num">${num }</td>

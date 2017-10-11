@@ -116,25 +116,35 @@
 			if(title.length>40)
 			{
 				alert("40자 까지만 입력가능합니다.");
-				$('#post_title').val(title.substring(0,39));
-			}		
+				title=title.substring(0,40)
+				$('#post_title').val(title);
+			}
+			
+			$('#title_feedback').text('40자 제한 / 현재 : '+title.length+"자");
 		});	
 	</script>
 
 	<%-- 내용 남은 글자 수 초과시--%>
-	<script>
+	<script type="text/javascript">
 		var summer=$('#summernote').next();
 		
 		summer.keyup(function() {
-			var chtml=$('textArea[name=content]').val();
-			var content=summer.children('.note-editing-area').children('.panel-body').text();
+			var content=summer.children('.note-editing-area').children('.panel-body').html();
+			var realContent = content.replace(/(<([^>]+)>)/ig,"").replace(/&nbsp;/g," ").length;
 			
-			if(content.length>2000)
+			if(realContent>2000)
 			{
-				alert("2000자 까지만 입력가능합니다.");
-				summer.children('.note-editing-area').children('.panel-body').html(chtml.substring(0,1999));
+				alert("2000자 까지만 입력가능합니다.\n"+(realContent-2000)+"글자를 줄여주세요.");
+				$('#wr').text('글 등록 불가');
+				$('#wr').attr('disabled','disabled');
 			} 
-		
+			else
+			{
+				$('#wr').text('글 등록');
+				$('#wr').removeAttr('disabled');
+			}
+			
+			$('#content_feedback').text('2000자 제한 / 현재 : '+realContent+"자");
 		});		
 	</script>
 

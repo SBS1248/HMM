@@ -75,7 +75,7 @@
 
 	function checkWrite()
 	{
-		var data = '${sessionScope.member}';
+		var data = '${member.id}';
 
 		if(data =='' || data == null){
 			alert("로그인 후 이용 바랍니다");
@@ -107,19 +107,22 @@
 		$('#sort').bind('change',function(){
 			var val=$(this).val();
 
-			window.location.href="sortList.do?sm="+val+"&dis=0";
+			window.location.href="sortList.do?sm="+val+"&dis=0&first=1";
 		});
 	});
 
 	function loadMore(first)
 	{
+		var val=$('#sort').val();
 		var now = new Date();
 		var tdate=now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
 
 		$.ajax({
             type : "GET",
-            url : "loadMore.do?dis=0&first="+first,
+            url : "loadMore.do?dis=0&first="+first+"&sm="+val,
            	success:function(mlist){
+           		if(mlist.length<=0) $('#iloadMore').remove();
+           		
            		for(var i=0;i<mlist.length;i++)
            		{
            			var pdate=mlist[i].postdate.substring(0,10);
@@ -131,7 +134,7 @@
 							"<td id=table_num>"+first+"</td>"+
 							"<td id=td_title>"+
 							"<a href=# onclick=checkBoard("+mlist[i].bcode+")>"+mlist[i].title+
-							"<span id=reply_num>&nbsp;["+mlist[i].isdelete+"}]</span>"+
+							"<span id=reply_num>&nbsp;["+mlist[i].isdelete+"]</span>"+
 							"</a></td>"+
 							"<td id=table_category>"+mlist[i].code.name+"</td>"+
 							"<td>"+
@@ -236,38 +239,37 @@
 											onclick="checkBoard(${l.bcode})">${l.title }<span
 												id="reply_num">&nbsp;[${l.isdelete}]</span>
 										</a></td>
-										<td id="table_category">${l.code.name}</td>
+										
+										<c:if test="${l.code.discode eq 3 }">
+											<td id="table_category" onclick="location.href='weeksubject.do?sm=r&first=1'">${l.code.name}</td>
+										</c:if>
+										
+										<c:if test="${l.code.discode ne 3 }">
+											<td id="table_category" onclick="location.href='boardLists.do?dis=${l.code.discode}&first=1'">${l.code.name}</td>
+										</c:if>
+										
 										<td>
 
-
-											  <div id="tooltip">${l.writerid }
+											  <div id="tooltip"><a href="profile.do?profileId=${l.writerid }">${l.writerid }</a>
 													<span id="tooltiptext">
-														<ul>
-															<li><a href="profile.do?profileId=${l.writerid }">프로필
-																	정보</a></li>
-															<li><a
-																href="boardWriterList.do?writerId=${l.writerid}">작성한 글</a></li>
-															<li><a
-																href="boardCommentsList.do?writerId=${l.writerid}">작성한
-																	댓글</a></li>
-														</ul>
+														<div class="tooltip_1">
+
+																<span><a
+																	href="boardWriterList.do?writerId=${l.writerid}">작성한 글</a></span>
+																	<br>
+																<span><a
+																	href="boardCommentsList.do?writerId=${l.writerid}">작성한
+																		댓글</a></span>
+																		<br>
+																<span>총 받은 메달 : ${pInfo.havmedal}</span>
+																<br>
+
+															</div>
+															<div class="tooltip_2">
+																</div>
+
 													</span>
 												</div>
-<%--
-												<div id="tooltip">${l.writerid }
-													<span id="tooltiptext">
-														<ul>
-															<li><a href="profile.do?profileId=${l.writerid }">프로필
-																	정보</a></li>
-															<li><a
-																href="boardWriterList.do?writerId=${l.writerid}">작성한 글</a></li>
-															<li><a
-																href="boardCommentsList.do?writerId=${l.writerid}">작성한
-																	댓글</a></li>
-														</ul>
-													</span>
-												</div> --%>
-
 										</td>
 										<td id="table_point">${l.point.cal }</td>
 										<td id="table_viewcount">${l.point.viewnum }</td>

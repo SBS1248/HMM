@@ -37,6 +37,8 @@ import com.kh.hmm.board.model.vo.BoardPoint;
 import com.kh.hmm.board.model.vo.Comments;
 import com.kh.hmm.member.model.service.MemberService;
 import com.kh.hmm.member.model.vo.Member;
+import com.kh.hmm.newTech.model.service.WeeksubjectService;
+import com.kh.hmm.newTech.model.vo.Weeksubject;
 
 @Controller
 public class BoardController {
@@ -50,6 +52,8 @@ public class BoardController {
 	private AttachfileService attachfileService;
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private WeeksubjectService weekService;
 
 	@RequestMapping(value = "boardLists.do", method = RequestMethod.GET)
 	public String selectBoardList(Model model, int dis, int first) {
@@ -125,20 +129,32 @@ public class BoardController {
 
 	@ResponseBody
 	@RequestMapping(value = "loadMore.do", method = RequestMethod.GET)
-	public ArrayList<Board> loadMore(int dis, int first) {
-		logger.info("loadMore(" + dis + "," + first + ") call...");
+	public ArrayList<Board> loadMore(char sm,int dis, int first) {
+		logger.info("loadMore("+sm+","+dis+","+first+") call...");
 
-		ArrayList<Board> list = boardService.selectBoardList(dis, first);
-
+		ArrayList<Board> list ;
+		
+		if(dis==3) 
+		{
+			Weeksubject ws=weekService.selectWeek();
+			Date date=ws.getStartdate();
+			list=boardService.selectNewTechList(sm,date,first);
+		}
+		else 
+		{
+			list = boardService.sortList(sm,dis,first);
+		}
+		
 		return list;
 	}
 
-	@RequestMapping(value = "sortList.do", method = RequestMethod.GET)
-	public String sortList(char sm, int dis, Model m) {
-		logger.info("sortList(" + sm + "," + dis + ") call...");
-		String rturn = null;
-
-		ArrayList<Board> sortedList = boardService.sortList(sm, dis);
+	@RequestMapping(value="sortList.do",method=RequestMethod.GET)
+	public String sortList(char sm,int dis,int first,Model m)
+	{
+		logger.info("sortList("+sm+","+dis+","+first+") call...");
+		String rturn=null;
+		
+		ArrayList<Board> sortedList=boardService.sortList(sm,dis,first);
 
 		m.addAttribute("list", sortedList);
 		m.addAttribute("dis", dis);
@@ -154,8 +170,8 @@ public class BoardController {
 
 	@RequestMapping(value = "boardSearch.do", method = RequestMethod.GET)
 	public String selectSearchBoardList(HttpServletRequest request, Model model, int dis, String keyword) {
-		logger.info("selectBoardList(" + dis + ") call...");
-		System.out.println("키워드 : " + keyword);
+		logger.info("boardSearch(" + dis + ","+keyword+") call...");
+
 		ArrayList<Board> list = (ArrayList<Board>) boardService.selectSearchBoardList(dis, keyword);
 		for (Board b : list)
 			System.out.println(b);

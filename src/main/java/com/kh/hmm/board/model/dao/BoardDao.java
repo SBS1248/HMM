@@ -45,13 +45,15 @@ public class BoardDao {
 	public ArrayList<Board> selectBoardList(int dis,int first) {
 		pre = "select";
 		post = "BoardList";
+		String val="A.POSTDATE DESC";
 		
 		HashMap map=new HashMap();
 		map.put("dis", dis);
 		map.put("first", first);
 		map.put("second", first+boardNumber);
+		map.put("sort",val );
 		
-		List<Board> list = sqlSession.selectList(distributor(dis, pre, post), map);
+		List<Board> list = sqlSession.selectList("selectAllBoardList", map);
 
 		return (ArrayList<Board>) list;
 	}
@@ -159,34 +161,54 @@ public class BoardDao {
 		return list;
 	}
 
-	public ArrayList<Board> selectNewTechList(Date date)
-	{
-		HashMap map=new HashMap();
-		map.put("first", date);
-		map.put("second", date);
-		List<Board> list=sqlSession.selectList("selectNewTechList",map);
-		
-		return (ArrayList<Board>)list;
-	}
-
-	public ArrayList<Board> sortList(char sm, int dis)
+	public ArrayList<Board> selectNewTechList(char sm,Date date,int first)
 	{
 		HashMap map=new HashMap();
 		String val=null;
 		
 		switch(sm) 
 		{
-		case 'r': val="POSTDATE DESC";
+		case 'r': val="A.POSTDATE DESC";
 			break;
 		case 'f': val="C.VIEWNUM DESC";
 			break;
 		case 'g': val="C.CAL DESC";
 			break;
 		}
+		System.out.println(date+","+first+","+val);
+		map.put("prev", date);
+		map.put("next", date);
+		map.put("dis", 3);
+		map.put("first", first);
+		map.put("second", first+boardNumber);
+		map.put("sort",val );
+		
+		List<Board> list=sqlSession.selectList("selectAllBoardList",map);
+		
+		return (ArrayList<Board>)list;
+	}
+
+	public ArrayList<Board> sortList(char sm, int dis, int first)
+	{
+		HashMap map=new HashMap();
+		String val=null;
+		
+		switch(sm) 
+		{
+		case 'r': val="A.POSTDATE DESC";
+			break;
+		case 'f': val="C.VIEWNUM DESC";
+			break;
+		case 'g': val="C.CAL DESC";
+			break;
+		}
+		map.put("first", first);
+		map.put("second", first+boardNumber);
 		map.put("sort",val );
 		map.put("dis", dis);
 
-		List<Board> list=sqlSession.selectList("sortList",map);
+		//List<Board> list=sqlSession.selectList("sortList",map);
+		List<Board> list = sqlSession.selectList("selectAllBoardList", map);
 		
 		return (ArrayList<Board>)list;
 	}

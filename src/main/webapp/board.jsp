@@ -60,7 +60,12 @@
 
 	function checkWrite()
 	{
-			location.href="boardcode.do?dis=${dis}";
+		if('${member}' ==''){
+			alert("로그인 후 이용 바랍니다");
+			$("#loginModal").modal('show');
+			return;
+		}
+		location.href="boardcode.do?dis=${dis}";
 	}
 
 
@@ -77,9 +82,63 @@
 		$('#sort').bind('change',function(){
 			var val=$(this).val();
 			
-			window.location.href="sortList.do?sm="+val+"&dis=${dis}";
+			window.location.href="sortList.do?sm="+val+"&dis=${dis}&first=1";
 		});
 	});
+	
+	function loadMore(first)
+	{
+		var val=$('#sort').val();
+		var now = new Date();
+		var tdate=now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
+
+		$.ajax({
+            type : "GET",
+            url : "loadMore.do?dis=${dis}&first="+first+"&sm="+val,
+           	success:function(mlist){
+           		if(mlist.length<=0) $('#iloadMore').remove();
+           		
+           		for(var i=0;i<mlist.length;i++)
+           		{
+           			var pdate=mlist[i].postdate.substring(0,10);
+
+           			if(pdate==tdate) pdate==mlist[i].postdate.substring(11,19);
+
+           			$('#myTable > tbody:last').append(
+           					"<tr>"+
+							"<td id=table_num>"+first+"</td>"+
+							"<td id=td_title>"+
+							"<a href=# onclick=checkBoard("+mlist[i].bcode+")>"+mlist[i].title+
+							"<span id=reply_num>&nbsp;["+mlist[i].isdelete+"]</span>"+
+							"</a></td>"+
+							"<td id=table_category>"+mlist[i].code.name+"</td>"+
+							"<td>"+
+								"<div class=dropdown>"+
+									"<a data-toggle=dropdown style=cursor:pointer>"+
+										"<img class=img-circle src=# /> "+mlist[i].writerid+
+									"</a>"+
+									"<ul class=dropdown-menu>"+
+										"<li><a href=profile.do?profileId="+mlist[i].writerid+">프로필 정보</a></li>"+
+										"<li><a href=#>작성한 글</a></li>"+
+										"<li><a href=#>작성한 댓글</a></li>"+
+									"</ul>"+
+								"</div>"+
+							"</td>"+
+							"<td id=table_point>"+mlist[i].point.cal+"</td>"+
+							"<td id=table_viewcount>"+mlist[i].point.viewnum+"</td>"+
+							"<td id=table_date>"+pdate+"</td>"+
+						"</tr>"
+           			);
+           			first+=1;
+           		}
+            	$('#iloadMore').attr('onclick','loadMore('+first+')');
+
+           	},
+            error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+               }
+    	});
+	}
 </script>
 
 </head>
@@ -149,7 +208,14 @@
 										<td id="td_title"><a onclick="checkBoard(${l.bcode})"
 											style="cursor: pointer">${l.title }</a><span id="reply_num">&nbsp;[${l.isdelete}]</span></td>
 
-										<td>${l.code.name}</td>
+										<c:if test="${l.code.discode eq 3 }">
+											<td id="table_category" onclick="location.href='weeksubject.do?sm=r&first=1'">${l.code.name}</td>
+										</c:if>
+										
+										<c:if test="${l.code.discode ne 3 }">
+											<td id="table_category" onclick="location.href='boardLists.do?dis=${l.code.discode}&first=1'">${l.code.name}</td>
+										</c:if>
+										
 										<td id="td_profile">
 												<a href="profile.do?profileId=${l.writerid }"> <img class="img-circle" src="#" />
 													${l.writerid }
@@ -175,6 +241,9 @@
 								</c:forEach>
 							</tbody>
 						</table>
+						<c:if test="${empty keyword && empty sComment && empty writerS}">
+							<button id="iloadMore" onclick="loadMore(${num})">더보기</button>
+						</c:if>
 					</div>
 				</div>
 			</div>

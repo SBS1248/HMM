@@ -129,6 +129,7 @@
 			alert('ID를 입력해주세요.');
 			return;
 		}
+		
 		var pattern = /^[A-Za-z0-9]{6,20}$/;
 		if (!pattern.test(id)) {
 			alert('영문대/소문자, 숫자 합쳐서 6~20자리로 입력해 주세요.');

@@ -43,30 +43,28 @@
 	</sql>
 	
 	<sql id="boardTemplate2">
-		SELECT ROW_NUMBER() OVER (ORDER BY A.POSTDATE DESC) RNUM, A.BCODE,A.TITLE,A.CONTENT,A.DISTINGUISH,A.WRITERID,TO_CHAR(A.POSTDATE,'RRRR-MM-DD HH24:MI:SS') POSTDATE,A.HASFILE,
+		SELECT ROW_NUMBER() OVER (ORDER BY ${alias}) RNUM, A.BCODE,A.TITLE,A.CONTENT,A.DISTINGUISH,A.WRITERID,TO_CHAR(A.POSTDATE,'RRRR-MM-DD HH24:MI:SS') POSTDATE,A.HASFILE,
 		            B.DISCODE,B.NAME,
 		            C.BCODE CB,C.VIEWNUM,C.BEST,C.GOOD,C.BAD,C.WORST,C.CAL,C.MEDAL,C.REPORT,
-		            (SELECT TO_CHAR(COUNT(*)) FROM COMMENTS D WHERE A.BCODE=D.BCODE) ISDELETE
+		            (SELECT TO_CHAR(COUNT(*)) FROM COMMENTS D WHERE A.BCODE=D.BCODE) ISDELETE,
+		            D.PHOTO
 		FROM BOARD A
 		JOIN BOARDCODE B ON A.DISTINGUISH=B.DISCODE
 		JOIN BOARDPOINT C ON A.BCODE=C.BCODE
+		JOIN MEMBER D ON A.WRITERID = D.ID
 		WHERE ISDELETE IS NULL  
 	</sql>
 
 	<select id="selectAllBoardList" resultMap="boardMap" parameterType="hashmap">
 		SELECT D.*
-		FROM( <include refid="boardTemplate2" /> ) D
+		FROM( <include refid="boardTemplate2">
+				<property name="alias" value="${sort}"/>
+			  </include>
+			  <if test="dis!=0">AND A.DISTINGUISH=#{dis}</if>
+			  <if test="dis==3">AND SYSDATE BETWEEN #{prev} AND #{next}+7</if>
+			   ) D
 		WHERE RNUM BETWEEN #{first} AND #{second}    
 	</select>
-
-
-
-
-	<!-- <select id="selectAllBoardList" resultMap="boardMap">
-		<include refid="boardTemplate" />
-		WHERE ISDELETE IS NULL
-		ORDER BY A.POSTDATE DESC
-	</select> -->
 
 	<select id="selectBoardList" resultMap="boardMap" parameterType="_int">
 		<include refid="boardTemplate" />
@@ -85,22 +83,6 @@
 		<include refid="boardTemplate" />
 		WHERE A.WRITERID = #{writerId} AND ISDELETE IS NULL
 	</select>
-	
-	<select id="sortList" resultMap="boardMap" parameterType="hashmap">
-		<include refid="boardTemplate" />
-		<choose>
-		    <when test="dis == 0">
-		    	WHERE A.ISDELETE IS NULL
-		    </when>
-		    		    
-		    <otherwise>
-		     	WHERE A.DISTINGUISH=#{dis}
-				AND A.ISDELETE IS NULL
-		    </otherwise>
-		  </choose>
-		  ORDER BY ${sort}
-	</select>
-	
 	
 	<select id="selectNewTechList" resultMap="boardMap" parameterType="hashmap">
 		<include refid="boardTemplate"/>

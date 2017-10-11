@@ -116,19 +116,19 @@
 		<div id="sidebar-wrapper">
 
 			<ul class="sidebar-nav">
-				<li><a href="boardLists.do?dis=4"> <span
+				<li><a href="boardLists.do?dis=4&first=1"> <span
 						class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;아무말 대잔치
 				</a></li>
-				<li><a href="boardLists.do?dis=5"> <span
+				<li><a href="boardLists.do?dis=5&first=1"> <span
 						class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;프로젝트 & 소스
 				</a></li>
-				<li><a href="boardLists.do?dis=1"> <span
+				<li><a href="boardLists.do?dis=1&first=1"> <span
 						class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;기업 게시판
 				</a></li>
-				<li><a href="weeksubject.do"> <span
+				<li><a href="weeksubject.do?sm=r&first=1"> <span
 						class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;신기술 게시판
 				</a></li>
-				<li><a href="boardLists.do?dis=2"> <span
+				<li><a href="boardLists.do?dis=2&first=1"> <span
 						class="glyphicon glyphicon-question-sign"></span>&nbsp;&nbsp;Q & A
 				</a></li>
 				<li><a href="itemLists.do" style="cursor: pointer"> <span

@@ -13,6 +13,7 @@ public class Board
 	private String isdelete;
 	private String hasfile;
 	private String photo;
+	private String levelitem;
 	private BoardCode code;	
 	private BoardPoint point;	
 	
@@ -52,6 +53,14 @@ public class Board
 		this.bcode = bcode;
 	}
 
+	public String getLevelitem() {
+		return levelitem;
+	}
+
+	public void setLevelitem(String levelitem) {
+		this.levelitem = levelitem;
+	}
+	
 	public String getTitle()
 	{
 		return title;

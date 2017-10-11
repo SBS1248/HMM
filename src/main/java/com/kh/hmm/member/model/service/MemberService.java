@@ -40,7 +40,7 @@ public interface MemberService {
 
 	Member selectMember(String writerid);
 
-	ArrayList<Integer> leveling(long exp);
+	int leveling(long exp);
 
 	Integer recompoint(String id);
 
@@ -61,4 +61,8 @@ public interface MemberService {
 	Member profileInfo(String profileId);
 
 	Member buyDDARU(Member member);
+
+	long selectExp(String writerid);
+
+	int buyLevelItem(int membercode);
 }

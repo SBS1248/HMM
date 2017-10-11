@@ -199,9 +199,20 @@ td, tr {
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a href="#" class="filter-button" data-filter="all"><b>전체보기</b></a>
+									<a class="filter-button" data-filter="all" style="cursor:pointer">ALL</a>
+
 								</h4>
 							</div>
+						</div>
+							<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordian"
+										href="#level" class="collapsed filter-button"
+										data-filter="LEVEL"> LEVELMEDAL </a>
+								</h4>
+							</div>
+							<div id="medal" class="panel-collapse collapse"></div>
 						</div>
 						<div class="panel panel-default">
 							<div class="panel-heading">
@@ -218,13 +229,14 @@ td, tr {
 								style="height: 0px;">
 								<div class="panel-body">
 									<ul>
-										<li><a href="#" class="filter-button" data-filter="BAD"><b>기분나쁜</b></a>
+										<li><a class="filter-button" data-filter="BAD" style="cursor:pointer">Bad</a>
 										</li>
-										<li><a href="#" class="filter-button" data-filter="HAPPY"><b>행복한</b></a>
+										<li><a class="filter-button" data-filter="HAPPY" style="cursor:pointer">Happy</a>
 										</li>
-										<li><a href="#" class="filter-button" data-filter="SAD"><b>슬픔</b></a>
+										<li><a class="filter-button" data-filter="SAD" style="cursor:pointer">Sad</a>
 										</li>
-										<li><a href="#" class="filter-button" data-filter="CRAZY"><b>미치게 좋은</b></a>
+										<li><a class="filter-button" data-filter="CRAZY" style="cursor:pointer">Crazy</a>
+
 										</li>
 									</ul>
 								</div>
@@ -362,38 +374,6 @@ td, tr {
 			</div>
 		</div>
 	</div>
- 	<!-- 아이템 상세보기 -->
-	<%-- <div class="modal modal-center fade" id="itdetail" tabindex="-1"
-		role="dialog" aria-labelledby="my80sizeCenterModalLabel">
-		<div class="modal-dialog modal-80size modal-center" role="document">
-			<div class="modal-content modal-80size" style="width: 630px;">
-				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel">아이템 상세보기</h4>
-				</div>
-				<div class="modal-body">
-					<c:if test="${pList ne null }">
-					<div id="selectimage">
-					
-						<!-- 선택이미지 보여주기 -->
-						<img src="${pt.filelink}">
-					
-					</div>
-					</c:if>
-					<div id="information">
-						<p>
-							&nbsp; 이름 : <br> <br> &nbsp; 사용기한 :
-
-						</p>
-					</div>
-	
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="cancelbtn" data-dismiss="modal">닫기</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</body> --%>
 
 <!--스크롤 배너 -->
 

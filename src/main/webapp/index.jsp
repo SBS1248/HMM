@@ -128,6 +128,12 @@
            			var pdate=mlist[i].postdate.substring(0,10);
 
            			if(pdate==tdate) pdate=mlist[i].postdate.substring(11,19);
+           			
+           			var photoSrc;
+           			if(!mlist[i].photo)
+           				photoSrc = "resources/img/defaultImg.jpg"
+           			else
+           				photoSrc = mlist[i].photo;
 
            			$('#myTable > tbody:last').append(
            					"<tr>"+
@@ -139,14 +145,15 @@
 							"<td id=table_category>"+mlist[i].code.name+"</td>"+
 							"<td>"+
 
-							"<div id=tooltip><img class='profile_pics' src='${l.photo }'/><a href=profile.do?profileId="+mlist[i].writerid+">"+mlist[i].writerid+"</a>"+
+							"<div id=tooltip onmouseover=havMedal('"+mlist[i].writerid+"',"+first+")><img class='profile_pics' src="+photoSrc+"/><a href=profile.do?profileId="+mlist[i].writerid+">"+mlist[i].writerid+"</a>"+
+
 								"<span id=tooltiptext>"+
 									"<div class=tooltip_1>"+
 											"<span><a href=boardWriterList.do?writerId="+mlist[i].writerid+"}>작성한 글</a></span>"+
 												"<br>"+
 											"<span><a href=boardCommentsList.do?writerId="+mlist[i].writerid+"}>작성한 댓글</a></span>"+
 													"<br>"+
-											"<span id='havMedal'>총 받은 메달 : ${pInfo.havmedal}</span>"+
+											"<span id='havMedal_"+first+"'>총 받은 메달 : ${pInfo.havmedal}</span>"+
 											"<br>"+
 										"</div>"+
 										"<div class=tooltip_2>"+
@@ -178,7 +185,7 @@
 		window.open(popUrl, "", popOption);
 	}
 
-	function havMedal(profileId){
+	function havMedal(profileId,index){
 		var profileId=profileId;
  			$.ajax({
 			type : "POST",
@@ -187,8 +194,7 @@
 			dataType : "text",
 			success : function(rData) {
 				var havMedal = rData;
-				$(this).children('#havMedal_'+profileId).text('총 받은 메달 : '+havMedal);
-				/* $('#havMedal_'+profileId).text('총 받은 메달 : '+havMedal); */
+				 $('#havMedal_'+index).text('총 받은 메달 : '+havMedal);
 			},
 			error : function() {
 				console.log("프로필 메달 갯수 가져오기 실패!!");
@@ -260,11 +266,10 @@
 							</thead>
 							<tbody>
 								<c:set var="num" value="1" />
-								<c:forEach var="l" items="${list}">
+								<c:forEach var="l" items="${list}" varStatus="status">
 
 									<tr>
 										<td id="table_num">${num }</td>
-										<c:set var="num" value="${num+1 }" />
 										<td id="td_title"><a href="#"
 											onclick="checkBoard(${l.bcode})">${l.title }<span
 												id="reply_num">&nbsp;[${l.isdelete}]</span>
@@ -282,19 +287,27 @@
 
 										<td>
 
-											<div id="tooltip" onmouseover="havMedal('${l.writerid}')">
-                        <img class="profile_pics" src="${l.photo }"/>
+											<div id="tooltip"
+												onmouseover="havMedal('${l.writerid}',${num})">
+												<c:if test="${l.levelitem eq 'Y'}">
+													<img src="resources/img/bw/${levels[status.index]}.gif">
+												</c:if>
+												<c:if test="${empty l.photo}">
+													<img class="profile_pics"
+														src="resources/img/defaultImg.jpg" />
+												</c:if>
+												<c:if test="${!empty l.photo}">
+													<img class="profile_pics" src='${l.photo}' />
+												</c:if>
 												<a href="profile.do?profileId=${l.writerid }">${l.writerid }</a>
 												<span id="tooltiptext">
 													<div class="tooltip_1">
-
 														<span><a
 															href="boardWriterList.do?writerId=${l.writerid}">작성한
 																글</a></span> <br> <span><a
 															href="boardCommentsList.do?writerId=${l.writerid}">작성한
-																댓글</a></span> <br> <span id="havMedal_${l.writerid}">총 받은 메달 :
+																댓글</a></span> <br> <span id="havMedal_${num}">총 받은 메달 :
 															${pInfo.havmedal}</span> <br>
-
 													</div>
 													<div class="tooltip_2"></div>
 
@@ -321,7 +334,7 @@
 											<td id="table_date">${postdate }</td>
 										</c:if>
 									</tr>
-
+									<c:set var="num" value="${num+1 }" />
 								</c:forEach>
 							</tbody>
 						</table>

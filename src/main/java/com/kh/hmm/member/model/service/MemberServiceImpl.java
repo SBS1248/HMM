@@ -93,7 +93,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public ArrayList<Integer> leveling(long exp)
+	public int leveling(long exp)
 	{
 		return mDao.leveling(exp);
 	}
@@ -151,5 +151,15 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member profileInfo(String profileId) {
 		return mDao.profileInfo(profileId);
+	}
+
+	@Override
+	public long selectExp(String writerid) {
+		return mDao.selectExp(writerid);
+	}
+
+	@Override
+	public int buyLevelItem(int membercode) {
+		return mDao.buyLevelItem(membercode);
 	}
 }

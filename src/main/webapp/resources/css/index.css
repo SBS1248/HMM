@@ -250,3 +250,16 @@ height: 70%;
 #reply_num {
   color: blue;
 }
+
+#iloadMore{
+  width: 100%;
+  font-family: 'Hanna', serif;
+  color: white;
+  padding: 10px;
+  border: none;
+  background-color: #618685;
+  margin: auto;
+  box-shadow: 2px 2px 2px grey;
+  border-radius: 5px;
+  margin-top: 10px;
+}

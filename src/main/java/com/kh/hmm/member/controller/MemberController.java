@@ -375,15 +375,25 @@ public class MemberController {
 	@RequestMapping("profile.do")
 	public String profileMember(HttpSession session, HttpServletRequest request, Model model, String profileId) {
 		logger.info("profileMember() call...");
-		Member m;
-
-		m = memberService.profileInfo(profileId);
-
+		Member m = memberService.profileInfo(profileId);
 		if (m != null) {
 			model.addAttribute("pInfo", m);
 		}
 
 		return "member/profile";
+	}
+	
+	@RequestMapping("profileHavMedal.do")
+	public void profileHavMedalMember(HttpSession session, HttpServletRequest request, HttpServletResponse response,Model model, String profileId) throws IOException {
+		logger.info("profileMember() call...");
+		PrintWriter out = response.getWriter();
+		Member m = memberService.profileInfo(profileId);
+
+		if (m != null) {
+			out.print(m.getHavmedal()); // 유효하지 않은 이메일
+			out.flush();
+			out.close();
+		}
 	}
 
 	@RequestMapping(value = "buyDDaru.do", method = RequestMethod.GET)

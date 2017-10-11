@@ -11,6 +11,14 @@ public class Board
 	private String writerid;
 	private String postdate;
 	private String isdelete;
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
 	private String hasfile;
 	private String photo;
 	private BoardCode code;	

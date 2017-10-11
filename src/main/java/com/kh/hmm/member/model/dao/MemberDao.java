@@ -152,7 +152,6 @@ public class MemberDao {
 
 		Member member = sqlSession.selectOne("profileInfo", map);
 		if (member != null) {
-			System.out.println(member);
 			return member;
 		}
 		return member;

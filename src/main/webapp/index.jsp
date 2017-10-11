@@ -198,7 +198,7 @@
 </script>
 </head>
 
-<body>
+<body id="myPage">
 	<%@ include file="/header.jsp"%>
 	<div class="jumbotron jumbotron-billboard">
 		<div class="img"></div>

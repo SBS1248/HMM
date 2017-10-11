@@ -282,7 +282,6 @@
 
 										<td>
 
-
 											<div id="tooltip" onmouseover="havMedal('${l.writerid}')">
                         <img class="profile_pics" src="${l.photo }"/>
 												<a href="profile.do?profileId=${l.writerid }">${l.writerid }</a>

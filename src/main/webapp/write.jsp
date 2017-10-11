@@ -116,7 +116,7 @@
 			if(title.length>40)
 			{
 				alert("40자 까지만 입력가능합니다.");
-				$('#post_title').val(title.substring(0,40));
+				$('#post_title').val(title.substring(0,39));
 			}		
 		});	
 	</script>
@@ -132,7 +132,7 @@
 			if(content.length>2000)
 			{
 				alert("2000자 까지만 입력가능합니다.");
-				summer.children('.note-editing-area').children('.panel-body').html(chtml.substring(0,2000));
+				summer.children('.note-editing-area').children('.panel-body').html(chtml.substring(0,1999));
 			} 
 		
 		});		

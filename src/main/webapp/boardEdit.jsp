@@ -14,7 +14,7 @@
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 	</head>
 	<body>
-		<%-- <%@ include file="/header.jsp"%> --%>
+		<%@ include file="/header.jsp"%>
 
 		<div class="container">
 			<div class="post">

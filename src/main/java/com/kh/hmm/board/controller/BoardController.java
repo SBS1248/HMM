@@ -60,7 +60,7 @@ public class BoardController {
 		logger.info("selectBoardList(" + dis + ") call...");
 		String rturn = null;
 		ArrayList<Board> list = boardService.selectBoardList(dis, first);
-
+		
 		if (list != null) {
 			model.addAttribute("list", list);
 			model.addAttribute("dis", dis);

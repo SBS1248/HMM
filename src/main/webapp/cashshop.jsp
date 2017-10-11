@@ -192,8 +192,8 @@ td, tr {
 		</div>
 		<div class="row">
 			<div class="col-sm-3">
-				<div class="left-sidebar">
-					<h2 style="font-family:">Category</h2>
+				<div id="sidebar" class="left-sidebar">
+					<h2 style="padding : 20px;">Category</h2>
 					<div class="panel-group category-products" id="accordian">
 						<!--category-productsr-->
 						<div class="panel panel-default">
@@ -274,13 +274,13 @@ td, tr {
 							<div class="product-image-wrapper" style="heigth : 10px; margin-bottom: 27px; margin-top : 0;">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<br> <br> <br> <img
-											style="width: 170px; height: 180px;" src="${l.filelink}">
+										 <br><img
+											style="width: 170px; height: 150px;" src="${l.filelink}">
 										<form id="itemFrm${l.itemcode}" action="itemPurchase.do"
 											method="POST">
 											<input type="hidden" value="${l.itemcode}" name="itemcode">
 										</form>
-										<br> <br> <br>
+										<br>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">

@@ -14,11 +14,60 @@
 #c94c4c
 */
 
+*{
+  //border: 1px red solid;
+}
+
 html body {
     background-color: #deeaee;
 }
 
-.newtech_subject{
-  border: 1px skyblue solid;
+.container{
+  font-family: 'Hanna', serif;
+}
 
+h1{
+  text-align: center;
+  padding: 30px;
+
+}
+
+.newtech_subject{
+  background-color: #EFECCA;
+  padding: 30px;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.row.pro_con{
+  text-align: center;
+  font-size: 20px;
+}
+
+.col-sm-6{
+  padding: 10px;
+  color: white;
+}
+
+.col-sm-6 input{
+  color: black;
+}
+
+.col-sm-6.newtech_pro{
+background-color: #618685;
+}
+
+.col-sm-6.newtech_con{
+background-color: #c94c4c;
+}
+
+.newtech_subject button{
+  color: white;
+  padding: 10px;
+  border: none;
+  background-color: #618685;
+  margin: auto;
+  box-shadow: 2px 2px 2px grey;
+  border-radius: 5px;
+  margin-top: 10px;
 }

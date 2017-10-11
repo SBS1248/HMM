@@ -146,7 +146,7 @@
 												"<br>"+
 											"<span><a href=boardCommentsList.do?writerId="+mlist[i].writerid+"}>작성한 댓글</a></span>"+
 													"<br>"+
-											"<span>총 받은 메달 : ${pInfo.havmedal}</span>"+
+											"<span id='havMedal'>총 받은 메달 : ${pInfo.havmedal}</span>"+
 											"<br>"+
 										"</div>"+
 										"<div class=tooltip_2>"+
@@ -170,10 +170,35 @@
                }
     	});
 	}
+
+	function popupChat()
+	{
+		var popUrl = "resources/chat.jsp";
+		var popOption = "width=700, height=auto, resizable=yes, scrollbars=yes, status=no;"; //팝업창 옵션(optoin)
+		window.open(popUrl, "", popOption);
+	}
+
+	function havMedal(profileId){
+		var profileId=profileId;
+ 			$.ajax({
+			type : "POST",
+			url : "profileHavMedal.do",
+			data : "profileId="+profileId,
+			dataType : "text",
+			success : function(rData) {
+				var havMedal = rData;
+				$(this).children('#havMedal_'+profileId).text('총 받은 메달 : '+havMedal);
+				/* $('#havMedal_'+profileId).text('총 받은 메달 : '+havMedal); */
+			},
+			error : function() {
+				console.log("프로필 메달 갯수 가져오기 실패!!");
+			}
+		});
+	}
 </script>
 </head>
 
-<body>
+<body id="myPage">
 	<%@ include file="/header.jsp"%>
 	<div class="jumbotron jumbotron-billboard">
 		<div class="img"></div>
@@ -182,7 +207,7 @@
 			<p id="demo"></p>
 		</div>
 	</div>
-
+	<button onclick="popupChat()">채팅하러가기~~</button>
 	<div class="container">
 		<!-- 게시판 영역 -->
 		<div class="board_area">
@@ -201,18 +226,17 @@
 						<select id="searchCheck">
 							<option value="1" selected>제목&내용</option>
 							<option value="2">작성자</option>
-						</select>
-						<input id="search_input" type="text" name="search" placeholder="검색어를 입력하세요.."
-							onkeydown='javascript:onEnterSearch()'>
+						</select> <input id="search_input" type="text" name="search"
+							placeholder="검색어를 입력하세요.." onkeydown='javascript:onEnterSearch()'>
 
-							<%-- 게시글 정렬 --%>
-							<div class="sort_options">
-								<select class="selectpicker" id="sort">
-									<option value="r" ${sFlag eq null or sFlag eq 'r'?"selected":""}>최신순</option>
-									<option value="f" ${sFlag eq 'f'?"selected":""}>인기순</option>
-									<option value="g" ${sFlag eq 'g'?"selected":""}>추천순</option>
-								</select>
-							</div>
+						<%-- 게시글 정렬 --%>
+						<div class="sort_options">
+							<select class="selectpicker" id="sort">
+								<option value="r" ${sFlag eq null or sFlag eq 'r'?"selected":""}>최신순</option>
+								<option value="f" ${sFlag eq 'f'?"selected":""}>인기순</option>
+								<option value="g" ${sFlag eq 'g'?"selected":""}>추천순</option>
+							</select>
+						</div>
 
 					</div>
 
@@ -236,7 +260,7 @@
 							</thead>
 							<tbody>
 								<c:set var="num" value="1" />
-								<c:forEach var="l" items="${list }">
+								<c:forEach var="l" items="${list}">
 
 									<tr>
 										<td id="table_num">${num }</td>
@@ -247,42 +271,47 @@
 										</a></td>
 
 										<c:if test="${l.code.discode eq 3 }">
-											<td id="table_category" onclick="location.href='weeksubject.do?sm=r&first=1'">${l.code.name}</td>
+											<td id="table_category"
+												onclick="location.href='weeksubject.do?sm=r&first=1'">${l.code.name}</td>
 										</c:if>
 
 										<c:if test="${l.code.discode ne 3 }">
-											<td id="table_category" onclick="location.href='boardLists.do?dis=${l.code.discode}&first=1'">${l.code.name}</td>
+											<td id="table_category"
+												onclick="location.href='boardLists.do?dis=${l.code.discode}&first=1'">${l.code.name}</td>
 										</c:if>
 
 										<td>
 
-											  <div id="tooltip"><a href="profile.do?profileId=${l.writerid }">${l.writerid }</a>
-													<span id="tooltiptext">
-														<div class="tooltip_1">
 
-																<span><a
-																	href="boardWriterList.do?writerId=${l.writerid}">작성한 글</a></span>
-																	<br>
-																<span><a
-																	href="boardCommentsList.do?writerId=${l.writerid}">작성한
-																		댓글</a></span>
-																		<br>
-																<span>총 받은 메달 : ${pInfo.havmedal}</span>
-																<br>
+											<div id="tooltip" onmouseover="havMedal('${l.writerid}')">
+                        <img class="profile_pics" src="${l.photo }"/>
+												<a href="profile.do?profileId=${l.writerid }">${l.writerid }</a>
+												<span id="tooltiptext">
+													<div class="tooltip_1">
 
-															</div>
-															<div class="tooltip_2">
-																</div>
+														<span><a
+															href="boardWriterList.do?writerId=${l.writerid}">작성한
+																글</a></span> <br> <span><a
+															href="boardCommentsList.do?writerId=${l.writerid}">작성한
+																댓글</a></span> <br> <span id="havMedal_${l.writerid}">총 받은 메달 :
+															${pInfo.havmedal}</span> <br>
 
-													</span>
-												</div>
+													</div>
+													<div class="tooltip_2"></div>
+
+												</span>
+											</div>
+
 										</td>
 										<td id="table_point">${l.point.cal }</td>
 										<td id="table_viewcount">${l.point.viewnum }</td>
 
-										<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="toDay"/>
-										<c:set var="postdate" value="${fn:substring(l.postdate,0,10) }"/>
-										<c:set var="tpostdate" value="${fn:substring(l.postdate,10,19) }"/>
+										<fmt:formatDate value="${today}" pattern="yyyy-MM-dd"
+											var="toDay" />
+										<c:set var="postdate"
+											value="${fn:substring(l.postdate,0,10) }" />
+										<c:set var="tpostdate"
+											value="${fn:substring(l.postdate,10,19) }" />
 
 
 										<c:if test="${toDay eq postdate }">

@@ -85,6 +85,7 @@ html body {
 }
 
 #searchCheck {
+  font-family: 'Hanna', serif;
   margin-left: 30px;
   display: inline-block;
   width: 150px;
@@ -219,12 +220,12 @@ height: 70%;
   background-color: white;
 }
 
-/*.profile_pics {
+.profile_pics {
 	width: 20px;
 	height: 20px;
 	border: 2px solid Gainsboro;
   border-radius: 50%;
-}*/
+}
 
 #myTable td {
   padding: 3px;
@@ -249,4 +250,21 @@ height: 70%;
 
 #reply_num {
   color: blue;
+}
+
+#iloadMore{
+  width: 100%;
+  font-family: 'Hanna', serif;
+  color: white;
+  padding: 10px;
+  border: none;
+  background-color: #618685;
+  margin: auto;
+  box-shadow: 2px 2px 2px grey;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+#iloadMore:hover{
+  color: gold;
 }

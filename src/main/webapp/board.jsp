@@ -102,7 +102,7 @@
            		{
            			var pdate=mlist[i].postdate.substring(0,10);
 
-           			if(pdate==tdate) pdate==mlist[i].postdate.substring(11,19);
+           			if(pdate==tdate) pdate=mlist[i].postdate.substring(11,19);
 
            			$('#myTable > tbody:last').append(
            					"<tr>"+

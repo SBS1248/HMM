@@ -170,14 +170,14 @@
                }
     	});
 	}
-	
+
 	function popupChat()
 	{
 		var popUrl = "resources/chat.jsp";
 		var popOption = "width=700, height=auto, resizable=yes, scrollbars=yes, status=no;"; //팝업창 옵션(optoin)
 		window.open(popUrl, "", popOption);
 	}
-	
+
 	function havMedal(profileId){
 		var profileId=profileId;
  			$.ajax({
@@ -198,7 +198,7 @@
 </script>
 </head>
 
-<body>
+<body id="myPage">
 	<%@ include file="/header.jsp"%>
 	<div class="jumbotron jumbotron-billboard">
 		<div class="img"></div>
@@ -282,7 +282,9 @@
 
 										<td>
 
+
 											<div id="tooltip" onmouseover="havMedal('${l.writerid}')">
+                        <img class="profile_pics" src="${l.photo }"/>
 												<a href="profile.do?profileId=${l.writerid }">${l.writerid }</a>
 												<span id="tooltiptext">
 													<div class="tooltip_1">
@@ -299,6 +301,7 @@
 
 												</span>
 											</div>
+
 										</td>
 										<td id="table_point">${l.point.cal }</td>
 										<td id="table_viewcount">${l.point.viewnum }</td>

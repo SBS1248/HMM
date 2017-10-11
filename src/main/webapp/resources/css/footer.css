@@ -84,3 +84,17 @@
 #footer_submit:hover {
   color: gold;
 }
+
+#footer_end{
+  text-align: center;
+  background-color: #002F2F;
+  height:100px;
+  width:100%;
+}
+
+#footer_end .up-arrow{
+  color: white;
+  font-size: 40px;
+  bottom: 0;
+  padding: 20px;
+}

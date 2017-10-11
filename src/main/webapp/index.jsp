@@ -139,7 +139,7 @@
 							"<td id=table_category>"+mlist[i].code.name+"</td>"+
 							"<td>"+
 
-							"<div id=tooltip><a href=profile.do?profileId="+mlist[i].writerid+">"+mlist[i].writerid+"</a>"+
+							"<div id=tooltip><img class='profile_pics' src='${l.photo }'/><a href=profile.do?profileId="+mlist[i].writerid+">"+mlist[i].writerid+"</a>"+
 								"<span id=tooltiptext>"+
 									"<div class=tooltip_1>"+
 											"<span><a href=boardWriterList.do?writerId="+mlist[i].writerid+"}>작성한 글</a></span>"+

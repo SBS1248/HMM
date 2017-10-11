@@ -43,7 +43,7 @@ public interface BoardService {
 
 	String boardName(int dis);
 
-	ArrayList<Board> selectNewTechList(Date date);
+	ArrayList<Board> selectNewTechList(char sm,Date date,int first);
 
 	List<Board> selectSearchBoardList(int dis, String keyword);
 

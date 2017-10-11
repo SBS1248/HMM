@@ -32,9 +32,9 @@ public class WeeksubjectController
 	private BoardService boardService;
 	
 	@RequestMapping(value = "weeksubject.do", method = RequestMethod.GET)
-	public String weeksubject(Model m) 
+	public String weeksubject(Model m,char sm,int first) 
 	{
-		logger.info("weeksubject() call...");		
+		logger.info("weeksubject("+sm+","+first+") call...");		
 		
 		Weeksubject ws=weekService.selectWeek();
 			
@@ -44,7 +44,7 @@ public class WeeksubjectController
 		
 		Calendar c = Calendar.getInstance();
 		for(java.util.Date d:hlist) 
-		{
+		{//주제도 넣는 방법 생각하기
 			c.setTime(d);
 			int wks=c.get(Calendar.WEEK_OF_YEAR);
 			if(wks/10==0)	dlist.add(c.get(Calendar.YEAR)+"0"+wks);
@@ -62,7 +62,7 @@ public class WeeksubjectController
 		c = Calendar.getInstance();
 	 	c.setTime(date);
 		
-	 	ArrayList<Board> list=boardService.selectNewTechList(date);
+	 	ArrayList<Board> list=boardService.selectNewTechList(sm,date,first);
 	 	
 	 	m.addAttribute("week",String.valueOf(c.get(Calendar.WEEK_OF_YEAR)));//전체 주차
 	 	m.addAttribute("weeksubject", ws);//주제 및 날짜정보

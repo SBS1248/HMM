@@ -239,7 +239,15 @@
 											onclick="checkBoard(${l.bcode})">${l.title }<span
 												id="reply_num">&nbsp;[${l.isdelete}]</span>
 										</a></td>
-										<td id="table_category">${l.code.name}</td>
+										
+										<c:if test="${l.code.discode eq 3 }">
+											<td id="table_category" onclick="location.href='weeksubject.do?sm=r&first=1'">${l.code.name}</td>
+										</c:if>
+										
+										<c:if test="${l.code.discode ne 3 }">
+											<td id="table_category" onclick="location.href='boardLists.do?dis=${l.code.discode}&first=1'">${l.code.name}</td>
+										</c:if>
+										
 										<td>
 
 											  <div id="tooltip"><a href="profile.do?profileId=${l.writerid }">${l.writerid }</a>

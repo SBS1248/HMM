@@ -122,9 +122,9 @@ public class BoardServiceImpl implements BoardService
 	}
   
 	@Override
-	public ArrayList<Board> selectNewTechList(Date date)
+	public ArrayList<Board> selectNewTechList(char sm,Date date,int first)
 	{
-		return bDao.selectNewTechList(date);
+		return bDao.selectNewTechList(sm,date,first);
 
 	}
 

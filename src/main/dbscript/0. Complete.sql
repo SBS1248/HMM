@@ -330,13 +330,13 @@ END;
 /
 
 --유저
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'admin','admin','eamil',null,999,999,0,0,0,0,999,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'admin','admin','eamil','resources\img\admin\admin.jpg',999,999,0,0,0,0,999,null,sysdate,null);
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user','user','email',null,100,100,0,0,0,0,100,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user1','user1','first@hotmail.com',null,500,500,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user1','user1','first@hotmail.com','resources\img\user1\user1.jpg',500,500,0,0,0,0,0,null,sysdate,null);
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user2','user2','second@naver.com',null,500,500,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user3','user3','third@hanmail.net',null,500,500,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user4','user4','fourth@google.com',null,0,0,0,0,0,0,0,null,sysdate,null);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user5','user5','fifth@yahoo.com',null,0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user3','user3','third@hanmail.net','resources\img\user3\user3.jpg',500,500,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user4','user4','fourth@google.com','resources\img\user4\user4.jpg',0,0,0,0,0,0,0,null,sysdate,null);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user5','user5','fifth@yahoo.com','resources\img\user5\user5.jpg',0,0,0,0,0,0,0,null,sysdate,null);
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user6','user6','sixth@hotmail.com',null,0,0,0,0,0,0,0,null,sysdate,null);
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user7','user7','seventh@hotmail.com',null,0,0,0,0,0,0,0,null,sysdate,null);
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user8','user8','eighth@daum.net',null,0,0,0,0,0,0,0,null,sysdate,null);

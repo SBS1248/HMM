@@ -193,13 +193,13 @@ td, tr {
 		<div class="row">
 			<div class="col-sm-3">
 				<div id="sidebar" class="left-sidebar">
-					<h2 style="padding : 20px;">Category</h2>
+					<h2 style="padding : 20px;">카테고리</h2>
 					<div class="panel-group category-products" id="accordian">
 						<!--category-productsr-->
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a href="#" class="filter-button" data-filter="all">ALL</a>
+									<a href="#" class="filter-button" data-filter="all">전체보기</a>
 								</h4>
 							</div>
 						</div>
@@ -210,7 +210,7 @@ td, tr {
 										href="#emoticon" class="collapsed filter-button"
 										data-filter="BAD&HAPPY&SAD&CRAZY"> <span
 										class="badge pull-right"> <i class="fa fa-plus"></i>
-									</span> EMOTICON
+									</span> 이모티콘
 									</a>
 								</h4>
 							</div>
@@ -218,13 +218,13 @@ td, tr {
 								style="height: 0px;">
 								<div class="panel-body">
 									<ul>
-										<li><a href="#" class="filter-button" data-filter="BAD">Bad</a>
+										<li><a href="#" class="filter-button" data-filter="BAD">기분나쁜</a>
 										</li>
-										<li><a href="#" class="filter-button" data-filter="HAPPY">Happy</a>
+										<li><a href="#" class="filter-button" data-filter="HAPPY">행복한</a>
 										</li>
-										<li><a href="#" class="filter-button" data-filter="SAD">Sad</a>
+										<li><a href="#" class="filter-button" data-filter="SAD">슬픔</a>
 										</li>
-										<li><a href="#" class="filter-button" data-filter="CRAZY">Crazy</a>
+										<li><a href="#" class="filter-button" data-filter="CRAZY">미치게 좋은</a>
 										</li>
 									</ul>
 								</div>
@@ -235,7 +235,7 @@ td, tr {
 								<h4 class="panel-title">
 									<a data-toggle="collapse" data-parent="#accordian" href="#edge"
 										class="collapsed filter-button" data-filter="BORDER">
-										EDGE,BORDER </a>
+										테두리 </a>
 								</h4>
 							</div>
 							<div id="edge" class="panel-collapse collapse"></div>
@@ -246,7 +246,7 @@ td, tr {
 								<h4 class="panel-title">
 									<a data-toggle="collapse" data-parent="#accordian"
 										href="#medal" class="collapsed filter-button"
-										data-filter="MEDAL"> MEDAL </a>
+										data-filter="MEDAL"> 메달 </a>
 								</h4>
 							</div>
 							<div id="medal" class="panel-collapse collapse"></div>
@@ -266,7 +266,7 @@ td, tr {
 			<div class="col-sm-9 padding-right">
 				<div id="items" class="items">
 					<!--features_items-->
-					<h2 class="title text-center">ITEMS</h2>
+					<h2 class="title text-center">아이템</h2>
 
 					<!--------------------------------------------------emticon---------------------------------------------------------------------------- -->
 					<c:forEach var="l" items="${itemList}">

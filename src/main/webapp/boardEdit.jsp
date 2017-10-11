@@ -23,7 +23,7 @@
 
 				<div id="the_post_title">제목&nbsp;&nbsp;&nbsp;
 					<input id="post_title" type="text" name="title"	maxlength="120" value="${board.title }"></input>
-					<div id="title_feedback"></div>
+					<div id="title_feedback">40자 제한</div>
 				</div>
 
 				<%-- 글쓴이 아이디 숨김 --%>
@@ -50,7 +50,7 @@
 					<div class="sn">
 						<div class="content">
 							<textarea id="summernote" name="content" maxlength="4000">${board.content }</textarea>
-							<div id="content_feedback"></div>
+							<div id="content_feedback">2000자 제한</div>
 						</div>
 					</div>
 
@@ -71,54 +71,44 @@
 			function goBack() {window.history.back();}
 		</script>
 
-	<%-- 제목 남은 글자 수 --%>
+	<%-- 제목 남은 글자 수 초과시 --%>
 	<script>
-		var title_max = 120;
-		$('#title_feedback').html(title_max + ' 바이트 남음');
-
 		$('#post_title').keyup(function() {
-			var title_length = $('#post_title').val().length;
+			var title=$('#post_title').val();
 
-			var title_byte = 0;
-			for (var i = 0; i < title_length; i++) {
-				if (isHangul($('#post_title').val().charAt(i)))
-					title_byte += 3;
-				else
-					title_byte += 1;
+			if(title.length>40)
+			{
+				alert("40자 까지만 입력가능합니다.");
+				title=title.substring(0,40)
+				$('#post_title').val(title);
 			}
-			var title_remaining = title_max - title_byte;
-			$('#title_feedback').html(title_remaining + ' 바이트 남음');
-		});
-
-		function isHangul(string) {
-			check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-			return check.test(string);
-		}
+			
+			$('#title_feedback').text('40자 제한 / 현재 : '+title.length+"자");
+		});	
 	</script>
 
-	<%-- 내용 남은 글자 수 --%>
-	<script>
-		var content_max = 4000;
-		$('#content_feedback').html(content_max + ' 바이트 남음');
-
-		$('#summernote').keyup(function() {
-			var content_length = $('#summernote').val().length;
-
-			var content_byte = 0;
-			for (var i = 0; i < content_length; i++) {
-				if (isHangul($('#summernote').val().charAt(i)))
-					content_byte += 3;
-				else
-					content_byte += 1;
+	<%-- 내용 남은 글자 수 초과시--%>
+	<script type="text/javascript">
+		var summer=$('#summernote').next();
+		
+		summer.keyup(function() {
+			var content=summer.children('.note-editing-area').children('.panel-body').html();
+			var realContent = content.replace(/(<([^>]+)>)/ig,"").replace(/&nbsp;/g," ").length;
+			
+			if(realContent>2000)
+			{
+				alert("2000자 까지만 입력가능합니다.\n"+(realContent-2000)+"글자를 줄여주세요.");
+				$('#wr').text('글 등록 불가');
+				$('#wr').attr('disabled','disabled');
+			} 
+			else
+			{
+				$('#wr').text('글 등록');
+				$('#wr').removeAttr('disabled');
 			}
-			var content_remaining = content_max - content_byte;
-			$('#content_feedback').html(content_remaining + ' 바이트 남음');
-		});
-
-		function isHangul(string) {
-			check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-			return check.test(string);
-		}
+			
+			$('#content_feedback').text('2000자 제한 / 현재 : '+realContent+"자");
+		});		
 	</script>
 
 	<script>

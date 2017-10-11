@@ -554,7 +554,7 @@ public class BoardController {
 
 		boardService.deletBoard(bcode);
 
-		return "forward:/boardLists.do?dis=" + boardService.selectBoardOne(bcode).getDistinguish();
+		return "forward:/boardLists.do?dis=0&first=1";
 	}
 
 	@ResponseBody

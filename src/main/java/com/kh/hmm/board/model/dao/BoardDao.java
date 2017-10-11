@@ -175,7 +175,7 @@ public class BoardDao {
 		case 'g': val="C.CAL DESC";
 			break;
 		}
-		System.out.println(date+","+first+","+val);
+
 		map.put("prev", date);
 		map.put("next", date);
 		map.put("dis", 3);

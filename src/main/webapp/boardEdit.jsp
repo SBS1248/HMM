@@ -71,6 +71,29 @@
 			function goBack() {window.history.back();}
 		</script>
 
+	<%-- 써머노트 --%>
+	<script>
+	      $('#summernote').summernote({
+	        placeholder: '여기에 글을 입력하세요',
+	        tabsize: 2,
+					height: 300,
+					minHeight: null,             // set minimum height of editor
+					maxHeight: null,             // set maximum height of editor
+					focus: true,
+					disableResizeEditor: true,
+					toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['fontsize', ['fontsize']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol', 'paragraph']],
+    ['height', ['height']]
+  ]
+
+	      });
+	</script>
+
 	<%-- 제목 남은 글자 수 초과시 --%>
 	<script>
 		$('#post_title').keyup(function() {
@@ -89,8 +112,8 @@
 
 	<%-- 내용 남은 글자 수 초과시--%>
 	<script type="text/javascript">
-		var summer=$('#summernote').next();
-		
+		var summer=$('#summernote').next(); 
+				
 		summer.keyup(function() {
 			var content=summer.children('.note-editing-area').children('.panel-body').html();
 			var realContent = content.replace(/(<([^>]+)>)/ig,"").replace(/&nbsp;/g," ").length;
@@ -325,16 +348,7 @@
 		}
 	</script>
 
-	<script>
-	$(function () {
-		$('#summernote').summernote({
-			focus: true, // set focus to editable area after initializing summernote
-			minHeight: 300, // 최소 높이값(null은 제한 없음)
-			maxHeight: null, // 최대 높이값(null은 제한 없음)
-			shortcuts: false
-		});
-	});
-	</script>
+	
 
 	<script type="text/javascript">
 		$(function(){

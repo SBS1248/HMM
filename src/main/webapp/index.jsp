@@ -256,15 +256,15 @@
 
 										<td>
 
-											  <div id="tooltip"><a href="profile.do?profileId=${l.writerid }">${l.writerid }</a>
+											  <div id="tooltip">
+													<img class="profile_pics" src="${l.photo }"/>
+													<a href="profile.do?profileId=${l.writerid }">${l.writerid }</a>
 													<span id="tooltiptext">
 														<div class="tooltip_1">
 
-																<span><a
-																	href="boardWriterList.do?writerId=${l.writerid}">작성한 글</a></span>
+																<span><a href="boardWriterList.do?writerId=${l.writerid}">작성한 글</a></span>
 																	<br>
-																<span><a
-																	href="boardCommentsList.do?writerId=${l.writerid}">작성한
+																<span><a href="boardCommentsList.do?writerId=${l.writerid}">작성한
 																		댓글</a></span>
 																		<br>
 																<span>총 받은 메달 : ${pInfo.havmedal}</span>

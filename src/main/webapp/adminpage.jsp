@@ -5,9 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="resources/css/adminpage.css" rel="stylesheet" type="text/css">
 <link rel="icon" href="resources/img/신보선/신보선.jpg" type="image/gif" sizes="16x16">
-<link href="resources/css/index.css" rel="stylesheet" type="text/css">
+  <link href="resources/css/adminpage.css" rel="stylesheet" type="text/css">
 	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
@@ -36,9 +35,9 @@
 						<table id="myTable" style="background: white;">
 							<thead>
 								<tr style="color: white;">
-									<th id="table_id">아이디</th>
-									<th id="table_num">이메일주소</th>
-									<th id="td_title">제목</th>
+									<th>아이디</th>
+									<th>이메일주소</th>
+									<th>제목</th>
 									<th>작성일자</th>
 									<th>읽음여부</th>
 								</tr>
@@ -46,16 +45,16 @@
 							<tbody>
 							<c:forEach var="s" items="${slist}" varStatus="status">
 							<tr>
-							<td style="text-align: center;" name="test_check">${s.sername}</td>
-							<td style="text-align: center;" name="test_check">${s.seradd}</td>
-							<td style="text-align: center;" name="test_check">
+							<td id="table_id" style="text-align: center;" name="test_check">${s.sername}</td>
+							<td id="table_email" style="text-align: center;" name="test_check">${s.seradd}</td>
+							<td id="td_title" style="text-align: center;" name="test_check">
 							<input type="checkbox" name = "test_check" id="checkbox${status.index}"  style="float: left;" value="${status.index}" />
 							<a onclick="hi(${status.index})">${s.sertitle}</a></td>
 							<td style="text-align: center;" name="test_check">${s.serdate}</td>
 							<td style="text-align: center;" id = "scheck${status.index}" name="test_check">${s.yncheck}</td>
 							</tr>
 							<tr>
-							<td style="text-align: center; background: #97cbff; padding: 80px;" name="test_check" colspan="5" id="bwhidden${status.index}" class="hidden">${s.sercontent}</td>
+							<td style="text-align: center; border: 1px #618685 solid; padding: 80px;" name="test_check" colspan="5" id="bwhidden${status.index}" class="hidden">${s.sercontent}</td>
 							</tr>
 							</c:forEach>
 
@@ -123,7 +122,7 @@
 										$('#nn').html(0);
 									}
 								}
-				           		$('td[id="scheck'+index+'"]').html('Y');
+				           		$('td[id="scheck'+index+'"]').html('읽음');
 							}
 							},
 			            error:function(data){

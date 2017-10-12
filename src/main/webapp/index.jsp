@@ -121,37 +121,45 @@
             type : "GET",
             url : "loadMore.do?dis=0&first="+first+"&sm="+val,
            	success:function(mlist){
-           		if(mlist.length<=0) $('#iloadMore').remove();
+           		var board=mlist.list;
+           		var levels=mlist.levels;
+           		
+           		if(board.length<=0) $('#iloadMore').remove();
 
-           		for(var i=0;i<mlist.length;i++)
+           		for(var i=0;i<board.length;i++)
            		{
-           			var pdate=mlist[i].postdate.substring(0,10);
+           			var pdate=board[i].postdate.substring(0,10);
 
-           			if(pdate==tdate) pdate=mlist[i].postdate.substring(11,19);
+           			if(pdate==tdate) pdate=board[i].postdate.substring(11,19);
            			
            			var photoSrc;
-           			if(!mlist[i].photo)
+           			if(!board[i].photo)
            				photoSrc = "resources/img/defaultImg.jpg"
            			else
-           				photoSrc = mlist[i].photo;
+           				photoSrc = board[i].photo;
 
+           			var levelImg;
+           			if(board[i].levelitem=='Y')
+           				levelImg="<img src=resources/img/bw/"+levels[i]+".gif>";
+           			else levelImg="";	
+           			
            			$('#myTable > tbody:last').append(
            					"<tr>"+
 							"<td id=table_num>"+first+"</td>"+
 							"<td id=td_title>"+
-							"<a href=# onclick=checkBoard("+mlist[i].bcode+")>"+mlist[i].title+
-							"<span id=reply_num>&nbsp;["+mlist[i].isdelete+"]</span>"+
+							"<a href=# onclick=checkBoard("+board[i].bcode+")>"+board[i].title+
+							"<span id=reply_num>&nbsp;["+board[i].isdelete+"]</span>"+
 							"</a></td>"+
-							"<td id=table_category>"+mlist[i].code.name+"</td>"+
+							"<td id=table_category>"+board[i].code.name+"</td>"+	
 							"<td>"+
-
-							"<div id=tooltip onmouseover=havMedal('"+mlist[i].writerid+"',"+first+")><img class='profile_pics' src="+photoSrc+"/><a href=profile.do?profileId="+mlist[i].writerid+">"+mlist[i].writerid+"</a>"+
-
+							"<div id=tooltip onmouseover=havMedal('"+board[i].writerid+"',"+first+")>"+							
+							levelImg+
+							"<img class='profile_pics' src="+photoSrc+"/><a href=profile.do?profileId="+board[i].writerid+">"+board[i].writerid+"</a>"+
 								"<span id=tooltiptext>"+
 									"<div class=tooltip_1>"+
-											"<span><a href=boardWriterList.do?writerId="+mlist[i].writerid+"}>작성한 글</a></span>"+
+											"<span><a href=boardWriterList.do?writerId="+board[i].writerid+"}>작성한 글</a></span>"+
 												"<br>"+
-											"<span><a href=boardCommentsList.do?writerId="+mlist[i].writerid+"}>작성한 댓글</a></span>"+
+											"<span><a href=boardCommentsList.do?writerId="+board[i].writerid+"}>작성한 댓글</a></span>"+
 													"<br>"+
 											"<span id='havMedal_"+first+"'>총 받은 메달 : ${pInfo.havmedal}</span>"+
 											"<br>"+
@@ -160,10 +168,9 @@
 											"</div>"+
 								"</span>"+
 							"</div>"+
-
 							"</td>"+
-							"<td id=table_point>"+mlist[i].point.cal+"</td>"+
-							"<td id=table_viewcount>"+mlist[i].point.viewnum+"</td>"+
+							"<td id=table_point>"+board[i].point.cal+"</td>"+
+							"<td id=table_viewcount>"+board[i].point.viewnum+"</td>"+
 							"<td id=table_date>"+pdate+"</td>"+
 						"</tr>"
            			);
@@ -287,8 +294,7 @@
 
 										<td>
 
-											<div id="tooltip"
-												onmouseover="havMedal('${l.writerid}',${num})">
+											<div id="tooltip" onmouseover="havMedal('${l.writerid}',${num})">
 												<c:if test="${l.levelitem eq 'Y'}">
 													<img src="resources/img/bw/${levels[status.index]}.gif">
 												</c:if>

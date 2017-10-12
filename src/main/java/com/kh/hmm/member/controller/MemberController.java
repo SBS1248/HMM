@@ -338,6 +338,8 @@ public class MemberController {
 	public HashMap<String, Integer> leveling(HttpServletResponse response, long exp) throws Exception {
 		logger.info("leveling() call...");
 
+		System.out.println(exp);
+		
 		int lev = memberService.leveling(exp);
 
 		HashMap<String, Integer> map = new HashMap<String, Integer>();

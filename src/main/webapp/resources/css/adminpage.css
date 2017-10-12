@@ -2,6 +2,70 @@
     background-color: #deeaee;
     font-family: 'Hanna', serif;
   }
+  #myTable {
+    font-family: 'Nanum Gothic';
+    border-collapse: collapse;
+    width: 100%;
+    table-layout:auto;
+  }
+
+  #myTable thead {
+    border-bottom: 2px grey solid;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  #myTable th {
+    text-align: center;
+    padding: 6px;
+    background: #618685;
+    color: white;
+  }
+
+  #myTable td {
+    word-wrap:break-word;
+    white-space: nowrap;
+    /*overflow: hidden;*/
+    text-overflow: ellipsis;
+    max-width: 200px;
+  }
+
+  #table_email {
+    text-align: center;
+    width: 60px;
+  }
+
+  #td_title {
+    width: 50%;
+    overflow: hidden;
+    padding: 10px;
+   }
+
+     #td_title:hover{
+       cursor: pointer;
+     }
+
+  #td_title a {
+    color: black;
+  }
+
+  /*관리자 페이지 쪽지함 제목 사이즈*/
+  #myTable th:nth-child(3) {
+    /*border: 1px gold dotted;*/
+    width: 800px;
+  }
+
+  #table_category {
+    text-align: center;
+  }
+
+  /*작성자 사이즈*/
+  #myTable td:nth-child(4) {
+    /*border: 1px gold dotted;*/
+    text-align: center;
+    width: 100px;
+    color: black;
+  }
 
   .button5 {
     color: white;

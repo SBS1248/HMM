@@ -132,6 +132,7 @@ html body {
   background-color: #618685;
   margin-top: 15px;
   margin-left: 15px;
+  color: white;
 }
 
 #post_comment{
@@ -230,11 +231,19 @@ html body {
 }
 
 .comments-heading{
-  border: 3px gold dotted;
   height: 50px;
   font-family: 'Hanna', serif;
-  background-color: purple;
+  background-color: #002F2F;
   color: white;
+}
+
+.comments-heading a{
+  color: white;
+}
+
+.comments-heading a:hover{
+  text-decoration: none;
+  color: gold;
 }
 
 #reply_number{

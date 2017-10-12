@@ -8,6 +8,7 @@
 <c:set var="job" value="${member.job }" scope="session" />
 <c:set var="photo" value="${member.photo }" scope="session" />
 <c:set var="quitDate" value="${member.quitdate}" scope="session" />
+<c:set var="membercode" value="${member.membercode}" scope="session"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -15,6 +16,11 @@
 	type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"
+	integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i"
+	crossorigin="anonymous"></script>
+
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -248,6 +254,11 @@
 		return binb2hex(core_sha256(str2binb(s), s.length * chrsz));
 
 	}
+	
+	function profileImgDel()
+	{
+		location.href="profileImgDel.do?membercode="+${membercode};
+	}
 </script>
 
 <title>회원 정보 수정</title>
@@ -281,18 +292,21 @@
 
 						<button type="button" id="file_upload_btn"
 							onclick="validationFile()">프로필 사진 업로드</button>
+							<c:if test="${null ne photo}">
+							<button type="button" onclick="profileImgDel()">프로필 사진 삭제</button>
+							</c:if>
 					</form>
 					<form id="updateForm" name="updateForm" action="update.do"
 						method="POST">
 						<input id="input_id" type="text" name="id" value="${member.id}"
 							readonly> <input type="hidden" name="password"> <input
-							type="password" name="pwd" placeholder="비밀번호"
-							value="" required id="password"><br>
-						<input type="password" id="passwordConfirm" name="pwdc"
-							placeholder="비밀번호 확인" value="" required
-							id="passwordConfirm"><br> <input type="email"
-							name="email" placeholder="이메일" value="${member.email}" required /><br>
-						<select name="job" id="updateJob">
+							type="password" name="pwd" placeholder="비밀번호" value="" required
+							id="password"><br> <input type="password"
+							id="passwordConfirm" name="pwdc" placeholder="비밀번호 확인" value=""
+							required id="passwordConfirm"><br> <input
+							type="email" name="email" placeholder="이메일"
+							value="${member.email}" required /><br> <select name="job"
+							id="updateJob">
 							<option value="student">학생</option>
 							<option value="business">회사원</option>
 							<option value="jobless">무직</option>

@@ -98,7 +98,8 @@
 			var pwd = $('#password').val();
 			pwd = SHA256(pwd);
 			$('#password').val(pwd);
-			$('form').submit();
+			/* $('form').submit(); */
+			$('#insetForm').submit();
 		}
 		else if($('#insertChk').val() == "Y")
 		{

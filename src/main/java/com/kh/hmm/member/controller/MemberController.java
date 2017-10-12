@@ -128,6 +128,19 @@ public class MemberController {
 		return "redirect:" + url;
 	}
 
+	@RequestMapping(value = "profileImgDel.do", method = RequestMethod.GET)
+	public String profileImgDel(HttpSession session, HttpServletRequest request, String membercode) {
+		logger.info("프로필 사진 삭제 컨트롤러() call...");
+		Member member = memberService.profileImgDel(membercode);
+		if (member != null) {
+			String savePath = "C:\\Hmm\\Hmm\\src\\main\\webapp\\resources\\img\\" + member.getId();
+			File file = new File(savePath);
+			file.delete();
+			session.setAttribute("member", member);
+		}
+		return "redirect:/updateProfile.do";
+	}
+	
 	@RequestMapping(value = "uploadFile.do", method = RequestMethod.POST)
 	public String memberUpdate(HttpServletRequest request, HttpSession session,
 			@RequestParam("photo") MultipartFile uploadfile) {
@@ -390,7 +403,7 @@ public class MemberController {
 		Member m = memberService.profileInfo(profileId);
 
 		if (m != null) {
-			out.print(m.getHavmedal()); // 유효하지 않은 이메일
+			out.print(m.getMedal()); // 유효하지 않은 이메일
 			out.flush();
 			out.close();
 		}

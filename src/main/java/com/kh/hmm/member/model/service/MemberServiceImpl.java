@@ -162,4 +162,9 @@ public class MemberServiceImpl implements MemberService {
 	public int buyLevelItem(int membercode) {
 		return mDao.buyLevelItem(membercode);
 	}
+
+	@Override
+	public Member profileImgDel(String membercode) {
+		return mDao.profileImgDel(membercode);
+	}
 }

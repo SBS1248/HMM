@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kh.hmm.board.controller.BoardController;
 import com.kh.hmm.board.model.service.BoardService;
 import com.kh.hmm.board.model.vo.Board;
+import com.kh.hmm.member.model.service.MemberService;
 import com.kh.hmm.newTech.model.service.WeeksubjectService;
 import com.kh.hmm.newTech.model.vo.Weeksubject;
 
@@ -31,6 +32,9 @@ public class WeeksubjectController
 	@Autowired
 	private BoardService boardService;
 	
+	@Autowired
+	private MemberService memberService;
+	
 	@RequestMapping(value = "weeksubject.do", method = RequestMethod.GET)
 	public String weeksubject(Model m,char sm,int first) 
 	{
@@ -42,6 +46,7 @@ public class WeeksubjectController
 		ArrayList<String> sublist=weekService.selectSubject();
 		ArrayList<String> dlist=new ArrayList<String>();
 		ArrayList<String> slist=new ArrayList<String>();
+		
 		
 		Calendar c = Calendar.getInstance();
 		int i=0;
@@ -68,6 +73,17 @@ public class WeeksubjectController
 	 	c.setTime(date);
 		
 	 	ArrayList<Board> list=boardService.selectNewTechList(sm,date,first);
+	 	ArrayList<Integer> levels = new ArrayList<Integer>();
+		
+	 	for (Board b : list) {
+			int level = 0;
+			long exp = memberService.selectExp(b.getWriterid());
+			if (exp == 0)				level = 1;
+			else				level = memberService.leveling(exp);
+			levels.add(level);
+		}	
+			
+		m.addAttribute("levels", levels);
 	 	
 	 	m.addAttribute("week",String.valueOf(c.get(Calendar.WEEK_OF_YEAR)));//전체 주차
 	 	m.addAttribute("weeksubject", ws);//주제 및 날짜정보

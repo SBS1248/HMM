@@ -52,6 +52,8 @@
 <%@ include file="WEB-INF/views/member/insertMember.jsp"%>
 
 <body>
+	<c:set var="member" value="${sessionScope.member}" />
+	<c:set var="password" value="${member.password}" />
 	<%
 		System.out.println("헤더 페이지 세션 값 : " + session.getAttribute("member"));
 	%>
@@ -70,17 +72,12 @@
 						<!-- 홈페이지 로고 -->
 						<li><button onclick="location.href='index.jsp'"
 								id="home_logo" style="padding-top: 0px; padding-bottom:0px;">Hmm</button></li>
+						<li style="color: white;"><script>document.write("제 홈페이지에 <font color=red>" + hitCt + "</font> 번째 방문자이시네요.") </script></li>
+						<!-- 방문자 새로고침 횟수 -->								<c:if test="${member.id  eq 'admin'}"><a href="adminlist.do">&nbsp;&nbsp;관리자 쪽지함</a></c:if>
 
-						<!-- 방문자 새로고침 횟수 -->
-						<!-- <li style="color: white;"><script>
-							document.write(
-									"제 홈페이지에 <font color=red>" + hitCt
-											+ "</font> 번째 방문자이시네요.")
-						</script></li> -->
-
-						<c:if test="${member.id  eq 'admin'}">
+						<%-- <c:if test="${member.id  eq 'admin'}">
 							<li><a href="adminlist.do">관리자 페이지</a></li>
-						</c:if>
+						</c:if> --%>
 						<!-- 로그인 관련 메뉴 및 모달 -->
 						<c:choose>
 							<c:when test="${null eq member }">

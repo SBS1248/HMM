@@ -19,9 +19,38 @@
 		)
 	</insert>
 	
-	<select id="serviceselectAll" resultMap="serviceMap">
-		SELECT * FROM SERVICE
+	<select id="serviceselectAll"  parameterType="map" resultMap="serviceMap">
+		select * 
+    	  from (select rownum rnum,A.*
+           from(select * 
+                 from service 
+                 order by sertitle desc)A
+             where ROWNUM &lt;= #{endNo} ) 
+        where rnum &gt;= #{startNo}
 	
 	</select>
 	
+	<select id="superSelectAll" resultMap="serviceMap">
+		select * from service 
+        order by sertitle desc
+	</select>
+	
+ 	<delete id="servicedelete" parameterType="string">
+ 		DELETE FROM SERVICE 
+		WHERE ROWID = (SELECT rid FROM (SELECT ROWNUM rn, ROWID rid FROM SERVICE) WHERE rn like to_number(#{s})+1)
+ 	</delete>
+ 	
+ 	<update id="servicecheck" parameterType="string">
+ 		UPDATE SERVICE SET YNCHECK = 'Y'
+ 		WHERE ROWID = (SELECT rid FROM (SELECT ROWNUM rn, ROWID rid FROM SERVICE) WHERE rn like to_number(#{valueArrTest})+1)
+ 	</update>
+ 	
+ 	<select id="totalRow" resultType="_int">
+        select count(*) from service
+	</select>
+	
+	 <select id="serviceCount" resultType="_int">
+ 		select count(*) from service where yncheck = 'Y'
+ 	</select> 
+ 	
 </mapper>

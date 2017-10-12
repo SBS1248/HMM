@@ -30,7 +30,7 @@ CREATE TABLE MEMBER
     CASH NUMBER NOT NULL,
     DDARU NUMBER NOT NULL,
     REPORT NUMBER NOT NULL,
-    RECOMPOINT NUMBER NOT NULL,
+    RECOMPOINT NUMBER DEFAULT 90 NOT NULL ,
     JOB VARCHAR2(24),
     ENROLLDATE DATE DEFAULT SYSDATE NOT NULL,
     QUITDATE DATE,
@@ -330,34 +330,34 @@ BEGIN
 END; 
 /
 
---유저
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'admin','admin','admin@hmm.org','resources/img/admin/admin.jpg',999,999,6454323465,0,0,0,999,null,sysdate,null,'Y');
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user','user','email',null,100,100,0,0,0,0,100,null,sysdate,null,DEFAULT);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user1','user1','first@hotmail.com','resources/img/user1/user1.jpg',500,500,84535345,0,0,0,0,null,sysdate,null,'Y');
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user2','user2','second@naver.com','resources/img/user2/user2.JPG',500,500,7643234,0,0,0,0,null,sysdate,null,'Y');
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user3','user3','third@hanmail.net','resources/img/user3/user3.jpg',500,500,12354,0,0,0,0,null,sysdate,null,'Y');
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user4','user4','fourth@google.com','resources/img/user4/user4.jpg',0,0,3763442,0,0,0,0,null,sysdate,null,'Y');
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user5','user5','fifth@yahoo.com','resources/img/user5/user5.jpg',0,0,753232434,0,0,0,0,null,sysdate,null,'Y');
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user6','user6','sixth@hotmail.com','resources/img/user6/user6.jpg',0,0,76232455476,0,0,0,0,null,sysdate,null,'Y');
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user7','user7','seventh@hotmail.com','resources/img/user7/user7.jpg',0,0,122145652,0,0,0,0,null,sysdate,null,'Y');
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user8','user8','eighth@daum.net','resources/img/user8/user8.jpg',0,0,865434,0,0,0,0,null,sysdate,null,'Y');
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user9','user9','ninth@google.com','resources/img/user9/user9.jpg',0,0,76243567,0,0,0,0,null,sysdate,null,'Y');
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user10','user10','tenth@kh.org','resources/img/user10/user10.jpg',0,0,34543345,0,0,0,0,null,sysdate,null,'Y');
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user11','user11','eleventh@omg.com',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user12','user12','tweltwel@reddit.com',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user13','user13','thethirteen@abc.edu',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user14','user14','fourfourten@hacker.com',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user15','user15','onefive@ybn.net',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user16','user16','thexis@pro.net',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user17','user17','sevenone@daum.net',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user18','user18','yeeyee@reddot.org',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user19','user19','hehehe@lol.com',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user20','user20','treenut@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user21','user21','qnqwbe@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user22','user22','123xcq2@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user23','user23','y324s@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user24','user24','8rfgs@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user25','user25','234fg@treehouse.org',null,0,0,0,0,0,0,0,null,sysdate,null,DEFAULT);
+--유저 
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'admin','admin','admin@hmm.org','resources/img/admin/admin.jpg',999,999,6454323465,0,0,0,DEFAULT,null,sysdate,null,'Y');
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user','user','email',null,1,100,0,0,0,0,DEFAULT,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user1','user1','first@hotmail.com','resources/img/user1/user1.jpg',1,500,84535345,0,0,0,DEFAULT,null,sysdate,null,'Y');
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user2','user2','second@naver.com','resources/img/user2/user2.JPG',1,500,7643234,0,0,0,DEFAULT,null,sysdate,null,'N');
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user3','user3','third@hanmail.net','resources/img/user3/user3.jpg',1,500,12354,0,0,0,DEFAULT,null,sysdate,null,'Y');
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user4','user4','fourth@google.com','resources/img/user4/user4.jpg',1,0,3763442,0,0,0,DEFAULT,null,sysdate,null,'Y');
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user5','user5','fifth@yahoo.com','resources/img/user5/user5.jpg',1,0,753232434,0,0,0,DEFAULT,null,sysdate,null,'N');
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user6','user6','sixth@hotmail.com','resources/img/user6/user6.jpg',1,0,76232455476,0,0,0,DEFAULT,null,sysdate,null,'Y');
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user7','user7','seventh@hotmail.com','resources/img/user7/user7.jpg',1,0,122145652,0,0,0,DEFAULT,null,sysdate,null,'Y');
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user8','user8','eighth@daum.net','resources/img/user8/user8.jpg',1,0,865434,0,0,0,DEFAULT,null,sysdate,null,'Y');
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user9','user9','ninth@google.com','resources/img/user9/user9.jpg',1,0,76243567,0,0,0,DEFAULT,null,sysdate,null,'N');
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user10','user10','tenth@kh.org','resources/img/user10/user10.jpg',1,0,34543345,0,0,0,DEFAULT,null,sysdate,null,'N');
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user11','user11','eleventh@omg.com',null,1,0,0,0,0,0,DEFAULT,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user12','user12','tweltwel@reddit.com',null,1,0,0,0,0,0,DEFAULT,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user13','user13','thethirteen@abc.edu',null,1,0,0,0,0,0,DEFAULT,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user14','user14','fourfourten@hacker.com',null,1,0,0,0,0,0,DEFAULT,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user15','user15','onefive@ybn.net',null,1,0,0,0,0,0,DEFAULT,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user16','user16','thexis@pro.net',null,1,0,0,0,0,0,DEFAULT,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user17','user17','sevenone@daum.net',null,1,0,0,0,0,0,DEFAULT,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user18','user18','yeeyee@reddot.org',null,1,0,0,0,0,0,DEFAULT,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user19','user19','hehehe@lol.com',null,1,0,0,0,0,0,DEFAULT,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user20','user20','treenut@treehouse.org',null,1,0,0,0,0,0,DEFAULT,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user21','user21','qnqwbe@treehouse.org',null,1,0,0,0,0,0,DEFAULT,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user22','user22','123xcq2@treehouse.org',null,1,0,0,0,0,0,DEFAULT,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user23','user23','y324s@treehouse.org',null,1,0,0,0,0,0,DEFAULT,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user24','user24','8rfgs@treehouse.org',null,1,0,0,0,0,0,DEFAULT,null,sysdate,null,DEFAULT);
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user25','user25','234fg@treehouse.org',null,1,0,0,0,0,0,DEFAULT,null,sysdate,null,DEFAULT);
 
 --게시판 코드
 INSERT INTO BOARDCODE VALUES (1,'기업');

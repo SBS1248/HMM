@@ -137,10 +137,10 @@
 		var val=$('#sort').val();
 		var now = new Date();
 		var tdate=now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
-
+		
 		$.ajax({
             type : "GET",
-            url : "loadMore.do?dis=${dis}&first="+first+"&sm="+val,
+            url : "loadMore.do?dis=3&first="+first+"&sm="+val,
            	success:function(mlist){
            		var board=mlist.list;
            		var levels=mlist.levels;

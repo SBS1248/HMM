@@ -51,15 +51,14 @@
 								<h1>${pInfo.id}</h1>
 								<h4>회원 가입일 : ${pInfo.enrolldate}</h4>
 								<h4>이메일 : ${pInfo.email}</h4>
+								<br>
 								<h4>경험치 : ${pInfo.exp}</h4>
-								</div>
-							</div>
-							<div class="profile_area intro">
-
+								<br>
 								<h4>수여받은 메달 갯수 : ${pInfo.havmedal}</h4>
 								<h4>신고당한 횟수 : ${pInfo.report}</h4>
 								<h4>작성한 글 갯수 : ${pInfo.boardCount}</h4>
 								<h4>작성한 댓글 갯수 : ${pInfo.commentsCount}</h4>
+								</div>
 							</div>
 						</div>
 

@@ -37,10 +37,3 @@ html body {
 	display: inline-block;
 	border: 1px gold solid;
 }
-
-.profile_area .intro{
-	display: inline-block;
-	width: 100%;
-	background-color: lime;
-	border: 1px gold solid;
-}

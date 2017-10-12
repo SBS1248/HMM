@@ -23,7 +23,7 @@ public class MemberDao {
 		return sqlSession.selectOne("login", m);
 	}
 
-	public Member enrollMember(Member m) {
+	public Member enrollMember(Member m) {	
 		int result;
 		Member member = null;
 		result = sqlSession.insert("enroll", m);
@@ -130,6 +130,7 @@ public class MemberDao {
 		HashMap map = new HashMap();
 		map.put("membercode", membercode);
 		map.put("medal", medal);
+		System.out.println("충전할 메달 갯수 : "+medal);
 		return sqlSession.update("buyMedal", map);
 	}
 

@@ -54,7 +54,7 @@
 								<br>
 								<h4>경험치 : ${pInfo.exp}</h4>
 								<br>
-								<h4>수여받은 메달 갯수 : ${pInfo.havmedal}</h4>
+								<h4>수여받은 메달 갯수 : ${pInfo.medal}</h4>
 								<h4>신고당한 횟수 : ${pInfo.report}</h4>
 								<h4>작성한 글 갯수 : ${pInfo.boardCount}</h4>
 								<h4>작성한 댓글 갯수 : ${pInfo.commentsCount}</h4>

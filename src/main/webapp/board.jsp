@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <jsp:useBean id="today" class="java.util.Date" />
 
 <!DOCTYPE html>
@@ -159,40 +159,56 @@
                }
     	});
 	}
+	
+	function havMedal(profileId,index){
+		var profileId=profileId;
+ 			$.ajax({
+			type : "POST",
+			url : "profileHavMedal.do",
+			data : "profileId="+profileId,
+			dataType : "text",
+			success : function(rData) {
+				var havMedal = rData;
+				 $('#havMedal_'+index).text('총 받은 메달 : '+havMedal);
+			},
+			error : function() {
+				console.log("프로필 메달 갯수 가져오기 실패!!");
+			}
+		});
+	}
 </script>
 
 </head>
 <body>
-<%@ include file="/header.jsp"%>
-<div class="jumbotron jumbotron-billboard">
-	<div class="img"></div>
-	<div class="container">
-		<h1>Hmm...!</h1>
-		<p id="demo"></p>
+	<%@ include file="/header.jsp"%>
+	<div class="jumbotron jumbotron-billboard">
+		<div class="img"></div>
+		<div class="container">
+			<h1>Hmm...!</h1>
+			<p id="demo"></p>
+		</div>
 	</div>
-</div>
 
-<div class="container">
-	<!-- 게시판 영역 -->
-	<div class="board_area">
-		<!-- 검색창, 검색 정렬들의 패널 -->
-		<div class="board">
+	<div class="container">
+		<!-- 게시판 영역 -->
+		<div class="board_area">
+			<!-- 검색창, 검색 정렬들의 패널 -->
+			<div class="board">
 
-			<div class="board-heading">
+				<div class="board-heading">
 
-				<%-- 글쓰기 버튼 --%>
-				<div id="writebutton">
-					<button id="write" type="button" onclick="checkWrite()">글쓰기</button>
-				</div>
+					<%-- 글쓰기 버튼 --%>
+					<div id="writebutton">
+						<button id="write" type="button" onclick="checkWrite()">글쓰기</button>
+					</div>
 
-				<%-- 검색바 --%>
-				<div id="search_bar">
-					<select id="searchCheck">
-						<option value="1" selected>제목&내용</option>
-						<option value="2">작성자</option>
-					</select>
-					<input id="search_input" type="text" name="search" placeholder="검색어를 입력하세요.."
-						onkeydown='javascript:onEnterSearch()'>
+					<%-- 검색바 --%>
+					<div id="search_bar">
+						<select id="searchCheck">
+							<option value="1" selected>제목&내용</option>
+							<option value="2">작성자</option>
+						</select> <input id="search_input" type="text" name="search"
+							placeholder="검색어를 입력하세요.." onkeydown='javascript:onEnterSearch()'>
 
 						<%-- 게시글 정렬 --%>
 						<div class="sort_options">
@@ -203,54 +219,56 @@
 							</select>
 						</div>
 
+					</div>
+
+
+
 				</div>
-
-
-
-			</div>
-			<div class="board-body">
-				<!-- 게시판 테이블 -->
-				<div class="hmm_table">
-					<table id="myTable">
-						<thead>
-							<tr>
-								<th>글번호</th>
-								<th>제목</th>
-								<th>카테고리</th>
-								<th>작성자</th>
-								<th>추천 점수</th>
-								<th>조회수</th>
-								<th>작성일자</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:set var="num" value="1" />
-							<c:forEach var="l" items="${list }" varStatus="status">
-
+				<div class="board-body">
+					<!-- 게시판 테이블 -->
+					<div class="hmm_table">
+						<table id="myTable">
+							<thead>
 								<tr>
-									<td id="table_num">${num }</td>
-									<c:set var="num" value="${num+1 }" />
-									<td id="td_title"><a href="#"
-										onclick="checkBoard(${l.bcode})">${l.title }<span
-											id="reply_num">&nbsp;[${l.isdelete}]</span>
-									</a></td>
+									<th>글번호</th>
+									<th>제목</th>
+									<th>카테고리</th>
+									<th>작성자</th>
+									<th>추천 점수</th>
+									<th>조회수</th>
+									<th>작성일자</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:set var="num" value="1" />
+								<c:forEach var="l" items="${list }" varStatus="status">
 
-									<c:if test="${l.code.discode eq 3 }">
-										<td id="table_category" onclick="location.href='weeksubject.do?sm=r&first=1'">${l.code.name}</td>
-									</c:if>
+									<tr>
+										<td id="table_num">${num }</td>
+										<td id="td_title"><a href="#"
+											onclick="checkBoard(${l.bcode})">${l.title }<span
+												id="reply_num">&nbsp;[${l.isdelete}]</span>
+										</a></td>
 
-									<c:if test="${l.code.discode ne 3 }">
-										<td id="table_category" onclick="location.href='boardLists.do?dis=${l.code.discode}&first=1'">${l.code.name}</td>
-									</c:if>
+										<c:if test="${l.code.discode eq 3 }">
+											<td id="table_category"
+												onclick="location.href='weeksubject.do?sm=r&first=1'">${l.code.name}</td>
+										</c:if>
 
-									<td>
+										<c:if test="${l.code.discode ne 3 }">
+											<td id="table_category"
+												onclick="location.href='boardLists.do?dis=${l.code.discode}&first=1'">${l.code.name}</td>
+										</c:if>
 
-											<div id="tooltip" onmouseover="havMedal('${l.writerid}',${num})">
-											
-												<c:if test="${l.levelitem eq 'Y'}">				
+										<td>
+
+											<div id="tooltip"
+												onmouseover="havMedal('${l.writerid}',${num})">
+
+												<c:if test="${l.levelitem eq 'Y'}">
 													<img src="resources/img/bw/${levels[status.index]}.gif">
 												</c:if>
-												
+
 												<c:if test="${empty l.photo}">
 													<img class="profile_pics"
 														src="resources/img/defaultImg.jpg" />
@@ -272,35 +290,38 @@
 
 												</span>
 											</div>
-									</td>
-									<td id="table_point">${l.point.cal }</td>
-									<td id="table_viewcount">${l.point.viewnum }</td>
+										</td>
+										<td id="table_point">${l.point.cal }</td>
+										<td id="table_viewcount">${l.point.viewnum }</td>
 
-									<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="toDay"/>
-									<c:set var="postdate" value="${fn:substring(l.postdate,0,10) }"/>
-									<c:set var="tpostdate" value="${fn:substring(l.postdate,10,19) }"/>
+										<fmt:formatDate value="${today}" pattern="yyyy-MM-dd"
+											var="toDay" />
+										<c:set var="postdate"
+											value="${fn:substring(l.postdate,0,10) }" />
+										<c:set var="tpostdate"
+											value="${fn:substring(l.postdate,10,19) }" />
 
 
-									<c:if test="${toDay eq postdate }">
-										<td id="table_date">${tpostdate }</td>
-									</c:if>
+										<c:if test="${toDay eq postdate }">
+											<td id="table_date">${tpostdate }</td>
+										</c:if>
 
-									<c:if test="${toDay ne postdate }">
-										<td id="table_date">${postdate }</td>
-									</c:if>
-								</tr>
-
-							</c:forEach>
-						</tbody>
-					</table>
-					<c:if test="${empty keyword && empty sComment && empty writerS}">
-						<button id="iloadMore" onclick="loadMore(${num})">더보기</button>
-					</c:if>
+										<c:if test="${toDay ne postdate }">
+											<td id="table_date">${postdate }</td>
+										</c:if>
+									</tr>
+									<c:set var="num" value="${num+1 }" />
+								</c:forEach>
+							</tbody>
+						</table>
+						<c:if test="${empty keyword && empty sComment && empty writerS}">
+							<button id="iloadMore" onclick="loadMore(${num})">더보기</button>
+						</c:if>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </body>
 
 </html>

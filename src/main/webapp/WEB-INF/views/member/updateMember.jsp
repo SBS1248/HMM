@@ -287,9 +287,9 @@
 						<input id="input_id" type="text" name="id" value="${member.id}"
 							readonly> <input type="hidden" name="password"> <input
 							type="password" name="pwd" placeholder="비밀번호"
-							value="${member.password}" required id="password"><br>
+							value="" required id="password"><br>
 						<input type="password" id="passwordConfirm" name="pwdc"
-							placeholder="비밀번호 확인" value="${member.password}" required
+							placeholder="비밀번호 확인" value="" required
 							id="passwordConfirm"><br> <input type="email"
 							name="email" placeholder="이메일" value="${member.email}" required /><br>
 						<select name="job" id="updateJob">
@@ -305,7 +305,7 @@
 				</div>
 
 				<div class="profile-footer">
-					<label>메달 갯수 : ${member.medal}</label> <br> <label>경험치
+					<label>메달 갯수 : ${member.havmedal}</label> <br> <label>경험치
 						: ${member.exp}</label> <br> <label>남은 캐시 : ${member.chash}</label> <br>
 					<label>남은 따루 : ${member.ddaru}</label> <br> <label>가입일
 						: ${member.enrolldate}</label>

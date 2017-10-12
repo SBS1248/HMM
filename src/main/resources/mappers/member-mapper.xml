@@ -136,6 +136,12 @@
 		ID = #{id}
 	</update>
 	
+	<update id="profileImgDel">
+	UPDATE MEMBER
+	SET PHOTO = ''
+	WHERE MEMBERCODE=#{membercode}
+	</update>
+	
 	<update id="buyLevelItem">
 	UPDATE MEMBER
 	SET LEVELITEM = 'Y'
@@ -148,7 +154,7 @@
 	</select>
 	
 	<select id="profileInfo" resultType="member" parameterType="hashmap">
-	SELECT MEMBERCODE,ID, EMAIL,PHOTO, HAVMEDAL, EXP, REPORT, RECOMPOINT,
+	SELECT MEMBERCODE,ID, EMAIL,PHOTO, MEDAL, EXP, REPORT, RECOMPOINT,
 	(SELECT COUNT(*) FROM BOARD WHERE WRITERID=#{id1}) boardCount,
 	(SELECT COUNT(*) FROM COMMENTS WHERE WRITERID=#{id2}) commentsCount,
 	ENROLLDATE

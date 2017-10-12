@@ -65,4 +65,6 @@ public interface MemberService {
 	long selectExp(String writerid);
 
 	int buyLevelItem(int membercode);
+
+	Member profileImgDel(String membercode);
 }

@@ -168,4 +168,12 @@ public class MemberDao {
 	public int buyLevelItem(int membercode) {
 		return sqlSession.update("buyLevelItem",membercode);
 	}
+
+	public Member profileImgDel(String membercode) {
+		int result = sqlSession.update("profileImgDel",membercode);
+		Member member = null;
+		if(result >= 1)
+			member = sqlSession.selectOne("DDaruInfo",membercode);
+		return member;
+	}
 }

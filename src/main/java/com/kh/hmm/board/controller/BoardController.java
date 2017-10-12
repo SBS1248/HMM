@@ -139,11 +139,12 @@ public class BoardController {
 
 	@ResponseBody
 	@RequestMapping(value = "loadMore.do", method = RequestMethod.GET)
-	public ArrayList<Board> loadMore(char sm, int dis, int first) {
+	public HashMap loadMore(char sm, int dis, int first) {
 		logger.info("loadMore(" + sm + "," + dis + "," + first + ") call...");
 
 		ArrayList<Board> list;
-
+		HashMap map=new HashMap();
+		
 		if (dis == 3) {
 			Weeksubject ws = weekService.selectWeek();
 			Date date = ws.getStartdate();
@@ -151,8 +152,21 @@ public class BoardController {
 		} else {
 			list = boardService.sortList(sm, dis, first);
 		}
+		map.put("list", list);
+		
+		ArrayList<Integer> levels = new ArrayList<Integer>();
+		
+		for (Board b : list) 
+		{
+			int level = 0;
+			long exp = memberService.selectExp(b.getWriterid());
+			if (exp == 0)	level = 1;
+			else	level = memberService.leveling(exp);
+			levels.add(level);
+		}	
+		map.put("levels", levels);
 
-		return list;
+		return map;
 	}
 
 	@RequestMapping(value = "sortList.do", method = RequestMethod.GET)

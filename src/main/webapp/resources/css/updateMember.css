@@ -123,6 +123,22 @@ max-width: 300px;
   color: gold;
 }
 
+#file_delete_btn{
+  color: white;
+  padding: 10px;
+  border: none;
+  background-color: #c94c4c;
+  width: 180px;
+  margin: auto;
+  box-shadow: 2px 2px 2px grey;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+#file_delete_btn:hover{
+  color: gold;
+}
+
 #profile_delete_btn{
   float: right;
   color: white;

@@ -254,7 +254,7 @@
 		return binb2hex(core_sha256(str2binb(s), s.length * chrsz));
 
 	}
-	
+
 	function profileImgDel()
 	{
 		location.href="profileImgDel.do?membercode="+${membercode};
@@ -293,7 +293,7 @@
 						<button type="button" id="file_upload_btn"
 							onclick="validationFile()">프로필 사진 업로드</button>
 							<c:if test="${null ne photo}">
-							<button type="button" onclick="profileImgDel()">프로필 사진 삭제</button>
+							<button type="button"  id="file_delete_btn" onclick="profileImgDel()">프로필 사진 삭제</button>
 							</c:if>
 					</form>
 					<form id="updateForm" name="updateForm" action="update.do"

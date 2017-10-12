@@ -106,7 +106,7 @@
 </div>
 </div>
 </div>
-                    <div class="the_container">
+                    <%-- <div class="the_container">
                       <h1>TESTING</h1>
                     </div>
                     <div class="the_container">
@@ -114,7 +114,7 @@
                     </div>
                     <div class="the_container">
                       <h1>TESTING</h1>
-                    </div>
+                    </div> --%>
 
                   </body>
                   <%@ include file="/footer.jsp"%>

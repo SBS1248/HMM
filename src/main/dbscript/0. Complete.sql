@@ -699,5 +699,16 @@ insert into item values(ITEM_SEQ.NEXTVAL, 'bg8',30,6,'resources/img/icon/6.borde
 insert into item values(ITEM_SEQ.NEXTVAL, 'bg9',30,6,'resources/img/icon/6.border/bg9.gif',250);
 insert into item values(ITEM_SEQ.NEXTVAL, 'level',30,7,'resources/img/bw/0.gif',500);
 
+DROP TABLE SERVICE;
+
+CREATE TABLE SERVICE(
+  SERNAME	VARCHAR2(20 BYTE) NOT NULL,
+  SERADD	VARCHAR2(100 BYTE) NOT NULL,
+  SERTITLE VARCHAR2(1000 BYTE),
+  SERCONTENT	VARCHAR2(3000 BYTE)NOT NULL,
+  SERDATE DATE DEFAULT SYSDATE,
+  YNCHECK	CHAR(2 BYTE) CHECK (YNCHECK IN('Y','N'))  
+);
+select * from service;
 
 COMMIT;

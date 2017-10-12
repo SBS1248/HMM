@@ -90,9 +90,10 @@ public class MemberDao {
 	}
 
 	public int leveling(long exp) {
+
 		int level=1;
 		if(sqlSession.selectOne("leveling", exp)!=null)level=sqlSession.selectOne("leveling", exp); 
-		
+
 		return  level;
 	}
 

@@ -1,14 +1,17 @@
 @CHARSET "UTF-8";
-
-html body {
-    background-color: #deeaee;
+.board_area {
+  background-color: white;
+  border: none;
 }
 
-#insertNewtech{
-  padding: 10px;
-  border-radius: 10px;
-  background-color: skyblue;
-  text-decoration: none;
-  color: white;
-  font-size: 20px;
+.board-heading{
+  background-color: #002F2F;
+  padding: 20px;
+  height: 80px;
 }
+ background-color: #deeaee;
+  }
+ 
+  #insertNewtech{
+    padding: 10px;
+    border-radius: 10px;

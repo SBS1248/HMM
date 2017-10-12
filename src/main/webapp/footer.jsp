@@ -7,7 +7,7 @@
 		<title>Hmm | 전 세계의 개발자들을 널리 이롭게 하리라.</title>
 		<meta charset="utf-8">
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-				<link href="resources/css/footer.css" rel="stylesheet" type="text/css">
+				<link href="resources/css/footer.css?ver=1" rel="stylesheet" type="text/css">
 					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 					<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 				</head>
@@ -41,13 +41,14 @@
 										<input class="form-control" id="name" name="sername" value="${member.id}" placeholder="성함" type="text" readonly="readonly">
 										</c:if>
 										</div>
-										<div class="col-sm-6 form-group">
+										<!-- <div class="col-sm-6 form-group">
 											<input class="form-control" id="email" name="seradd" value="wkdgma91@gmail.com" placeholder="이메일 주소" type="email" readonly="readonly">
-											</div>
+											</div> -->
 										</div>
-										<input class="form-control" id="title" name="sertitle" placeholder="제목" type="text" style="width: 49%" required>
+										<input class="form-control" id="title" name="sertitle" placeholder="제목" type="text" style="width: 47%; margin-right:5%; float:left;" required>
+										<input class="form-control" id="email" name="seradd" value="wkdgma91@gmail.com" style="width: 47%;" placeholder="이메일 주소" type="email" readonly="readonly">
 										<br>
-										<textarea class="form-control" id="comments" name="sercontent" placeholder="남기실 말씀" rows="5" required></textarea>
+										<textarea class="form-control" id="comments" name="sercontent" placeholder="남기실 말씀" rows="5" style="clear:both;" required></textarea>
 										<br>
 											<div class="row">
 												<div class="col-sm-12 form-group">

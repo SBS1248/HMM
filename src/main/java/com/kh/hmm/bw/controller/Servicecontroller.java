@@ -48,7 +48,11 @@ public class Servicecontroller {
 			 
 			  message.setFrom(s.getSername());
 			  message.setTo("wkdgma91@gmail.com");
-			  message.setSubject("["+s.getSername()+"] : "+s.getSercontent().substring(0, 7));
+			  if(s.getSercontent().length() > 8){
+				  message.setSubject("["+s.getSername()+"] : "+s.getSercontent().substring(0, 7));
+			  } else {
+				  message.setSubject("["+s.getSername()+"] : "+s.getSercontent());
+			  }
 			  message.setText(s.getSercontent());
 			   
 			  mailSender.send(message);

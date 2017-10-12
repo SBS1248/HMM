@@ -334,7 +334,7 @@ END;
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'admin','admin','admin@hmm.org','resources/img/admin/admin.jpg',999,999,6454323465,0,0,0,999,null,sysdate,null,'Y');
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user','user','email',null,100,100,0,0,0,0,100,null,sysdate,null,DEFAULT);
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user1','user1','first@hotmail.com','resources/img/user1/user1.jpg',500,500,84535345,0,0,0,0,null,sysdate,null,'Y');
-INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user2','user2','second@naver.com','resources/img/user2/user2.jpg',500,500,7643234,0,0,0,0,null,sysdate,null,'Y');
+INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user2','user2','second@naver.com','resources/img/user2/user2.JPG',500,500,7643234,0,0,0,0,null,sysdate,null,'Y');
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user3','user3','third@hanmail.net','resources/img/user3/user3.jpg',500,500,12354,0,0,0,0,null,sysdate,null,'Y');
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user4','user4','fourth@google.com','resources/img/user4/user4.jpg',0,0,3763442,0,0,0,0,null,sysdate,null,'Y');
 INSERT INTO MEMBER VALUES(MEM_SEQ.NEXTVAL,'user5','user5','fifth@yahoo.com','resources/img/user5/user5.jpg',0,0,753232434,0,0,0,0,null,sysdate,null,'Y');

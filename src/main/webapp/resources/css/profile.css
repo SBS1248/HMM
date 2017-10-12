@@ -12,6 +12,11 @@ html body {
 	border: 1px right: ; solid;
 }
 
+.profile_area.banner{
+  box-shadow: 2px 2px 2px grey;
+	border-radius: 6px;
+}
+
 .profile_area{
 	display: inline-block;
 	width: 100%;
@@ -30,10 +35,12 @@ html body {
 	height: 25%;
 	min-width: 250px;
 	min-height: 250px;
+	max-width: 600px;
+	max-height: 600px;
 	border-radius: 50%;
+	border: 6px skyblue solid;
 }
 
-#profile_id{
+.profile_id{
 	display: inline-block;
-	border: 1px gold solid;
 }

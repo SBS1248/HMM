@@ -205,6 +205,23 @@
                }
     	});
 	}
+	
+	function havMedal(profileId,index){
+		var profileId=profileId;
+ 			$.ajax({
+			type : "POST",
+			url : "profileHavMedal.do",
+			data : "profileId="+profileId,
+			dataType : "text",
+			success : function(rData) {
+				var havMedal = rData;
+				 $('#havMedal_'+index).text('총 받은 메달 : '+havMedal);
+			},
+			error : function() {
+				console.log("프로필 메달 갯수 가져오기 실패!!");
+			}
+		});
+	}
 </script>
 </head>
 <body>

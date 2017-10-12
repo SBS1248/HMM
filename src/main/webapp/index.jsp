@@ -220,7 +220,6 @@
 			<p id="demo"></p>
 		</div>
 	</div>
-	<button onclick="popupChat()">채팅하러가기~~</button>
 	<div class="container">
 		<!-- 게시판 영역 -->
 		<div class="board_area">

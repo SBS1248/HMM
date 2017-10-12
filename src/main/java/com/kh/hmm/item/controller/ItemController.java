@@ -130,7 +130,7 @@ public class ItemController {
 		}
 
 		// 인벤토리로
-		return "../../index";
+		return "redirect:/itemLists.do";
 	}
 
 	@RequestMapping(value = "itemDelete.do", method = RequestMethod.POST)

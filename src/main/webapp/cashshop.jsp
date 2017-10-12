@@ -126,6 +126,7 @@ td, tr {
 
 									function purchase() {
 										document.getElementById(frmName).submit();
+										
 									}
 									function loginCheck() {
 										if (member == null || member == '') {

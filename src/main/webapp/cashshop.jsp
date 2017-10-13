@@ -125,7 +125,17 @@ td, tr {
 									}
 
 									function purchase() {
-										document.getElementById(frmName).submit();
+										var ddaru = '${ddaru}';
+										if(ddaru <= 0){
+											alert("따루가 부족해서 구매 할수 없습니다!!");
+											location.href = "cashcharge.jsp"
+										}
+										else
+											{
+											document.getElementById(frmName).submit();	
+											}
+											
+										
 										
 									}
 									function loginCheck() {
@@ -152,19 +162,26 @@ td, tr {
 </head>
 <body id="body">
 
-	<div id="jumbotron" class="jumbotron" style="margin-left: 20px; padding-top:0px; background-color: white;">
-	<div class="w3-content w3-section" style="max-width:100%; background-color : #deeaee;">
-  <img class="mySlides" src="resources/img/slider/sliderimg1.jpg" style=" height: 480px; width:99%">
-  <img class="mySlides" src="resources/img/slider/sliderimg2.jpg" style="height: 480px; width:99%">
-  <img class="mySlides" src="resources/img/slider/sliderimg3.jpg" style="height: 480px; width:99%">
-  <img class="mySlides" src="resources/img/slider/sliderimg4.jpg" style="height: 480px; width:99%">
-  <img class="mySlides" src="resources/img/slider/sliderimg5.jpg" style="height: 480px; width:99%">
-  <div class="container text-center">
-			<!-- <h1>Hmm CashShop</h1>
+	<div id="jumbotron" class="jumbotron"
+		style="margin-left: 20px; padding-top: 0px; background-color: white;">
+		<div class="w3-content w3-section"
+			style="max-width: 100%; background-color: #deeaee;">
+			<img class="mySlides" src="resources/img/slider/sliderimg1.jpg"
+				style="height: 480px; width: 99%"> <img class="mySlides"
+				src="resources/img/slider/sliderimg2.jpg"
+				style="height: 480px; width: 99%"> <img class="mySlides"
+				src="resources/img/slider/sliderimg3.jpg"
+				style="height: 480px; width: 99%"> <img class="mySlides"
+				src="resources/img/slider/sliderimg4.jpg"
+				style="height: 480px; width: 99%"> <img class="mySlides"
+				src="resources/img/slider/sliderimg5.jpg"
+				style="height: 480px; width: 99%">
+			<div class="container text-center">
+				<!-- <h1>Hmm CashShop</h1>
 			<p style="font-size: 30px;">Cash shop</p> -->
+			</div>
 		</div>
 	</div>
-</div>
 	<script type="text/javascript">
 	var slideIndex = 0;
 	carousel();
@@ -180,7 +197,7 @@ td, tr {
 	    setTimeout(carousel, 2000); // Change image every 2 seconds
 	}
 	</script>
-		
+
 
 	<div class="container">
 		<div id="residualcash" style="margin: 0px;">
@@ -194,18 +211,19 @@ td, tr {
 		<div class="row">
 			<div class="col-sm-3">
 				<div id="sidebar" class="left-sidebar">
-					<h2 style="padding : 20px;">카테고리</h2>
+					<h2 style="padding: 20px;">카테고리</h2>
 					<div class="panel-group category-products" id="accordian">
 						<!--category-productsr-->
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a class="filter-button" data-filter="all" style="cursor:pointer">ALL</a>
+									<a class="filter-button" data-filter="all"
+										style="cursor: pointer">ALL</a>
 
 								</h4>
 							</div>
 						</div>
-							<div class="panel panel-default">
+						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
 									<a data-toggle="collapse" data-parent="#accordian"
@@ -230,15 +248,14 @@ td, tr {
 								style="height: 0px;">
 								<div class="panel-body">
 									<ul>
-										<li><a class="filter-button" data-filter="BAD" style="cursor:pointer">Bad</a>
-										</li>
-										<li><a class="filter-button" data-filter="HAPPY" style="cursor:pointer">Happy</a>
-										</li>
-										<li><a class="filter-button" data-filter="SAD" style="cursor:pointer">Sad</a>
-										</li>
-										<li><a class="filter-button" data-filter="CRAZY" style="cursor:pointer">Crazy</a>
-
-										</li>
+										<li><a class="filter-button" data-filter="BAD"
+											style="cursor: pointer">Bad</a></li>
+										<li><a class="filter-button" data-filter="HAPPY"
+											style="cursor: pointer">Happy</a></li>
+										<li><a class="filter-button" data-filter="SAD"
+											style="cursor: pointer">Sad</a></li>
+										<li><a class="filter-button" data-filter="CRAZY"
+											style="cursor: pointer">Crazy</a></li>
 									</ul>
 								</div>
 							</div>
@@ -247,8 +264,8 @@ td, tr {
 							<div class="panel-heading">
 								<h4 class="panel-title">
 									<a data-toggle="collapse" data-parent="#accordian" href="#edge"
-										class="collapsed filter-button" data-filter="BORDER">
-										<b>테두리</b> </a>
+										class="collapsed filter-button" data-filter="BORDER"> <b>테두리</b>
+									</a>
 								</h4>
 							</div>
 							<div id="edge" class="panel-collapse collapse"></div>
@@ -259,7 +276,8 @@ td, tr {
 								<h4 class="panel-title">
 									<a data-toggle="collapse" data-parent="#accordian"
 										href="#medal" class="collapsed filter-button"
-										data-filter="MEDAL"> <b>메달</b> </a>
+										data-filter="MEDAL"> <b>메달</b>
+									</a>
 								</h4>
 							</div>
 							<div id="medal" class="panel-collapse collapse"></div>
@@ -284,11 +302,12 @@ td, tr {
 					<!--------------------------------------------------emticon---------------------------------------------------------------------------- -->
 					<c:forEach var="l" items="${itemList}">
 						<div class="col-sm-4 filter emoticon ${l.mood}">
-							<div class="product-image-wrapper" style="heigth : 10px; margin-bottom: 27px; margin-top : 0;">
+							<div class="product-image-wrapper"
+								style="heigth: 10px; margin-bottom: 27px; margin-top: 0;">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										 <br><img
-											style="width: 170px; height: 150px;" src="${l.filelink}">
+										<br>
+										<img style="width: 170px; height: 150px;" src="${l.filelink}">
 										<form id="itemFrm${l.itemcode}" action="itemPurchase.do"
 											method="POST">
 											<input type="hidden" value="${l.itemcode}" name="itemcode">
@@ -358,7 +377,8 @@ td, tr {
 							<c:forEach var="pt" items="${pList}">
 								<tr>
 									<td colspan='2'></td>
-									<td id="itemitem"><span style='float: right; margin: 10px;'>
+									<td id="itemitem"><span
+										style='float: right; margin: 10px;'>
 											<button id='imagedel' class='close' type='button'
 												style='color: black;' onclick="delitem();">&times;</button>
 									</span> <a id='itemdetail' href='#itdetail' data-toggle='modal'> <img
@@ -376,18 +396,18 @@ td, tr {
 		</div>
 	</div>
 
-<!--스크롤 배너 -->
+	<!--스크롤 배너 -->
 
-<div id="floating" style="cursor: pointer;">
-	<a id="flotImg" onclick="loginCheck()" style="text-decoration: none;">
-		<img id="banner"
-		src="resources/img/icon/cash3.png"
-		border="0" width="200px" height="130px">
-		<div id="test" style="display: none; width: 200px; height: 130px; font-size: 30px; text-align: center;">
-			<br>따루 충전하러<br> 가기~
-		</div>
-	</a>
+	<div id="floating" style="cursor: pointer;">
+		<a id="flotImg" onclick="loginCheck()" style="text-decoration: none;">
+			<img id="banner" src="resources/img/icon/cash3.png" border="0"
+			width="200px" height="130px">
+			<div id="test"
+				style="display: none; width: 200px; height: 130px; font-size: 30px; text-align: center;">
+				<br>따루 충전하러<br> 가기~
+			</div>
+		</a>
 
-</div>
-<%@ include file="/footer.jsp"%>
+	</div>
+	<%@ include file="/footer.jsp"%>
 </html>

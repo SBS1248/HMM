@@ -121,9 +121,12 @@ public class MemberDao {
 		sqlSession.update("updateDDARU", member);
 	}
 	
-	public Member buyDDARU(Member member) {
-		sqlSession.update("updateDDARU", member);
-		return	sqlSession.selectOne("DDaruInfo",member);
+	public Member buyDDARU(Member member, int price) {
+		HashMap map = new HashMap();
+		map.put("membercode", member.getMembercode());
+		map.put("price", price);
+		sqlSession.update("updateDDARU", map);
+		return	sqlSession.selectOne("DDaruInfo",map);
 	}
 
 	public int buyMedal(int membercode, int medal) {

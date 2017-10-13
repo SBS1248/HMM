@@ -60,11 +60,11 @@ public interface MemberService {
 
 	Member profileInfo(String profileId);
 
-	Member buyDDARU(Member member);
-
 	long selectExp(String writerid);
 
 	int buyLevelItem(int membercode);
 
 	Member profileImgDel(String membercode);
+
+	Member buyDDARU(Member m, int price);
 }

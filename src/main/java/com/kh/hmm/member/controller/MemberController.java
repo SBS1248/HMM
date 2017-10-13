@@ -417,9 +417,8 @@ public class MemberController {
 		System.out.println("request membercode 값 : " + request.getParameter("membercode"));
 		System.out.println("request price 값 : " + request.getParameter("price"));
 		
-		m.setDdaru(Integer.parseInt(request.getParameter("price")));
-		m.setMembercode(Integer.parseInt(request.getParameter("membercode")));
-		Member member = memberService.buyDDARU(m);
+		
+		Member member = memberService.buyDDARU(m,price);
 		
 		if(member != null){
 			session.setAttribute("Member",m);

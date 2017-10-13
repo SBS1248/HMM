@@ -110,16 +110,16 @@
 		MEMBERCODE=#{membercode}
 	</update>
 
-	<insert id="updateDDARU">
+	<insert id="updateDDARU" parameterType="hashmap">
 		UPDATE MEMBER
-		SET DDARU=#{ddaru}
+		SET DDARU=#{price}
 		WHERE
 		MEMBERCODE=#{membercode}
 	</insert>
 	
-	<update id="buyDDaru">
+	<update id="buyDDaru" parameterType="hashmap">
 		UPDATE MEMBER
-		SET DDARU=#{ddaru}
+		SET DDARU=DDARU+#{price}
 		WHERE
 		MEMBERCODE=#{membercode}
 	</update>

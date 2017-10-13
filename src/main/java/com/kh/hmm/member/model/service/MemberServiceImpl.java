@@ -134,8 +134,8 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 	@Override
-	public Member buyDDARU(Member member) {
-		return mDao.buyDDARU(member);
+	public Member buyDDARU(Member member,int price) {
+		return mDao.buyDDARU(member,price);
 	}
 
 	@Override

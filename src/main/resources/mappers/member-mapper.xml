@@ -112,7 +112,7 @@
 
 	<insert id="updateDDARU">
 		UPDATE MEMBER
-		SET DDARU=#{ddaru}
+		SET DDARU=DDARU+#{ddaru}
 		WHERE
 		MEMBERCODE=#{membercode}
 	</insert>

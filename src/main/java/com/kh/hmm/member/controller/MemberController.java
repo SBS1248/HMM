@@ -410,20 +410,21 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "buyDDaru.do", method = RequestMethod.GET)
-	public String buyDDaru(Member m, HttpSession session,HttpServletRequest request, int membercode, int price) throws Exception
+	public String buyDDaru(HttpSession session,HttpServletRequest request, int membercode, int price) throws Exception
 	{
 		logger.info("buyDDaru() call...");
 		
 		System.out.println("request membercode 값 : " + request.getParameter("membercode"));
 		System.out.println("request price 값 : " + request.getParameter("price"));
-		
-		
-		Member member = memberService.buyDDARU(m,price);
+		Member m = new Member();
+		m.setDdaru(Integer.parseInt(request.getParameter("price")));
+		m.setMembercode(Integer.parseInt(request.getParameter("membercode")));
+		Member member = memberService.buyDDARU(m);
 		
 		if(member != null){
-			session.setAttribute("Member",m);
+			session.setAttribute("member",member);
 		}else{
-			session.setAttribute("Member", null);
+			session.setAttribute("member", null);
 		}
 				
 		return "forward:/itemLists.do";

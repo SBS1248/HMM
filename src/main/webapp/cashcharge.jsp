@@ -97,7 +97,7 @@
 									msg += '결제 금액 : ' + rsp.paid_amount;
 									msg += '카드 승인번호 : ' + rsp.apply_num;
 
-									var price = $("input[type=radio]:checked")	.val();
+									var price = $("input[type=radio]:checked").val();
 									var dPrice = 0;
 									switch (price) {
 									case '1000':
